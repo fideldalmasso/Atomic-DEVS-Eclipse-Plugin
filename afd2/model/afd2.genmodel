@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/afd2/src-gen" creationIcons="false" editDirectory="/afd2.edit/src-gen"
+    editorDirectory="/afd2.editor/src-gen" modelPluginID="afd2" modelName="Afd2" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>afd2.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Afd2" disposableProviderFactory="true" ecorePackage="afd2.ecore#/">
+    <genClasses ecoreClass="afd2.ecore#//AFD">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference afd2.ecore#//AFD/estado"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute afd2.ecore#//AFD/nombre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference afd2.ecore#//AFD/transicion"/>
+    </genClasses>
+    <genClasses ecoreClass="afd2.ecore#//Transicion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute afd2.ecore#//Transicion/nombre"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference afd2.ecore#//Transicion/destino"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference afd2.ecore#//Transicion/origen"/>
+    </genClasses>
+    <genClasses ecoreClass="afd2.ecore#//Estado">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute afd2.ecore#//Estado/nombre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute afd2.ecore#//Estado/esInicial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute afd2.ecore#//Estado/esFinal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference afd2.ecore#//Estado/transicionSaliente"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference afd2.ecore#//Estado/transicionEntrante"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
