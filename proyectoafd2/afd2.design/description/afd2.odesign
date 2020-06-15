@@ -24,7 +24,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="afd2.Estado" referenceName="NodoEstadoReferenceName"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="afd2.Estado" referenceName="estado"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -34,18 +34,11 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="afd2.Transicion" referenceName="instanciaTransicionReferenceName" variableName="instanciaTransicion">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[AFD.allInstances()->any(true)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="afd2.Transicion" referenceName="transicion" variableName="instanciaTransicion">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instanciaTransicion">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['null(defectuosa)'.toString()/]"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="transicionSaliente" valueExpression="var:instanciaTransicion"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="transicionEntrante" valueExpression="var:instanciaTransicion"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

@@ -41,7 +41,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="transicionesSalientesExclusivas" value="&#xA;&#x9;&#x9;&#x9;Transicion.allInstances()->&#xA;&#x9;&#x9;&#x9;forAll(t1,t2:Transicion | (t1.nombre = t2.nombre and t1.origen = t2.origen)&#xA;&#x9;&#x9;&#x9;&#x9;implies t1=t2&#xA;&#x9;&#x9;&#x9;)"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="esInicial" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="esFinal" lowerBound="1"

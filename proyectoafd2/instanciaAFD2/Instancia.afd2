@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<afd:AFD xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:afd="http://www.example.org/afd2">
+  <estado nombre="estado1" esInicial="true" transicionSaliente="//@transicion.1 //@transicion.0" transicionEntrante="//@transicion.1 //@transicion.2"/>
+  <estado nombre="estado2" esFinal="true" transicionEntrante="//@transicion.0 //@transicion.3"/>
+  <estado nombre="estado3" transicionSaliente="//@transicion.2"/>
+  <estado/>
+  <estado transicionSaliente="//@transicion.3"/>
+  <transicion nombre="a" destino="//@estado.1" origen="//@estado.0"/>
+  <transicion nombre="b" destino="//@estado.0" origen="//@estado.0"/>
+  <transicion nombre="transicionNueva" destino="//@estado.0" origen="//@estado.2"/>
+  <transicion nombre="c" destino="//@estado.1" origen="//@estado.4"/>
+</afd:AFD>
