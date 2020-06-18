@@ -12,90 +12,54 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="allDescriptorsAreDefined stateMustHaveOnlyGenericDescriptors"/>
+      <details key="constraints" value="compulsoryPhase compulsorySigma"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="allDescriptorsAreDefined" value="&#xA;&#x9;&#x9;&#x9;self.devs.genericstate.genericdescriptor->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(e1:GenericDescriptor | self.descriptor->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;one(e2:Descriptor | e1.name = e2.name and e1.nature = e2.nature))"/>
-      <details key="stateMustHaveOnlyGenericDescriptors" value="&#xA;&#x9;&#x9;&#x9;self.descriptor->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(e1:Descriptor | self.devs.genericstate.genericdescriptor->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;one(e2:GenericDescriptor | e1.name = e2.name and e1.nature = e2.nature))"/>
+      <details key="compulsoryPhase" value="self.descriptor->one(e:Descriptor|e.oclIsTypeOf(Phase))"/>
+      <details key="compulsorySigma" value="self.descriptor->one(e:Descriptor|e.oclIsTypeOf(Sigma))"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="2"
         upperBound="-1" eType="#//Descriptor" containment="true" eOpposite="#//Descriptor/state"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="devs" lowerBound="1" eType="#//Devs"
         eOpposite="#//Devs/state"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenericDescriptor">
+  <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="sigmaDescriptor phaseDescriptor"/>
+      <details key="constraints" value="typeDerived"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="sigmaDescriptor" value="&#xA;&#x9;&#x9;&#x9;self.nature = DescriptorNature::SIGMA &#xA;&#x9;&#x9;&#x9;implies (self.name = 'Sigma') &#xA;&#x9;&#x9;&#x9;and self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE"/>
-      <details key="phaseDescriptor" value="&#xA;&#x9;&#x9;&#x9;self.nature = DescriptorNature::PHASE &#xA;&#x9;&#x9;&#x9;implies (self.name = 'Sigma') &#xA;&#x9;&#x9;&#x9;and self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+      <details key="typeDerived" value="self.value.oclIsTypeOf(self.type.oclType())"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nature" lowerBound="1"
-        eType="#//DescriptorNature"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
-        eOpposite="#//Type/genericdescriptor"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"
+        eOpposite="#//State/descriptor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Phase" eSuperTypes="#//Descriptor">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="namePhase valueTypeString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="namePhase" value="self.name = 'Phase'"/>
+      <details key="valueTypeString" value="self.value.oclIsTypeOf(String)"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sigma" eSuperTypes="#//Descriptor">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="nameSigma valueTypeDouble"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="nameSigma" value="self.name = 'Sigma'"/>
+      <details key="valueTypeDouble" value="self.value.oclIsTypeOf(Real)"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Devs">
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
         eType="#//State" containment="true" eOpposite="#//State/devs"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="genericstate" lowerBound="1"
-        eType="#//GenericState" eOpposite="#//GenericState/devsgeneric"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" instanceClassName="java.lang.Object"
-      eSuperTypes="#//Type">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitive" eType="#//Primitive"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserDefinedType" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenericState">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="compulsoryPhase compulsorySigma"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="compulsoryPhase" value="&#xA;&#x9;&#x9;&#x9;self.genericdescriptor->&#xA;&#x9;&#x9;&#x9;one(e:GenericDescriptor|e.nature = DescriptorNature::PHASE)"/>
-      <details key="compulsorySigma" value="&#xA;&#x9;&#x9;&#x9;self.genericdescriptor->&#xA;&#x9;&#x9;&#x9;one(e:GenericDescriptor|e.nature = DescriptorNature::SIGMA)"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devsgeneric" lowerBound="1"
-        eType="#//Devs" eOpposite="#//Devs/genericstate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="genericdescriptor" lowerBound="2"
-        upperBound="-1" eType="#//GenericDescriptor" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DescriptorNature">
-    <eLiterals name="PHASE"/>
-    <eLiterals name="SIGMA" value="1"/>
-    <eLiterals name="CUSTOM" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="valueMatchType"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="valueMatchType" value=" &#xA;&#x9;&#x9;&#x9;self.genericdescriptor.type.oclIsTypeOf(UserDefinedType) implies &#xA;&#x9;&#x9;&#x9;&#x9;self.value.toBeDefined = false&#xA;&#x9;&#x9;&#x9;and  self.genericdescriptor.type.oclIsTypeOf(PrimitiveType)implies &#xA;&#x9;&#x9;&#x9;&#x9;self.value.content.oclIsTypeOf(PrimitiveType)"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"
-        eOpposite="#//State/descriptor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="genericdescriptor" lowerBound="1"
-        eType="#//GenericDescriptor"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeDefined" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="genericdescriptor" lowerBound="1"
-        eType="#//GenericDescriptor" eOpposite="#//GenericDescriptor/type"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Primitive">
-    <eLiterals name="INT"/>
-    <eLiterals name="DOUBLE" value="1"/>
-    <eLiterals name="FLOAT" value="2"/>
-    <eLiterals name="CHAR" value="3"/>
-    <eLiterals name="STRING" value="4"/>
-    <eLiterals name="ARRAY" value="5"/>
-    <eLiterals name="LITERAL6" value="6"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
 </ecore:EPackage>
