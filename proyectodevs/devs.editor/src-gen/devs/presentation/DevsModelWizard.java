@@ -12,75 +12,59 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EEnumImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
-
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 import devs.DevsFactory;
 import devs.DevsPackage;
 import devs.provider.DevsEditPlugin;
-
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -138,6 +122,8 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected DevsModelWizardInitialObjectCreationPage initialObjectCreationPage;
+	
+	protected DevsModelWizardNewDescriptorPage newDescriptorPage;
 
 	/**
 	 * Remember the selection during initialization for populating the default container.
@@ -163,6 +149,10 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 */
 	protected List<String> initialObjectNames;
 
+	protected List<String> primitiveTypesNames;
+	
+	protected Map<String,String> descriptorsList;  //name,type
+	
 	/**
 	 * This just records the information.
 	 * <!-- begin-user-doc -->
@@ -183,6 +173,38 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	
+	
+	protected String addPrimitiveDescriptorToList(String name, String type) {
+		if(descriptorsList == null) 
+			descriptorsList = new HashMap<String,String>();
+		
+		if(name== null || name.length() == 0)
+			return "Please enter a name";
+		if(type== null || type.length() == 0)
+			return "Please enter a valid type";
+		if(descriptorsList.containsKey(name))
+			return "There is already a descriptor with the same name";
+		if(!getPrimitiveTypesNames().contains(type))
+			return "The type entered is not supported. Please select one from the drop-down list";
+		
+		descriptorsList.put(name,type);
+		return "Added "+name+", "+ type + " to List!";			
+	}
+	
+	protected Collection<String> getPrimitiveTypesNames(){
+		if(primitiveTypesNames == null) {
+			primitiveTypesNames = new ArrayList<String>();
+			EEnumImpl enum1 = (EEnumImpl) devsPackage.getEClassifier("Primitive");
+			for(EEnumLiteral e : enum1.getELiterals()) {
+				primitiveTypesNames.add(e.toString());
+			}
+			Collections.sort(primitiveTypesNames, CommonPlugin.INSTANCE.getComparator());
+		}
+		return primitiveTypesNames;
+		
+	}
+	
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
@@ -206,8 +228,8 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass) devsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = devsFactory.create(eClass);
+		//EClass eClass = (EClass) devsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EObject rootObject = devsFactory.create((EClass) devsPackage.getEClassifier("Devs"));
 		return rootObject;
 	}
 
@@ -350,15 +372,134 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+//--------------------------------------------------------------------------------------------------------------------------
+	public class DevsModelWizardNewDescriptorPage extends WizardPage{
+
+		protected Combo primitiveTypeField;
+		protected Text descriptorNameField;
+		protected Button addButton;
+		protected Text debuggingLabel;
+		public DevsModelWizardNewDescriptorPage(String pageId) {
+			super(pageId);
+		}
+
+		public void createControl(Composite parent) {
+			Composite composite = new Composite(parent, SWT.NONE);
+			{
+				GridLayout layout = new GridLayout();
+				layout.numColumns = 1;
+				layout.verticalSpacing = 12;
+				composite.setLayout(layout);
+
+				GridData data = new GridData();
+				data.verticalAlignment = GridData.FILL;
+				data.grabExcessVerticalSpace = true;
+				data.horizontalAlignment = GridData.FILL;
+				composite.setLayoutData(data);
+			}
+			
+			Label descriptorNameLabel = new Label(composite, SWT.NONE);
+			{
+				descriptorNameLabel.setText("Enter a new descriptor name");
+			}
+			
+			 descriptorNameField = new Text(composite, SWT.BORDER);
+			{
+				descriptorNameField.addModifyListener(validator);
+				GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL
+						| GridData.GRAB_HORIZONTAL);
+				descriptorNameField.setLayoutData(data);
+			}
+				
+			
+			Label primitiveLabel = new Label(composite, SWT.LEFT);
+			{
+				primitiveLabel.setText("Select a primitive type");
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				primitiveLabel.setLayoutData(data);
+			}
+			primitiveTypeField = new Combo(composite, SWT.BORDER);
+			{
+				GridData data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.grabExcessHorizontalSpace = true;
+				primitiveTypeField.setLayoutData(data);
+				for (String primitive : getPrimitiveTypesNames()) {
+					primitiveTypeField.add(getLabel(primitive));
+				}
+				primitiveTypeField.addModifyListener(validator);
+			}
+			
+			 debuggingLabel = new Text(composite,SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);{
+			  debuggingLabel.setText("");
+			  GridData data = new GridData(); 
+			  data.widthHint = 100;
+			  data.heightHint = 60;
+			  data.horizontalAlignment = GridData.FILL; 
+			  debuggingLabel.setLayoutData(data);
+				 
+			}
+			
+			addButton = new Button(composite,SWT.PUSH); {
+				addButton.setText("Add");
+				addButton.addSelectionListener(new SelectionAdapter() {
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							String name = descriptorNameField.getText();
+							String type =  primitiveTypeField.getText();
+							debuggingLabel.append(addPrimitiveDescriptorToList(name,type)+"\n");
+							
+								
+						}
+						});
+				
+			}
+
+			setPageComplete(validatePage());
+			setControl(composite);
+		}
+
+		protected String getLabel(String typeName) {
+			try {
+				return DevsEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+			} catch (MissingResourceException mre) {
+				DevsEditorPlugin.INSTANCE.log(mre);
+			}
+			return typeName;
+		}
+		protected ModifyListener validator = new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		};
+
+		protected boolean validatePage() {
+			return true;
+		}
+
+		@Override
+		public void setVisible(boolean visible) {
+			super.setVisible(visible);
+			if (visible) {
+				if (primitiveTypeField.getItemCount() == 1) {
+					primitiveTypeField.clearSelection();
+				}
+		}
+
+		}
+	}
+//--------------------------------------------------------------------------------------------------------------------------
 	public class DevsModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected Combo initialObjectField;
-
-		/**
+		/*
+		 * protected Combo initialObjectField; protected Combo primitiveTypeField;
+		 * 
+		 */		/**
 		 * @generated
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -402,32 +543,38 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 				composite.setLayoutData(data);
 			}
 
-			Label containerLabel = new Label(composite, SWT.LEFT);
-			{
-				containerLabel.setText(DevsEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
-
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				containerLabel.setLayoutData(data);
-			}
-
-			initialObjectField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				initialObjectField.setLayoutData(data);
-			}
-
-			for (String objectName : getInitialObjectNames()) {
-				initialObjectField.add(getLabel(objectName));
-			}
-
-			if (initialObjectField.getItemCount() == 1) {
-				initialObjectField.select(0);
-			}
-			initialObjectField.addModifyListener(validator);
-
+			/*
+			 * Label containerLabel = new Label(composite, SWT.LEFT); {
+			 * containerLabel.setText(DevsEditorPlugin.INSTANCE.getString("_UI_ModelObject")
+			 * );
+			 * 
+			 * GridData data = new GridData(); data.horizontalAlignment = GridData.FILL;
+			 * containerLabel.setLayoutData(data); }
+			 * 
+			 * initialObjectField = new Combo(composite, SWT.BORDER); { GridData data = new
+			 * GridData(); data.horizontalAlignment = GridData.FILL;
+			 * data.grabExcessHorizontalSpace = true;
+			 * initialObjectField.setLayoutData(data); }
+			 * 
+			 * for (String objectName : getInitialObjectNames()) {
+			 * initialObjectField.add(getLabel(objectName)); }
+			 * 
+			 * if (initialObjectField.getItemCount() == 1) { initialObjectField.select(0); }
+			 * initialObjectField.addModifyListener(validator);
+			 * 
+			 * 
+			 * 
+			 * Label primitiveLabel = new Label(composite, SWT.LEFT); {
+			 * primitiveLabel.setText("Select a primitive type"); GridData data = new
+			 * GridData(); data.horizontalAlignment = GridData.FILL;
+			 * primitiveLabel.setLayoutData(data); } primitiveTypeField = new
+			 * Combo(composite, SWT.BORDER); { GridData data = new GridData();
+			 * data.horizontalAlignment = GridData.FILL; data.grabExcessHorizontalSpace =
+			 * true; primitiveTypeField.setLayoutData(data); } for (String primitive :
+			 * getPrimitiveTypesNames()) { primitiveTypeField.add(getLabel(primitive)); }
+			 * primitiveTypeField.addModifyListener(validator);
+			 */
+			
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
 				encodingLabel.setText(DevsEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
@@ -472,7 +619,9 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
+			return 
+					//getInitialObjectName() != null && 
+					 getEncodings().contains(encodingField.getText());
 		}
 
 		/**
@@ -483,7 +632,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		@Override
 		public void setVisible(boolean visible) {
 			super.setVisible(visible);
-			if (visible) {
+/*			if (visible) {
 				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
@@ -492,6 +641,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 					initialObjectField.setFocus();
 				}
 			}
+*/
 		}
 
 		/**
@@ -500,14 +650,15 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public String getInitialObjectName() {
-			String label = initialObjectField.getText();
-
-			for (String name : getInitialObjectNames()) {
-				if (getLabel(name).equals(label)) {
-					return name;
-				}
-			}
-			return null;
+//			String label = initialObjectField.getText();
+//
+//			for (String name : getInitialObjectNames()) {
+//				if (getLabel(name).equals(label)) {
+//					return name;
+//				}
+//			}
+//			return null;
+			return "Devs";
 		}
 
 		/**
@@ -608,6 +759,17 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		initialObjectCreationPage
 				.setDescription(DevsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
+		
+		
+		
+		
+		newDescriptorPage = new DevsModelWizardNewDescriptorPage("Whatever3");
+		newDescriptorPage.setTitle("Add new descriptor");
+		newDescriptorPage.setDescription("Choose a name and a type and then press the Add button");
+		addPage(newDescriptorPage);
+		
+		
+		
 	}
 
 	/**
