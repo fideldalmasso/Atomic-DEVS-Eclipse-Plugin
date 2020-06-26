@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated devs -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="devs.presentation.DevsModelWizardID"
+            name="%_UI_DevsModelWizard_label"
+            class="devs.presentation.DevsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DevsModelFile.gif">
+         <description>%_UI_DevsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated devs -->
+      <editor
+            id="devs.presentation.DevsEditorID"
+            name="%_UI_DevsEditor_label"
+            icon="icons/full/obj16/DevsModelFile.gif"
+            extensions="devs"
+            class="devs.presentation.DevsEditor"
+            contributorClass="devs.presentation.DevsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
