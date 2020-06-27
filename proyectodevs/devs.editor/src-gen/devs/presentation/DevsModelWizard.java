@@ -26,11 +26,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -45,7 +48,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -229,6 +231,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 */
 	protected EObject createInitialModel() {
 		//EClass eClass = (EClass) devsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		//EObject rootObject = devsFactory.create(eClass);
 		EObject rootObject = devsFactory.create((EClass) devsPackage.getEClassifier("Devs"));
 		return rootObject;
 	}
@@ -259,7 +262,31 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 						// Get the URI of the model file.
 						//
 						URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-
+//------------------------------------------------------------------------------------------------------------------
+						resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
+						Resource myMetaModel = resourceSet.getResource(fileURI, true);
+						EPackage univEPackage = (EPackage) myMetaModel.getContents().get(0);
+						
+						
+						//el wizard guarda los pares (nombre, tipo) válidos en un map
+						//repetir lo siguiente para todos los pares
+						EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
+						//1.crear una nueva eclass
+						EClass descriptor1 = ecoreFactory.createEClass();
+						//2.con esta eclass especializar a la clase Descriptor ya existente
+						descriptor1.getESuperTypes().add((EClass) univEPackage.getEClassifier("Descriptor"));
+						//3.sobreescribir name y nature
+						//ecore no soporta la sobreescritura de atributos, pero se logra
+						//algo similar usando operaciones ocl y atributos derivados 
+						
+						//4.crear una nueva clase type correspondiente
+						
+						//5.crear clase value con atributo content del tipo correspondiente
+						
+						//6.agregar las clases creadas al metamodelo
+						univEPackage.getEClassifiers().add(descriptor1);
+//------------------------------------------------------------------------------------------------------------------
+						
 						// Create a resource for this file.
 						//
 						Resource resource = resourceSet.createResource(fileURI);
