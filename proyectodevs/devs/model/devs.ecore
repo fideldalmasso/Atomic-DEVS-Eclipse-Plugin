@@ -10,6 +10,17 @@
     <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicDevs">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="definitionWithNoValue"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="definitionWithNoValue" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;forAll(d : Descriptor | d.value.content.oclIsUndefined())"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" eType="#//State"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="compulsoryPhase compulsorySigma"/>
@@ -20,24 +31,23 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="2"
         upperBound="-1" eType="#//Descriptor" containment="true" eOpposite="#//Descriptor/state"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devs" lowerBound="1" eType="#//Devs"
-        eOpposite="#//Devs/state"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devs" eType="#//AtomicDevs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"
         eOpposite="#//State/descriptor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nature" lowerBound="1"
         eType="#//DescriptorNature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
+        containment="true" eOpposite="#//Type/descriptor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
-        eOpposite="#//Value/descriptor"/>
+        containment="true" eOpposite="#//Value/descriptor"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Devs">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
-        eType="#//State" containment="true" eOpposite="#//State/devs"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
+        eType="#//Descriptor" eOpposite="#//Descriptor/type"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitive" lowerBound="1"
         eType="#//Primitive"/>

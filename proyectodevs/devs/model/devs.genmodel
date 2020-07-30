@@ -26,14 +26,17 @@
     <genClasses ecoreClass="devs.ecore#//Descriptor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/state"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/nature"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/value"/>
     </genClasses>
-    <genClasses ecoreClass="devs.ecore#//Devs">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//Devs/state"/>
+    <genClasses ecoreClass="devs.ecore#//AtomicDevs">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/state"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/definition"/>
     </genClasses>
-    <genClasses ecoreClass="devs.ecore#//Type"/>
+    <genClasses ecoreClass="devs.ecore#//Type">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Type/descriptor"/>
+    </genClasses>
     <genClasses ecoreClass="devs.ecore#//PrimitiveType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//PrimitiveType/primitive"/>
     </genClasses>
