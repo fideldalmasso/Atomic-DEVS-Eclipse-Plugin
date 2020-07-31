@@ -12,10 +12,13 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicDevs">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="definitionWithNoValue"/>
+      <details key="constraints" value="definitionMustNotHaveValue stateMustHaveValue stateMustMatchDefinition uniqueDefinitionDescriptorNames"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="definitionWithNoValue" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;forAll(d : Descriptor | d.value.content.oclIsUndefined())"/>
+      <details key="definitionMustNotHaveValue" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;forAll(d : Descriptor | d.value.content.oclIsUndefined())"/>
+      <details key="stateMustHaveValue" value="&#xA;&#x9;&#x9;&#x9;self.state -> &#xA;&#x9;&#x9;&#x9;forAll( s: State | s.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(d: Descriptor | not d.value.content.oclIsUndefined()))"/>
+      <details key="stateMustMatchDefinition" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(d1: Descriptor | self.state ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;forAll(s: State | s.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;one(d2: Descriptor | &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;d1.name = d2.name and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;d1.nature = d2.nature and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; d1.type = d2.type)))"/>
+      <details key="uniqueDefinitionDescriptorNames" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;&#x9;forAll(d1: Descriptor | self.definition.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;one(d2: Descriptor | d1.name = d2.name))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" upperBound="-1"
         eType="#//State" containment="true"/>
@@ -32,13 +35,24 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="2"
         upperBound="-1" eType="#//Descriptor" containment="true" eOpposite="#//Descriptor/state"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="devs" eType="#//AtomicDevs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionIn" upperBound="-1"
+        eType="#//InternalTransition" eOpposite="#//InternalTransition/targetState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionOut" upperBound="-1"
+        eType="#//InternalTransition" eOpposite="#//InternalTransition/sourceState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="phaseDescriptor sigmaDescriptor"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="phaseDescriptor" value="&#xA;&#x9;&#x9;&#x9;self.nature = DescriptorNature::PHASE&#xA;&#x9;&#x9;&#x9;implies (self.name = 'Phase' &#xA;&#x9;&#x9;&#x9;&#x9;and self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE)"/>
+      <details key="sigmaDescriptor" value="&#xA;&#x9;&#x9;&#x9;self.nature = DescriptorNature::SIGMA&#xA;&#x9;&#x9;&#x9;implies (self.name = 'Sigma' &#xA;&#x9;&#x9;&#x9;&#x9;and self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"
         eOpposite="#//State/descriptor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nature" lowerBound="1"
-        eType="#//DescriptorNature"/>
+        eType="#//DescriptorNature" defaultValueLiteral="CUSTOM"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
         containment="true" eOpposite="#//Type/descriptor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
@@ -78,5 +92,11 @@
     <eLiterals name="PHASE"/>
     <eLiterals name="SIGMA" value="1"/>
     <eLiterals name="CUSTOM" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalTransition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetState" lowerBound="1"
+        eType="#//State" eOpposite="#//State/transitionIn"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceState" lowerBound="1"
+        eType="#//State" eOpposite="#//State/transitionOut"/>
   </eClassifiers>
 </ecore:EPackage>
