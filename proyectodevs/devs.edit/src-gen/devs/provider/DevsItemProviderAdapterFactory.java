@@ -73,6 +73,29 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link devs.AtomicDevs} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AtomicDevsItemProvider atomicDevsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link devs.AtomicDevs}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAtomicDevsAdapter() {
+		if (atomicDevsItemProvider == null) {
+			atomicDevsItemProvider = new AtomicDevsItemProvider(this);
+		}
+
+		return atomicDevsItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link devs.State} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,29 +139,6 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 		}
 
 		return descriptorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link devs.Devs} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DevsItemProvider devsItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link devs.Devs}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDevsAdapter() {
-		if (devsItemProvider == null) {
-			devsItemProvider = new DevsItemProvider(this);
-		}
-
-		return devsItemProvider;
 	}
 
 	/**
@@ -208,6 +208,29 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 		}
 
 		return valueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link devs.InternalTransition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InternalTransitionItemProvider internalTransitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link devs.InternalTransition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInternalTransitionAdapter() {
+		if (internalTransitionItemProvider == null) {
+			internalTransitionItemProvider = new InternalTransitionItemProvider(this);
+		}
+
+		return internalTransitionItemProvider;
 	}
 
 	/**
@@ -309,18 +332,20 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 	 * @generated
 	 */
 	public void dispose() {
+		if (atomicDevsItemProvider != null)
+			atomicDevsItemProvider.dispose();
 		if (stateItemProvider != null)
 			stateItemProvider.dispose();
 		if (descriptorItemProvider != null)
 			descriptorItemProvider.dispose();
-		if (devsItemProvider != null)
-			devsItemProvider.dispose();
 		if (primitiveTypeItemProvider != null)
 			primitiveTypeItemProvider.dispose();
 		if (userDefinedTypeItemProvider != null)
 			userDefinedTypeItemProvider.dispose();
 		if (valueItemProvider != null)
 			valueItemProvider.dispose();
+		if (internalTransitionItemProvider != null)
+			internalTransitionItemProvider.dispose();
 	}
 
 }

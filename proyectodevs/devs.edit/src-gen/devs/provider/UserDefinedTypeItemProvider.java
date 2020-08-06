@@ -61,7 +61,7 @@ public class UserDefinedTypeItemProvider extends TypeItemProvider {
 						getResourceLocator(), getString("_UI_UserDefinedType_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_UserDefinedType_name_feature",
 								"_UI_UserDefinedType_type"),
-						DevsPackage.Literals.USER_DEFINED_TYPE__NAME, true, false, false,
+						DevsPackage.Literals.USER_DEFINED_TYPE__NAME, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

@@ -2,10 +2,11 @@
  */
 package devs.impl;
 
+import devs.AtomicDevs;
 import devs.DescriptorNature;
-import devs.Devs;
 import devs.DevsFactory;
 import devs.DevsPackage;
+import devs.InternalTransition;
 import devs.Primitive;
 import devs.PrimitiveType;
 import devs.State;
@@ -38,6 +39,13 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass atomicDevsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass stateEClass = null;
 
 	/**
@@ -46,13 +54,6 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * @generated
 	 */
 	private EClass descriptorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass devsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,6 +82,13 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * @generated
 	 */
 	private EClass valueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass internalTransitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,6 +183,33 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAtomicDevs() {
+		return atomicDevsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAtomicDevs_State() {
+		return (EReference) atomicDevsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAtomicDevs_Definition() {
+		return (EReference) atomicDevsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getState() {
 		return stateEClass;
 	}
@@ -195,6 +230,24 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 */
 	public EReference getState_Devs() {
 		return (EReference) stateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getState_TransitionIn() {
+		return (EReference) stateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getState_TransitionOut() {
+		return (EReference) stateEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -229,8 +282,8 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptor_Type() {
-		return (EReference) descriptorEClass.getEStructuralFeatures().get(2);
+	public EAttribute getDescriptor_Nature() {
+		return (EAttribute) descriptorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -238,8 +291,8 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDescriptor_Nature() {
-		return (EAttribute) descriptorEClass.getEStructuralFeatures().get(3);
+	public EReference getDescriptor_Type() {
+		return (EReference) descriptorEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -256,26 +309,17 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDevs() {
-		return devsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDevs_State() {
-		return (EReference) devsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getType() {
 		return typeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getType_Descriptor() {
+		return (EReference) typeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -355,6 +399,33 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInternalTransition() {
+		return internalTransitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInternalTransition_TargetState() {
+		return (EReference) internalTransitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInternalTransition_SourceState() {
+		return (EReference) internalTransitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPrimitive() {
 		return primitiveEEnum;
 	}
@@ -397,21 +468,25 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		atomicDevsEClass = createEClass(ATOMIC_DEVS);
+		createEReference(atomicDevsEClass, ATOMIC_DEVS__STATE);
+		createEReference(atomicDevsEClass, ATOMIC_DEVS__DEFINITION);
+
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__DESCRIPTOR);
 		createEReference(stateEClass, STATE__DEVS);
+		createEReference(stateEClass, STATE__TRANSITION_IN);
+		createEReference(stateEClass, STATE__TRANSITION_OUT);
 
 		descriptorEClass = createEClass(DESCRIPTOR);
 		createEAttribute(descriptorEClass, DESCRIPTOR__NAME);
 		createEReference(descriptorEClass, DESCRIPTOR__STATE);
-		createEReference(descriptorEClass, DESCRIPTOR__TYPE);
 		createEAttribute(descriptorEClass, DESCRIPTOR__NATURE);
+		createEReference(descriptorEClass, DESCRIPTOR__TYPE);
 		createEReference(descriptorEClass, DESCRIPTOR__VALUE);
 
-		devsEClass = createEClass(DEVS);
-		createEReference(devsEClass, DEVS__STATE);
-
 		typeEClass = createEClass(TYPE);
+		createEReference(typeEClass, TYPE__DESCRIPTOR);
 
 		primitiveTypeEClass = createEClass(PRIMITIVE_TYPE);
 		createEAttribute(primitiveTypeEClass, PRIMITIVE_TYPE__PRIMITIVE);
@@ -423,6 +498,10 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		createEAttribute(valueEClass, VALUE__TO_BE_DEFINED);
 		createEAttribute(valueEClass, VALUE__CONTENT);
 		createEReference(valueEClass, VALUE__DESCRIPTOR);
+
+		internalTransitionEClass = createEClass(INTERNAL_TRANSITION);
+		createEReference(internalTransitionEClass, INTERNAL_TRANSITION__TARGET_STATE);
+		createEReference(internalTransitionEClass, INTERNAL_TRANSITION__SOURCE_STATE);
 
 		// Create enums
 		primitiveEEnum = createEEnum(PRIMITIVE);
@@ -466,13 +545,28 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		userDefinedTypeEClass.getESuperTypes().add(this.getType());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(atomicDevsEClass, AtomicDevs.class, "AtomicDevs", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAtomicDevs_State(), this.getState(), null, "state", null, 1, -1, AtomicDevs.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAtomicDevs_Definition(), this.getState(), null, "definition", null, 0, 1, AtomicDevs.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getState_Descriptor(), this.getDescriptor(), this.getDescriptor_State(), "descriptor", null, 2,
 				-1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_Devs(), this.getDevs(), this.getDevs_State(), "devs", null, 1, 1, State.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_Devs(), this.getAtomicDevs(), null, "devs", null, 0, 1, State.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getState_TransitionIn(), this.getInternalTransition(), this.getInternalTransition_TargetState(),
+				"transitionIn", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_TransitionOut(), this.getInternalTransition(), this.getInternalTransition_SourceState(),
+				"transitionOut", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(descriptorEClass, devs.Descriptor.class, "Descriptor", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -481,21 +575,20 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		initEReference(getDescriptor_State(), this.getState(), this.getState_Descriptor(), "state", null, 1, 1,
 				devs.Descriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDescriptor_Type(), this.getType(), null, "type", null, 1, 1, devs.Descriptor.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDescriptor_Nature(), this.getDescriptorNature(), "nature", null, 1, 1, devs.Descriptor.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDescriptor_Nature(), this.getDescriptorNature(), "nature", "CUSTOM", 1, 1,
+				devs.Descriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getDescriptor_Type(), this.getType(), this.getType_Descriptor(), "type", null, 1, 1,
+				devs.Descriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptor_Value(), this.getValue(), this.getValue_Descriptor(), "value", null, 1, 1,
-				devs.Descriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				devs.Descriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(devsEClass, Devs.class, "Devs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDevs_State(), this.getState(), this.getState_Devs(), "state", null, 0, -1, Devs.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(typeEClass, Type.class, "Type", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getType_Descriptor(), this.getDescriptor(), this.getDescriptor_Type(), "descriptor", null, 1, 1,
+				Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -513,8 +606,17 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		initEAttribute(getValue_Content(), theXMLTypePackage.getAnySimpleType(), "content", null, 0, 1, Value.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getValue_Descriptor(), this.getDescriptor(), this.getDescriptor_Value(), "descriptor", null, 1,
-				1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(internalTransitionEClass, InternalTransition.class, "InternalTransition", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInternalTransition_TargetState(), this.getState(), this.getState_TransitionIn(),
+				"targetState", null, 1, 1, InternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInternalTransition_SourceState(), this.getState(), this.getState_TransitionOut(),
+				"sourceState", null, 1, 1, InternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(primitiveEEnum, Primitive.class, "Primitive");
@@ -564,7 +666,10 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 				new String[] { "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 						"settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "validationDelegates",
 						"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" });
+		addAnnotation(atomicDevsEClass, source, new String[] { "constraints",
+				"definitionMustNotHaveValue stateMustHaveValue stateMustMatchDefinition uniqueDefinitionDescriptorNames" });
 		addAnnotation(stateEClass, source, new String[] { "constraints", "compulsoryPhase compulsorySigma" });
+		addAnnotation(descriptorEClass, source, new String[] { "constraints", "phaseDescriptor sigmaDescriptor" });
 		addAnnotation(valueEClass, source, new String[] { "constraints", "primitiveValueMatches" });
 	}
 
@@ -576,10 +681,22 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 */
 	protected void createPivotAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(atomicDevsEClass, source, new String[] { "definitionMustNotHaveValue",
+				"\n\t\t\tself.definition.descriptor -> \n\t\t\tforAll(d : Descriptor | d.value.content.oclIsUndefined())",
+				"stateMustHaveValue",
+				"\n\t\t\tself.state -> \n\t\t\tforAll( s: State | s.descriptor ->\n\t\t\t\tforAll(d: Descriptor | not d.value.content.oclIsUndefined()))",
+				"stateMustMatchDefinition",
+				"\n\t\t\tself.definition.descriptor ->\n\t\t\t\tforAll(d1: Descriptor | self.state ->\n\t\t\t\t\tforAll(s: State | s.descriptor ->\n\t\t\t\t\t\tone(d2: Descriptor | \n\t\t\t\t\t\t\td1.name = d2.name and\n\t\t\t\t\t\t\td1.nature = d2.nature and\n\t\t\t\t\t\t\t d1.type = d2.type)))",
+				"uniqueDefinitionDescriptorNames",
+				"\n\t\t\tself.definition.descriptor -> \n\t\t\t\tforAll(d1: Descriptor | self.definition.descriptor ->\n\t\t\t\t\tone(d2: Descriptor | d1.name = d2.name))" });
 		addAnnotation(stateEClass, source,
 				new String[] { "compulsoryPhase",
 						"self.descriptor->one(e:Descriptor|e.nature = DescriptorNature::PHASE)", "compulsorySigma",
 						"self.descriptor->one(e:Descriptor|e.nature = DescriptorNature::SIGMA)" });
+		addAnnotation(descriptorEClass, source, new String[] { "phaseDescriptor",
+				"\n\t\t\tself.nature = DescriptorNature::PHASE\n\t\t\timplies (self.name = \'Phase\' \n\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE)",
+				"sigmaDescriptor",
+				"\n\t\t\tself.nature = DescriptorNature::SIGMA\n\t\t\timplies (self.name = \'Sigma\' \n\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING)" });
 		addAnnotation(valueEClass, source, new String[] { "primitiveValueMatches",
 				"\n\t\t\t(toBeDefined = false) implies \n\t\t\t(self.descriptor.type.oclIsTypeOf(PrimitiveType)\n\t\t\t\tand (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER implies (self.content.oclIsTypeOf(Integer)))\n\t\t\t\tand (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE implies (self.content.oclIsTypeOf(Real)))\n\t\t\t\tand (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::STRING implies (self.content.oclIsTypeOf(String)))\n\t\t\t\tand (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN implies (self.content.oclIsTypeOf(Boolean)))\n\t\t\t)" });
 	}

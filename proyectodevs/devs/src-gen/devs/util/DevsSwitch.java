@@ -66,6 +66,13 @@ public class DevsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case DevsPackage.ATOMIC_DEVS: {
+			AtomicDevs atomicDevs = (AtomicDevs) theEObject;
+			T result = caseAtomicDevs(atomicDevs);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case DevsPackage.STATE: {
 			State state = (State) theEObject;
 			T result = caseState(state);
@@ -76,13 +83,6 @@ public class DevsSwitch<T> extends Switch<T> {
 		case DevsPackage.DESCRIPTOR: {
 			Descriptor descriptor = (Descriptor) theEObject;
 			T result = caseDescriptor(descriptor);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case DevsPackage.DEVS: {
-			Devs devs = (Devs) theEObject;
-			T result = caseDevs(devs);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -119,9 +119,31 @@ public class DevsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case DevsPackage.INTERNAL_TRANSITION: {
+			InternalTransition internalTransition = (InternalTransition) theEObject;
+			T result = caseInternalTransition(internalTransition);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Atomic Devs</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAtomicDevs(AtomicDevs object) {
+		return null;
 	}
 
 	/**
@@ -151,21 +173,6 @@ public class DevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDescriptor(Descriptor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Devs</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Devs</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDevs(Devs object) {
 		return null;
 	}
 
@@ -226,6 +233,21 @@ public class DevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Internal Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Internal Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInternalTransition(InternalTransition object) {
 		return null;
 	}
 

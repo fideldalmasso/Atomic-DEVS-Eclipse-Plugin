@@ -15,13 +15,14 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link devs.Descriptor#getName <em>Name</em>}</li>
  *   <li>{@link devs.Descriptor#getState <em>State</em>}</li>
- *   <li>{@link devs.Descriptor#getType <em>Type</em>}</li>
  *   <li>{@link devs.Descriptor#getNature <em>Nature</em>}</li>
+ *   <li>{@link devs.Descriptor#getType <em>Type</em>}</li>
  *   <li>{@link devs.Descriptor#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see devs.DevsPackage#getDescriptor()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='phaseDescriptor sigmaDescriptor'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot phaseDescriptor='\n\t\t\tself.nature = DescriptorNature::PHASE\n\t\t\timplies (self.name = \'Phase\' \n\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE)' sigmaDescriptor='\n\t\t\tself.nature = DescriptorNature::SIGMA\n\t\t\timplies (self.name = \'Sigma\' \n\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING)'"
  * @generated
  */
 public interface Descriptor extends EObject {
@@ -72,29 +73,8 @@ public interface Descriptor extends EObject {
 	void setState(State value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(Type)
-	 * @see devs.DevsPackage#getDescriptor_Type()
-	 * @model required="true"
-	 * @generated
-	 */
-	Type getType();
-
-	/**
-	 * Sets the value of the '{@link devs.Descriptor#getType <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(Type value);
-
-	/**
 	 * Returns the value of the '<em><b>Nature</b></em>' attribute.
+	 * The default value is <code>"CUSTOM"</code>.
 	 * The literals are from the enumeration {@link devs.DescriptorNature}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,7 +82,7 @@ public interface Descriptor extends EObject {
 	 * @see devs.DescriptorNature
 	 * @see #setNature(DescriptorNature)
 	 * @see devs.DevsPackage#getDescriptor_Nature()
-	 * @model required="true"
+	 * @model default="CUSTOM" required="true"
 	 * @generated
 	 */
 	DescriptorNature getNature();
@@ -119,24 +99,48 @@ public interface Descriptor extends EObject {
 	void setNature(DescriptorNature value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link devs.Type#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(Type)
+	 * @see devs.DevsPackage#getDescriptor_Type()
+	 * @see devs.Type#getDescriptor
+	 * @model opposite="descriptor" containment="true" required="true"
+	 * @generated
+	 */
+	Type getType();
+
+	/**
+	 * Sets the value of the '{@link devs.Descriptor#getType <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' containment reference.
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(Type value);
+
+	/**
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link devs.Value#getDescriptor <em>Descriptor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' reference.
+	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(Value)
 	 * @see devs.DevsPackage#getDescriptor_Value()
 	 * @see devs.Value#getDescriptor
-	 * @model opposite="descriptor" required="true"
+	 * @model opposite="descriptor" containment="true" required="true"
 	 * @generated
 	 */
 	Value getValue();
 
 	/**
-	 * Sets the value of the '{@link devs.Descriptor#getValue <em>Value</em>}' reference.
+	 * Sets the value of the '{@link devs.Descriptor#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' reference.
+	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
 	 */

@@ -87,12 +87,12 @@ public class DevsValidator extends EObjectValidator {
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		switch (classifierID) {
+		case DevsPackage.ATOMIC_DEVS:
+			return validateAtomicDevs((AtomicDevs) value, diagnostics, context);
 		case DevsPackage.STATE:
 			return validateState((State) value, diagnostics, context);
 		case DevsPackage.DESCRIPTOR:
 			return validateDescriptor((devs.Descriptor) value, diagnostics, context);
-		case DevsPackage.DEVS:
-			return validateDevs((Devs) value, diagnostics, context);
 		case DevsPackage.TYPE:
 			return validateType((Type) value, diagnostics, context);
 		case DevsPackage.PRIMITIVE_TYPE:
@@ -101,6 +101,8 @@ public class DevsValidator extends EObjectValidator {
 			return validateUserDefinedType((UserDefinedType) value, diagnostics, context);
 		case DevsPackage.VALUE:
 			return validateValue((Value) value, diagnostics, context);
+		case DevsPackage.INTERNAL_TRANSITION:
+			return validateInternalTransition((InternalTransition) value, diagnostics, context);
 		case DevsPackage.PRIMITIVE:
 			return validatePrimitive((Primitive) value, diagnostics, context);
 		case DevsPackage.DESCRIPTOR_NATURE:
@@ -108,6 +110,135 @@ public class DevsValidator extends EObjectValidator {
 		default:
 			return true;
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAtomicDevs(AtomicDevs atomicDevs, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(atomicDevs, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAtomicDevs_definitionMustNotHaveValue(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAtomicDevs_stateMustHaveValue(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAtomicDevs_stateMustMatchDefinition(atomicDevs, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateAtomicDevs_uniqueDefinitionDescriptorNames(atomicDevs, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the definitionMustNotHaveValue constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ATOMIC_DEVS__DEFINITION_MUST_NOT_HAVE_VALUE__EEXPRESSION = "\n"
+			+ "\t\t\tself.definition.descriptor -> \n"
+			+ "\t\t\tforAll(d : Descriptor | d.value.content.oclIsUndefined())";
+
+	/**
+	 * Validates the definitionMustNotHaveValue constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAtomicDevs_definitionMustNotHaveValue(AtomicDevs atomicDevs, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.ATOMIC_DEVS, atomicDevs, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "definitionMustNotHaveValue",
+				ATOMIC_DEVS__DEFINITION_MUST_NOT_HAVE_VALUE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the stateMustHaveValue constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ATOMIC_DEVS__STATE_MUST_HAVE_VALUE__EEXPRESSION = "\n" + "\t\t\tself.state -> \n"
+			+ "\t\t\tforAll( s: State | s.descriptor ->\n"
+			+ "\t\t\t\tforAll(d: Descriptor | not d.value.content.oclIsUndefined()))";
+
+	/**
+	 * Validates the stateMustHaveValue constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAtomicDevs_stateMustHaveValue(AtomicDevs atomicDevs, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.ATOMIC_DEVS, atomicDevs, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "stateMustHaveValue",
+				ATOMIC_DEVS__STATE_MUST_HAVE_VALUE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the stateMustMatchDefinition constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ATOMIC_DEVS__STATE_MUST_MATCH_DEFINITION__EEXPRESSION = "\n"
+			+ "\t\t\tself.definition.descriptor ->\n" + "\t\t\t\tforAll(d1: Descriptor | self.state ->\n"
+			+ "\t\t\t\t\tforAll(s: State | s.descriptor ->\n" + "\t\t\t\t\t\tone(d2: Descriptor | \n"
+			+ "\t\t\t\t\t\t\td1.name = d2.name and\n" + "\t\t\t\t\t\t\td1.nature = d2.nature and\n"
+			+ "\t\t\t\t\t\t\t d1.type = d2.type)))";
+
+	/**
+	 * Validates the stateMustMatchDefinition constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAtomicDevs_stateMustMatchDefinition(AtomicDevs atomicDevs, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.ATOMIC_DEVS, atomicDevs, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "stateMustMatchDefinition",
+				ATOMIC_DEVS__STATE_MUST_MATCH_DEFINITION__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the uniqueDefinitionDescriptorNames constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String ATOMIC_DEVS__UNIQUE_DEFINITION_DESCRIPTOR_NAMES__EEXPRESSION = "\n"
+			+ "\t\t\tself.definition.descriptor -> \n"
+			+ "\t\t\t\tforAll(d1: Descriptor | self.definition.descriptor ->\n"
+			+ "\t\t\t\t\tone(d2: Descriptor | d1.name = d2.name))";
+
+	/**
+	 * Validates the uniqueDefinitionDescriptorNames constraint of '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAtomicDevs_uniqueDefinitionDescriptorNames(AtomicDevs atomicDevs,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.ATOMIC_DEVS, atomicDevs, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "uniqueDefinitionDescriptorNames",
+				ATOMIC_DEVS__UNIQUE_DEFINITION_DESCRIPTOR_NAMES__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -189,16 +320,74 @@ public class DevsValidator extends EObjectValidator {
 	 */
 	public boolean validateDescriptor(devs.Descriptor descriptor, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(descriptor, diagnostics, context);
+		if (!validate_NoCircularContainment(descriptor, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDescriptor_phaseDescriptor(descriptor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDescriptor_sigmaDescriptor(descriptor, diagnostics, context);
+		return result;
 	}
 
 	/**
+	 * The cached validation expression for the phaseDescriptor constraint of '<em>Descriptor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDevs(Devs devs, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(devs, diagnostics, context);
+	protected static final String DESCRIPTOR__PHASE_DESCRIPTOR__EEXPRESSION = "\n"
+			+ "\t\t\tself.nature = DescriptorNature::PHASE\n" + "\t\t\timplies (self.name = 'Phase' \n"
+			+ "\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE)";
+
+	/**
+	 * Validates the phaseDescriptor constraint of '<em>Descriptor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDescriptor_phaseDescriptor(devs.Descriptor descriptor, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.DESCRIPTOR, descriptor, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "phaseDescriptor",
+				DESCRIPTOR__PHASE_DESCRIPTOR__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the sigmaDescriptor constraint of '<em>Descriptor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String DESCRIPTOR__SIGMA_DESCRIPTOR__EEXPRESSION = "\n"
+			+ "\t\t\tself.nature = DescriptorNature::SIGMA\n" + "\t\t\timplies (self.name = 'Sigma' \n"
+			+ "\t\t\t\tand self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING)";
+
+	/**
+	 * Validates the sigmaDescriptor constraint of '<em>Descriptor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDescriptor_sigmaDescriptor(devs.Descriptor descriptor, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(DevsPackage.Literals.DESCRIPTOR, descriptor, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "sigmaDescriptor",
+				DESCRIPTOR__SIGMA_DESCRIPTOR__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -283,6 +472,16 @@ public class DevsValidator extends EObjectValidator {
 		return validate(DevsPackage.Literals.VALUE, value, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "primitiveValueMatches",
 				VALUE__PRIMITIVE_VALUE_MATCHES__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInternalTransition(InternalTransition internalTransition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(internalTransition, diagnostics, context);
 	}
 
 	/**

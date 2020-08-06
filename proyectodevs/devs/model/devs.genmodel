@@ -43,7 +43,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//PrimitiveType/primitive"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//UserDefinedType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//UserDefinedType/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//UserDefinedType/name"
+          suppressedSetVisibility="false"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//Value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Value/toBeDefined"/>

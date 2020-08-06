@@ -22,6 +22,15 @@ public interface DevsFactory extends EFactory {
 	DevsFactory eINSTANCE = devs.impl.DevsFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Atomic Devs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Atomic Devs</em>'.
+	 * @generated
+	 */
+	AtomicDevs createAtomicDevs();
+
+	/**
 	 * Returns a new object of class '<em>State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,15 +47,6 @@ public interface DevsFactory extends EFactory {
 	 * @generated
 	 */
 	Descriptor createDescriptor();
-
-	/**
-	 * Returns a new object of class '<em>Devs</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Devs</em>'.
-	 * @generated
-	 */
-	Devs createDevs();
 
 	/**
 	 * Returns a new object of class '<em>Primitive Type</em>'.
@@ -74,6 +74,15 @@ public interface DevsFactory extends EFactory {
 	 * @generated
 	 */
 	Value createValue();
+
+	/**
+	 * Returns a new object of class '<em>Internal Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Internal Transition</em>'.
+	 * @generated
+	 */
+	InternalTransition createInternalTransition();
 
 	/**
 	 * Returns the package supported by this factory.

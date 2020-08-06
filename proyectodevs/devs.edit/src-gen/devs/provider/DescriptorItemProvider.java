@@ -3,6 +3,7 @@
 package devs.provider;
 
 import devs.Descriptor;
+import devs.DevsFactory;
 import devs.DevsPackage;
 
 import java.util.Collection;
@@ -12,6 +13,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -55,9 +58,7 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 
 			addNamePropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
-			addTypePropertyDescriptor(object);
 			addNaturePropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -94,21 +95,6 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
-	 * This adds a property descriptor for the Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Descriptor_type_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Descriptor_type_feature",
-								"_UI_Descriptor_type"),
-						DevsPackage.Literals.DESCRIPTOR__TYPE, true, false, true, null, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Nature feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,18 +111,34 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Descriptor_value_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Descriptor_value_feature",
-								"_UI_Descriptor_type"),
-						DevsPackage.Literals.DESCRIPTOR__VALUE, true, false, true, null, null, null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(DevsPackage.Literals.DESCRIPTOR__TYPE);
+			childrenFeatures.add(DevsPackage.Literals.DESCRIPTOR__VALUE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -189,6 +191,10 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 		case DevsPackage.DESCRIPTOR__NATURE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case DevsPackage.DESCRIPTOR__TYPE:
+		case DevsPackage.DESCRIPTOR__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -203,6 +209,15 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(DevsPackage.Literals.DESCRIPTOR__TYPE,
+				DevsFactory.eINSTANCE.createPrimitiveType()));
+
+		newChildDescriptors.add(createChildParameter(DevsPackage.Literals.DESCRIPTOR__TYPE,
+				DevsFactory.eINSTANCE.createUserDefinedType()));
+
+		newChildDescriptors
+				.add(createChildParameter(DevsPackage.Literals.DESCRIPTOR__VALUE, DevsFactory.eINSTANCE.createValue()));
 	}
 
 	/**

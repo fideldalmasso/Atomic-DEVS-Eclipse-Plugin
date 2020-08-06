@@ -2,12 +2,13 @@
  */
 package devs.impl;
 
-import devs.Devs;
+import devs.AtomicDevs;
 import devs.DevsPackage;
 import devs.State;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,25 +16,27 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Devs</b></em>'.
+ * An implementation of the model object '<em><b>Atomic Devs</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link devs.impl.DevsImpl#getState <em>State</em>}</li>
+ *   <li>{@link devs.impl.AtomicDevsImpl#getState <em>State</em>}</li>
+ *   <li>{@link devs.impl.AtomicDevsImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
+public class AtomicDevsImpl extends MinimalEObjectImpl.Container implements AtomicDevs {
 	/**
 	 * The cached value of the '{@link #getState() <em>State</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -45,11 +48,21 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	protected EList<State> state;
 
 	/**
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected State definition;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DevsImpl() {
+	protected AtomicDevsImpl() {
 		super();
 	}
 
@@ -60,7 +73,7 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DevsPackage.Literals.DEVS;
+		return DevsPackage.Literals.ATOMIC_DEVS;
 	}
 
 	/**
@@ -70,8 +83,7 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	 */
 	public EList<State> getState() {
 		if (state == null) {
-			state = new EObjectContainmentWithInverseEList<State>(State.class, this, DevsPackage.DEVS__STATE,
-					DevsPackage.STATE__DEVS);
+			state = new EObjectContainmentEList<State>(State.class, this, DevsPackage.ATOMIC_DEVS__STATE);
 		}
 		return state;
 	}
@@ -81,14 +93,39 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getState()).basicAdd(otherEnd, msgs);
+	public State getDefinition() {
+		if (definition != null && definition.eIsProxy()) {
+			InternalEObject oldDefinition = (InternalEObject) definition;
+			definition = (State) eResolveProxy(oldDefinition);
+			if (definition != oldDefinition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DevsPackage.ATOMIC_DEVS__DEFINITION,
+							oldDefinition, definition));
+			}
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return definition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State basicGetDefinition() {
+		return definition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefinition(State newDefinition) {
+		State oldDefinition = definition;
+		definition = newDefinition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DevsPackage.ATOMIC_DEVS__DEFINITION, oldDefinition,
+					definition));
 	}
 
 	/**
@@ -99,7 +136,7 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			return ((InternalEList<?>) getState()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -113,8 +150,12 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			return getState();
+		case DevsPackage.ATOMIC_DEVS__DEFINITION:
+			if (resolve)
+				return getDefinition();
+			return basicGetDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -128,9 +169,12 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			getState().clear();
 			getState().addAll((Collection<? extends State>) newValue);
+			return;
+		case DevsPackage.ATOMIC_DEVS__DEFINITION:
+			setDefinition((State) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -144,8 +188,11 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			getState().clear();
+			return;
+		case DevsPackage.ATOMIC_DEVS__DEFINITION:
+			setDefinition((State) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -159,10 +206,12 @@ public class DevsImpl extends MinimalEObjectImpl.Container implements Devs {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case DevsPackage.DEVS__STATE:
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			return state != null && !state.isEmpty();
+		case DevsPackage.ATOMIC_DEVS__DEFINITION:
+			return definition != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DevsImpl
+} //AtomicDevsImpl

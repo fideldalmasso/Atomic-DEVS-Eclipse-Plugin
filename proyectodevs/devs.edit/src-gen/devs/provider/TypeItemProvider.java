@@ -2,6 +2,8 @@
  */
 package devs.provider;
 
+import devs.DevsPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -47,8 +50,23 @@ public class TypeItemProvider extends ItemProviderAdapter implements IEditingDom
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDescriptorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Descriptor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Type_descriptor_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Type_descriptor_feature", "_UI_Type_type"),
+						DevsPackage.Literals.TYPE__DESCRIPTOR, true, false, true, null, null, null));
 	}
 
 	/**

@@ -56,18 +56,20 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+		case DevsPackage.ATOMIC_DEVS:
+			return createAtomicDevs();
 		case DevsPackage.STATE:
 			return createState();
 		case DevsPackage.DESCRIPTOR:
 			return createDescriptor();
-		case DevsPackage.DEVS:
-			return createDevs();
 		case DevsPackage.PRIMITIVE_TYPE:
 			return createPrimitiveType();
 		case DevsPackage.USER_DEFINED_TYPE:
 			return createUserDefinedType();
 		case DevsPackage.VALUE:
 			return createValue();
+		case DevsPackage.INTERNAL_TRANSITION:
+			return createInternalTransition();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +114,16 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AtomicDevs createAtomicDevs() {
+		AtomicDevsImpl atomicDevs = new AtomicDevsImpl();
+		return atomicDevs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public State createState() {
 		StateImpl state = new StateImpl();
 		return state;
@@ -125,16 +137,6 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 	public Descriptor createDescriptor() {
 		DescriptorImpl descriptor = new DescriptorImpl();
 		return descriptor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Devs createDevs() {
-		DevsImpl devs = new DevsImpl();
-		return devs;
 	}
 
 	/**
@@ -165,6 +167,16 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 	public Value createValue() {
 		ValueImpl value = new ValueImpl();
 		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InternalTransition createInternalTransition() {
+		InternalTransitionImpl internalTransition = new InternalTransitionImpl();
+		return internalTransition;
 	}
 
 	/**

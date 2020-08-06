@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link devs.impl.DescriptorImpl#getName <em>Name</em>}</li>
  *   <li>{@link devs.impl.DescriptorImpl#getState <em>State</em>}</li>
- *   <li>{@link devs.impl.DescriptorImpl#getType <em>Type</em>}</li>
  *   <li>{@link devs.impl.DescriptorImpl#getNature <em>Nature</em>}</li>
+ *   <li>{@link devs.impl.DescriptorImpl#getType <em>Type</em>}</li>
  *   <li>{@link devs.impl.DescriptorImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -59,16 +59,6 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Type type;
-
-	/**
 	 * The default value of the '{@link #getNature() <em>Nature</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,7 +66,7 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DescriptorNature NATURE_EDEFAULT = DescriptorNature.PHASE;
+	protected static final DescriptorNature NATURE_EDEFAULT = DescriptorNature.CUSTOM;
 
 	/**
 	 * The cached value of the '{@link #getNature() <em>Nature</em>}' attribute.
@@ -89,7 +79,17 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	protected DescriptorNature nature = NATURE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
@@ -186,45 +186,6 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Type getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject) type;
-			type = (Type) eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DevsPackage.DESCRIPTOR__TYPE, oldType,
-							type));
-			}
-		}
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(Type newType) {
-		Type oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DevsPackage.DESCRIPTOR__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DescriptorNature getNature() {
 		return nature;
 	}
@@ -246,17 +207,8 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Value getValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject) value;
-			value = (Value) eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DevsPackage.DESCRIPTOR__VALUE, oldValue,
-							value));
-			}
-		}
-		return value;
+	public Type getType() {
+		return type;
 	}
 
 	/**
@@ -264,7 +216,45 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Value basicGetValue() {
+	public NotificationChain basicSetType(Type newType, NotificationChain msgs) {
+		Type oldType = type;
+		type = newType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DevsPackage.DESCRIPTOR__TYPE,
+					oldType, newType);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(Type newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject) type).eInverseRemove(this, DevsPackage.TYPE__DESCRIPTOR, Type.class, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject) newType).eInverseAdd(this, DevsPackage.TYPE__DESCRIPTOR, Type.class, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DevsPackage.DESCRIPTOR__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Value getValue() {
 		return value;
 	}
 
@@ -318,9 +308,15 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetState((State) otherEnd, msgs);
+		case DevsPackage.DESCRIPTOR__TYPE:
+			if (type != null)
+				msgs = ((InternalEObject) type).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - DevsPackage.DESCRIPTOR__TYPE, null, msgs);
+			return basicSetType((Type) otherEnd, msgs);
 		case DevsPackage.DESCRIPTOR__VALUE:
 			if (value != null)
-				msgs = ((InternalEObject) value).eInverseRemove(this, DevsPackage.VALUE__DESCRIPTOR, Value.class, msgs);
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - DevsPackage.DESCRIPTOR__VALUE, null, msgs);
 			return basicSetValue((Value) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -336,6 +332,8 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 		switch (featureID) {
 		case DevsPackage.DESCRIPTOR__STATE:
 			return basicSetState(null, msgs);
+		case DevsPackage.DESCRIPTOR__TYPE:
+			return basicSetType(null, msgs);
 		case DevsPackage.DESCRIPTOR__VALUE:
 			return basicSetValue(null, msgs);
 		}
@@ -368,16 +366,12 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 			return getName();
 		case DevsPackage.DESCRIPTOR__STATE:
 			return getState();
-		case DevsPackage.DESCRIPTOR__TYPE:
-			if (resolve)
-				return getType();
-			return basicGetType();
 		case DevsPackage.DESCRIPTOR__NATURE:
 			return getNature();
+		case DevsPackage.DESCRIPTOR__TYPE:
+			return getType();
 		case DevsPackage.DESCRIPTOR__VALUE:
-			if (resolve)
-				return getValue();
-			return basicGetValue();
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -396,11 +390,11 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 		case DevsPackage.DESCRIPTOR__STATE:
 			setState((State) newValue);
 			return;
-		case DevsPackage.DESCRIPTOR__TYPE:
-			setType((Type) newValue);
-			return;
 		case DevsPackage.DESCRIPTOR__NATURE:
 			setNature((DescriptorNature) newValue);
+			return;
+		case DevsPackage.DESCRIPTOR__TYPE:
+			setType((Type) newValue);
 			return;
 		case DevsPackage.DESCRIPTOR__VALUE:
 			setValue((Value) newValue);
@@ -423,11 +417,11 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 		case DevsPackage.DESCRIPTOR__STATE:
 			setState((State) null);
 			return;
-		case DevsPackage.DESCRIPTOR__TYPE:
-			setType((Type) null);
-			return;
 		case DevsPackage.DESCRIPTOR__NATURE:
 			setNature(NATURE_EDEFAULT);
+			return;
+		case DevsPackage.DESCRIPTOR__TYPE:
+			setType((Type) null);
 			return;
 		case DevsPackage.DESCRIPTOR__VALUE:
 			setValue((Value) null);
@@ -448,10 +442,10 @@ public class DescriptorImpl extends MinimalEObjectImpl.Container implements Desc
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DevsPackage.DESCRIPTOR__STATE:
 			return getState() != null;
-		case DevsPackage.DESCRIPTOR__TYPE:
-			return type != null;
 		case DevsPackage.DESCRIPTOR__NATURE:
 			return nature != NATURE_EDEFAULT;
+		case DevsPackage.DESCRIPTOR__TYPE:
+			return type != null;
 		case DevsPackage.DESCRIPTOR__VALUE:
 			return value != null;
 		}

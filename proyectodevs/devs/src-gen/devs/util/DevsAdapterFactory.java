@@ -67,6 +67,11 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected DevsSwitch<Adapter> modelSwitch = new DevsSwitch<Adapter>() {
 		@Override
+		public Adapter caseAtomicDevs(AtomicDevs object) {
+			return createAtomicDevsAdapter();
+		}
+
+		@Override
 		public Adapter caseState(State object) {
 			return createStateAdapter();
 		}
@@ -74,11 +79,6 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseDescriptor(Descriptor object) {
 			return createDescriptorAdapter();
-		}
-
-		@Override
-		public Adapter caseDevs(Devs object) {
-			return createDevsAdapter();
 		}
 
 		@Override
@@ -102,6 +102,11 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseInternalTransition(InternalTransition object) {
+			return createInternalTransitionAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -118,6 +123,20 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link devs.AtomicDevs <em>Atomic Devs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see devs.AtomicDevs
+	 * @generated
+	 */
+	public Adapter createAtomicDevsAdapter() {
+		return null;
 	}
 
 	/**
@@ -145,20 +164,6 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDescriptorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link devs.Devs <em>Devs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see devs.Devs
-	 * @generated
-	 */
-	public Adapter createDevsAdapter() {
 		return null;
 	}
 
@@ -215,6 +220,20 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link devs.InternalTransition <em>Internal Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see devs.InternalTransition
+	 * @generated
+	 */
+	public Adapter createInternalTransitionAdapter() {
 		return null;
 	}
 

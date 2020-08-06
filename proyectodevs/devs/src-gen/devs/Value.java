@@ -69,24 +69,24 @@ public interface Value extends EObject {
 	void setContent(Object value);
 
 	/**
-	 * Returns the value of the '<em><b>Descriptor</b></em>' reference.
+	 * Returns the value of the '<em><b>Descriptor</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link devs.Descriptor#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Descriptor</em>' reference.
+	 * @return the value of the '<em>Descriptor</em>' container reference.
 	 * @see #setDescriptor(Descriptor)
 	 * @see devs.DevsPackage#getValue_Descriptor()
 	 * @see devs.Descriptor#getValue
-	 * @model opposite="value" required="true"
+	 * @model opposite="value" required="true" transient="false"
 	 * @generated
 	 */
 	Descriptor getDescriptor();
 
 	/**
-	 * Sets the value of the '{@link devs.Value#getDescriptor <em>Descriptor</em>}' reference.
+	 * Sets the value of the '{@link devs.Value#getDescriptor <em>Descriptor</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Descriptor</em>' reference.
+	 * @param value the new value of the '<em>Descriptor</em>' container reference.
 	 * @see #getDescriptor()
 	 * @generated
 	 */

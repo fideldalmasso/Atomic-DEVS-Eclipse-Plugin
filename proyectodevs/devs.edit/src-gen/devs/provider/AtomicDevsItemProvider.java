@@ -2,7 +2,7 @@
  */
 package devs.provider;
 
-import devs.Devs;
+import devs.AtomicDevs;
 import devs.DevsFactory;
 import devs.DevsPackage;
 
@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -26,12 +27,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link devs.Devs} object.
+ * This is the item provider adapter for a {@link devs.AtomicDevs} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DevsItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class AtomicDevsItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -39,7 +40,7 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DevsItemProvider(AdapterFactory adapterFactory) {
+	public AtomicDevsItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,8 +55,24 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDefinitionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Definition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefinitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AtomicDevs_definition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDevs_definition_feature",
+								"_UI_AtomicDevs_type"),
+						DevsPackage.Literals.ATOMIC_DEVS__DEFINITION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -70,7 +87,7 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DevsPackage.Literals.DEVS__STATE);
+			childrenFeatures.add(DevsPackage.Literals.ATOMIC_DEVS__STATE);
 		}
 		return childrenFeatures;
 	}
@@ -89,14 +106,14 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	}
 
 	/**
-	 * This returns Devs.gif.
+	 * This returns AtomicDevs.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Devs"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AtomicDevs"));
 	}
 
 	/**
@@ -117,7 +134,7 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Devs_type");
+		return getString("_UI_AtomicDevs_type");
 	}
 
 	/**
@@ -131,8 +148,8 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Devs.class)) {
-		case DevsPackage.DEVS__STATE:
+		switch (notification.getFeatureID(AtomicDevs.class)) {
+		case DevsPackage.ATOMIC_DEVS__STATE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -150,8 +167,8 @@ public class DevsItemProvider extends ItemProviderAdapter implements IEditingDom
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(DevsPackage.Literals.DEVS__STATE, DevsFactory.eINSTANCE.createState()));
+		newChildDescriptors.add(
+				createChildParameter(DevsPackage.Literals.ATOMIC_DEVS__STATE, DevsFactory.eINSTANCE.createState()));
 	}
 
 	/**

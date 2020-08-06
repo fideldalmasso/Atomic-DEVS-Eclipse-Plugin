@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Value</b></em>'.
@@ -70,16 +72,6 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	 * @ordered
 	 */
 	protected Object content = CONTENT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescriptor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Descriptor descriptor;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,25 +141,9 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	 * @generated
 	 */
 	public Descriptor getDescriptor() {
-		if (descriptor != null && descriptor.eIsProxy()) {
-			InternalEObject oldDescriptor = (InternalEObject) descriptor;
-			descriptor = (Descriptor) eResolveProxy(oldDescriptor);
-			if (descriptor != oldDescriptor) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DevsPackage.VALUE__DESCRIPTOR,
-							oldDescriptor, descriptor));
-			}
-		}
-		return descriptor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Descriptor basicGetDescriptor() {
-		return descriptor;
+		if (eContainerFeatureID() != DevsPackage.VALUE__DESCRIPTOR)
+			return null;
+		return (Descriptor) eInternalContainer();
 	}
 
 	/**
@@ -176,16 +152,7 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	 * @generated
 	 */
 	public NotificationChain basicSetDescriptor(Descriptor newDescriptor, NotificationChain msgs) {
-		Descriptor oldDescriptor = descriptor;
-		descriptor = newDescriptor;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					DevsPackage.VALUE__DESCRIPTOR, oldDescriptor, newDescriptor);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject) newDescriptor, DevsPackage.VALUE__DESCRIPTOR, msgs);
 		return msgs;
 	}
 
@@ -195,11 +162,13 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	 * @generated
 	 */
 	public void setDescriptor(Descriptor newDescriptor) {
-		if (newDescriptor != descriptor) {
+		if (newDescriptor != eInternalContainer()
+				|| (eContainerFeatureID() != DevsPackage.VALUE__DESCRIPTOR && newDescriptor != null)) {
+			if (EcoreUtil.isAncestor(this, newDescriptor))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (descriptor != null)
-				msgs = ((InternalEObject) descriptor).eInverseRemove(this, DevsPackage.DESCRIPTOR__VALUE,
-						Descriptor.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDescriptor != null)
 				msgs = ((InternalEObject) newDescriptor).eInverseAdd(this, DevsPackage.DESCRIPTOR__VALUE,
 						Descriptor.class, msgs);
@@ -220,9 +189,8 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DevsPackage.VALUE__DESCRIPTOR:
-			if (descriptor != null)
-				msgs = ((InternalEObject) descriptor).eInverseRemove(this, DevsPackage.DESCRIPTOR__VALUE,
-						Descriptor.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetDescriptor((Descriptor) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -248,6 +216,20 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case DevsPackage.VALUE__DESCRIPTOR:
+			return eInternalContainer().eInverseRemove(this, DevsPackage.DESCRIPTOR__VALUE, Descriptor.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case DevsPackage.VALUE__TO_BE_DEFINED:
@@ -255,9 +237,7 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 		case DevsPackage.VALUE__CONTENT:
 			return getContent();
 		case DevsPackage.VALUE__DESCRIPTOR:
-			if (resolve)
-				return getDescriptor();
-			return basicGetDescriptor();
+			return getDescriptor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -317,7 +297,7 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 		case DevsPackage.VALUE__CONTENT:
 			return CONTENT_EDEFAULT == null ? content != null : !CONTENT_EDEFAULT.equals(content);
 		case DevsPackage.VALUE__DESCRIPTOR:
-			return descriptor != null;
+			return getDescriptor() != null;
 		}
 		return super.eIsSet(featureID);
 	}

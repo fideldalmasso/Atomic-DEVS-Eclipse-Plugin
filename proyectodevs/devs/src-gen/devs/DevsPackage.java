@@ -60,6 +60,52 @@ public interface DevsPackage extends EPackage {
 	DevsPackage eINSTANCE = devs.impl.DevsPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link devs.impl.AtomicDevsImpl <em>Atomic Devs</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see devs.impl.AtomicDevsImpl
+	 * @see devs.impl.DevsPackageImpl#getAtomicDevs()
+	 * @generated
+	 */
+	int ATOMIC_DEVS = 0;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__STATE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__DEFINITION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Atomic Devs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Atomic Devs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link devs.impl.StateImpl <em>State</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,7 +113,7 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 0;
+	int STATE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Descriptor</b></em>' containment reference list.
@@ -79,7 +125,7 @@ public interface DevsPackage extends EPackage {
 	int STATE__DESCRIPTOR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Devs</b></em>' container reference.
+	 * The feature id for the '<em><b>Devs</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -88,13 +134,31 @@ public interface DevsPackage extends EPackage {
 	int STATE__DEVS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Transition In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__TRANSITION_IN = 2;
+
+	/**
+	 * The feature id for the '<em><b>Transition Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__TRANSITION_OUT = 3;
+
+	/**
 	 * The number of structural features of the '<em>State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_FEATURE_COUNT = 2;
+	int STATE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>State</em>' class.
@@ -113,7 +177,7 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getDescriptor()
 	 * @generated
 	 */
-	int DESCRIPTOR = 1;
+	int DESCRIPTOR = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -134,25 +198,25 @@ public interface DevsPackage extends EPackage {
 	int DESCRIPTOR__STATE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESCRIPTOR__TYPE = 2;
-
-	/**
 	 * The feature id for the '<em><b>Nature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTOR__NATURE = 3;
+	int DESCRIPTOR__NATURE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTOR__TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -179,43 +243,6 @@ public interface DevsPackage extends EPackage {
 	int DESCRIPTOR_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link devs.impl.DevsImpl <em>Devs</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see devs.impl.DevsImpl
-	 * @see devs.impl.DevsPackageImpl#getDevs()
-	 * @generated
-	 */
-	int DEVS = 2;
-
-	/**
-	 * The feature id for the '<em><b>State</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVS__STATE = 0;
-
-	/**
-	 * The number of structural features of the '<em>Devs</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVS_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Devs</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVS_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link devs.impl.TypeImpl <em>Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,13 +253,22 @@ public interface DevsPackage extends EPackage {
 	int TYPE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__DESCRIPTOR = 0;
+
+	/**
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = 0;
+	int TYPE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -252,6 +288,15 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 */
 	int PRIMITIVE_TYPE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE__DESCRIPTOR = TYPE__DESCRIPTOR;
 
 	/**
 	 * The feature id for the '<em><b>Primitive</b></em>' attribute.
@@ -289,6 +334,15 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 */
 	int USER_DEFINED_TYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE__DESCRIPTOR = TYPE__DESCRIPTOR;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -346,7 +400,7 @@ public interface DevsPackage extends EPackage {
 	int VALUE__CONTENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -373,6 +427,52 @@ public interface DevsPackage extends EPackage {
 	int VALUE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link devs.impl.InternalTransitionImpl <em>Internal Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see devs.impl.InternalTransitionImpl
+	 * @see devs.impl.DevsPackageImpl#getInternalTransition()
+	 * @generated
+	 */
+	int INTERNAL_TRANSITION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Target State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__TARGET_STATE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Source State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__SOURCE_STATE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Internal Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Internal Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link devs.Primitive <em>Primitive</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,7 +480,7 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 7;
+	int PRIMITIVE = 8;
 
 	/**
 	 * The meta object id for the '{@link devs.DescriptorNature <em>Descriptor Nature</em>}' enum.
@@ -390,7 +490,39 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getDescriptorNature()
 	 * @generated
 	 */
-	int DESCRIPTOR_NATURE = 8;
+	int DESCRIPTOR_NATURE = 9;
+
+	/**
+	 * Returns the meta object for class '{@link devs.AtomicDevs <em>Atomic Devs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Atomic Devs</em>'.
+	 * @see devs.AtomicDevs
+	 * @generated
+	 */
+	EClass getAtomicDevs();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link devs.AtomicDevs#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>State</em>'.
+	 * @see devs.AtomicDevs#getState()
+	 * @see #getAtomicDevs()
+	 * @generated
+	 */
+	EReference getAtomicDevs_State();
+
+	/**
+	 * Returns the meta object for the reference '{@link devs.AtomicDevs#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Definition</em>'.
+	 * @see devs.AtomicDevs#getDefinition()
+	 * @see #getAtomicDevs()
+	 * @generated
+	 */
+	EReference getAtomicDevs_Definition();
 
 	/**
 	 * Returns the meta object for class '{@link devs.State <em>State</em>}'.
@@ -414,15 +546,37 @@ public interface DevsPackage extends EPackage {
 	EReference getState_Descriptor();
 
 	/**
-	 * Returns the meta object for the container reference '{@link devs.State#getDevs <em>Devs</em>}'.
+	 * Returns the meta object for the reference '{@link devs.State#getDevs <em>Devs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Devs</em>'.
+	 * @return the meta object for the reference '<em>Devs</em>'.
 	 * @see devs.State#getDevs()
 	 * @see #getState()
 	 * @generated
 	 */
 	EReference getState_Devs();
+
+	/**
+	 * Returns the meta object for the reference list '{@link devs.State#getTransitionIn <em>Transition In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Transition In</em>'.
+	 * @see devs.State#getTransitionIn()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_TransitionIn();
+
+	/**
+	 * Returns the meta object for the reference list '{@link devs.State#getTransitionOut <em>Transition Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Transition Out</em>'.
+	 * @see devs.State#getTransitionOut()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_TransitionOut();
 
 	/**
 	 * Returns the meta object for class '{@link devs.Descriptor <em>Descriptor</em>}'.
@@ -457,17 +611,6 @@ public interface DevsPackage extends EPackage {
 	EReference getDescriptor_State();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.Descriptor#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see devs.Descriptor#getType()
-	 * @see #getDescriptor()
-	 * @generated
-	 */
-	EReference getDescriptor_Type();
-
-	/**
 	 * Returns the meta object for the attribute '{@link devs.Descriptor#getNature <em>Nature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,36 +622,26 @@ public interface DevsPackage extends EPackage {
 	EAttribute getDescriptor_Nature();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.Descriptor#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link devs.Descriptor#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see devs.Descriptor#getType()
+	 * @see #getDescriptor()
+	 * @generated
+	 */
+	EReference getDescriptor_Type();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link devs.Descriptor#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see devs.Descriptor#getValue()
 	 * @see #getDescriptor()
 	 * @generated
 	 */
 	EReference getDescriptor_Value();
-
-	/**
-	 * Returns the meta object for class '{@link devs.Devs <em>Devs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Devs</em>'.
-	 * @see devs.Devs
-	 * @generated
-	 */
-	EClass getDevs();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link devs.Devs#getState <em>State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>State</em>'.
-	 * @see devs.Devs#getState()
-	 * @see #getDevs()
-	 * @generated
-	 */
-	EReference getDevs_State();
 
 	/**
 	 * Returns the meta object for class '{@link devs.Type <em>Type</em>}'.
@@ -519,6 +652,17 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getType();
+
+	/**
+	 * Returns the meta object for the container reference '{@link devs.Type#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Descriptor</em>'.
+	 * @see devs.Type#getDescriptor()
+	 * @see #getType()
+	 * @generated
+	 */
+	EReference getType_Descriptor();
 
 	/**
 	 * Returns the meta object for class '{@link devs.PrimitiveType <em>Primitive Type</em>}'.
@@ -595,15 +739,47 @@ public interface DevsPackage extends EPackage {
 	EAttribute getValue_Content();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.Value#getDescriptor <em>Descriptor</em>}'.
+	 * Returns the meta object for the container reference '{@link devs.Value#getDescriptor <em>Descriptor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Descriptor</em>'.
+	 * @return the meta object for the container reference '<em>Descriptor</em>'.
 	 * @see devs.Value#getDescriptor()
 	 * @see #getValue()
 	 * @generated
 	 */
 	EReference getValue_Descriptor();
+
+	/**
+	 * Returns the meta object for class '{@link devs.InternalTransition <em>Internal Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Internal Transition</em>'.
+	 * @see devs.InternalTransition
+	 * @generated
+	 */
+	EClass getInternalTransition();
+
+	/**
+	 * Returns the meta object for the reference '{@link devs.InternalTransition#getTargetState <em>Target State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target State</em>'.
+	 * @see devs.InternalTransition#getTargetState()
+	 * @see #getInternalTransition()
+	 * @generated
+	 */
+	EReference getInternalTransition_TargetState();
+
+	/**
+	 * Returns the meta object for the reference '{@link devs.InternalTransition#getSourceState <em>Source State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source State</em>'.
+	 * @see devs.InternalTransition#getSourceState()
+	 * @see #getInternalTransition()
+	 * @generated
+	 */
+	EReference getInternalTransition_SourceState();
 
 	/**
 	 * Returns the meta object for enum '{@link devs.Primitive <em>Primitive</em>}'.
@@ -649,6 +825,32 @@ public interface DevsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link devs.impl.AtomicDevsImpl <em>Atomic Devs</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see devs.impl.AtomicDevsImpl
+		 * @see devs.impl.DevsPackageImpl#getAtomicDevs()
+		 * @generated
+		 */
+		EClass ATOMIC_DEVS = eINSTANCE.getAtomicDevs();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__STATE = eINSTANCE.getAtomicDevs_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__DEFINITION = eINSTANCE.getAtomicDevs_Definition();
+
+		/**
 		 * The meta object literal for the '{@link devs.impl.StateImpl <em>State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -667,12 +869,28 @@ public interface DevsPackage extends EPackage {
 		EReference STATE__DESCRIPTOR = eINSTANCE.getState_Descriptor();
 
 		/**
-		 * The meta object literal for the '<em><b>Devs</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Devs</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference STATE__DEVS = eINSTANCE.getState_Devs();
+
+		/**
+		 * The meta object literal for the '<em><b>Transition In</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__TRANSITION_IN = eINSTANCE.getState_TransitionIn();
+
+		/**
+		 * The meta object literal for the '<em><b>Transition Out</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__TRANSITION_OUT = eINSTANCE.getState_TransitionOut();
 
 		/**
 		 * The meta object literal for the '{@link devs.impl.DescriptorImpl <em>Descriptor</em>}' class.
@@ -701,14 +919,6 @@ public interface DevsPackage extends EPackage {
 		EReference DESCRIPTOR__STATE = eINSTANCE.getDescriptor_State();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DESCRIPTOR__TYPE = eINSTANCE.getDescriptor_Type();
-
-		/**
 		 * The meta object literal for the '<em><b>Nature</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -717,30 +927,20 @@ public interface DevsPackage extends EPackage {
 		EAttribute DESCRIPTOR__NATURE = eINSTANCE.getDescriptor_Nature();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DESCRIPTOR__TYPE = eINSTANCE.getDescriptor_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference DESCRIPTOR__VALUE = eINSTANCE.getDescriptor_Value();
-
-		/**
-		 * The meta object literal for the '{@link devs.impl.DevsImpl <em>Devs</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see devs.impl.DevsImpl
-		 * @see devs.impl.DevsPackageImpl#getDevs()
-		 * @generated
-		 */
-		EClass DEVS = eINSTANCE.getDevs();
-
-		/**
-		 * The meta object literal for the '<em><b>State</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DEVS__STATE = eINSTANCE.getDevs_State();
 
 		/**
 		 * The meta object literal for the '{@link devs.impl.TypeImpl <em>Type</em>}' class.
@@ -751,6 +951,14 @@ public interface DevsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPE__DESCRIPTOR = eINSTANCE.getType_Descriptor();
 
 		/**
 		 * The meta object literal for the '{@link devs.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
@@ -815,12 +1023,38 @@ public interface DevsPackage extends EPackage {
 		EAttribute VALUE__CONTENT = eINSTANCE.getValue_Content();
 
 		/**
-		 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference VALUE__DESCRIPTOR = eINSTANCE.getValue_Descriptor();
+
+		/**
+		 * The meta object literal for the '{@link devs.impl.InternalTransitionImpl <em>Internal Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see devs.impl.InternalTransitionImpl
+		 * @see devs.impl.DevsPackageImpl#getInternalTransition()
+		 * @generated
+		 */
+		EClass INTERNAL_TRANSITION = eINSTANCE.getInternalTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Target State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERNAL_TRANSITION__TARGET_STATE = eINSTANCE.getInternalTransition_TargetState();
+
+		/**
+		 * The meta object literal for the '<em><b>Source State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERNAL_TRANSITION__SOURCE_STATE = eINSTANCE.getInternalTransition_SourceState();
 
 		/**
 		 * The meta object literal for the '{@link devs.Primitive <em>Primitive</em>}' enum.

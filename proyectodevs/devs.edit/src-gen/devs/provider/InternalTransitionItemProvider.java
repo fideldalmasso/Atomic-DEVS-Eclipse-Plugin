@@ -2,9 +2,7 @@
  */
 package devs.provider;
 
-import devs.DevsFactory;
 import devs.DevsPackage;
-import devs.State;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,8 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,15 +20,14 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link devs.State} object.
+ * This is the item provider adapter for a {@link devs.InternalTransition} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StateItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class InternalTransitionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +35,7 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateItemProvider(AdapterFactory adapterFactory) {
+	public InternalTransitionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,96 +50,51 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDevsPropertyDescriptor(object);
-			addTransitionInPropertyDescriptor(object);
-			addTransitionOutPropertyDescriptor(object);
+			addTargetStatePropertyDescriptor(object);
+			addSourceStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Devs feature.
+	 * This adds a property descriptor for the Target State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDevsPropertyDescriptor(Object object) {
+	protected void addTargetStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_State_devs_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_State_devs_feature", "_UI_State_type"),
-						DevsPackage.Literals.STATE__DEVS, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_InternalTransition_targetState_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InternalTransition_targetState_feature",
+								"_UI_InternalTransition_type"),
+						DevsPackage.Literals.INTERNAL_TRANSITION__TARGET_STATE, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Transition In feature.
+	 * This adds a property descriptor for the Source State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTransitionInPropertyDescriptor(Object object) {
+	protected void addSourceStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_State_transitionIn_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_State_transitionIn_feature",
-								"_UI_State_type"),
-						DevsPackage.Literals.STATE__TRANSITION_IN, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_InternalTransition_sourceState_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InternalTransition_sourceState_feature",
+								"_UI_InternalTransition_type"),
+						DevsPackage.Literals.INTERNAL_TRANSITION__SOURCE_STATE, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Transition Out feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTransitionOutPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_State_transitionOut_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_State_transitionOut_feature",
-								"_UI_State_type"),
-						DevsPackage.Literals.STATE__TRANSITION_OUT, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(DevsPackage.Literals.STATE__DESCRIPTOR);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns State.gif.
+	 * This returns InternalTransition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/State"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/InternalTransition"));
 	}
 
 	/**
@@ -165,7 +115,7 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_State_type");
+		return getString("_UI_InternalTransition_type");
 	}
 
 	/**
@@ -178,12 +128,6 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(State.class)) {
-		case DevsPackage.STATE__DESCRIPTOR:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -197,9 +141,6 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(
-				createChildParameter(DevsPackage.Literals.STATE__DESCRIPTOR, DevsFactory.eINSTANCE.createDescriptor()));
 	}
 
 	/**
