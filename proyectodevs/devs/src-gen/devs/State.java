@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link devs.State#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link devs.State#getDevs <em>Devs</em>}</li>
+ *   <li>{@link devs.State#getAtomicDevs <em>Atomic Devs</em>}</li>
  *   <li>{@link devs.State#getTransitionIn <em>Transition In</em>}</li>
  *   <li>{@link devs.State#getTransitionOut <em>Transition Out</em>}</li>
  * </ul>
@@ -42,53 +42,53 @@ public interface State extends EObject {
 	EList<Descriptor> getDescriptor();
 
 	/**
-	 * Returns the value of the '<em><b>Devs</b></em>' reference.
+	 * Returns the value of the '<em><b>Atomic Devs</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Devs</em>' reference.
-	 * @see #setDevs(AtomicDevs)
-	 * @see devs.DevsPackage#getState_Devs()
+	 * @return the value of the '<em>Atomic Devs</em>' reference.
+	 * @see #setAtomicDevs(AtomicDevs)
+	 * @see devs.DevsPackage#getState_AtomicDevs()
 	 * @model
 	 * @generated
 	 */
-	AtomicDevs getDevs();
+	AtomicDevs getAtomicDevs();
 
 	/**
-	 * Sets the value of the '{@link devs.State#getDevs <em>Devs</em>}' reference.
+	 * Sets the value of the '{@link devs.State#getAtomicDevs <em>Atomic Devs</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Devs</em>' reference.
-	 * @see #getDevs()
+	 * @param value the new value of the '<em>Atomic Devs</em>' reference.
+	 * @see #getAtomicDevs()
 	 * @generated
 	 */
-	void setDevs(AtomicDevs value);
+	void setAtomicDevs(AtomicDevs value);
 
 	/**
 	 * Returns the value of the '<em><b>Transition In</b></em>' reference list.
-	 * The list contents are of type {@link devs.InternalTransition}.
-	 * It is bidirectional and its opposite is '{@link devs.InternalTransition#getTargetState <em>Target State</em>}'.
+	 * The list contents are of type {@link devs.Transition}.
+	 * It is bidirectional and its opposite is '{@link devs.Transition#getTargetState <em>Target State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transition In</em>' reference list.
 	 * @see devs.DevsPackage#getState_TransitionIn()
-	 * @see devs.InternalTransition#getTargetState
+	 * @see devs.Transition#getTargetState
 	 * @model opposite="targetState"
 	 * @generated
 	 */
-	EList<InternalTransition> getTransitionIn();
+	EList<Transition> getTransitionIn();
 
 	/**
 	 * Returns the value of the '<em><b>Transition Out</b></em>' reference list.
-	 * The list contents are of type {@link devs.InternalTransition}.
-	 * It is bidirectional and its opposite is '{@link devs.InternalTransition#getSourceState <em>Source State</em>}'.
+	 * The list contents are of type {@link devs.Transition}.
+	 * It is bidirectional and its opposite is '{@link devs.Transition#getSourceState <em>Source State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transition Out</em>' reference list.
 	 * @see devs.DevsPackage#getState_TransitionOut()
-	 * @see devs.InternalTransition#getSourceState
+	 * @see devs.Transition#getSourceState
 	 * @model opposite="sourceState"
 	 * @generated
 	 */
-	EList<InternalTransition> getTransitionOut();
+	EList<Transition> getTransitionOut();
 
 } // State

@@ -101,8 +101,12 @@ public class DevsValidator extends EObjectValidator {
 			return validateUserDefinedType((UserDefinedType) value, diagnostics, context);
 		case DevsPackage.VALUE:
 			return validateValue((Value) value, diagnostics, context);
+		case DevsPackage.TRANSITION:
+			return validateTransition((Transition) value, diagnostics, context);
 		case DevsPackage.INTERNAL_TRANSITION:
 			return validateInternalTransition((InternalTransition) value, diagnostics, context);
+		case DevsPackage.EXTERNAL_TRANSITION:
+			return validateExternalTransition((ExternalTransition) value, diagnostics, context);
 		case DevsPackage.PRIMITIVE:
 			return validatePrimitive((Primitive) value, diagnostics, context);
 		case DevsPackage.DESCRIPTOR_NATURE:
@@ -479,9 +483,28 @@ public class DevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateTransition(Transition transition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(transition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateInternalTransition(InternalTransition internalTransition, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(internalTransition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateExternalTransition(ExternalTransition externalTransition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(externalTransition, diagnostics, context);
 	}
 
 	/**

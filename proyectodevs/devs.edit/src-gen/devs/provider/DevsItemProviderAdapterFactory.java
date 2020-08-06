@@ -211,6 +211,29 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link devs.Transition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransitionItemProvider transitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link devs.Transition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransitionAdapter() {
+		if (transitionItemProvider == null) {
+			transitionItemProvider = new TransitionItemProvider(this);
+		}
+
+		return transitionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link devs.InternalTransition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -231,6 +254,29 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 		}
 
 		return internalTransitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link devs.ExternalTransition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExternalTransitionItemProvider externalTransitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link devs.ExternalTransition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExternalTransitionAdapter() {
+		if (externalTransitionItemProvider == null) {
+			externalTransitionItemProvider = new ExternalTransitionItemProvider(this);
+		}
+
+		return externalTransitionItemProvider;
 	}
 
 	/**
@@ -344,8 +390,12 @@ public class DevsItemProviderAdapterFactory extends DevsAdapterFactory
 			userDefinedTypeItemProvider.dispose();
 		if (valueItemProvider != null)
 			valueItemProvider.dispose();
+		if (transitionItemProvider != null)
+			transitionItemProvider.dispose();
 		if (internalTransitionItemProvider != null)
 			internalTransitionItemProvider.dispose();
+		if (externalTransitionItemProvider != null)
+			externalTransitionItemProvider.dispose();
 	}
 
 }

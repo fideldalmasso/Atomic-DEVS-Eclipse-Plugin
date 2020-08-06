@@ -102,8 +102,18 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseTransition(Transition object) {
+			return createTransitionAdapter();
+		}
+
+		@Override
 		public Adapter caseInternalTransition(InternalTransition object) {
 			return createInternalTransitionAdapter();
+		}
+
+		@Override
+		public Adapter caseExternalTransition(ExternalTransition object) {
+			return createExternalTransitionAdapter();
 		}
 
 		@Override
@@ -224,6 +234,20 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link devs.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see devs.Transition
+	 * @generated
+	 */
+	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link devs.InternalTransition <em>Internal Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -234,6 +258,20 @@ public class DevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInternalTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link devs.ExternalTransition <em>External Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see devs.ExternalTransition
+	 * @generated
+	 */
+	public Adapter createExternalTransitionAdapter() {
 		return null;
 	}
 

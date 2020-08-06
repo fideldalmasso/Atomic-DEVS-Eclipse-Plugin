@@ -3,6 +3,7 @@
 package devs.provider;
 
 import devs.DevsPackage;
+import devs.InternalTransition;
 
 import java.util.Collection;
 import java.util.List;
@@ -10,16 +11,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link devs.InternalTransition} object.
@@ -27,8 +22,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InternalTransitionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class InternalTransitionItemProvider extends TransitionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -50,40 +44,25 @@ public class InternalTransitionItemProvider extends ItemProviderAdapter implemen
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetStatePropertyDescriptor(object);
-			addSourceStatePropertyDescriptor(object);
+			addOutputEventPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Target State feature.
+	 * This adds a property descriptor for the Output Event feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetStatePropertyDescriptor(Object object) {
+	protected void addOutputEventPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InternalTransition_targetState_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InternalTransition_targetState_feature",
+						getResourceLocator(), getString("_UI_InternalTransition_outputEvent_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InternalTransition_outputEvent_feature",
 								"_UI_InternalTransition_type"),
-						DevsPackage.Literals.INTERNAL_TRANSITION__TARGET_STATE, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Source State feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSourceStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InternalTransition_sourceState_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InternalTransition_sourceState_feature",
-								"_UI_InternalTransition_type"),
-						DevsPackage.Literals.INTERNAL_TRANSITION__SOURCE_STATE, true, false, true, null, null, null));
+						DevsPackage.Literals.INTERNAL_TRANSITION__OUTPUT_EVENT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -115,7 +94,10 @@ public class InternalTransitionItemProvider extends ItemProviderAdapter implemen
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_InternalTransition_type");
+		Object labelValue = ((InternalTransition) object).getOutputEvent();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ? getString("_UI_InternalTransition_type")
+				: getString("_UI_InternalTransition_type") + " " + label;
 	}
 
 	/**
@@ -128,6 +110,12 @@ public class InternalTransitionItemProvider extends ItemProviderAdapter implemen
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(InternalTransition.class)) {
+		case DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -141,17 +129,6 @@ public class InternalTransitionItemProvider extends ItemProviderAdapter implemen
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DevsEditPlugin.INSTANCE;
 	}
 
 }

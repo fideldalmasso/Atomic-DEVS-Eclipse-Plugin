@@ -30,9 +30,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//State/transitionOut"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//Descriptor">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/state"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/nature"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/nature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//Descriptor/value"/>
     </genClasses>
@@ -40,7 +40,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Type/descriptor"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//PrimitiveType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//PrimitiveType/primitive"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//PrimitiveType/primitive"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//UserDefinedType">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//UserDefinedType/name"

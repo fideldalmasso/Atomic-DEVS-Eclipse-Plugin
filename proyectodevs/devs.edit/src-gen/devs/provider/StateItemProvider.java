@@ -55,7 +55,7 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDevsPropertyDescriptor(object);
+			addAtomicDevsPropertyDescriptor(object);
 			addTransitionInPropertyDescriptor(object);
 			addTransitionOutPropertyDescriptor(object);
 		}
@@ -63,17 +63,18 @@ public class StateItemProvider extends ItemProviderAdapter implements IEditingDo
 	}
 
 	/**
-	 * This adds a property descriptor for the Devs feature.
+	 * This adds a property descriptor for the Atomic Devs feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDevsPropertyDescriptor(Object object) {
+	protected void addAtomicDevsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_State_devs_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_State_devs_feature", "_UI_State_type"),
-						DevsPackage.Literals.STATE__DEVS, true, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_State_atomicDevs_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_State_atomicDevs_feature",
+								"_UI_State_type"),
+						DevsPackage.Literals.STATE__ATOMIC_DEVS, true, false, true, null, null, null));
 	}
 
 	/**

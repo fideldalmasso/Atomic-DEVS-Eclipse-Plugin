@@ -68,8 +68,12 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 			return createUserDefinedType();
 		case DevsPackage.VALUE:
 			return createValue();
+		case DevsPackage.TRANSITION:
+			return createTransition();
 		case DevsPackage.INTERNAL_TRANSITION:
 			return createInternalTransition();
+		case DevsPackage.EXTERNAL_TRANSITION:
+			return createExternalTransition();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -174,9 +178,29 @@ public class DevsFactoryImpl extends EFactoryImpl implements DevsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Transition createTransition() {
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InternalTransition createInternalTransition() {
 		InternalTransitionImpl internalTransition = new InternalTransitionImpl();
 		return internalTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalTransition createExternalTransition() {
+		ExternalTransitionImpl externalTransition = new ExternalTransitionImpl();
+		return externalTransition;
 	}
 
 	/**

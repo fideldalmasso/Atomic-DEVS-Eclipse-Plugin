@@ -3,8 +3,6 @@
 package devs.provider;
 
 import devs.DevsPackage;
-import devs.Primitive;
-import devs.PrimitiveType;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,25 +10,32 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link devs.PrimitiveType} object.
+ * This is the item provider adapter for a {@link devs.Transition} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PrimitiveTypeItemProvider extends TypeItemProvider {
+public class TransitionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimitiveTypeItemProvider(AdapterFactory adapterFactory) {
+	public TransitionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,36 +50,51 @@ public class PrimitiveTypeItemProvider extends TypeItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPrimitivePropertyDescriptor(object);
+			addTargetStatePropertyDescriptor(object);
+			addSourceStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Primitive feature.
+	 * This adds a property descriptor for the Target State feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPrimitivePropertyDescriptor(Object object) {
+	protected void addTargetStatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_PrimitiveType_primitive_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_PrimitiveType_primitive_feature",
-								"_UI_PrimitiveType_type"),
-						DevsPackage.Literals.PRIMITIVE_TYPE__PRIMITIVE, false, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						getResourceLocator(), getString("_UI_Transition_targetState_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Transition_targetState_feature",
+								"_UI_Transition_type"),
+						DevsPackage.Literals.TRANSITION__TARGET_STATE, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns PrimitiveType.gif.
+	 * This adds a property descriptor for the Source State feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourceStatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Transition_sourceState_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Transition_sourceState_feature",
+								"_UI_Transition_type"),
+						DevsPackage.Literals.TRANSITION__SOURCE_STATE, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This returns Transition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PrimitiveType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Transition"));
 	}
 
 	/**
@@ -95,10 +115,7 @@ public class PrimitiveTypeItemProvider extends TypeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Primitive labelValue = ((PrimitiveType) object).getPrimitive();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_PrimitiveType_type")
-				: getString("_UI_PrimitiveType_type") + " " + label;
+		return getString("_UI_Transition_type");
 	}
 
 	/**
@@ -111,12 +128,6 @@ public class PrimitiveTypeItemProvider extends TypeItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(PrimitiveType.class)) {
-		case DevsPackage.PRIMITIVE_TYPE__PRIMITIVE:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -130,6 +141,17 @@ public class PrimitiveTypeItemProvider extends TypeItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return DevsEditPlugin.INSTANCE;
 	}
 
 }

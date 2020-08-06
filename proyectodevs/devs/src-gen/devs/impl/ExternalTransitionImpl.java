@@ -3,7 +3,7 @@
 package devs.impl;
 
 import devs.DevsPackage;
-import devs.InternalTransition;
+import devs.ExternalTransition;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Internal Transition</b></em>'.
+ * An implementation of the model object '<em><b>External Transition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link devs.impl.InternalTransitionImpl#getOutputEvent <em>Output Event</em>}</li>
+ *   <li>{@link devs.impl.ExternalTransitionImpl#getEvent <em>Event</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InternalTransitionImpl extends TransitionImpl implements InternalTransition {
+public class ExternalTransitionImpl extends TransitionImpl implements ExternalTransition {
 	/**
-	 * The default value of the '{@link #getOutputEvent() <em>Output Event</em>}' attribute.
+	 * The default value of the '{@link #getEvent() <em>Event</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutputEvent()
+	 * @see #getEvent()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object OUTPUT_EVENT_EDEFAULT = null;
+	protected static final Object EVENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getOutputEvent() <em>Output Event</em>}' attribute.
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutputEvent()
+	 * @see #getEvent()
 	 * @generated
 	 * @ordered
 	 */
-	protected Object outputEvent = OUTPUT_EVENT_EDEFAULT;
+	protected Object event = EVENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InternalTransitionImpl() {
+	protected ExternalTransitionImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DevsPackage.Literals.INTERNAL_TRANSITION;
+		return DevsPackage.Literals.EXTERNAL_TRANSITION;
 	}
 
 	/**
@@ -69,8 +69,8 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getOutputEvent() {
-		return outputEvent;
+	public Object getEvent() {
+		return event;
 	}
 
 	/**
@@ -78,12 +78,12 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOutputEvent(Object newOutputEvent) {
-		Object oldOutputEvent = outputEvent;
-		outputEvent = newOutputEvent;
+	public void setEvent(Object newEvent) {
+		Object oldEvent = event;
+		event = newEvent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT,
-					oldOutputEvent, outputEvent));
+			eNotify(new ENotificationImpl(this, Notification.SET, DevsPackage.EXTERNAL_TRANSITION__EVENT, oldEvent,
+					event));
 	}
 
 	/**
@@ -94,8 +94,8 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT:
-			return getOutputEvent();
+		case DevsPackage.EXTERNAL_TRANSITION__EVENT:
+			return getEvent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -108,8 +108,8 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT:
-			setOutputEvent(newValue);
+		case DevsPackage.EXTERNAL_TRANSITION__EVENT:
+			setEvent(newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +123,8 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT:
-			setOutputEvent(OUTPUT_EVENT_EDEFAULT);
+		case DevsPackage.EXTERNAL_TRANSITION__EVENT:
+			setEvent(EVENT_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -138,8 +138,8 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case DevsPackage.INTERNAL_TRANSITION__OUTPUT_EVENT:
-			return OUTPUT_EVENT_EDEFAULT == null ? outputEvent != null : !OUTPUT_EVENT_EDEFAULT.equals(outputEvent);
+		case DevsPackage.EXTERNAL_TRANSITION__EVENT:
+			return EVENT_EDEFAULT == null ? event != null : !EVENT_EDEFAULT.equals(event);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -155,10 +155,10 @@ public class InternalTransitionImpl extends TransitionImpl implements InternalTr
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (outputEvent: ");
-		result.append(outputEvent);
+		result.append(" (event: ");
+		result.append(event);
 		result.append(')');
 		return result.toString();
 	}
 
-} //InternalTransitionImpl
+} //ExternalTransitionImpl

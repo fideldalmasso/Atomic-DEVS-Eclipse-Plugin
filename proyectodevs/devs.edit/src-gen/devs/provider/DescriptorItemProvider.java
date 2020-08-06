@@ -75,7 +75,7 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_Descriptor_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Descriptor_name_feature",
 								"_UI_Descriptor_type"),
-						DevsPackage.Literals.DESCRIPTOR__NAME, true, false, false,
+						DevsPackage.Literals.DESCRIPTOR__NAME, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -106,7 +106,7 @@ public class DescriptorItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_Descriptor_nature_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Descriptor_nature_feature",
 								"_UI_Descriptor_type"),
-						DevsPackage.Literals.DESCRIPTOR__NATURE, true, false, false,
+						DevsPackage.Literals.DESCRIPTOR__NATURE, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

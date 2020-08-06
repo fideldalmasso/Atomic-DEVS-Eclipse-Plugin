@@ -119,9 +119,27 @@ public class DevsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case DevsPackage.TRANSITION: {
+			Transition transition = (Transition) theEObject;
+			T result = caseTransition(transition);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case DevsPackage.INTERNAL_TRANSITION: {
 			InternalTransition internalTransition = (InternalTransition) theEObject;
 			T result = caseInternalTransition(internalTransition);
+			if (result == null)
+				result = caseTransition(internalTransition);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case DevsPackage.EXTERNAL_TRANSITION: {
+			ExternalTransition externalTransition = (ExternalTransition) theEObject;
+			T result = caseExternalTransition(externalTransition);
+			if (result == null)
+				result = caseTransition(externalTransition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -237,6 +255,21 @@ public class DevsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransition(Transition object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Internal Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -248,6 +281,21 @@ public class DevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInternalTransition(InternalTransition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>External Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>External Transition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExternalTransition(ExternalTransition object) {
 		return null;
 	}
 

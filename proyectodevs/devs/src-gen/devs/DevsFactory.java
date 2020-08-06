@@ -76,6 +76,15 @@ public interface DevsFactory extends EFactory {
 	Value createValue();
 
 	/**
+	 * Returns a new object of class '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transition</em>'.
+	 * @generated
+	 */
+	Transition createTransition();
+
+	/**
 	 * Returns a new object of class '<em>Internal Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,6 +92,15 @@ public interface DevsFactory extends EFactory {
 	 * @generated
 	 */
 	InternalTransition createInternalTransition();
+
+	/**
+	 * Returns a new object of class '<em>External Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External Transition</em>'.
+	 * @generated
+	 */
+	ExternalTransition createExternalTransition();
 
 	/**
 	 * Returns the package supported by this factory.

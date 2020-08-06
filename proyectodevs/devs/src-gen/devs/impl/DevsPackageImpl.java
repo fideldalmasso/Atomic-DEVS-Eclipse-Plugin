@@ -6,10 +6,12 @@ import devs.AtomicDevs;
 import devs.DescriptorNature;
 import devs.DevsFactory;
 import devs.DevsPackage;
+import devs.ExternalTransition;
 import devs.InternalTransition;
 import devs.Primitive;
 import devs.PrimitiveType;
 import devs.State;
+import devs.Transition;
 import devs.Type;
 import devs.UserDefinedType;
 import devs.Value;
@@ -88,7 +90,21 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass internalTransitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalTransitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -228,7 +244,7 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getState_Devs() {
+	public EReference getState_AtomicDevs() {
 		return (EReference) stateEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -399,6 +415,33 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTransition() {
+		return transitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransition_TargetState() {
+		return (EReference) transitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransition_SourceState() {
+		return (EReference) transitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInternalTransition() {
 		return internalTransitionEClass;
 	}
@@ -408,8 +451,8 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInternalTransition_TargetState() {
-		return (EReference) internalTransitionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getInternalTransition_OutputEvent() {
+		return (EAttribute) internalTransitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -417,8 +460,17 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInternalTransition_SourceState() {
-		return (EReference) internalTransitionEClass.getEStructuralFeatures().get(1);
+	public EClass getExternalTransition() {
+		return externalTransitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExternalTransition_Event() {
+		return (EAttribute) externalTransitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -474,7 +526,7 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 
 		stateEClass = createEClass(STATE);
 		createEReference(stateEClass, STATE__DESCRIPTOR);
-		createEReference(stateEClass, STATE__DEVS);
+		createEReference(stateEClass, STATE__ATOMIC_DEVS);
 		createEReference(stateEClass, STATE__TRANSITION_IN);
 		createEReference(stateEClass, STATE__TRANSITION_OUT);
 
@@ -499,9 +551,15 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		createEAttribute(valueEClass, VALUE__CONTENT);
 		createEReference(valueEClass, VALUE__DESCRIPTOR);
 
+		transitionEClass = createEClass(TRANSITION);
+		createEReference(transitionEClass, TRANSITION__TARGET_STATE);
+		createEReference(transitionEClass, TRANSITION__SOURCE_STATE);
+
 		internalTransitionEClass = createEClass(INTERNAL_TRANSITION);
-		createEReference(internalTransitionEClass, INTERNAL_TRANSITION__TARGET_STATE);
-		createEReference(internalTransitionEClass, INTERNAL_TRANSITION__SOURCE_STATE);
+		createEAttribute(internalTransitionEClass, INTERNAL_TRANSITION__OUTPUT_EVENT);
+
+		externalTransitionEClass = createEClass(EXTERNAL_TRANSITION);
+		createEAttribute(externalTransitionEClass, EXTERNAL_TRANSITION__EVENT);
 
 		// Create enums
 		primitiveEEnum = createEEnum(PRIMITIVE);
@@ -543,6 +601,8 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		// Add supertypes to classes
 		primitiveTypeEClass.getESuperTypes().add(this.getType());
 		userDefinedTypeEClass.getESuperTypes().add(this.getType());
+		internalTransitionEClass.getESuperTypes().add(this.getTransition());
+		externalTransitionEClass.getESuperTypes().add(this.getTransition());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(atomicDevsEClass, AtomicDevs.class, "AtomicDevs", !IS_ABSTRACT, !IS_INTERFACE,
@@ -558,13 +618,13 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 		initEReference(getState_Descriptor(), this.getDescriptor(), this.getDescriptor_State(), "descriptor", null, 2,
 				-1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_Devs(), this.getAtomicDevs(), null, "devs", null, 0, 1, State.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getState_TransitionIn(), this.getInternalTransition(), this.getInternalTransition_TargetState(),
-				"transitionIn", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getState_TransitionOut(), this.getInternalTransition(), this.getInternalTransition_SourceState(),
+		initEReference(getState_AtomicDevs(), this.getAtomicDevs(), null, "atomicDevs", null, 0, 1, State.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_TransitionIn(), this.getTransition(), this.getTransition_TargetState(), "transitionIn",
+				null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_TransitionOut(), this.getTransition(), this.getTransition_SourceState(),
 				"transitionOut", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -609,14 +669,26 @@ public class DevsPackageImpl extends EPackageImpl implements DevsPackage {
 				1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_TargetState(), this.getState(), this.getState_TransitionIn(), "targetState", null,
+				1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_SourceState(), this.getState(), this.getState_TransitionOut(), "sourceState", null,
+				1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(internalTransitionEClass, InternalTransition.class, "InternalTransition", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInternalTransition_TargetState(), this.getState(), this.getState_TransitionIn(),
-				"targetState", null, 1, 1, InternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInternalTransition_SourceState(), this.getState(), this.getState_TransitionOut(),
-				"sourceState", null, 1, 1, InternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInternalTransition_OutputEvent(), theXMLTypePackage.getAnySimpleType(), "outputEvent", null,
+				0, 1, InternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalTransitionEClass, ExternalTransition.class, "ExternalTransition", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExternalTransition_Event(), theXMLTypePackage.getAnySimpleType(), "event", null, 0, 1,
+				ExternalTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(primitiveEEnum, Primitive.class, "Primitive");

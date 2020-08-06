@@ -125,13 +125,13 @@ public interface DevsPackage extends EPackage {
 	int STATE__DESCRIPTOR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Devs</b></em>' reference.
+	 * The feature id for the '<em><b>Atomic Devs</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__DEVS = 1;
+	int STATE__ATOMIC_DEVS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Transition In</b></em>' reference list.
@@ -427,14 +427,14 @@ public interface DevsPackage extends EPackage {
 	int VALUE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link devs.impl.InternalTransitionImpl <em>Internal Transition</em>}' class.
+	 * The meta object id for the '{@link devs.impl.TransitionImpl <em>Transition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see devs.impl.InternalTransitionImpl
-	 * @see devs.impl.DevsPackageImpl#getInternalTransition()
+	 * @see devs.impl.TransitionImpl
+	 * @see devs.impl.DevsPackageImpl#getTransition()
 	 * @generated
 	 */
-	int INTERNAL_TRANSITION = 7;
+	int TRANSITION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Target State</b></em>' reference.
@@ -443,7 +443,7 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERNAL_TRANSITION__TARGET_STATE = 0;
+	int TRANSITION__TARGET_STATE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Source State</b></em>' reference.
@@ -452,7 +452,62 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERNAL_TRANSITION__SOURCE_STATE = 1;
+	int TRANSITION__SOURCE_STATE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link devs.impl.InternalTransitionImpl <em>Internal Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see devs.impl.InternalTransitionImpl
+	 * @see devs.impl.DevsPackageImpl#getInternalTransition()
+	 * @generated
+	 */
+	int INTERNAL_TRANSITION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Target State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__TARGET_STATE = TRANSITION__TARGET_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Source State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__SOURCE_STATE = TRANSITION__SOURCE_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Output Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__OUTPUT_EVENT = TRANSITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Internal Transition</em>' class.
@@ -461,7 +516,7 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERNAL_TRANSITION_FEATURE_COUNT = 2;
+	int INTERNAL_TRANSITION_FEATURE_COUNT = TRANSITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Internal Transition</em>' class.
@@ -470,7 +525,62 @@ public interface DevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERNAL_TRANSITION_OPERATION_COUNT = 0;
+	int INTERNAL_TRANSITION_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link devs.impl.ExternalTransitionImpl <em>External Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see devs.impl.ExternalTransitionImpl
+	 * @see devs.impl.DevsPackageImpl#getExternalTransition()
+	 * @generated
+	 */
+	int EXTERNAL_TRANSITION = 9;
+
+	/**
+	 * The feature id for the '<em><b>Target State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION__TARGET_STATE = TRANSITION__TARGET_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Source State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION__SOURCE_STATE = TRANSITION__SOURCE_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION__EVENT = TRANSITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>External Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION_FEATURE_COUNT = TRANSITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>External Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION_OPERATION_COUNT = TRANSITION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link devs.Primitive <em>Primitive</em>}' enum.
@@ -480,7 +590,7 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 8;
+	int PRIMITIVE = 10;
 
 	/**
 	 * The meta object id for the '{@link devs.DescriptorNature <em>Descriptor Nature</em>}' enum.
@@ -490,7 +600,7 @@ public interface DevsPackage extends EPackage {
 	 * @see devs.impl.DevsPackageImpl#getDescriptorNature()
 	 * @generated
 	 */
-	int DESCRIPTOR_NATURE = 9;
+	int DESCRIPTOR_NATURE = 11;
 
 	/**
 	 * Returns the meta object for class '{@link devs.AtomicDevs <em>Atomic Devs</em>}'.
@@ -546,15 +656,15 @@ public interface DevsPackage extends EPackage {
 	EReference getState_Descriptor();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.State#getDevs <em>Devs</em>}'.
+	 * Returns the meta object for the reference '{@link devs.State#getAtomicDevs <em>Atomic Devs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Devs</em>'.
-	 * @see devs.State#getDevs()
+	 * @return the meta object for the reference '<em>Atomic Devs</em>'.
+	 * @see devs.State#getAtomicDevs()
 	 * @see #getState()
 	 * @generated
 	 */
-	EReference getState_Devs();
+	EReference getState_AtomicDevs();
 
 	/**
 	 * Returns the meta object for the reference list '{@link devs.State#getTransitionIn <em>Transition In</em>}'.
@@ -750,6 +860,38 @@ public interface DevsPackage extends EPackage {
 	EReference getValue_Descriptor();
 
 	/**
+	 * Returns the meta object for class '{@link devs.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition</em>'.
+	 * @see devs.Transition
+	 * @generated
+	 */
+	EClass getTransition();
+
+	/**
+	 * Returns the meta object for the reference '{@link devs.Transition#getTargetState <em>Target State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target State</em>'.
+	 * @see devs.Transition#getTargetState()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_TargetState();
+
+	/**
+	 * Returns the meta object for the reference '{@link devs.Transition#getSourceState <em>Source State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source State</em>'.
+	 * @see devs.Transition#getSourceState()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_SourceState();
+
+	/**
 	 * Returns the meta object for class '{@link devs.InternalTransition <em>Internal Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -760,26 +902,36 @@ public interface DevsPackage extends EPackage {
 	EClass getInternalTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.InternalTransition#getTargetState <em>Target State</em>}'.
+	 * Returns the meta object for the attribute '{@link devs.InternalTransition#getOutputEvent <em>Output Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target State</em>'.
-	 * @see devs.InternalTransition#getTargetState()
+	 * @return the meta object for the attribute '<em>Output Event</em>'.
+	 * @see devs.InternalTransition#getOutputEvent()
 	 * @see #getInternalTransition()
 	 * @generated
 	 */
-	EReference getInternalTransition_TargetState();
+	EAttribute getInternalTransition_OutputEvent();
 
 	/**
-	 * Returns the meta object for the reference '{@link devs.InternalTransition#getSourceState <em>Source State</em>}'.
+	 * Returns the meta object for class '{@link devs.ExternalTransition <em>External Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source State</em>'.
-	 * @see devs.InternalTransition#getSourceState()
-	 * @see #getInternalTransition()
+	 * @return the meta object for class '<em>External Transition</em>'.
+	 * @see devs.ExternalTransition
 	 * @generated
 	 */
-	EReference getInternalTransition_SourceState();
+	EClass getExternalTransition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link devs.ExternalTransition#getEvent <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Event</em>'.
+	 * @see devs.ExternalTransition#getEvent()
+	 * @see #getExternalTransition()
+	 * @generated
+	 */
+	EAttribute getExternalTransition_Event();
 
 	/**
 	 * Returns the meta object for enum '{@link devs.Primitive <em>Primitive</em>}'.
@@ -869,12 +1021,12 @@ public interface DevsPackage extends EPackage {
 		EReference STATE__DESCRIPTOR = eINSTANCE.getState_Descriptor();
 
 		/**
-		 * The meta object literal for the '<em><b>Devs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Atomic Devs</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE__DEVS = eINSTANCE.getState_Devs();
+		EReference STATE__ATOMIC_DEVS = eINSTANCE.getState_AtomicDevs();
 
 		/**
 		 * The meta object literal for the '<em><b>Transition In</b></em>' reference list feature.
@@ -1031,6 +1183,32 @@ public interface DevsPackage extends EPackage {
 		EReference VALUE__DESCRIPTOR = eINSTANCE.getValue_Descriptor();
 
 		/**
+		 * The meta object literal for the '{@link devs.impl.TransitionImpl <em>Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see devs.impl.TransitionImpl
+		 * @see devs.impl.DevsPackageImpl#getTransition()
+		 * @generated
+		 */
+		EClass TRANSITION = eINSTANCE.getTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Target State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__TARGET_STATE = eINSTANCE.getTransition_TargetState();
+
+		/**
+		 * The meta object literal for the '<em><b>Source State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSITION__SOURCE_STATE = eINSTANCE.getTransition_SourceState();
+
+		/**
 		 * The meta object literal for the '{@link devs.impl.InternalTransitionImpl <em>Internal Transition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1041,20 +1219,30 @@ public interface DevsPackage extends EPackage {
 		EClass INTERNAL_TRANSITION = eINSTANCE.getInternalTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Target State</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Output Event</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERNAL_TRANSITION__TARGET_STATE = eINSTANCE.getInternalTransition_TargetState();
+		EAttribute INTERNAL_TRANSITION__OUTPUT_EVENT = eINSTANCE.getInternalTransition_OutputEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Source State</b></em>' reference feature.
+		 * The meta object literal for the '{@link devs.impl.ExternalTransitionImpl <em>External Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see devs.impl.ExternalTransitionImpl
+		 * @see devs.impl.DevsPackageImpl#getExternalTransition()
+		 * @generated
+		 */
+		EClass EXTERNAL_TRANSITION = eINSTANCE.getExternalTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERNAL_TRANSITION__SOURCE_STATE = eINSTANCE.getInternalTransition_SourceState();
+		EAttribute EXTERNAL_TRANSITION__EVENT = eINSTANCE.getExternalTransition_Event();
 
 		/**
 		 * The meta object literal for the '{@link devs.Primitive <em>Primitive</em>}' enum.
