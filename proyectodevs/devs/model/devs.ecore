@@ -34,11 +34,11 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="2"
         upperBound="-1" eType="#//Descriptor" containment="true" eOpposite="#//Descriptor/state"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devs" eType="#//AtomicDevs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicDevs" eType="#//AtomicDevs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionIn" upperBound="-1"
-        eType="#//InternalTransition" eOpposite="#//InternalTransition/targetState"/>
+        eType="#//Transition" eOpposite="#//Transition/targetState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionOut" upperBound="-1"
-        eType="#//InternalTransition" eOpposite="#//InternalTransition/sourceState"/>
+        eType="#//Transition" eOpposite="#//Transition/sourceState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -93,10 +93,16 @@
     <eLiterals name="SIGMA" value="1"/>
     <eLiterals name="CUSTOM" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InternalTransition">
+  <eClassifiers xsi:type="ecore:EClass" name="Transition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetState" lowerBound="1"
         eType="#//State" eOpposite="#//State/transitionIn"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceState" lowerBound="1"
         eType="#//State" eOpposite="#//State/transitionOut"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalTransition" eSuperTypes="#//Transition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputEvent" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalTransition" eSuperTypes="#//Transition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
   </eClassifiers>
 </ecore:EPackage>
