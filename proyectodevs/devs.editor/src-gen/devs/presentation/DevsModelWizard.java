@@ -2,8 +2,6 @@
  */
 package devs.presentation;
 
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,9 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.eclipse.emf.common.CommonPlugin;
 
@@ -56,9 +51,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.ModifyEvent;
 
 import org.eclipse.swt.layout.GridData;
@@ -67,7 +59,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
@@ -82,15 +73,13 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import devs.DevsFactory;
-import devs.DevsPackage;
+import devs.*;
 import devs.provider.DevsEditPlugin;
 
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -229,11 +218,68 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		//EClass eClass = (EClass) devsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		//EObject rootObject = devsFactory.create(eClass);
-		EObject rootObject = devsFactory.create((EClass) devsPackage.getEClassifier("AtomicDevs"));
-		return rootObject;
-	}
+		
+		//TODO instanciar devs atomico
+		AtomicDevs atomicDevsObject = (AtomicDevs) devsFactory.create((EClass) devsPackage.getEClassifier("AtomicDevs"));
+		
+		//TODO instanciar estado
+		State stateObject = (State) devsFactory.create((EClass) devsPackage.getEClassifier("State"));
+		
+		String nameString;
+		String typeString;
+		
+		//TODO repetir para cada descriptor ingresado
+		for(Map.Entry<String, String> d : descriptorsList.entrySet()) {
+			
+			nameString = d.getKey();
+			typeString = d.getValue();
+			
+			//TODO instanciar descriptor
+			Descriptor descriptorObject = (Descriptor) devsFactory.create((EClass) devsPackage.getEClassifier("Descriptor"));
+			descriptorObject.setName(nameString);
+			
+			switch(typeString) {
+			case "Sigma":
+				descriptorObject.setNature(DescriptorNature.SIGMA);
+				break;
+			case "Phase":
+				descriptorObject.setNature(DescriptorNature.PHASE);	
+				break;
+			default:
+				descriptorObject.setNature(DescriptorNature.CUSTOM);	
+				
+			}
+			
+			//TODO instanciar tipo primitivo
+			PrimitiveType primitiveTypeObject = (PrimitiveType) devsFactory.create((EClass) devsPackage.getEClassifier("PrimitiveType"));
+			primitiveTypeObject.setPrimitive(Primitive.valueOf(typeString));
+			primitiveTypeObject.setDescriptor(descriptorObject);
+			
+			//TODO instanciar valor
+			Value valueObject = (Value) devsFactory.create((EClass) devsPackage.getEClassifier("Value"));
+			valueObject.setDescriptor(descriptorObject);
+			
+			//TODO relacionar tipo y valor con su descriptor
+			descriptorObject.setState(stateObject);
+			descriptorObject.setType(primitiveTypeObject);
+			
+			
+		}
+		
+		//TODO relacionar devs atomico con state
+		atomicDevsObject.setDefinition(stateObject);
+		stateObject.setAtomicDevs(atomicDevsObject);
+		
+		return atomicDevsObject;
+		
+		/*
+		 * EClass eClass = (EClass)
+		 * devsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		 * EObject rootObject = devsFactory.create(eClass); EObject rootObject =
+		 * devsFactory.create((EClass) devsPackage.getEClassifier("AtomicDevs")); return
+		 * rootObject;
+		 */	
+		}
 
 	/**
 	 * Do the work after everything is specified.
@@ -268,9 +314,13 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 
 						// Add the initial model object to the contents.
 						//
+						//TODO
 						EObject rootObject = createInitialModel();
 						if (rootObject != null) {
-							resource.getContents().add(rootObject);
+//							resource.getContents().add(rootObject);
+							AtomicDevs atomicDevs = (AtomicDevs) rootObject;
+							resource.getContents().add(atomicDevs);
+							resource.getContents().add((State) atomicDevs.getDefinition());
 						}
 
 						// Save the contents of the resource to the file system.
