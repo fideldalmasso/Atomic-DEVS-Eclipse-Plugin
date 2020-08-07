@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="devs" version="12.0.0.2017041100">
+  <ownedViewpoints name="AtomicDevsView">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="AtomicDevs" domainClass="devs::AtomicDevs" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="State" semanticCandidatesExpression="feature:state" domainClass="devs::State">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="State" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+          </style>
+        </nodeMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="State" nodeMappings="//@ownedViewpoints[name='AtomicDevsView']/@ownedRepresentations[name='AtomicDevs']/@defaultLayer/@nodeMappings[name='State']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="State" referenceName="state" variableName="newState">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:definition">
+                    <subModelOperations xsi:type="tool_1:For" expression="feature:descriptor">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newState">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="devs::Descriptor" referenceName="descriptor" variableName="newDescriptor">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:i.name"/>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newDescriptor">
+                            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="devs::PrimitiveType" referenceName="type" variableName="newPrimitiveType">
+                              <subModelOperations xsi:type="tool_1:SetValue" featureName="primitive" valueExpression="aql:i.type.primitive"/>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="devs::Value" referenceName="value" variableName="newValue"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
