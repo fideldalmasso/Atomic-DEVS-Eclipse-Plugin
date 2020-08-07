@@ -385,7 +385,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
-	//TODO metodo de creacion de la pagina de descriptores
+	//TODO clase correspondiente a la pagina de descriptores
 	//--------------------------------------------------------------------------------------------------------------------------
 		public class DevsModelWizardNewDescriptorPage extends WizardPage{
 
