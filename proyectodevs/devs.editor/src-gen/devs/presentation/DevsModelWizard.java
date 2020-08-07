@@ -2,6 +2,8 @@
  */
 package devs.presentation;
 
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import org.eclipse.emf.common.CommonPlugin;
 
@@ -51,6 +56,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.ModifyEvent;
 
 import org.eclipse.swt.layout.GridData;
@@ -59,6 +67,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.ScrollBar;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -78,7 +90,7 @@ import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -170,40 +182,10 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	//TODO aqui se guarda informacion sobre los descriptores
 	protected List<String> primitiveTypesNames;
 	protected Map<String,String> descriptorsList; //name, type
-	
-	//TODO metodo que se encarga de agregar los descriptores ingresados por el usuario
-	protected String addPrimitiveDescriptorToList(String name, String type) {
-		if(descriptorsList == null) 
-			descriptorsList = new HashMap<String,String>();
-		
-		if(name== null || name.length() == 0)
-			return "Please enter a name";
-		if(type== null || type.length() == 0)
-			return "Please enter a valid type";
-		if(descriptorsList.containsKey(name))
-			return "There is already a descriptor with the same name";
-		if(!getPrimitiveTypesNames().contains(type))
-			return "The type entered is not supported. Please select one from the drop-down list";
-		
-		descriptorsList.put(name,type);
-		return "Added "+name+", "+ type + " to List!";			
-	}
-	
-	//TODO metodo que recupera la lista de descriptores primitivos
-	protected Collection<String> getPrimitiveTypesNames(){
-		if(primitiveTypesNames == null) {
-			primitiveTypesNames = new ArrayList<String>();
-			EEnumImpl enum1 = (EEnumImpl) devsPackage.getEClassifier("Primitive");
-			for(EEnumLiteral e : enum1.getELiterals()) {
-				primitiveTypesNames.add(e.toString());
-			}
-			Collections.sort(primitiveTypesNames, CommonPlugin.INSTANCE.getComparator());
-		}
-		return primitiveTypesNames;
-		
-	}
-	
-	
+
+
+
+
 	/**
 	 * This just records the information.
 	 * <!-- begin-user-doc -->
@@ -387,136 +369,373 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 	}
 	//TODO clase correspondiente a la pagina de descriptores
 	//--------------------------------------------------------------------------------------------------------------------------
-		public class DevsModelWizardNewDescriptorPage extends WizardPage{
+	public class DevsModelWizardNewDescriptorPage extends WizardPage{
 
-			protected Combo primitiveTypeField;
-			protected Text descriptorNameField;
-			protected Button addButton;
-			protected Text debuggingLabel;
-			public DevsModelWizardNewDescriptorPage(String pageId) {
-				super(pageId);
+		protected Combo primitiveTypeField;
+		protected Text descriptorNameField;
+		protected Button addButton;
+		protected Button removeButton;
+		protected Text debuggingLabel;
+		protected Table table;
+		TableColumn column1;
+		TableColumn column2;
+		protected String selection;
+
+		//TODO metodos auxiliares--------------
+
+
+		public void updateTable() {
+			if(descriptorsList.isEmpty())
+				return;
+			table.removeAll();
+			for(Map.Entry<String, String> descriptor : descriptorsList.entrySet()) {
+				TableItem item = new TableItem(table, SWT.NONE);
+				item.setText(0, descriptor.getKey());
+				item.setText(1, descriptor.getValue());
 			}
-
-			public void createControl(Composite parent) {
-				Composite composite = new Composite(parent, SWT.NONE);
-				{
-					GridLayout layout = new GridLayout();
-					layout.numColumns = 1;
-					layout.verticalSpacing = 12;
-					composite.setLayout(layout);
-
-					GridData data = new GridData();
-					data.verticalAlignment = GridData.FILL;
-					data.grabExcessVerticalSpace = true;
-					data.horizontalAlignment = GridData.FILL;
-					composite.setLayoutData(data);
-				}
-				
-				Label descriptorNameLabel = new Label(composite, SWT.NONE);
-				{
-					descriptorNameLabel.setText("Enter a new descriptor name");
-				}
-				
-				 descriptorNameField = new Text(composite, SWT.BORDER);
-				{
-					descriptorNameField.addModifyListener(validator);
-					GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL
-							| GridData.GRAB_HORIZONTAL);
-					descriptorNameField.setLayoutData(data);
-				}
-					
-				
-				Label primitiveLabel = new Label(composite, SWT.LEFT);
-				{
-					primitiveLabel.setText("Select a primitive type");
-					GridData data = new GridData();
-					data.horizontalAlignment = GridData.FILL;
-					primitiveLabel.setLayoutData(data);
-				}
-				primitiveTypeField = new Combo(composite, SWT.BORDER);
-				{
-					GridData data = new GridData();
-					data.horizontalAlignment = GridData.FILL;
-					data.grabExcessHorizontalSpace = true;
-					primitiveTypeField.setLayoutData(data);
-					for (String primitive : getPrimitiveTypesNames()) {
-						primitiveTypeField.add(getLabel(primitive));
-					}
-					primitiveTypeField.addModifyListener(validator);
-				}
-				
-				 debuggingLabel = new Text(composite,SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);{
-				  debuggingLabel.setText("");
-				  GridData data = new GridData(); 
-				  data.widthHint = 100;
-				  data.heightHint = 60;
-				  data.horizontalAlignment = GridData.FILL; 
-				  debuggingLabel.setLayoutData(data);
-					 
-				}
-				
-				addButton = new Button(composite,SWT.PUSH); {
-					addButton.setText("Add");
-					addButton.addSelectionListener(new SelectionAdapter() {
-							@Override
-							public void widgetSelected(SelectionEvent e) {
-								String name = descriptorNameField.getText();
-								String type =  primitiveTypeField.getText();
-								debuggingLabel.append(addPrimitiveDescriptorToList(name,type)+"\n");
-								
-									
-							}
-							});
-					
-				}
-
-				setPageComplete(validatePage());
-				setControl(composite);
-			}
-
-			protected String getLabel(String typeName) {
-				try {
-					return DevsEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-				} catch (MissingResourceException mre) {
-					DevsEditorPlugin.INSTANCE.log(mre);
-				}
-				return typeName;
-			}
-			protected ModifyListener validator = new ModifyListener() {
-				public void modifyText(ModifyEvent e) {
-					setPageComplete(validatePage());
-				}
-			};
-
-			protected boolean validatePage() {
-				return true;
-			}
-
-			@Override
-			public void setVisible(boolean visible) {
-				super.setVisible(visible);
-				if (visible) {
-					if (primitiveTypeField.getItemCount() == 1) {
-						primitiveTypeField.clearSelection();
-					}
-			}
-
-			}
+//			for (TableColumn tc : table.getColumns())
+//				tc.pack();
+			//table.update();
+			//table.redraw();
 		}
+
+		protected String removePrimitiveDescriptorFromList(String name) {
+			if(name == null)
+				return "Please select a descriptor from the table";
+
+			if(name.equals("Sigma"))
+				return "Cannot remove default descriptor Sigma";
+
+			if(name.equals("Phase"))
+				return "Cannot remove default descriptor Phase";
+
+			descriptorsList.remove(name);
+			return name + " descriptor deleted successfully";
+		}
+
+		//TODO metodo que se encarga de agregar los descriptores ingresados por el usuario
+		protected String addPrimitiveDescriptorToList(String name, String type) {
+			if(descriptorsList == null) 
+				descriptorsList = new HashMap<String,String>();
+
+			if(name== null || name.length() == 0)
+				return "Please enter a name";
+			if(type== null || type.length() == 0)
+				return "Please enter a valid type";
+			if(descriptorsList.containsKey(name))
+				return "There is already a descriptor with the same name";
+			if(!getPrimitiveTypesNames().contains(type))
+				return "The type entered is not supported. Please select one from the drop-down list";
+
+			descriptorsList.put(name,type);
+			return "Added "+name+", "+ type + " to List!";			
+		}
+
+		//TODO metodo que recupera la lista de descriptores primitivos
+		protected Collection<String> getPrimitiveTypesNames(){
+			if(primitiveTypesNames == null) {
+				primitiveTypesNames = new ArrayList<String>();
+				EEnumImpl enum1 = (EEnumImpl) devsPackage.getEClassifier("Primitive");
+				for(EEnumLiteral e : enum1.getELiterals()) {
+					primitiveTypesNames.add(e.toString());
+				}
+				Collections.sort(primitiveTypesNames, CommonPlugin.INSTANCE.getComparator());
+			}
+			return primitiveTypesNames;
+
+		}
+
+
+
+		public DevsModelWizardNewDescriptorPage(String pageId) {
+			super(pageId);
+			//				this.setPageComplete(false);
+		}
+
+		public void createControl(Composite parent) {
+			descriptorsList = new HashMap<String,String>();
+			descriptorsList.put("Sigma", "DOUBLE");
+			descriptorsList.put("Phase", "STRING");
+
+			GridData data = new GridData();
+			Composite composite = new Composite(parent, SWT.NONE);
+			{
+				GridLayout layout = new GridLayout();
+				layout.numColumns = 4;
+				layout.verticalSpacing = 12;
+				composite.setLayout(layout);
+
+				data = new GridData();
+				data.verticalAlignment = GridData.FILL;
+				data.grabExcessVerticalSpace = true;
+				data.horizontalAlignment = GridData.FILL;
+				composite.setLayoutData(data);
+				
+
+				
+			}
+
+			//TABLA-----------------------------------------------------------------------------------------------------
+
+			table = new Table(composite, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL | SWT.FULL_SELECTION); { //| SWT.VIRTUAL 
+				table.setLinesVisible(true);
+				table.setHeaderVisible(true);
+				data = new GridData(GridData.FILL, GridData.FILL, true, true);
+				data.heightHint = 200;
+				data.horizontalSpan = 2;
+				data.verticalSpan = 6;
+				table.setLayoutData(data);
+
+				
+				column1 = new TableColumn (table, SWT.NONE);
+				column1.setWidth(100);
+				column1.setText("Name");
+				
+				column2 = new TableColumn (table, SWT.NONE);
+				column2.setWidth(100);
+				column2.setText("Type");
+				
+				this.updateTable();
+				
+				table.addListener(SWT.Selection,  e-> {
+					selection = ((TableItem) e.item).getText(0);
+					System.out.println(selection);
+				});
+
+//				table.addListener(SWT.Resize, e->{
+//					Rectangle area = table.getClientArea();
+//		            int totalAreaWdith = area.width;
+//		            int columnCount =2;
+//		            int lineWidth = table.getGridLineWidth();
+//		            int totalGridLineWidth = (columnCount-1)*lineWidth; 
+//		            int totalColumnWidth = 0;
+//		            for(TableColumn column: table.getColumns())
+//		            {
+//		              totalColumnWidth = totalColumnWidth+column.getWidth();
+//		            }
+//		            int diff = totalAreaWdith-(totalColumnWidth+totalGridLineWidth);
+//
+//		            TableColumn lastCol = table.getColumns()[columnCount-1];
+//
+//		            lastCol.setWidth(diff+lastCol.getWidth());
+//				});
+				
+				
+			}
+
+//			composite.addControlListener(ControlListener.controlResizedAdapter(e -> {
+//				
+//				Rectangle area2 = composite.getClientArea();
+//				Rectangle area = table.getClientArea();
+//				Point size = table.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+//				ScrollBar vBar = table.getVerticalBar();
+//				int width = area.width - table.computeTrim(0, 0, 0, 0).width - vBar.getSize().x;
+//				if (size.y > area.height + table.getHeaderHeight()) {
+//					// Subtract the scrollbar width from the total column width
+//					// if a vertical scrollbar will be required
+//					Point vBarSize = vBar.getSize();
+//					width -= vBarSize.x;
+//				}
+//				Point oldSize = table.getSize();
+//				if (oldSize.x > area.width) {
+//					// table is getting smaller so make the columns
+//					// smaller first and then resize the table to
+//					// match the client area width
+//					column1.setWidth(width / 3);
+//					column2.setWidth(width - column1.getWidth());
+//					table.setSize(area.width, area.height);
+//				} else {
+//					// table is getting bigger so make the table
+//					// bigger first and then make the columns wider
+//					// to match the client area width
+//					table.setSize(area.width, area.height);
+//					column1.setWidth(width / 3);
+//					column2.setWidth(width - column1.getWidth());
+//				}
+//			}));
+
+
+
+			//NOMBRE-----------------------------------------------------------------------------------------------------
+			Label descriptorNameLabel = new Label(composite, SWT.NONE);
+			{
+				data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				descriptorNameLabel.setLayoutData(data);
+
+				descriptorNameLabel.setText("Descriptor name");
+			}
+
+			descriptorNameField = new Text(composite, SWT.BORDER);
+			{
+				data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				descriptorNameField.setLayoutData(data);
+
+
+				descriptorNameField.addModifyListener(validator);
+//				data = new GridData(GridData.HORIZONTAL_ALIGN_FILL
+//						| GridData.GRAB_HORIZONTAL);
+//				descriptorNameField.setLayoutData(data);
+			}
+
+			//TIPO-----------------------------------------------------------------------------------------------------
+			Label primitiveLabel = new Label(composite, SWT.LEFT);
+			{
+				primitiveLabel.setText("Descriptor type");
+				data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				primitiveLabel.setLayoutData(data);
+
+			}
+
+			primitiveTypeField = new Combo(composite, SWT.BORDER);
+			{
+				data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.grabExcessHorizontalSpace = true;
+				primitiveTypeField.setLayoutData(data);
+
+				for (String primitive : getPrimitiveTypesNames()) {
+					primitiveTypeField.add(getLabel2(primitive));
+				}
+				primitiveTypeField.addListener(SWT.KeyUp, e->{
+					if(e.character == SWT.CR)
+						primitiveTypeField.setSelection(primitiveTypeField.getSelection());
+				});
+				primitiveTypeField.addModifyListener(validator);
+			}
+			
+
+			//BOTON AGREGAR-----------------------------------------------------------------------------------------------------
+			addButton = new Button(composite,SWT.PUSH); {
+
+				data = new GridData();
+				data.horizontalAlignment = GridData.FILL;
+				data.horizontalSpan = 2;
+				data.verticalAlignment = GridData.BEGINNING;
+				addButton.setLayoutData(data);
+
+				addButton.setText("Add");
+				addButton.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						String name = descriptorNameField.getText();
+						String type =  primitiveTypeField.getText();
+						debuggingLabel.setText(addPrimitiveDescriptorToList(name,type)+"\n");
+						//								debuggingLabel.append(addPrimitiveDescriptorToList(name,type)+"\n");
+						updateTable();
+
+					}
+				});
+
+			}
+			
+			//BOTON ELIMINAR-----------------------------------------------------------------------------------------------------
+			removeButton = new Button(composite,SWT.PUSH); {
+				data = new GridData();
+				data.horizontalSpan = 2;
+				data.horizontalAlignment = GridData.FILL;
+				removeButton.setLayoutData(data);
+
+				removeButton.setText("Remove selected");
+				removeButton.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						//String name = descriptorNameField.getText();
+						debuggingLabel.setText(removePrimitiveDescriptorFromList(selection));
+						//								debuggingLabel.append(addPrimitiveDescriptorToList(name,type)+"\n");
+						updateTable();
+
+					}
+				});
+
+			}
+			
+			//ESPACIO VACIO----------------------------------------------------------------------------------------------------
+			Label vacio = new Label(composite, SWT.LEFT); {
+				data.horizontalSpan = 2;
+				data.horizontalAlignment = GridData.FILL;
+				data = new GridData();
+				vacio.setLayoutData(data);
+			}
+			
+			
+			//TEXTO DEBUGGING-----------------------------------------------------------------------------------------------------
+			debuggingLabel = new Text(composite,SWT.BORDER | SWT.MULTI);{
+				
+				data.horizontalSpan = 2;
+				data.verticalAlignment = GridData.FILL;
+				data.horizontalAlignment = GridData.FILL; 
+//				data.heightHint = 60;
+				//data.widthHint = 100;
+				debuggingLabel.setLayoutData(data);
+
+				debuggingLabel.setText("");
+				debuggingLabel.setEditable(false);
+
+			}
+
+
+
+
+			setPageComplete(validatePage());
+			setControl(composite);
+		}
+
+		protected String getLabel(String typeName) {
+			try {
+				return DevsEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+			} catch (MissingResourceException mre) {
+				DevsEditorPlugin.INSTANCE.log(mre);
+			}
+			return typeName;
+		}
+
+		//TODO Unas llamadas al metodo de arriba lanzaban excepciones, con este metodo se soluciona
+		protected String getLabel2(String typeName) {
+			try {
+				return DevsEditPlugin.INSTANCE.getString("_UI_Primitive_" + typeName + "_literal");
+			} catch (MissingResourceException mre) {
+				DevsEditorPlugin.INSTANCE.log(mre);
+			}
+			return typeName;
+		}
+		protected ModifyListener validator = new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		};
+
+		protected boolean validatePage() {
+			return true;
+		}
+
+		@Override
+		public void setVisible(boolean visible) {
+			super.setVisible(visible);
+			if (visible) {
+				if (primitiveTypeField.getItemCount() == 1) {
+					primitiveTypeField.clearSelection();
+				}
+			}
+
+		}
+	}
 	//--------------------------------------------------------------------------------------------------------------------------
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * This is the page where the type of object to create is selected.
 	 * <!-- begin-user-doc -->
@@ -639,7 +858,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		 */
 		protected boolean validatePage() {
 			return 
-//					getInitialObjectName() != null && 
+					//					getInitialObjectName() != null && 
 					getEncodings().contains(encodingField.getText());
 		}
 
@@ -661,7 +880,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 					initialObjectField.setFocus();
 				}
 			}
-			*/
+			 */
 		}
 
 		/**
@@ -713,7 +932,7 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 				encodings = new ArrayList<String>();
 				for (StringTokenizer stringTokenizer = new StringTokenizer(
 						DevsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
-								.hasMoreTokens();) {
+						.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -775,15 +994,15 @@ public class DevsModelWizard extends Wizard implements INewWizard {
 		initialObjectCreationPage = new DevsModelWizardInitialObjectCreationPage("Whatever2");
 		initialObjectCreationPage.setTitle(DevsEditorPlugin.INSTANCE.getString("_UI_DevsModelWizard_label"));
 		initialObjectCreationPage
-				.setDescription(DevsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		.setDescription(DevsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
-		
+
 		//TODO las siguientes lineas agregan la pagina de descriptores al wizard
 		newDescriptorPage = new DevsModelWizardNewDescriptorPage("Whatever3");
 		newDescriptorPage.setTitle("Add new descriptor");
 		newDescriptorPage.setDescription("Choose a name and a type and then press the Add button");
 		addPage(newDescriptorPage);
-		
+
 	}
 
 	/**
