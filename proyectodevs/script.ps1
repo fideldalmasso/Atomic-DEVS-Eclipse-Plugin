@@ -1,0 +1,1 @@
+java -cp C:\pruebaplugin\ org.eclipse.core.launcher.Main -data ".\" -application org.eclipse.ant.core.antRunner -buildfile generarPlugins.xml -verbose
