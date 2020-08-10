@@ -22,12 +22,16 @@
     <genClasses ecoreClass="devs.ecore#//AtomicDevs">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/state"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//AtomicDevs/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/inputport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//AtomicDevs/outputport"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//State">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devs.ecore#//State/descriptor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//State/atomicDevs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//State/transitionIn"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//State/transitionOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//State/initialState"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//Descriptor">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Descriptor/name"/>
@@ -56,10 +60,30 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Transition/sourceState"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//InternalTransition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//InternalTransition/outputEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//InternalTransition/output"/>
     </genClasses>
     <genClasses ecoreClass="devs.ecore#//ExternalTransition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//ExternalTransition/event"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//ExternalTransition/input"/>
+    </genClasses>
+    <genClasses ecoreClass="devs.ecore#//InputPort">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//InputPort/input"/>
+    </genClasses>
+    <genClasses ecoreClass="devs.ecore#//OutputPort">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//OutputPort/output"/>
+    </genClasses>
+    <genClasses ecoreClass="devs.ecore#//Input">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Input/externaltransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Input/inputport"/>
+    </genClasses>
+    <genClasses ecoreClass="devs.ecore#//Output">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Output/internaltransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devs.ecore#//Output/outputport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Output/content"/>
+    </genClasses>
+    <genClasses ecoreClass="devs.ecore#//Port">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute devs.ecore#//Port/name"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference devs.ecore#//Port/type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

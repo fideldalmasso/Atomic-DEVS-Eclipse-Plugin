@@ -22,7 +22,13 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" upperBound="-1"
         eType="#//State" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
+        eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputport" lowerBound="1"
+        upperBound="-1" eType="#//InputPort" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputport" lowerBound="1"
+        upperBound="-1" eType="#//OutputPort" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -39,6 +45,8 @@
         eType="#//Transition" eOpposite="#//Transition/targetState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionOut" upperBound="-1"
         eType="#//Transition" eOpposite="#//Transition/sourceState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialState" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Descriptor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -76,15 +84,9 @@
     <eLiterals name="BOOLEAN" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="primitiveValueMatches"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="primitiveValueMatches" value="&#xA;&#x9;&#x9;&#x9;(toBeDefined = false) implies &#xA;&#x9;&#x9;&#x9;(self.descriptor.type.oclIsTypeOf(PrimitiveType)&#xA;&#x9;&#x9;&#x9;&#x9;and (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER implies (self.content.oclIsTypeOf(Integer)))&#xA;&#x9;&#x9;&#x9;&#x9;and (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE implies (self.content.oclIsTypeOf(Real)))&#xA;&#x9;&#x9;&#x9;&#x9;and (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::STRING implies (self.content.oclIsTypeOf(String)))&#xA;&#x9;&#x9;&#x9;&#x9;and (self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN implies (self.content.oclIsTypeOf(Boolean)))&#xA;&#x9;&#x9;&#x9;)"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeDefined" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
         eType="#//Descriptor" eOpposite="#//Descriptor/value"/>
   </eClassifiers>
@@ -100,9 +102,37 @@
         eType="#//State" eOpposite="#//State/transitionOut"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InternalTransition" eSuperTypes="#//Transition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputEvent" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="#//Output" eOpposite="#//Output/internaltransition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalTransition" eSuperTypes="#//Transition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Input"
+        eOpposite="#//Input/externaltransition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="#//Input" eOpposite="#//Input/inputport"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" upperBound="-1"
+        eType="#//Output" eOpposite="#//Output/outputport"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externaltransition" lowerBound="1"
+        eType="#//ExternalTransition" eOpposite="#//ExternalTransition/input"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputport" lowerBound="1"
+        eType="#//InputPort" eOpposite="#//InputPort/input"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Output">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internaltransition" lowerBound="1"
+        eType="#//InternalTransition" eOpposite="#//InternalTransition/output"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputport" lowerBound="1"
+        eType="#//OutputPort" eOpposite="#//OutputPort/output"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
   </eClassifiers>
 </ecore:EPackage>
