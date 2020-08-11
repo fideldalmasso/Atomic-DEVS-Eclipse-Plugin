@@ -12,13 +12,14 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicDevs">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="definitionMustNotHaveValue stateMustHaveValue stateMustMatchDefinition uniqueDefinitionDescriptorNames"/>
+      <details key="constraints" value="definitionMustNotHaveValue stateMustHaveValue stateMustMatchDefinition uniqueDefinitionDescriptorNames compulsoryInitialState"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="definitionMustNotHaveValue" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;forAll(d : Descriptor | d.value.content.oclIsUndefined())"/>
-      <details key="stateMustHaveValue" value="&#xA;&#x9;&#x9;&#x9;self.state -> &#xA;&#x9;&#x9;&#x9;forAll( s: State | s.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(d: Descriptor | not d.value.content.oclIsUndefined()))"/>
+      <details key="stateMustHaveValue" value="&#xA;&#x9;&#x9;&#x9;self.state -> &#xA;&#x9;&#x9;&#x9;forAll( s: State | s.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(d: Descriptor | d.value.infinity = false implies not d.value.content.oclIsUndefined()))"/>
       <details key="stateMustMatchDefinition" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;forAll(d1: Descriptor | self.state ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;forAll(s: State | s.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;one(d2: Descriptor | &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;d1.name = d2.name and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;d1.nature = d2.nature and&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; d1.type = d2.type)))"/>
       <details key="uniqueDefinitionDescriptorNames" value="&#xA;&#x9;&#x9;&#x9;self.definition.descriptor -> &#xA;&#x9;&#x9;&#x9;&#x9;forAll(d1: Descriptor | self.definition.descriptor ->&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;one(d2: Descriptor | d1.name = d2.name))"/>
+      <details key="compulsoryInitialState" value="&#xA;&#x9;&#x9;&#x9;self.state -> one(s:State | s.initialState = true)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" upperBound="-1"
         eType="#//State" containment="true"/>
@@ -84,11 +85,20 @@
     <eLiterals name="BOOLEAN" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="infinityRequiresDoubleType infinityRequiresNoContent"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="infinityRequiresDoubleType" value="&#xA;&#x9;&#x9;self.infinity = true implies&#xA;&#x9;&#x9;(self.descriptor.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE)"/>
+      <details key="infinityRequiresNoContent" value="&#xA;&#x9;&#x9;self.infinity = true implies&#xA;&#x9;&#x9;self.content.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeDefined" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" lowerBound="1"
         eType="#//Descriptor" eOpposite="#//Descriptor/value"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="infinity" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DescriptorNature">
     <eLiterals name="PHASE"/>
@@ -100,6 +110,7 @@
         eType="#//State" eOpposite="#//State/transitionIn"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceState" lowerBound="1"
         eType="#//State" eOpposite="#//State/transitionOut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InternalTransition" eSuperTypes="#//Transition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
@@ -134,5 +145,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
