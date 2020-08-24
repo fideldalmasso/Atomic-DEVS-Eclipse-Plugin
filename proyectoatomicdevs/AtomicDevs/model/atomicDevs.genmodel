@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/AtomicDevs/src-gen" creationIcons="false" editDirectory="/AtomicDevs.edit/src-gen"
+    editorDirectory="/AtomicDevs.editor/src-gen" modelPluginID="AtomicDevs" modelName="AtomicDevs"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>atomicDevs.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="AtomicDevs" disposableProviderFactory="true" ecorePackage="atomicDevs.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="atomicDevs.ecore#//Primitive">
+      <genEnumLiterals ecoreEnumLiteral="atomicDevs.ecore#//Primitive/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="atomicDevs.ecore#//Primitive/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="atomicDevs.ecore#//Primitive/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="atomicDevs.ecore#//Primitive/BOOLEAN"/>
+    </genEnums>
+    <genClasses ecoreClass="atomicDevs.ecore#//AtomicDEVS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//AtomicDEVS/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/definition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/initialization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/statephase"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesOutputPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesInputPort"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//StateStructure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StateStructure/statevariable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//StateVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StateVariable/type"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//PhaseVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//PhaseVariable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//SigmaVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//SigmaVariable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//CustomVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//CustomVariable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Type"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//StatePhase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//StatePhase/variable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StatePhase/transitionIn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StatePhase/transitionOut"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StatePhase/phasevariable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StatePhase/transitiondata"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//PrimitiveType/primitive"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//UserDefinedType"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//InternalTransitionData">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InternalTransitionData/output"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//InitialState">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/value"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Value">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//Value/statevariable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Double">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Double/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//String">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//String/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Boolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Boolean/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//UserDefined">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//UserDefined/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Integer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Integer/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Inifinity"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//Transition"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//Condition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Condition/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//InternalTransition"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//ExternalTransition"/>
+    <genClasses ecoreClass="atomicDevs.ecore#//TransitionData">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/valuedata"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//ExternalTransitionData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//ExternalTransitionData/elapsedTimeVariable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//ExternalTransitionData/input"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Port/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Port/variable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//Port/type"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Output">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Output/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//Output/outputport"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//Input">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//Input/inputport"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//OutputPort">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//OutputPort/output"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//InputPort">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InputPort/input"/>
+    </genClasses>
+    <genClasses ecoreClass="atomicDevs.ecore#//ValueData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//ValueData/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/statevariable"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
