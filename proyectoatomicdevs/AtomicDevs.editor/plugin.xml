@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated atomicDevs -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="atomicDevs.presentation.AtomicDevsModelWizardID"
+            name="%_UI_AtomicDevsModelWizard_label"
+            class="atomicDevs.presentation.AtomicDevsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AtomicDevsModelFile.gif">
+         <description>%_UI_AtomicDevsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated atomicDevs -->
+      <editor
+            id="atomicDevs.presentation.AtomicDevsEditorID"
+            name="%_UI_AtomicDevsEditor_label"
+            icon="icons/full/obj16/AtomicDevsModelFile.gif"
+            extensions="adevs"
+            class="atomicDevs.presentation.AtomicDevsEditor"
+            contributorClass="atomicDevs.presentation.AtomicDevsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
