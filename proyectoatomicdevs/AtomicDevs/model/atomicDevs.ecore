@@ -1,53 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="atomicDevs" nsURI="http://www.example.org/atomicDevs" nsPrefix="atomicDevs">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicDEVS">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueInputPortNames UniqueOutputPortNames"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueInputPortNames" value="&#xA;&#x9;&#x9;self.includesInputPort.name->size() = self.includesInputPort.name->asSet()->size()"/>
+      <details key="UniqueOutputPortNames" value="&#xA;&#x9;&#x9;self.includesOutputPort.name->size() = self.includesOutputPort.name->asSet()->size()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
         eType="#//StateStructure"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialization" lowerBound="1"
-        eType="#//InitialState"/>
+        eType="#//InitialState" eOpposite="#//InitialState/atomicdevs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statephase" lowerBound="1"
-        upperBound="-1" eType="#//StatePhase" containment="true"/>
+        upperBound="-1" eType="#//StatePhase" containment="true" eOpposite="#//StatePhase/atomicdevs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includesOutputPort" upperBound="-1"
         eType="#//OutputPort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includesInputPort" upperBound="-1"
         eType="#//InputPort"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateStructure">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="mustHavePhaseVariable mustHaveSigmaVariable"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="mustHavePhaseVariable" value="&#xA;&#x9;&#x9;self.statevariable->one(s: StateVariable | s.oclIsTypeOf(PhaseVariable))"/>
+      <details key="mustHaveSigmaVariable" value="&#xA;&#x9;&#x9;self.statevariable->one(s: StateVariable | s.oclIsTypeOf(SigmaVariable))"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" lowerBound="2"
         upperBound="-1" eType="#//StateVariable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateVariable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PhaseVariable" eSuperTypes="#//StateVariable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="phase"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsString" value="&#xA;&#x9;&#x9;self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SigmaVariable" eSuperTypes="#//StateVariable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="sigma"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsDouble"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsDouble" value="&#xA;&#x9;&#x9;self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE"/>
+    </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomVariable" eSuperTypes="#//StateVariable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomVariable" eSuperTypes="#//StateVariable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="StatePhase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionIn" upperBound="-1"
-        eType="#//Transition"/>
+        eType="#//Transition" eOpposite="#//Transition/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionOut" upperBound="-1"
-        eType="#//Transition"/>
+        eType="#//Transition" eOpposite="#//Transition/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="phasevariable" lowerBound="1"
         eType="#//PhaseVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transitiondata" lowerBound="1"
-        eType="#//TransitionData" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" lowerBound="1"
+        eType="#//AtomicDEVS" eOpposite="#//AtomicDEVS/statephase"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//Type">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitive" eType="#//Primitive"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitive" lowerBound="1"
+        eType="#//Primitive"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserDefinedType" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UserDefinedType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Primitive">
     <eLiterals name="INTEGER"/>
     <eLiterals name="DOUBLE" value="1"/>
@@ -59,54 +92,116 @@
         eType="#//Output" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitialState">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="everyVariableMustHaveAValue"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="everyVariableMustHaveAValue" value="&#xA;&#x9;&#x9;self.atomicdevs.definition.statevariable->&#xA;&#x9;&#x9;forAll(s: StateVariable | &#xA;&#x9;&#x9;&#x9;self.value->one(v:Value|v.statevariable = s)&#xA;&#x9;&#x9;)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="2" upperBound="-1"
         eType="#//Value" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" lowerBound="1"
+        eType="#//AtomicDEVS" eOpposite="#//AtomicDEVS/initialization"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" lowerBound="1"
         eType="#//StateVariable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Double" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsDouble"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsDouble" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="String" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsString" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Boolean" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsBoolean"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsBoolean" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UserDefined" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsString" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Integer" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsInteger"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsInteger" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Inifinity" eSuperTypes="#//Double"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//StatePhase" eOpposite="#//StatePhase/transitionIn"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//StatePhase" eOpposite="#//StatePhase/transitionOut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitiondata" lowerBound="1"
+        eType="#//TransitionData" containment="true" eOpposite="#//TransitionData/transition"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InternalTransition" eSuperTypes="#//Transition"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalTransition" eSuperTypes="#//Transition"/>
   <eClassifiers xsi:type="ecore:EClass" name="TransitionData">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="everyVariableMustHaveAValueData"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="everyVariableMustHaveAValueData" value="&#xA;&#x9;&#x9;self.transition.source.atomicdevs.definition.statevariable->&#xA;&#x9;&#x9;forAll(s: StateVariable | &#xA;&#x9;&#x9;&#x9;self.valuedata->one(vd:ValueData|vd.statevariable = s)&#xA;&#x9;&#x9;)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
         eType="#//Condition" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="valuedata" lowerBound="2"
-        upperBound="-1" eType="#//ValueData" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuedata" lowerBound="1"
+        upperBound="-1" eType="#//ValueData" containment="true" eOpposite="#//ValueData/transitiondata"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" lowerBound="1"
+        eType="#//Transition" eOpposite="#//Transition/transitiondata"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalTransitionData" eSuperTypes="#//TransitionData">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elapsedTimeVariable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        changeable="false" defaultValueLiteral="e"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elapsedTimeVariable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        defaultValueLiteral="e"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="#//Input"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Port">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Output">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputport" lowerBound="1"
         eType="#//OutputPort" eOpposite="#//OutputPort/output"/>
   </eClassifiers>
@@ -123,7 +218,15 @@
         eType="#//Input" eOpposite="#//Input/inputport"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueData">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="valueMatchesTargetPhaseWhenStateVariableIsPhase"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="valueMatchesTargetPhaseWhenStateVariableIsPhase" value="&#xA;&#x9;&#x9;self.statevariable.name='phase' implies &#xA;&#x9;&#x9;self.value = self.transitiondata.transition.target.value"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" eType="#//StateVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitiondata" lowerBound="1"
+        eType="#//TransitionData" eOpposite="#//TransitionData/valuedata"/>
   </eClassifiers>
 </ecore:EPackage>
