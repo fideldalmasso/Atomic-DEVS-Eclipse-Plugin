@@ -43,9 +43,10 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.pages.InputPortRegister;
 import atomicDevs.pages.Message;
-import atomicDevs.pages.Page01;
-import atomicDevs.pages.Page04;
+import atomicDevs.pages.OutputPortRegister;
+import atomicDevs.pages.*;
 import atomicDevs.pages.StateVariableRegister;
 import atomicDevs.pages.Utilities;
 
@@ -62,10 +63,14 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 
 	public static String modelName = "NewModel";
 	public static List<String> validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
-	public static Map<String,String> inputPorts; //name, types
-	public static Map<String,String> outputPorts; //name, type	
-	public static List<StateVariableRegister> stateVariables; //name, type
+//	public static Map<String,String> inputPorts = new LinkedHashMap<String,String>(); //name, types
+//	public static Map<String,String> outputPorts= new LinkedHashMap<String,String>(); //name, type	
+	public static List<InputPortRegister> inputPorts = new ArrayList<InputPortRegister>();
+	public static List<OutputPortRegister> outputPorts = new ArrayList<OutputPortRegister>();
+	public static List<StateVariableRegister> stateVariables = new ArrayList<StateVariableRegister>();
 	protected Page01 page01;
+	protected Page02 page02;
+	protected Page03 page03;
 	protected Page04 page04;
 	
 	/**
@@ -578,6 +583,9 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
+		
+		
+		
 		page01 = new Page01("Whatever", selection);
 		addPage(page01);
 
@@ -616,7 +624,11 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			}
 		}
 		
-		page04 = new Page04("Whatever");
+		page02 = new Page02("Whatever02");
+		addPage(page02);
+		page03 = new Page03("Whatever03");
+		addPage(page03);
+		page04 = new Page04("Whatever04");
 		addPage(page04);
 	}
 

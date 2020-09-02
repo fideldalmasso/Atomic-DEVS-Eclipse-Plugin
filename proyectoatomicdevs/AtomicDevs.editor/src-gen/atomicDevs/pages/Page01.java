@@ -42,7 +42,7 @@ public class Page01 extends WizardNewFileCreationPage {
 			}
 			//TODO guardo el nombre del modelo en modelName
 			AtomicDevsModelWizard.modelName = getFileName().substring(0,getFileName().length()-6);
-			System.out.println(AtomicDevsModelWizard.modelName);
+//			System.out.println(AtomicDevsModelWizard.modelName);
 			return true;
 		}
 		return false;

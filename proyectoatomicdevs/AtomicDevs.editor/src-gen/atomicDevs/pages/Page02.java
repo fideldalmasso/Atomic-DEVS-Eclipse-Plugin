@@ -24,13 +24,13 @@ import org.eclipse.swt.widgets.Text;
 
 import atomicDevs.presentation.AtomicDevsModelWizard;
 
-public class Page04 extends WizardPage{
+public class Page02 extends WizardPage{
 
 
-	public Page04(String pageId) {
+	public Page02(String pageId) {
 		super(pageId);
 		
-		this.setTitle("Add new State Variables");
+		this.setTitle("Add new Input Ports");
 		this.setDescription("Choose a name and a type and then press the Add button");
 		
 	}
@@ -48,8 +48,6 @@ public class Page04 extends WizardPage{
 
 	public void createControl(Composite parent) {
 		
-		this.addNewStateVariable("Sigma","DOUBLE");
-		this.addNewStateVariable("Phase","STRING");
 
 		GridData data = new GridData();
 		composite = new Composite(parent, SWT.NONE);
@@ -97,13 +95,15 @@ public class Page04 extends WizardPage{
 			table.addListener(SWT.MouseDown,  e-> {
 				Point pt = new Point(e.x,e.y);
 				TableItem selectedItem = table.getItem(pt);
+				
+				if(selectedItem == null)
+					return;
 				Rectangle rect = selectedItem.getBounds(2);
 				
 				if(rect.contains(pt)) {
 					int index = table.indexOf(selectedItem);
-					StateVariableRegister temp = AtomicDevsModelWizard.stateVariables.get(index);
-					
-					Message m = removeStateVariable(temp);
+					InputPortRegister temp = AtomicDevsModelWizard.inputPorts.get(index);
+					Message m = removeInputPort(temp);
 					if(m.success()) 
 						updateTable();
 					else 
@@ -122,7 +122,7 @@ public class Page04 extends WizardPage{
 			data.horizontalAlignment = GridData.FILL;
 			nameLabel.setLayoutData(data);
 
-			nameLabel.setText("Variable name");
+			nameLabel.setText("Input Port name");
 		}
 
 		nameField = new Text(composite, SWT.BORDER);
@@ -197,9 +197,10 @@ public class Page04 extends WizardPage{
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					
 					String name = nameField.getText();
 					String type =  typesCombo.getText();
-					Message m = addNewStateVariable(name,type);
+					Message m = addNewInputPort(name,type);
 					if(m.success())
 						updateTable();
 					else
@@ -217,17 +218,14 @@ public class Page04 extends WizardPage{
 	
 	//METODOS AUXILIARES----------------------------------------------------------------------------------------------------
 	public void updateTable() {
-		
+
 		if(table.getItemCount()>0)
 			table.removeAll();
 		
-		if(AtomicDevsModelWizard.stateVariables.isEmpty())
+		if(AtomicDevsModelWizard.inputPorts.isEmpty())
 			return;
 
-		table.removeAll();
-		
-		
-		for(StateVariableRegister s : AtomicDevsModelWizard.stateVariables) {
+		for(InputPortRegister s : AtomicDevsModelWizard.inputPorts) {
 			
 			TableItem item = new TableItem(table, SWT.NONE);
 			item.setText(0, s.name);
@@ -248,27 +246,21 @@ public class Page04 extends WizardPage{
 		typesCombo.add("Add custom type...");
 	}
 
-	protected Message removeStateVariable(StateVariableRegister s) {
-		if(s.name == null)
-			return new Message(false,"Please select a variable from the table");
-
-		if(s.name.equals("Sigma"))
-			return new Message(false, "Cannot remove default variable Sigma");
-
-		if(s.name.equals("Phase"))
-			return new Message(false, "Cannot remove default variable Phase");
-
-		String name = s.name;
-		AtomicDevsModelWizard.stateVariables.remove(s);
+	protected Message removeInputPort(InputPortRegister p) {
+		if(p.name == null)
+			return new Message(false,"Please select an Input Port from the table");
 		
-		return new Message(true, name + " variable deleted successfully");
+		String name = p.name;
+		AtomicDevsModelWizard.inputPorts.remove(p);
+			
+		return new Message(true, name + " Input Port deleted successfully");
 	}
 
-	//TODO metodo que se encarga de agregar las variables ingresados por el usuario
+	//TODO metodo que se encarga de agregar los descriptores ingresados por el usuario
 	
-	protected Message addNewStateVariable(String name, String type) {
-		if(AtomicDevsModelWizard.stateVariables == null) 
-			AtomicDevsModelWizard.stateVariables = new ArrayList<StateVariableRegister>();
+	protected Message addNewInputPort(String name, String type) {
+		if(AtomicDevsModelWizard.inputPorts == null) 
+			AtomicDevsModelWizard.inputPorts = new ArrayList<InputPortRegister>();
 
 		if(name== null || name.length() == 0)
 			return new Message(false,"Please enter a name");
@@ -279,13 +271,13 @@ public class Page04 extends WizardPage{
 		if(type== null || type.length() == 0)
 			return new Message(false,"Please select a valid type");
 		
-		if(AtomicDevsModelWizard.stateVariables.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
-			return new Message(false,"There is already a State Variable called "+name);
+		if(AtomicDevsModelWizard.inputPorts.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
+			return new Message(false,"There is already an Input Port called "+name);
 		
 		if(!AtomicDevsModelWizard.validTypes.contains(type))
 			return new Message(false,"The type entered is not supported. Please select one from the drop-down list");
 
-		AtomicDevsModelWizard.stateVariables.add(new StateVariableRegister(name,type));
+		AtomicDevsModelWizard.inputPorts.add(new InputPortRegister(name,type));
 		return new Message(true,"Added "+name+", "+ type);			
 	}
 	
