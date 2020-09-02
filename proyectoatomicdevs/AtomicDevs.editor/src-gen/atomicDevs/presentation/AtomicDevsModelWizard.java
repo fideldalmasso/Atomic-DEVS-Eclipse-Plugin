@@ -9,78 +9,45 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.StringTokenizer;
-
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
-
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardPage;
-
-import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
-
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.provider.AtomicDevsEditPlugin;
-
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
+import atomicDevs.pages.Message;
+import atomicDevs.pages.Page01;
+import atomicDevs.pages.Page04;
+import atomicDevs.pages.StateVariableRegister;
+import atomicDevs.pages.Utilities;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -90,22 +57,20 @@ import org.eclipse.ui.PartInitException;
  */
 public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	
-	class StateVariable{
-		String name;
-		String type;
-		String initialValue;
-	}
-	
+
 	//TODO variables propias
-	protected String modelName = "NewModel";
-	protected List<String> validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
-	protected Map<String,String> inputPorts; //name, type
-	protected Map<String,String> outputPorts; //name, type	
-	protected List<StateVariable> stateVariables = new ArrayList<StateVariable>(); //name, type
+
+	public static String modelName = "NewModel";
+	public static List<String> validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
+	public static Map<String,String> inputPorts; //name, types
+	public static Map<String,String> outputPorts; //name, type	
+	public static List<StateVariableRegister> stateVariables; //name, type
+	protected Page01 page01;
+	protected Page04 page04;
 	
 	/**
 	 * The supported extensions for created files.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->s
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -143,7 +108,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AtomicDevsModelWizardNewFileCreationPage newFileCreationPage;
+	
 
 	/**
 	 * This is the initial object creation page.
@@ -183,6 +148,30 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	
+	public static Message addNewType() {
+		
+		String input = Utilities.newInputDialog("New State Variable type...", "Enter a new type name", "newTypeName");
+		
+		if(input.equals("closedWindow"))
+			return new Message(true,"Closed window");
+		
+		if (input==null || input.length()==0)
+			return new Message(false, "Please enter a new type name");
+		
+		if(input.contains(" "))
+			return new Message(false, "The name must not contain whitespaces");
+		
+		input = input.toUpperCase();
+		
+		if(validTypes.contains(input))
+			return new Message(false, "The type "+input+" already exists");
+		
+		validTypes.add(input);
+		return new Message(true,"Added type "+ input);
+	}
+	
+	
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
@@ -269,7 +258,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 						//
 						Map<Object, Object> options = new HashMap<Object, Object>();
 						
-						//TODO falsea la seleccion de encoding
+						//TODO seleccion de encoding automatica
 						//options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
 						options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 						
@@ -324,57 +313,57 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class AtomicDevsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
-		/**
-		 * Pass in the selection.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public AtomicDevsModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
-			super(pageId, selection);
-		}
+//	public class AtomicDevsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+//		/**
+//		 * Pass in the selection.
+//		 * <!-- begin-user-doc -->
+//		 * <!-- end-user-doc -->
+//		 * @generated
+//		 */
+//		public AtomicDevsModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+//			super(pageId, selection);
+//		}
+//
+//		/**
+//		 * The framework calls this to see if the file is correct.
+//		 * <!-- begin-user-doc -->
+//		 * <!-- end-user-doc -->
+//		 * @generated
+//		 */
+//		@Override
+//		protected boolean validatePage() {
+//			if (super.validatePage()) {
+//				String extension = new Path(getFileName()).getFileExtension();
+//				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+//					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+//					setErrorMessage(
+//							AtomicDevsEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
+//					return false;
+//				}
+//				//TODO guardo el nombre del modelo en modelName
+//				modelName = getFileName().substring(0,getFileName().length()-6);
+//				System.out.println(modelName);
+//				return true;
+//			}
+//			return false;
+//		}
+//
+//		/**
+//		 * <!-- begin-user-doc -->
+//		 * <!-- end-user-doc -->
+//		 * @generated
+//		 */
+//		public IFile getModelFile() {
+//			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+//		}
+//	}
 
-		/**
-		 * The framework calls this to see if the file is correct.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		@Override
-		protected boolean validatePage() {
-			if (super.validatePage()) {
-				String extension = new Path(getFileName()).getFileExtension();
-				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(
-							AtomicDevsEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
-					return false;
-				}
-				//TODO guardo el nombre del modelo en modelName
-				modelName = getFileName().substring(0,getFileName().length()-6);
-				System.out.println(modelName);
-				return true;
-			}
-			return false;
-		}
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
-		}
-	}
-
-	/**
-	 * This is the page where the type of object to create is selected.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+//	/**
+//	 * This is the page where the type of object to create is selected.
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated
+//	 */
 //	public class AtomicDevsModelWizardInitialObjectCreationPage extends WizardPage {
 //		/**
 //		 * <!-- begin-user-doc -->
@@ -589,14 +578,8 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new AtomicDevsModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_AtomicDevsModelWizard_label"));
-		newFileCreationPage
-				.setDescription(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_AtomicDevsModelWizard_description"));
-		newFileCreationPage
-				.setFileName(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_AtomicDevsEditorFilenameDefaultBase") + "."
-						+ FILE_EXTENSIONS.get(0));
-		addPage(newFileCreationPage);
+		page01 = new Page01("Whatever", selection);
+		addPage(page01);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
 		//
@@ -617,7 +600,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 				if (selectedResource instanceof IFolder || selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
-					newFileCreationPage.setContainerFullPath(selectedResource.getFullPath());
+					page01.setContainerFullPath(selectedResource.getFullPath());
 
 					// Make up a unique new name here.
 					//
@@ -628,16 +611,13 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
 					}
-					newFileCreationPage.setFileName(modelFilename);
+					page01.setFileName(modelFilename);
 				}
 			}
 		}
-//		initialObjectCreationPage = new AtomicDevsModelWizardInitialObjectCreationPage("Whatever2");
-//		initialObjectCreationPage
-//				.setTitle(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_AtomicDevsModelWizard_label"));
-//		initialObjectCreationPage
-//				.setDescription(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
-//		addPage(initialObjectCreationPage);
+		
+		page04 = new Page04("Whatever");
+		addPage(page04);
 	}
 
 	/**
@@ -647,7 +627,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public IFile getModelFile() {
-		return newFileCreationPage.getModelFile();
+		return page01.getModelFile();
 	}
 
 }
