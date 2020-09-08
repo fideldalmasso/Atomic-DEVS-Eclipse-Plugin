@@ -7,10 +7,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -55,7 +53,6 @@ import atomicDevs.PhaseVariable;
 import atomicDevs.Primitive;
 import atomicDevs.PrimitiveType;
 import atomicDevs.SigmaVariable;
-import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
 import atomicDevs.StateVariable;
 import atomicDevs.UserDefinedType;
@@ -85,7 +82,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 
 	public static String modelName = "NewModel";
 	public static List<String> validTypes;
-	public static Set<String> usedTypes;
+//	public static Set<String> usedTypes;
 	public static List<InputPortRegister> inputPorts;
 	public static List<OutputPortRegister> outputPorts;
 	public static List<StateVariableRegister> stateVariables;
@@ -281,18 +278,18 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
 		userTypes = new ArrayList<UserDefinedType>();
 		
-		usedTypes = new HashSet<String>();
+//		usedTypes = new HashSet<String>();
+//		
+//		
+//		for(StateVariableRegister s : stateVariables)
+//			usedTypes.add(s.type);
+//		for(InputPortRegister p : inputPorts)
+//			usedTypes.add(p.type);
+//		for(OutputPortRegister p : outputPorts)
+//			usedTypes.add(p.type);
 		
 		
-		for(StateVariableRegister s : stateVariables)
-			usedTypes.add(s.type);
-		for(InputPortRegister p : inputPorts)
-			usedTypes.add(p.type);
-		for(OutputPortRegister p : outputPorts)
-			usedTypes.add(p.type);
-		
-		
-		for(String t : usedTypes) {
+		for(String t : validTypes) {
 			
 			if(t.equals("INTEGER") || t.equals("DOUBLE")|| t.equals("BOOLEAN")|| t.equals("STRING")) {
 				atomicDevs.PrimitiveType typeTemp;
