@@ -9,7 +9,7 @@ import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -122,8 +122,8 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createUserDefined();
 		case AtomicDevsPackage.INTEGER:
 			return createInteger();
-		case AtomicDevsPackage.INIFINITY:
-			return createInifinity();
+		case AtomicDevsPackage.INFINITY:
+			return createInfinity();
 		case AtomicDevsPackage.TRANSITION:
 			return createTransition();
 		case AtomicDevsPackage.CONDITION:
@@ -387,9 +387,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public Inifinity createInifinity() {
-		InifinityImpl inifinity = new InifinityImpl();
-		return inifinity;
+	public Infinity createInfinity() {
+		InfinityImpl infinity = new InfinityImpl();
+		return infinity;
 	}
 
 	/**

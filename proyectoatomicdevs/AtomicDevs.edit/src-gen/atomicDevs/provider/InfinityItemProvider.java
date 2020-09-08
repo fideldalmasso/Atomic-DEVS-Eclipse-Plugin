@@ -2,7 +2,7 @@
  */
 package atomicDevs.provider;
 
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,19 +13,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.Inifinity} object.
+ * This is the item provider adapter for a {@link atomicDevs.Infinity} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InifinityItemProvider extends DoubleItemProvider {
+public class InfinityItemProvider extends DoubleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InifinityItemProvider(AdapterFactory adapterFactory) {
+	public InfinityItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,14 +45,14 @@ public class InifinityItemProvider extends DoubleItemProvider {
 	}
 
 	/**
-	 * This returns Inifinity.gif.
+	 * This returns Infinity.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Inifinity"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Infinity"));
 	}
 
 	/**
@@ -73,8 +73,8 @@ public class InifinityItemProvider extends DoubleItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Inifinity inifinity = (Inifinity) object;
-		return getString("_UI_Inifinity_type") + " " + inifinity.getVariable();
+		Infinity infinity = (Infinity) object;
+		return getString("_UI_Infinity_type") + " " + infinity.getVariable();
 	}
 
 	/**

@@ -64,7 +64,7 @@ public class ExternalTransitionDataItemProvider extends TransitionDataItemProvid
 				getString("_UI_ExternalTransitionData_elapsedTimeVariable_feature"),
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_ExternalTransitionData_elapsedTimeVariable_feature", "_UI_ExternalTransitionData_type"),
-				AtomicDevsPackage.Literals.EXTERNAL_TRANSITION_DATA__ELAPSED_TIME_VARIABLE, true, false, false,
+				AtomicDevsPackage.Literals.EXTERNAL_TRANSITION_DATA__ELAPSED_TIME_VARIABLE, false, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

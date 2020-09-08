@@ -487,26 +487,26 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Inifinity} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.Infinity} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InifinityItemProvider inifinityItemProvider;
+	protected InfinityItemProvider infinityItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.Inifinity}.
+	 * This creates an adapter for a {@link atomicDevs.Infinity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInifinityAdapter() {
-		if (inifinityItemProvider == null) {
-			inifinityItemProvider = new InifinityItemProvider(this);
+	public Adapter createInfinityAdapter() {
+		if (infinityItemProvider == null) {
+			infinityItemProvider = new InfinityItemProvider(this);
 		}
 
-		return inifinityItemProvider;
+		return infinityItemProvider;
 	}
 
 	/**
@@ -926,8 +926,8 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			userDefinedItemProvider.dispose();
 		if (integerItemProvider != null)
 			integerItemProvider.dispose();
-		if (inifinityItemProvider != null)
-			inifinityItemProvider.dispose();
+		if (infinityItemProvider != null)
+			infinityItemProvider.dispose();
 		if (transitionItemProvider != null)
 			transitionItemProvider.dispose();
 		if (conditionItemProvider != null)

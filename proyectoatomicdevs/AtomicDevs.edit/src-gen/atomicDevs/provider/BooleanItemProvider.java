@@ -60,7 +60,7 @@ public class BooleanItemProvider extends ValueItemProvider {
 						getResourceLocator(), getString("_UI_Boolean_variable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Boolean_variable_feature",
 								"_UI_Boolean_type"),
-						AtomicDevsPackage.Literals.BOOLEAN__VARIABLE, true, false, false,
+						AtomicDevsPackage.Literals.BOOLEAN__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 

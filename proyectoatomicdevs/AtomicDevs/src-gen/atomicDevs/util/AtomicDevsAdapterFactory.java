@@ -8,7 +8,7 @@ import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -184,8 +184,8 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseInifinity(Inifinity object) {
-			return createInifinityAdapter();
+		public Adapter caseInfinity(Infinity object) {
+			return createInfinityAdapter();
 		}
 
 		@Override
@@ -520,16 +520,16 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.Inifinity <em>Inifinity</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.Infinity <em>Infinity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.Inifinity
+	 * @see atomicDevs.Infinity
 	 * @generated
 	 */
-	public Adapter createInifinityAdapter() {
+	public Adapter createInfinityAdapter() {
 		return null;
 	}
 

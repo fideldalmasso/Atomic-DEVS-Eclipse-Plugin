@@ -93,7 +93,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_AtomicDEVS_definition_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_definition_feature",
 								"_UI_AtomicDEVS_type"),
-						AtomicDevsPackage.Literals.ATOMIC_DEVS__DEFINITION, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__DEFINITION, false, false, true, null, null, null));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_AtomicDEVS_initialization_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_initialization_feature",
 								"_UI_AtomicDEVS_type"),
-						AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALIZATION, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALIZATION, false, false, true, null, null, null));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_AtomicDEVS_includesOutputPort_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_includesOutputPort_feature",
 								"_UI_AtomicDEVS_type"),
-						AtomicDevsPackage.Literals.ATOMIC_DEVS__INCLUDES_OUTPUT_PORT, true, false, true, null, null,
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__INCLUDES_OUTPUT_PORT, false, false, true, null, null,
 						null));
 	}
 
@@ -139,7 +139,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_AtomicDEVS_includesInputPort_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_includesInputPort_feature",
 								"_UI_AtomicDEVS_type"),
-						AtomicDevsPackage.Literals.ATOMIC_DEVS__INCLUDES_INPUT_PORT, true, false, true, null, null,
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__INCLUDES_INPUT_PORT, false, false, true, null, null,
 						null));
 	}
 

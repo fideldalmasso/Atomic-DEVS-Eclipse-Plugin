@@ -8,7 +8,7 @@ import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -151,8 +151,8 @@ public class AtomicDevsValidator extends EObjectValidator {
 			return validateUserDefined((UserDefined) value, diagnostics, context);
 		case AtomicDevsPackage.INTEGER:
 			return validateInteger((atomicDevs.Integer) value, diagnostics, context);
-		case AtomicDevsPackage.INIFINITY:
-			return validateInifinity((Inifinity) value, diagnostics, context);
+		case AtomicDevsPackage.INFINITY:
+			return validateInfinity((Infinity) value, diagnostics, context);
 		case AtomicDevsPackage.TRANSITION:
 			return validateTransition((Transition) value, diagnostics, context);
 		case AtomicDevsPackage.CONDITION:
@@ -369,6 +369,8 @@ public class AtomicDevsValidator extends EObjectValidator {
 			result &= validate_EveryMapEntryUnique(phaseVariable, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePhaseVariable_typeIsString(phaseVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validatePhaseVariable_nameIsPhase(phaseVariable, diagnostics, context);
 		return result;
 	}
 
@@ -392,6 +394,27 @@ public class AtomicDevsValidator extends EObjectValidator {
 		return validate(AtomicDevsPackage.Literals.PHASE_VARIABLE, phaseVariable, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString",
 				PHASE_VARIABLE__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the nameIsPhase constraint of '<em>Phase Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String PHASE_VARIABLE__NAME_IS_PHASE__EEXPRESSION = "\n" + "\t\tself.name = 'Phase'";
+
+	/**
+	 * Validates the nameIsPhase constraint of '<em>Phase Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePhaseVariable_nameIsPhase(PhaseVariable phaseVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.PHASE_VARIABLE, phaseVariable, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "nameIsPhase",
+				PHASE_VARIABLE__NAME_IS_PHASE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -420,6 +443,8 @@ public class AtomicDevsValidator extends EObjectValidator {
 			result &= validate_EveryMapEntryUnique(sigmaVariable, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateSigmaVariable_typeIsDouble(sigmaVariable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateSigmaVariable_nameIsSigma(sigmaVariable, diagnostics, context);
 		return result;
 	}
 
@@ -443,6 +468,27 @@ public class AtomicDevsValidator extends EObjectValidator {
 		return validate(AtomicDevsPackage.Literals.SIGMA_VARIABLE, sigmaVariable, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsDouble",
 				SIGMA_VARIABLE__TYPE_IS_DOUBLE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * The cached validation expression for the nameIsSigma constraint of '<em>Sigma Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String SIGMA_VARIABLE__NAME_IS_SIGMA__EEXPRESSION = "\n" + "\t\tself.name = 'Sigma'";
+
+	/**
+	 * Validates the nameIsSigma constraint of '<em>Sigma Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSigmaVariable_nameIsSigma(SigmaVariable sigmaVariable, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.SIGMA_VARIABLE, sigmaVariable, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "nameIsSigma",
+				SIGMA_VARIABLE__NAME_IS_SIGMA__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -837,26 +883,26 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInifinity(Inifinity inifinity, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(inifinity, diagnostics, context))
+	public boolean validateInfinity(Infinity infinity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(infinity, diagnostics, context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(inifinity, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(inifinity, diagnostics, context);
+			result &= validate_EveryDataValueConforms(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(inifinity, diagnostics, context);
+			result &= validate_EveryReferenceIsContained(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(inifinity, diagnostics, context);
+			result &= validate_EveryBidirectionalReferenceIsPaired(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(inifinity, diagnostics, context);
+			result &= validate_EveryProxyResolves(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_UniqueID(inifinity, diagnostics, context);
+			result &= validate_UniqueID(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(inifinity, diagnostics, context);
+			result &= validate_EveryKeyUnique(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(inifinity, diagnostics, context);
+			result &= validate_EveryMapEntryUnique(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDouble_typeIsDouble(inifinity, diagnostics, context);
+			result &= validateDouble_typeIsDouble(infinity, diagnostics, context);
 		return result;
 	}
 

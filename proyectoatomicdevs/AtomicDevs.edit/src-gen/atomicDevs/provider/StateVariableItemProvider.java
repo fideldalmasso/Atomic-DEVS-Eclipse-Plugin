@@ -71,7 +71,7 @@ public class StateVariableItemProvider extends ItemProviderAdapter implements IE
 						getResourceLocator(), getString("_UI_StateVariable_type_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_StateVariable_type_feature",
 								"_UI_StateVariable_type"),
-						AtomicDevsPackage.Literals.STATE_VARIABLE__TYPE, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.STATE_VARIABLE__TYPE, false, false, true, null, null, null));
 	}
 
 	/**

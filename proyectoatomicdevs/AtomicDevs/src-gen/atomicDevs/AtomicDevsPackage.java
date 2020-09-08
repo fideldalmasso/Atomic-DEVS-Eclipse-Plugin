@@ -972,14 +972,14 @@ public interface AtomicDevsPackage extends EPackage {
 	int INTEGER_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.InifinityImpl <em>Inifinity</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.InfinityImpl <em>Infinity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.InifinityImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInifinity()
+	 * @see atomicDevs.impl.InfinityImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInfinity()
 	 * @generated
 	 */
-	int INIFINITY = 18;
+	int INFINITY = 18;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -988,7 +988,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INIFINITY__STATEVARIABLE = DOUBLE__STATEVARIABLE;
+	int INFINITY__STATEVARIABLE = DOUBLE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -997,25 +997,25 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INIFINITY__VARIABLE = DOUBLE__VARIABLE;
+	int INFINITY__VARIABLE = DOUBLE__VARIABLE;
 
 	/**
-	 * The number of structural features of the '<em>Inifinity</em>' class.
+	 * The number of structural features of the '<em>Infinity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INIFINITY_FEATURE_COUNT = DOUBLE_FEATURE_COUNT + 0;
+	int INFINITY_FEATURE_COUNT = DOUBLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Inifinity</em>' class.
+	 * The number of operations of the '<em>Infinity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INIFINITY_OPERATION_COUNT = DOUBLE_OPERATION_COUNT + 0;
+	int INFINITY_OPERATION_COUNT = DOUBLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link atomicDevs.impl.TransitionImpl <em>Transition</em>}' class.
@@ -2079,14 +2079,14 @@ public interface AtomicDevsPackage extends EPackage {
 	EAttribute getInteger_Variable();
 
 	/**
-	 * Returns the meta object for class '{@link atomicDevs.Inifinity <em>Inifinity</em>}'.
+	 * Returns the meta object for class '{@link atomicDevs.Infinity <em>Infinity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Inifinity</em>'.
-	 * @see atomicDevs.Inifinity
+	 * @return the meta object for class '<em>Infinity</em>'.
+	 * @see atomicDevs.Infinity
 	 * @generated
 	 */
-	EClass getInifinity();
+	EClass getInfinity();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Transition <em>Transition</em>}'.
@@ -2842,14 +2842,14 @@ public interface AtomicDevsPackage extends EPackage {
 		EAttribute INTEGER__VARIABLE = eINSTANCE.getInteger_Variable();
 
 		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.InifinityImpl <em>Inifinity</em>}' class.
+		 * The meta object literal for the '{@link atomicDevs.impl.InfinityImpl <em>Infinity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.InifinityImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInifinity()
+		 * @see atomicDevs.impl.InfinityImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInfinity()
 		 * @generated
 		 */
-		EClass INIFINITY = eINSTANCE.getInifinity();
+		EClass INFINITY = eINSTANCE.getInfinity();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.TransitionImpl <em>Transition</em>}' class.

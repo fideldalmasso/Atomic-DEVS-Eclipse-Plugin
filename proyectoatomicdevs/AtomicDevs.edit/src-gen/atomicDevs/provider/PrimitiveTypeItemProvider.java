@@ -62,7 +62,7 @@ public class PrimitiveTypeItemProvider extends TypeItemProvider {
 						getResourceLocator(), getString("_UI_PrimitiveType_primitive_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_PrimitiveType_primitive_feature",
 								"_UI_PrimitiveType_type"),
-						AtomicDevsPackage.Literals.PRIMITIVE_TYPE__PRIMITIVE, true, false, false,
+						AtomicDevsPackage.Literals.PRIMITIVE_TYPE__PRIMITIVE, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

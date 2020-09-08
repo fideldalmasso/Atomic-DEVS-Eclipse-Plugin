@@ -186,7 +186,7 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 				AtomicDevsFactory.eINSTANCE.createInteger()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createInifinity()));
+				AtomicDevsFactory.eINSTANCE.createInfinity()));
 	}
 
 	/**

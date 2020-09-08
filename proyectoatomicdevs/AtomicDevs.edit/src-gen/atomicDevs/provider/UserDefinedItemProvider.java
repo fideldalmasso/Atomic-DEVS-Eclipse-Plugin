@@ -61,7 +61,7 @@ public class UserDefinedItemProvider extends ValueItemProvider {
 						getResourceLocator(), getString("_UI_UserDefined_variable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_UserDefined_variable_feature",
 								"_UI_UserDefined_type"),
-						AtomicDevsPackage.Literals.USER_DEFINED__VARIABLE, true, false, false,
+						AtomicDevsPackage.Literals.USER_DEFINED__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

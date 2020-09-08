@@ -101,7 +101,7 @@ public class PortItemProvider extends ItemProviderAdapter implements IEditingDom
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 						getResourceLocator(), getString("_UI_Port_type_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Port_type_feature", "_UI_Port_type"),
-						AtomicDevsPackage.Literals.PORT__TYPE, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.PORT__TYPE, false, false, true, null, null, null));
 	}
 
 	/**

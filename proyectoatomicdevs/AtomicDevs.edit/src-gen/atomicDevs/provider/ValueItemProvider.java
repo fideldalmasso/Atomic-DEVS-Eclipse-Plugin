@@ -67,7 +67,7 @@ public class ValueItemProvider extends ItemProviderAdapter implements IEditingDo
 						getResourceLocator(), getString("_UI_Value_statevariable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Value_statevariable_feature",
 								"_UI_Value_type"),
-						AtomicDevsPackage.Literals.VALUE__STATEVARIABLE, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.VALUE__STATEVARIABLE, false, false, true, null, null, null));
 	}
 
 	/**

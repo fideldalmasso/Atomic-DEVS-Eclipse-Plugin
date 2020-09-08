@@ -60,7 +60,7 @@ public class DoubleItemProvider extends ValueItemProvider {
 						getResourceLocator(), getString("_UI_Double_variable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Double_variable_feature",
 								"_UI_Double_type"),
-						AtomicDevsPackage.Literals.DOUBLE__VARIABLE, true, false, false,
+						AtomicDevsPackage.Literals.DOUBLE__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 

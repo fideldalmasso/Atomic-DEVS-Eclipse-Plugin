@@ -184,13 +184,13 @@ public interface AtomicDevsFactory extends EFactory {
 	Integer createInteger();
 
 	/**
-	 * Returns a new object of class '<em>Inifinity</em>'.
+	 * Returns a new object of class '<em>Infinity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inifinity</em>'.
+	 * @return a new object of class '<em>Infinity</em>'.
 	 * @generated
 	 */
-	Inifinity createInifinity();
+	Infinity createInfinity();
 
 	/**
 	 * Returns a new object of class '<em>Transition</em>'.

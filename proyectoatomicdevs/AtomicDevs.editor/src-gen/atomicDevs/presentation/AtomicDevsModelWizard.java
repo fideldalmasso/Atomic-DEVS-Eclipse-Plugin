@@ -339,7 +339,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 					Double valueTemp;
 					atomicDevs.Double valueObject2;
 					if(v.value.equals("infinity")) {
-						valueObject2 = (atomicDevs.Inifinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Inifinity"));
+						valueObject2 = (atomicDevs.Infinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Infinity"));
 						valueTemp = Double.POSITIVE_INFINITY;
 					}
 					else {

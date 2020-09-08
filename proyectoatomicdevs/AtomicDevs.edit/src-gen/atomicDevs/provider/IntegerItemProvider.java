@@ -60,7 +60,7 @@ public class IntegerItemProvider extends ValueItemProvider {
 						getResourceLocator(), getString("_UI_Integer_variable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Integer_variable_feature",
 								"_UI_Integer_type"),
-						AtomicDevsPackage.Literals.INTEGER__VARIABLE, true, false, false,
+						AtomicDevsPackage.Literals.INTEGER__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 

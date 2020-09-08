@@ -8,7 +8,7 @@ import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -241,13 +241,13 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case AtomicDevsPackage.INIFINITY: {
-			Inifinity inifinity = (Inifinity) theEObject;
-			T result = caseInifinity(inifinity);
+		case AtomicDevsPackage.INFINITY: {
+			Infinity infinity = (Infinity) theEObject;
+			T result = caseInfinity(infinity);
 			if (result == null)
-				result = caseDouble(inifinity);
+				result = caseDouble(infinity);
 			if (result == null)
-				result = caseValue(inifinity);
+				result = caseValue(infinity);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -622,17 +622,17 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inifinity</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Infinity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inifinity</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Infinity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInifinity(Inifinity object) {
+	public T caseInfinity(Infinity object) {
 		return null;
 	}
 

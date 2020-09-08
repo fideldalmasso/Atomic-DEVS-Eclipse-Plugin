@@ -9,7 +9,7 @@ import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -182,7 +182,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass inifinityEClass = null;
+	private EClass infinityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -783,8 +783,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getInifinity() {
-		return inifinityEClass;
+	public EClass getInfinity() {
+		return infinityEClass;
 	}
 
 	/**
@@ -1208,7 +1208,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		integerEClass = createEClass(INTEGER);
 		createEAttribute(integerEClass, INTEGER__VARIABLE);
 
-		inifinityEClass = createEClass(INIFINITY);
+		infinityEClass = createEClass(INFINITY);
 
 		transitionEClass = createEClass(TRANSITION);
 		createEReference(transitionEClass, TRANSITION__TARGET);
@@ -1298,7 +1298,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		booleanEClass.getESuperTypes().add(this.getValue());
 		userDefinedEClass.getESuperTypes().add(this.getValue());
 		integerEClass.getESuperTypes().add(this.getValue());
-		inifinityEClass.getESuperTypes().add(this.getDouble());
+		infinityEClass.getESuperTypes().add(this.getDouble());
 		internalTransitionEClass.getESuperTypes().add(this.getTransition());
 		externalTransitionEClass.getESuperTypes().add(this.getTransition());
 		externalTransitionDataEClass.getESuperTypes().add(this.getTransitionData());
@@ -1424,7 +1424,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEAttribute(getInteger_Variable(), ecorePackage.getEInt(), "variable", null, 1, 1, atomicDevs.Integer.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(inifinityEClass, Inifinity.class, "Inifinity", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(infinityEClass, Infinity.class, "Infinity", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1561,8 +1561,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				new String[] { "constraints", "UniqueInputPortNames UniqueOutputPortNames" });
 		addAnnotation(stateStructureEClass, source,
 				new String[] { "constraints", "mustHavePhaseVariable mustHaveSigmaVariable" });
-		addAnnotation(phaseVariableEClass, source, new String[] { "constraints", "typeIsString" });
-		addAnnotation(sigmaVariableEClass, source, new String[] { "constraints", "typeIsDouble" });
+		addAnnotation(phaseVariableEClass, source, new String[] { "constraints", "typeIsString nameIsPhase" });
+		addAnnotation(sigmaVariableEClass, source, new String[] { "constraints", "typeIsDouble nameIsSigma" });
 		addAnnotation(initialStateEClass, source, new String[] { "constraints", "everyVariableMustHaveAValue" });
 		addAnnotation(doubleEClass, source, new String[] { "constraints", "typeIsDouble" });
 		addAnnotation(stringEClass, source, new String[] { "constraints", "typeIsString" });
@@ -1592,10 +1592,12 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 						"\n\t\tself.statevariable->one(s: StateVariable | s.oclIsTypeOf(PhaseVariable))",
 						"mustHaveSigmaVariable",
 						"\n\t\tself.statevariable->one(s: StateVariable | s.oclIsTypeOf(SigmaVariable))" });
-		addAnnotation(phaseVariableEClass, source, new String[] { "typeIsString",
-				"\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
-		addAnnotation(sigmaVariableEClass, source, new String[] { "typeIsDouble",
-				"\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE" });
+		addAnnotation(phaseVariableEClass, source,
+				new String[] { "typeIsString", "\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::STRING",
+						"nameIsPhase", "\n\t\tself.name = \'Phase\'" });
+		addAnnotation(sigmaVariableEClass, source,
+				new String[] { "typeIsDouble", "\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE",
+						"nameIsSigma", "\n\t\tself.name = \'Sigma\'" });
 		addAnnotation(initialStateEClass, source, new String[] { "everyVariableMustHaveAValue",
 				"\n\t\tself.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.value->one(v:Value|v.statevariable = s)\n\t\t)" });
 		addAnnotation(doubleEClass, source, new String[] { "typeIsDouble",

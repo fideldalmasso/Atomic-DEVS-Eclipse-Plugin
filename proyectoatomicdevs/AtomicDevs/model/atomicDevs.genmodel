@@ -34,7 +34,7 @@
     <genClasses ecoreClass="atomicDevs.ecore#//StateVariable">
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//StateVariable/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//StateVariable/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//StateVariable/name"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//PhaseVariable"/>
     <genClasses ecoreClass="atomicDevs.ecore#//SigmaVariable"/>

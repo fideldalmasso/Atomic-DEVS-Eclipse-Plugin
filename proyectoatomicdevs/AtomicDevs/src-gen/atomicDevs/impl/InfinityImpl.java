@@ -3,24 +3,24 @@
 package atomicDevs.impl;
 
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.Inifinity;
+import atomicDevs.Infinity;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Inifinity</b></em>'.
+ * An implementation of the model object '<em><b>Infinity</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class InifinityImpl extends DoubleImpl implements Inifinity {
+public class InfinityImpl extends DoubleImpl implements Infinity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InifinityImpl() {
+	protected InfinityImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public class InifinityImpl extends DoubleImpl implements Inifinity {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AtomicDevsPackage.Literals.INIFINITY;
+		return AtomicDevsPackage.Literals.INFINITY;
 	}
 
-} //InifinityImpl
+} //InfinityImpl
