@@ -47,18 +47,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PhaseVariable" eSuperTypes="#//StateVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="typeIsString"/>
+      <details key="constraints" value="typeIsString nameIsPhase"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="typeIsString" value="&#xA;&#x9;&#x9;self.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+      <details key="nameIsPhase" value="&#xA;&#x9;&#x9;self.name = 'Phase'"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SigmaVariable" eSuperTypes="#//StateVariable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="typeIsDouble"/>
+      <details key="constraints" value="typeIsDouble nameIsSigma"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="typeIsDouble" value="&#xA;&#x9;&#x9;self.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE"/>
+      <details key="nameIsSigma" value="&#xA;&#x9;&#x9;self.name = 'Sigma'"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomVariable" eSuperTypes="#//StateVariable"/>
@@ -157,7 +159,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Inifinity" eSuperTypes="#//Double"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Infinity" eSuperTypes="#//Double"/>
   <eClassifiers xsi:type="ecore:EClass" name="Transition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//StatePhase" eOpposite="#//StatePhase/transitionIn"/>
