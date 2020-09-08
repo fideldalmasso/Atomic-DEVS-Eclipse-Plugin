@@ -92,8 +92,11 @@ public class Page05 extends WizardPage{
 			
 			
 			  table.addListener(SWT.MouseDown, e-> { Point pt = new Point(e.x,e.y);
-			  TableItem selectedItem = table.getItem(pt); Rectangle rect =
-			  selectedItem.getBounds(2);
+			  TableItem selectedItem = table.getItem(pt);
+			  
+			  if(selectedItem == null) return;
+			  
+			  Rectangle rect = selectedItem.getBounds(2);
 			  
 			  if(rect.contains(pt)) { 
 				  int index = table.indexOf(selectedItem);
