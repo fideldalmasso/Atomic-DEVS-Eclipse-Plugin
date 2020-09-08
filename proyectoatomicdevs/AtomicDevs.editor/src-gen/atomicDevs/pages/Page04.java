@@ -16,12 +16,14 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import atomicDevs.pages.Message.Type;
 import atomicDevs.presentation.AtomicDevsModelWizard;
 
 public class Page04 extends WizardPage{
@@ -36,14 +38,13 @@ public class Page04 extends WizardPage{
 	}
 	
 	static Composite composite;
-	protected Combo typesCombo;
-	protected Text nameField;
-	protected Button addButton;
-	protected Table table;
-	TableColumn column1;
-	TableColumn column2;
-	TableColumn column3;
-	protected String selection;
+	private Combo typesCombo;
+	private Text nameField;
+	private Button addButton;
+	private Table table;
+	private TableColumn column1;
+	private TableColumn column2;
+	private TableColumn column3;
 	
 
 	public void createControl(Composite parent) {
@@ -164,12 +165,12 @@ public class Page04 extends WizardPage{
 				    			 updateTypeField();
 				    			 typesCombo.select(AtomicDevsModelWizard.validTypes.size()-1);
 				    		 }
-				    		 else {
+			    			 else if(m.error()) {
 				    			 Utilities.newMessageDialog(m);
 				    			 typesCombo.select(0);
 				    		 }	 
 			    		 }
-			    		 while(!m.success());
+			    		 while(m.error());
 			    	  }
 			    		  
 			      }
@@ -194,6 +195,13 @@ public class Page04 extends WizardPage{
 			addButton.setLayoutData(data);
 
 			addButton.setText("Add");
+			
+			addButton.addTraverseListener(e -> {
+				if(e.detail == SWT.TRAVERSE_RETURN) 
+					addButton.notifyListeners(SWT.Selection, new Event());
+			
+			});
+			
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -216,7 +224,7 @@ public class Page04 extends WizardPage{
 	
 	
 	//METODOS AUXILIARES----------------------------------------------------------------------------------------------------
-	public void updateTable() {
+	private void updateTable() {
 		
 		if(table.getItemCount()>0)
 			table.removeAll();
@@ -239,7 +247,7 @@ public class Page04 extends WizardPage{
 		}		
 	}
 	
-	public void updateTypeField() {
+	private void updateTypeField() {
 		typesCombo.removeAll();
 		
 		for (String validType : AtomicDevsModelWizard.validTypes) {
@@ -248,45 +256,45 @@ public class Page04 extends WizardPage{
 		typesCombo.add("Add custom type...");
 	}
 
-	protected Message removeStateVariable(StateVariableRegister s) {
+	private Message removeStateVariable(StateVariableRegister s) {
 		if(s.name == null)
-			return new Message(false,"Please select a variable from the table");
+			return new Message(Type.ERROR,"Please select a variable from the table");
 
 		if(s.name.equals("Sigma"))
-			return new Message(false, "Cannot remove default variable Sigma");
+			return new Message(Type.ERROR, "Cannot remove default variable Sigma");
 
 		if(s.name.equals("Phase"))
-			return new Message(false, "Cannot remove default variable Phase");
+			return new Message(Type.ERROR, "Cannot remove default variable Phase");
 
 		String name = s.name;
 		AtomicDevsModelWizard.stateVariables.remove(s);
 		
-		return new Message(true, name + " variable deleted successfully");
+		return new Message(Type.SUCCESS, name + " variable deleted successfully");
 	}
 
 	//TODO metodo que se encarga de agregar las variables ingresados por el usuario
 	
-	protected Message addNewStateVariable(String name, String type) {
+	private Message addNewStateVariable(String name, String type) {
 		if(AtomicDevsModelWizard.stateVariables == null) 
 			AtomicDevsModelWizard.stateVariables = new ArrayList<StateVariableRegister>();
 
 		if(name== null || name.length() == 0)
-			return new Message(false,"Please enter a name");
+			return new Message(Type.ERROR,"Please enter a name");
 		
 		if(name.contains(" "))
-			return new Message(false, "The name must not contain whitespaces");
+			return new Message(Type.ERROR, "The name must not contain whitespaces");
 		
 		if(type== null || type.length() == 0)
-			return new Message(false,"Please select a valid type");
+			return new Message(Type.ERROR,"Please select a valid type");
 		
 		if(AtomicDevsModelWizard.stateVariables.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
-			return new Message(false,"There is already a State Variable called "+name);
+			return new Message(Type.ERROR,"There is already a State Variable called "+name);
 		
 		if(!AtomicDevsModelWizard.validTypes.contains(type))
-			return new Message(false,"The type entered is not supported. Please select one from the drop-down list");
+			return new Message(Type.ERROR,"The type entered is not supported. Please select one from the drop-down list");
 
 		AtomicDevsModelWizard.stateVariables.add(new StateVariableRegister(name,type));
-		return new Message(true,"Added "+name+", "+ type);			
+		return new Message(Type.SUCCESS,"Added "+name+", "+ type);			
 	}
 	
 
@@ -303,12 +311,13 @@ public class Page04 extends WizardPage{
 
 	@Override
 	public void setVisible(boolean visible) {
-		super.setVisible(visible);
+		this.updateTypeField();
 		if (visible) {
 			if (typesCombo.getItemCount() == 1) {
 				typesCombo.clearSelection();
 			}
 		}
+		super.setVisible(visible);
 
 	}
 

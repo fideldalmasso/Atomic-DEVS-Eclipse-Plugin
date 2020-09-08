@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -17,6 +19,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -41,12 +44,31 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.CustomVariable;
+import atomicDevs.InitialState;
+import atomicDevs.InputPort;
+import atomicDevs.OutputPort;
+import atomicDevs.PhaseVariable;
+import atomicDevs.Primitive;
+import atomicDevs.PrimitiveType;
+import atomicDevs.SigmaVariable;
+import atomicDevs.StatePhase;
+import atomicDevs.StateStructure;
+import atomicDevs.StateVariable;
+import atomicDevs.UserDefinedType;
+import atomicDevs.Value;
 import atomicDevs.pages.InputPortRegister;
 import atomicDevs.pages.Message;
+import atomicDevs.pages.Message.Type;
 import atomicDevs.pages.OutputPortRegister;
-import atomicDevs.pages.*;
+import atomicDevs.pages.Page01;
+import atomicDevs.pages.Page02;
+import atomicDevs.pages.Page03;
+import atomicDevs.pages.Page04;
+import atomicDevs.pages.Page05;
 import atomicDevs.pages.StateVariableRegister;
 import atomicDevs.pages.Utilities;
 
@@ -62,16 +84,20 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	//TODO variables propias
 
 	public static String modelName = "NewModel";
-	public static List<String> validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
-//	public static Map<String,String> inputPorts = new LinkedHashMap<String,String>(); //name, types
-//	public static Map<String,String> outputPorts= new LinkedHashMap<String,String>(); //name, type	
-	public static List<InputPortRegister> inputPorts = new ArrayList<InputPortRegister>();
-	public static List<OutputPortRegister> outputPorts = new ArrayList<OutputPortRegister>();
-	public static List<StateVariableRegister> stateVariables = new ArrayList<StateVariableRegister>();
+	public static List<String> validTypes;
+	public static Set<String> usedTypes;
+	public static List<InputPortRegister> inputPorts;
+	public static List<OutputPortRegister> outputPorts;
+	public static List<StateVariableRegister> stateVariables;
+	
+	List<atomicDevs.PrimitiveType> primitiveTypes;
+	List<atomicDevs.UserDefinedType> userTypes;
+	
 	protected Page01 page01;
 	protected Page02 page02;
 	protected Page03 page03;
 	protected Page04 page04;
+	protected Page05 page05;
 	
 	/**
 	 * The supported extensions for created files.
@@ -156,29 +182,34 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	
 	public static Message addNewType() {
 		
-		String input = Utilities.newInputDialog("New State Variable type...", "Enter a new type name", "newTypeName");
+		Message input = Utilities.newInputDialog("New State Variable type...", "Enter a new type name", "newTypeName");
 		
-		if(input.equals("closedWindow"))
-			return new Message(true,"Closed window");
+		if(input.exit())
+			return input;
 		
-		if (input==null || input.length()==0)
-			return new Message(false, "Please enter a new type name");
+		String text = input.text();
 		
-		if(input.contains(" "))
-			return new Message(false, "The name must not contain whitespaces");
+		if (text==null || text.length()==0)
+			return new Message(Type.ERROR, "Please enter a new type name");
 		
-		input = input.toUpperCase();
+		if(text.contains(" "))
+			return new Message(Type.ERROR, "The name must not contain whitespaces");
 		
-		if(validTypes.contains(input))
-			return new Message(false, "The type "+input+" already exists");
+		text = text.toUpperCase();
 		
-		validTypes.add(input);
-		return new Message(true,"Added type "+ input);
+		if(validTypes.contains(text))
+			return new Message(Type.ERROR, "The type "+text+" already exists");
+		
+		validTypes.add(text);
+		return new Message(Type.SUCCESS,"Added type "+ text);
 	}
 	
 	
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
+		
+		
+		
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
@@ -214,11 +245,157 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	
+	private atomicDevs.Type getTypeByName(String type) {
+		
+		if(type.equals("INTEGER") || type.equals("DOUBLE")|| type.equals("BOOLEAN")|| type.equals("STRING")) {
+			return (atomicDevs.Type) primitiveTypes
+										.stream()
+										.filter(t -> t.getPrimitive().equals(Primitive.get(type)))
+										.findFirst()
+										.get();
+		}
+		else {
+			return (atomicDevs.Type) userTypes
+										.stream()
+										.filter(t -> t.getName().equals(type))
+										.findFirst()
+										.get();
+		}
+	}
+	
 	protected EObject createInitialModel() {
 //		EClass eClass = (EClass) atomicDevsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EClass eClass = null;
-		EObject rootObject = atomicDevsFactory.create(eClass);
-		return rootObject;
+		
+		AtomicDEVS atomicDEVSObject = (AtomicDEVS) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("AtomicDEVS"));
+		atomicDEVSObject.setName(modelName);
+		
+		StateStructure stateStructureObject = (StateStructure) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateStructure"));
+		atomicDEVSObject.setDefinition(stateStructureObject);
+		
+		InitialState initialStateObject = (InitialState) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InitialState"));
+		initialStateObject.setAtomicdevs(atomicDEVSObject);
+		atomicDEVSObject.setInitialization(initialStateObject);
+		
+		
+		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
+		userTypes = new ArrayList<UserDefinedType>();
+		
+		usedTypes = new HashSet<String>();
+		
+		
+		for(StateVariableRegister s : stateVariables)
+			usedTypes.add(s.type);
+		for(InputPortRegister p : inputPorts)
+			usedTypes.add(p.type);
+		for(OutputPortRegister p : outputPorts)
+			usedTypes.add(p.type);
+		
+		
+		for(String t : usedTypes) {
+			
+			if(t.equals("INTEGER") || t.equals("DOUBLE")|| t.equals("BOOLEAN")|| t.equals("STRING")) {
+				atomicDevs.PrimitiveType typeTemp;
+				typeTemp =(PrimitiveType) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("PrimitiveType"));
+				typeTemp.setPrimitive(Primitive.get(t));
+				primitiveTypes.add(typeTemp);
+			}
+			else {
+				atomicDevs.UserDefinedType typeTemp;
+				typeTemp = (UserDefinedType) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("UserDefinedType"));
+				typeTemp.setName(t);
+				userTypes.add(typeTemp);
+			}
+		
+			
+		}
+		
+		for(StateVariableRegister v : stateVariables) {
+			
+			StateVariable stateVariableObject;
+			
+			switch(v.name) {
+			case "Phase":
+				stateVariableObject = (PhaseVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("PhaseVariable"));
+				break;
+			case "Sigma":
+				stateVariableObject = (SigmaVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("SigmaVariable"));
+				break;
+			default:
+				stateVariableObject = (CustomVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("CustomVariable"));
+			}
+			
+			stateVariableObject.setName(v.name);
+			stateVariableObject.setType(getTypeByName(v.type));
+			stateStructureObject.getStatevariable().add(stateVariableObject);
+			
+			Value valueObject1;
+			
+			switch(v.type) {
+				case "INTEGER":{
+					atomicDevs.Integer valueObject2 = (atomicDevs.Integer) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Integer"));
+					valueObject2.setVariable(Integer.parseInt(v.value));
+					valueObject1 = valueObject2;
+					break;
+				}
+				case "DOUBLE":{
+					Double valueTemp;
+					atomicDevs.Double valueObject2;
+					if(v.value.equals("infinity")) {
+						valueObject2 = (atomicDevs.Inifinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Inifinity"));
+						valueTemp = Double.POSITIVE_INFINITY;
+					}
+					else {
+						valueObject2 = (atomicDevs.Double) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Double"));
+						valueTemp = Double.parseDouble(v.value);
+					}
+					
+					valueObject2.setVariable(valueTemp);
+					valueObject1 = valueObject2;
+					break;
+				}
+				case "BOOLEAN":{
+					atomicDevs.Boolean valueObject2 = (atomicDevs.Boolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Boolean"));
+					valueObject2.setVariable(Boolean.getBoolean(v.value));
+					valueObject1 = valueObject2;
+					break;
+				}
+				case "STRING":{
+					atomicDevs.String valueObject2 = (atomicDevs.String) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("String"));
+					valueObject2.setVariable(v.value);
+					valueObject1 = valueObject2;
+					break;
+				}
+				default:{
+					atomicDevs.UserDefined valueObject2 = (atomicDevs.UserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("UserDefined"));
+					valueObject2.setVariable(v.value);
+					valueObject1 = valueObject2;
+					break;
+				}
+				
+			}
+			valueObject1.setStatevariable(stateVariableObject);
+			initialStateObject.getValue().add(valueObject1);
+		
+		}
+		
+		
+		for(InputPortRegister p : inputPorts) {
+			InputPort inputPortObject = (InputPort) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InputPort"));
+			inputPortObject.setName(p.name);
+			inputPortObject.setVariable("x"+p.name);
+			inputPortObject.setType(getTypeByName(p.type));
+			atomicDEVSObject.getIncludesInputPort().add(inputPortObject);
+		}
+		for(OutputPortRegister p : outputPorts) {
+			OutputPort outputPortObject = (OutputPort) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("OutputPort"));
+			outputPortObject.setName(p.name);
+			outputPortObject.setVariable("y"+p.name);
+			outputPortObject.setType(getTypeByName(p.type));
+			atomicDEVSObject.getIncludesOutputPort().add(outputPortObject);
+		}
+		
+		return atomicDEVSObject;
 	}
 
 	/**
@@ -254,9 +431,27 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 
 						// Add the initial model object to the contents.
 						//
-						EObject rootObject = createInitialModel();
+						EObject rootObject = createInitialModel(); 
 						if (rootObject != null) {
-							resource.getContents().add(rootObject);
+							//resource.getContents().add(rootObject);
+							AtomicDEVS atomicDEVS = (AtomicDEVS) rootObject;
+							resource.getContents().add(atomicDEVS);
+							resource.getContents().add((StateStructure) atomicDEVS.getDefinition());
+							resource.getContents().add((InitialState) atomicDEVS.getInitialization());
+							
+							for(InputPort p : (EList<InputPort>) atomicDEVS.getIncludesInputPort()) 
+								resource.getContents().add(p);
+							
+							for(OutputPort p : (EList<OutputPort>) atomicDEVS.getIncludesOutputPort()) 
+								resource.getContents().add(p);
+							
+							for(PrimitiveType t : primitiveTypes)
+								resource.getContents().add(t);
+							
+							for(UserDefinedType t: userTypes)
+								resource.getContents().add(t);
+						
+							
 						}
 
 						// Save the contents of the resource to the file system.
@@ -312,266 +507,6 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		}
 	}
 
-	/**
-	 * This is the one page of the wizard.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-//	public class AtomicDevsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
-//		/**
-//		 * Pass in the selection.
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		public AtomicDevsModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
-//			super(pageId, selection);
-//		}
-//
-//		/**
-//		 * The framework calls this to see if the file is correct.
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		@Override
-//		protected boolean validatePage() {
-//			if (super.validatePage()) {
-//				String extension = new Path(getFileName()).getFileExtension();
-//				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-//					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-//					setErrorMessage(
-//							AtomicDevsEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
-//					return false;
-//				}
-//				//TODO guardo el nombre del modelo en modelName
-//				modelName = getFileName().substring(0,getFileName().length()-6);
-//				System.out.println(modelName);
-//				return true;
-//			}
-//			return false;
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		public IFile getModelFile() {
-//			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
-//		}
-//	}
-
-//	/**
-//	 * This is the page where the type of object to create is selected.
-//	 * <!-- begin-user-doc -->
-//	 * <!-- end-user-doc -->
-//	 * @generated
-//	 */
-//	public class AtomicDevsModelWizardInitialObjectCreationPage extends WizardPage {
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected Combo initialObjectField;
-//
-//		/**
-//		 * @generated
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 */
-//		protected List<String> encodings;
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected Combo encodingField;
-//
-//		/**
-//		 * Pass in the selection.
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		public AtomicDevsModelWizardInitialObjectCreationPage(String pageId) {
-//			super(pageId);
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		@Override
-//		public void createControl(Composite parent) {
-//			Composite composite = new Composite(parent, SWT.NONE);
-//			{
-//				GridLayout layout = new GridLayout();
-//				layout.numColumns = 1;
-//				layout.verticalSpacing = 12;
-//				composite.setLayout(layout);
-//
-//				GridData data = new GridData();
-//				data.verticalAlignment = GridData.FILL;
-//				data.grabExcessVerticalSpace = true;
-//				data.horizontalAlignment = GridData.FILL;
-//				composite.setLayoutData(data);
-//			}
-//
-//			Label containerLabel = new Label(composite, SWT.LEFT);
-//			{
-//				containerLabel.setText(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
-//
-//				GridData data = new GridData();
-//				data.horizontalAlignment = GridData.FILL;
-//				containerLabel.setLayoutData(data);
-//			}
-//
-//			initialObjectField = new Combo(composite, SWT.BORDER);
-//			{
-//				GridData data = new GridData();
-//				data.horizontalAlignment = GridData.FILL;
-//				data.grabExcessHorizontalSpace = true;
-//				initialObjectField.setLayoutData(data);
-//			}
-//
-//			for (String objectName : getInitialObjectNames()) {
-//				initialObjectField.add(getLabel(objectName));
-//			}
-//
-//			if (initialObjectField.getItemCount() == 1) {
-//				initialObjectField.select(0);
-//			}
-//			initialObjectField.addModifyListener(validator);
-//
-//			Label encodingLabel = new Label(composite, SWT.LEFT);
-//			{
-//				encodingLabel.setText(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
-//
-//				GridData data = new GridData();
-//				data.horizontalAlignment = GridData.FILL;
-//				encodingLabel.setLayoutData(data);
-//			}
-//			encodingField = new Combo(composite, SWT.BORDER);
-//			{
-//				GridData data = new GridData();
-//				data.horizontalAlignment = GridData.FILL;
-//				data.grabExcessHorizontalSpace = true;
-//				encodingField.setLayoutData(data);
-//			}
-//
-//			for (String encoding : getEncodings()) {
-//				encodingField.add(encoding);
-//			}
-//
-//			encodingField.select(0);
-//			encodingField.addModifyListener(validator);
-//
-//			setPageComplete(validatePage());
-//			setControl(composite);
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected ModifyListener validator = new ModifyListener() {
-//			@Override
-//			public void modifyText(ModifyEvent e) {
-//				setPageComplete(validatePage());
-//			}
-//		};
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected boolean validatePage() {
-//			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		@Override
-//		public void setVisible(boolean visible) {
-//			super.setVisible(visible);
-//			if (visible) {
-//				if (initialObjectField.getItemCount() == 1) {
-//					initialObjectField.clearSelection();
-//					encodingField.setFocus();
-//				} else {
-//					encodingField.clearSelection();
-//					initialObjectField.setFocus();
-//				}
-//			}
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		public String getInitialObjectName() {
-//			String label = initialObjectField.getText();
-//
-//			for (String name : getInitialObjectNames()) {
-//				if (getLabel(name).equals(label)) {
-//					return name;
-//				}
-//			}
-//			return null;
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		public String getEncoding() {
-//			return encodingField.getText();
-//		}
-//
-//		/**
-//		 * Returns the label for the specified type name.
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected String getLabel(String typeName) {
-//			try {
-//				return AtomicDevsEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-//			} catch (MissingResourceException mre) {
-//				AtomicDevsEditorPlugin.INSTANCE.log(mre);
-//			}
-//			return typeName;
-//		}
-//
-//		/**
-//		 * <!-- begin-user-doc -->
-//		 * <!-- end-user-doc -->
-//		 * @generated
-//		 */
-//		protected Collection<String> getEncodings() {
-//			if (encodings == null) {
-//				encodings = new ArrayList<String>();
-//				for (StringTokenizer stringTokenizer = new StringTokenizer(
-//						AtomicDevsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
-//								.hasMoreTokens();) {
-//					encodings.add(stringTokenizer.nextToken());
-//				}
-//			}
-//			return encodings;
-//		}
-//	}
 
 	/**
 	 * The framework calls this to create the contents of the wizard.
@@ -583,6 +518,13 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
+		
+		modelName = "NewModel";
+		validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
+		inputPorts = new ArrayList<InputPortRegister>();
+		outputPorts = new ArrayList<OutputPortRegister>();
+		stateVariables = new ArrayList<StateVariableRegister>();
+		
 		
 		
 		
@@ -630,6 +572,11 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		addPage(page03);
 		page04 = new Page04("Whatever04");
 		addPage(page04);
+		page05 = new Page05("Whatever05");
+		addPage(page05);
+		
+
+		
 	}
 
 	/**
@@ -642,4 +589,15 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		return page01.getModelFile();
 	}
 
+	
+	@Override
+	public boolean canFinish(){
+		if(getContainer().getCurrentPage()==page05)
+			return true;
+		else
+			return false;
+	}
+	
+
+	
 }

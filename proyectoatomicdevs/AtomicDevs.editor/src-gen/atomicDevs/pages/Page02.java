@@ -16,12 +16,14 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import atomicDevs.pages.Message.Type;
 import atomicDevs.presentation.AtomicDevsModelWizard;
 
 public class Page02 extends WizardPage{
@@ -36,14 +38,13 @@ public class Page02 extends WizardPage{
 	}
 	
 	static Composite composite;
-	protected Combo typesCombo;
-	protected Text nameField;
-	protected Button addButton;
-	protected Table table;
-	TableColumn column1;
-	TableColumn column2;
-	TableColumn column3;
-	protected String selection;
+	private Combo typesCombo;
+	private Text nameField;
+	private Button addButton;
+	private Table table;
+	private TableColumn column1;
+	private TableColumn column2;
+	private TableColumn column3;
 	
 
 	public void createControl(Composite parent) {
@@ -164,12 +165,12 @@ public class Page02 extends WizardPage{
 				    			 updateTypeField();
 				    			 typesCombo.select(AtomicDevsModelWizard.validTypes.size()-1);
 				    		 }
-				    		 else {
+			    			 else if(m.error()) {
 				    			 Utilities.newMessageDialog(m);
 				    			 typesCombo.select(0);
 				    		 }	 
 			    		 }
-			    		 while(!m.success());
+			    		 while(m.error());
 			    	  }
 			    		  
 			      }
@@ -194,6 +195,13 @@ public class Page02 extends WizardPage{
 			addButton.setLayoutData(data);
 
 			addButton.setText("Add");
+			
+			addButton.addTraverseListener(e -> {
+				if(e.detail == SWT.TRAVERSE_RETURN) 
+					addButton.notifyListeners(SWT.Selection, new Event());
+			
+			});
+			
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -201,8 +209,10 @@ public class Page02 extends WizardPage{
 					String name = nameField.getText();
 					String type =  typesCombo.getText();
 					Message m = addNewInputPort(name,type);
-					if(m.success())
+					if(m.success()) {
 						updateTable();
+						nameField.setFocus();
+					}
 					else
 						Utilities.newMessageDialog(m);
 
@@ -217,7 +227,7 @@ public class Page02 extends WizardPage{
 	
 	
 	//METODOS AUXILIARES----------------------------------------------------------------------------------------------------
-	public void updateTable() {
+	private void updateTable() {
 
 		if(table.getItemCount()>0)
 			table.removeAll();
@@ -237,7 +247,7 @@ public class Page02 extends WizardPage{
 		}		
 	}
 	
-	public void updateTypeField() {
+	private void updateTypeField() {
 		typesCombo.removeAll();
 		
 		for (String validType : AtomicDevsModelWizard.validTypes) {
@@ -246,39 +256,39 @@ public class Page02 extends WizardPage{
 		typesCombo.add("Add custom type...");
 	}
 
-	protected Message removeInputPort(InputPortRegister p) {
+	private Message removeInputPort(InputPortRegister p) {
 		if(p.name == null)
-			return new Message(false,"Please select an Input Port from the table");
+			return new Message(Type.ERROR,"Please select an Input Port from the table");
 		
 		String name = p.name;
 		AtomicDevsModelWizard.inputPorts.remove(p);
 			
-		return new Message(true, name + " Input Port deleted successfully");
+		return new Message(Type.SUCCESS, name + " Input Port deleted successfully");
 	}
 
 	//TODO metodo que se encarga de agregar los descriptores ingresados por el usuario
 	
-	protected Message addNewInputPort(String name, String type) {
+	private Message addNewInputPort(String name, String type) {
 		if(AtomicDevsModelWizard.inputPorts == null) 
 			AtomicDevsModelWizard.inputPorts = new ArrayList<InputPortRegister>();
 
 		if(name== null || name.length() == 0)
-			return new Message(false,"Please enter a name");
+			return new Message(Type.ERROR,"Please enter a name");
 		
 		if(name.contains(" "))
-			return new Message(false, "The name must not contain whitespaces");
+			return new Message(Type.ERROR, "The name must not contain whitespaces");
 		
 		if(type== null || type.length() == 0)
-			return new Message(false,"Please select a valid type");
+			return new Message(Type.ERROR,"Please select a valid type");
 		
 		if(AtomicDevsModelWizard.inputPorts.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
-			return new Message(false,"There is already an Input Port called "+name);
+			return new Message(Type.ERROR,"There is already an Input Port called "+name);
 		
 		if(!AtomicDevsModelWizard.validTypes.contains(type))
-			return new Message(false,"The type entered is not supported. Please select one from the drop-down list");
+			return new Message(Type.ERROR,"The type entered is not supported. Please select one from the drop-down list");
 
 		AtomicDevsModelWizard.inputPorts.add(new InputPortRegister(name,type));
-		return new Message(true,"Added "+name+", "+ type);			
+		return new Message(Type.SUCCESS,"Added "+name+", "+ type);			
 	}
 	
 
@@ -295,12 +305,13 @@ public class Page02 extends WizardPage{
 
 	@Override
 	public void setVisible(boolean visible) {
-		super.setVisible(visible);
+		this.updateTypeField();
 		if (visible) {
 			if (typesCombo.getItemCount() == 1) {
 				typesCombo.clearSelection();
 			}
 		}
+		super.setVisible(visible);
 
 	}
 

@@ -3,16 +3,18 @@ package atomicDevs.pages;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 
+import atomicDevs.pages.Message.Type;
+
 public class Utilities {
 
-	public static String newInputDialog(String title, String description, String defaultValue){
+	public static Message newInputDialog(String title, String description, String defaultValue){
 		  InputDialog dialog=new InputDialog(null,title, description ,defaultValue,null);
 		  dialog.create();
 		  if (dialog.open() == 0) {
 		    String newValue=dialog.getValue();
-		    return newValue;
+		    return new Message(Type.SUCCESS,newValue);
 		  }
-		  return "closedWindow";
+		  return new Message(Type.EXIT,"Closed window");
 	}
 	
 	public static void newMessageDialog(Message m) {
