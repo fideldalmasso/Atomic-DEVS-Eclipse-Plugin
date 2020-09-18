@@ -72,7 +72,7 @@ public class TransitionDataItemProvider extends ItemProviderAdapter implements I
 						getResourceLocator(), getString("_UI_TransitionData_transition_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_TransitionData_transition_feature",
 								"_UI_TransitionData_type"),
-						AtomicDevsPackage.Literals.TRANSITION_DATA__TRANSITION, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.TRANSITION_DATA__TRANSITION, false, false, true, null, null, null));
 	}
 
 	/**

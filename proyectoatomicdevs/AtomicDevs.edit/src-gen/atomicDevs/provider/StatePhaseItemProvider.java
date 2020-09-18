@@ -135,7 +135,7 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_StatePhase_atomicdevs_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_StatePhase_atomicdevs_feature",
 								"_UI_StatePhase_type"),
-						AtomicDevsPackage.Literals.STATE_PHASE__ATOMICDEVS, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.STATE_PHASE__ATOMICDEVS, false, false, true, null, null, null));
 	}
 
 	/**
