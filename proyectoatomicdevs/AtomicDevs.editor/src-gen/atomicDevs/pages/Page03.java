@@ -1,9 +1,12 @@
 package atomicDevs.pages;
+import java.awt.event.FocusAdapter;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -47,7 +50,9 @@ public class Page03 extends WizardPage{
 	private TableColumn column3;
 	
 
+	
 	public void createControl(Composite parent) {
+		
 		
 
 		GridData data = new GridData();
@@ -299,12 +304,12 @@ public class Page03 extends WizardPage{
 	};
 
 	protected boolean validatePage() {
-		return !AtomicDevsModelWizard.inputPorts.isEmpty() || !AtomicDevsModelWizard.outputPorts.isEmpty();
+		return (!AtomicDevsModelWizard.inputPorts.isEmpty() || !AtomicDevsModelWizard.outputPorts.isEmpty());
 	}
 
 	@Override
 	public void setVisible(boolean visible) {
-		
+		this.setPageComplete(validatePage());
 		this.updateTypeField();
 		if (visible) {
 			if (typesCombo.getItemCount() == 1) {

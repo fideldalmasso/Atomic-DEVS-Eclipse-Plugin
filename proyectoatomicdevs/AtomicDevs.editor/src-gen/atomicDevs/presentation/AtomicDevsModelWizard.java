@@ -412,6 +412,10 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		try {
+			
+			if(!Utilities.newYesNoDialog("Finish wizard", "Do you want to proceed?"))
+				return false;
+			
 			// Remember the file.
 			//
 			final IFile modelFile = getModelFile();
