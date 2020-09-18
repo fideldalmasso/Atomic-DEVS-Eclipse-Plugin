@@ -9,8 +9,9 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated atomicDevs -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+            name="DEVS Wizard"
+            id="org.eclipse.emf.ecore.Wizard.category.ID">
+      </category>
       <wizard
             id="atomicDevs.presentation.AtomicDevsModelWizardID"
             name="%_UI_AtomicDevsModelWizard_label"

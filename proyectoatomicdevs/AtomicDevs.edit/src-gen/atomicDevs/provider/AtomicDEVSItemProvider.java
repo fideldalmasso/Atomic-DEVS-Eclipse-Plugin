@@ -77,7 +77,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_AtomicDEVS_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_name_feature",
 								"_UI_AtomicDEVS_type"),
-						AtomicDevsPackage.Literals.ATOMIC_DEVS__NAME, true, false, false,
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__NAME, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

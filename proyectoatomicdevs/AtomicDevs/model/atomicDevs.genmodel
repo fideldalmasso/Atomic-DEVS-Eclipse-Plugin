@@ -17,7 +17,7 @@
       <genEnumLiterals ecoreEnumLiteral="atomicDevs.ecore#//Primitive/BOOLEAN"/>
     </genEnums>
     <genClasses ecoreClass="atomicDevs.ecore#//AtomicDEVS">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//AtomicDEVS/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//AtomicDEVS/name"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/definition"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
@@ -59,7 +59,8 @@
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//InitialState">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/atomicdevs"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/atomicdevs"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//Value">
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"

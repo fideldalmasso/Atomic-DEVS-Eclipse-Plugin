@@ -72,7 +72,7 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 						getResourceLocator(), getString("_UI_InitialState_atomicdevs_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialState_atomicdevs_feature",
 								"_UI_InitialState_type"),
-						AtomicDevsPackage.Literals.INITIAL_STATE__ATOMICDEVS, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.INITIAL_STATE__ATOMICDEVS, false, false, true, null, null, null));
 	}
 
 	/**
