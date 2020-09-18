@@ -1,6 +1,8 @@
 package atomicDevs.pages;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+
+import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -32,15 +34,17 @@ public class Page05 extends WizardPage{
 
 	public void createControl(Composite parent) {
 		
-		getShell().getDisplay().getDefault().addFilter( SWT.Traverse, new Listener() {
-		    @Override
-		    public void handleEvent( Event event ) {
-		        if( SWT.TRAVERSE_RETURN == event.detail ) {
-		            //System.out.println( "Global SWT.TRAVERSE_RETURN" );
-		            event.doit = false;
-		        }
-		    };
-		} );
+//		getShell().getDisplay().getDefault().addFilter( SWT.Traverse, new Listener() {
+//		   
+//			
+//			@Override
+//		    public void handleEvent( Event event ) {
+//		        if( SWT.TRAVERSE_RETURN == event.detail ) {
+//		            //System.out.println( "Global SWT.TRAVERSE_RETURN" );
+//		            event.doit = false;
+//		        }
+//		    };
+//		} );
 		
 
 		GridData data = new GridData();

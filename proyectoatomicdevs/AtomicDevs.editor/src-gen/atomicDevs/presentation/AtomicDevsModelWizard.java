@@ -7,8 +7,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -32,6 +34,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -53,6 +58,7 @@ import atomicDevs.PhaseVariable;
 import atomicDevs.Primitive;
 import atomicDevs.PrimitiveType;
 import atomicDevs.SigmaVariable;
+import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
 import atomicDevs.StateVariable;
 import atomicDevs.UserDefinedType;
@@ -82,7 +88,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 
 	public static String modelName = "NewModel";
 	public static List<String> validTypes;
-//	public static Set<String> usedTypes;
+	public static Set<String> usedTypes;
 	public static List<InputPortRegister> inputPorts;
 	public static List<OutputPortRegister> outputPorts;
 	public static List<StateVariableRegister> stateVariables;
@@ -205,8 +211,6 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		
-		
-		
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(AtomicDevsEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
@@ -274,22 +278,25 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		initialStateObject.setAtomicdevs(atomicDEVSObject);
 		atomicDEVSObject.setInitialization(initialStateObject);
 		
+		StatePhase statePhaseObject = (StatePhase) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StatePhase"));
+		statePhaseObject.setValue(stateVariables.get(0).value);
+		statePhaseObject.setAtomicdevs(atomicDEVSObject);
+		
 		
 		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
 		userTypes = new ArrayList<UserDefinedType>();
 		
-//		usedTypes = new HashSet<String>();
-//		
-//		
-//		for(StateVariableRegister s : stateVariables)
-//			usedTypes.add(s.type);
-//		for(InputPortRegister p : inputPorts)
-//			usedTypes.add(p.type);
-//		for(OutputPortRegister p : outputPorts)
-//			usedTypes.add(p.type);
+		usedTypes = new HashSet<String>();
+		
+		for(StateVariableRegister s : stateVariables)
+			usedTypes.add(s.type);
+		for(InputPortRegister p : inputPorts)
+			usedTypes.add(p.type);
+		for(OutputPortRegister p : outputPorts)
+			usedTypes.add(p.type);
 		
 		
-		for(String t : validTypes) {
+		for(String t : usedTypes) {
 			
 			if(t.equals("INTEGER") || t.equals("DOUBLE")|| t.equals("BOOLEAN")|| t.equals("STRING")) {
 				atomicDevs.PrimitiveType typeTemp;
@@ -314,6 +321,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			switch(v.name) {
 			case "Phase":
 				stateVariableObject = (PhaseVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("PhaseVariable"));
+				statePhaseObject.setPhasevariable((PhaseVariable) stateVariableObject); 
 				break;
 			case "Sigma":
 				stateVariableObject = (SigmaVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("SigmaVariable"));
@@ -434,6 +442,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 							AtomicDEVS atomicDEVS = (AtomicDEVS) rootObject;
 							resource.getContents().add(atomicDEVS);
 							resource.getContents().add((StateStructure) atomicDEVS.getDefinition());
+							resource.getContents().add((StatePhase) atomicDEVS.getStatephase().get(0));
 							resource.getContents().add((InitialState) atomicDEVS.getInitialization());
 							
 							for(InputPort p : (EList<InputPort>) atomicDEVS.getIncludesInputPort()) 

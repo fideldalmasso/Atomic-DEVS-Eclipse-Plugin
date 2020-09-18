@@ -33,7 +33,7 @@ public class Page03 extends WizardPage{
 		super(pageId);
 		
 		this.setTitle("Add new Output Ports");
-		this.setDescription("Choose a name and a type and then press the Add button");
+		this.setDescription("Choose a name and a type and then press the Add button.\nRemember to define at least one port of any kind.");
 		
 	}
 	
@@ -93,6 +93,8 @@ public class Page03 extends WizardPage{
 			
 			this.updateTable();
 			
+			
+			
 			table.addListener(SWT.MouseDown,  e-> {
 				Point pt = new Point(e.x,e.y);
 				TableItem selectedItem = table.getItem(pt);
@@ -121,7 +123,6 @@ public class Page03 extends WizardPage{
 			data = new GridData();
 			data.horizontalAlignment = GridData.FILL;
 			nameLabel.setLayoutData(data);
-
 			nameLabel.setText("Output Port name");
 		}
 
@@ -130,9 +131,6 @@ public class Page03 extends WizardPage{
 			data = new GridData();
 			data.horizontalAlignment = GridData.FILL;
 			nameField.setLayoutData(data);
-
-
-			nameField.addModifyListener(validator);
 		}
 
 		//TIPO-----------------------------------------------------------------------------------------------------
@@ -180,7 +178,7 @@ public class Page03 extends WizardPage{
 					typesCombo.setSelection(typesCombo.getSelection());
 			});
 			
-			typesCombo.addModifyListener(validator);
+			
 		}
 		
 
@@ -195,11 +193,11 @@ public class Page03 extends WizardPage{
 
 			addButton.setText("Add");
 			
-			addButton.addTraverseListener(e -> {
-				if(e.detail == SWT.TRAVERSE_RETURN) 
-					addButton.notifyListeners(SWT.Selection, new Event());
-			
-			});
+//			addButton.addTraverseListener(e -> {
+//				if(e.detail == SWT.TRAVERSE_RETURN) 
+//					addButton.notifyListeners(SWT.Selection, new Event());
+//			
+//			});
 			
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -207,8 +205,11 @@ public class Page03 extends WizardPage{
 					String name = nameField.getText();
 					String type =  typesCombo.getText();
 					Message m = addNewOutputPort(name,type);
-					if(m.success())
+					if(m.success()) {
 						updateTable();
+						nameField.setFocus();
+						validatePage();
+						}
 					else
 						Utilities.newMessageDialog(m);
 
@@ -239,7 +240,10 @@ public class Page03 extends WizardPage{
 			
 			item.setForeground(2,Display.getCurrent().getSystemColor(SWT.COLOR_RED));
 			
-		}		
+		}
+		
+		this.setPageComplete(validatePage());
+		
 	}
 	
 	private void updateTypeField() {
@@ -295,11 +299,12 @@ public class Page03 extends WizardPage{
 	};
 
 	protected boolean validatePage() {
-		return true;
+		return !AtomicDevsModelWizard.inputPorts.isEmpty() || !AtomicDevsModelWizard.outputPorts.isEmpty();
 	}
 
 	@Override
 	public void setVisible(boolean visible) {
+		
 		this.updateTypeField();
 		if (visible) {
 			if (typesCombo.getItemCount() == 1) {
@@ -310,7 +315,5 @@ public class Page03 extends WizardPage{
 
 	}
 
-	
-	
-	
+
 }

@@ -49,8 +49,8 @@ public class Page04 extends WizardPage{
 
 	public void createControl(Composite parent) {
 		
-		this.addNewStateVariable("Sigma","DOUBLE");
 		this.addNewStateVariable("Phase","STRING");
+		this.addNewStateVariable("Sigma","DOUBLE");
 
 		GridData data = new GridData();
 		composite = new Composite(parent, SWT.NONE);
@@ -136,7 +136,6 @@ public class Page04 extends WizardPage{
 			nameField.setLayoutData(data);
 
 
-			nameField.addModifyListener(validator);
 		}
 
 		//TIPO-----------------------------------------------------------------------------------------------------
@@ -211,8 +210,10 @@ public class Page04 extends WizardPage{
 					String name = nameField.getText();
 					String type =  typesCombo.getText();
 					Message m = addNewStateVariable(name,type);
-					if(m.success())
+					if(m.success()) {
 						updateTable();
+						nameField.setFocus();
+					}
 					else
 						Utilities.newMessageDialog(m);
 

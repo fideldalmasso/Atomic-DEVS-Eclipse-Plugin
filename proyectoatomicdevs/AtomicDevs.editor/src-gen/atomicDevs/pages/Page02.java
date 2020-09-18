@@ -1,9 +1,12 @@
 package atomicDevs.pages;
+import java.awt.KeyboardFocusManager;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,7 +36,7 @@ public class Page02 extends WizardPage{
 		super(pageId);
 		
 		this.setTitle("Add new Input Ports");
-		this.setDescription("Choose a name and a type and then press the Add button");
+		this.setDescription("Choose a name and a type and then press the Add button.\nRemember to define at least one port of any kind.");
 		
 	}
 	
@@ -49,7 +52,6 @@ public class Page02 extends WizardPage{
 
 	public void createControl(Composite parent) {
 		
-
 		GridData data = new GridData();
 		composite = new Composite(parent, SWT.NONE);
 		{
@@ -122,7 +124,6 @@ public class Page02 extends WizardPage{
 			data = new GridData();
 			data.horizontalAlignment = GridData.FILL;
 			nameLabel.setLayoutData(data);
-
 			nameLabel.setText("Input Port name");
 		}
 
@@ -132,8 +133,6 @@ public class Page02 extends WizardPage{
 			data.horizontalAlignment = GridData.FILL;
 			nameField.setLayoutData(data);
 
-
-			nameField.addModifyListener(validator);
 		}
 
 		//TIPO-----------------------------------------------------------------------------------------------------
@@ -175,13 +174,13 @@ public class Page02 extends WizardPage{
 			    		  
 			      }
 			 });
-			
+			 
 			typesCombo.addListener(SWT.KeyUp, e->{
 				if(e.character == SWT.CR)
 					typesCombo.setSelection(typesCombo.getSelection());
 			});
+			 
 			
-			typesCombo.addModifyListener(validator);
 		}
 		
 
@@ -196,11 +195,13 @@ public class Page02 extends WizardPage{
 
 			addButton.setText("Add");
 			
-			addButton.addTraverseListener(e -> {
-				if(e.detail == SWT.TRAVERSE_RETURN) 
-					addButton.notifyListeners(SWT.Selection, new Event());
 			
-			});
+//			addButton.addTraverseListener(e -> {
+//				if(e.detail == SWT.TRAVERSE_RETURN) 
+//					addButton.notifyListeners(SWT.Selection, new Event());
+//			
+//			});
+
 			
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -220,6 +221,8 @@ public class Page02 extends WizardPage{
 			});
 
 		}
+		
+		
 		setPageComplete(validatePage());
 		setControl(composite);
 	}
