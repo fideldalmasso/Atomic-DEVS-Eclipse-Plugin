@@ -27,10 +27,6 @@
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesOutputPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesInputPort"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/clasea"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/claseb"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/clasec"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/clased"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//StateStructure">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StateStructure/statevariable"/>
@@ -132,17 +128,6 @@
           ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/statevariable"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/transitiondata"/>
-    </genClasses>
-    <genClasses ecoreClass="atomicDevs.ecore#//ClaseA"/>
-    <genClasses ecoreClass="atomicDevs.ecore#//ClaseB">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//ClaseB/atomicdevs"/>
-    </genClasses>
-    <genClasses ecoreClass="atomicDevs.ecore#//ClaseC"/>
-    <genClasses ecoreClass="atomicDevs.ecore#//ClaseD">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//ClaseD/atomicdevs"/>
-    </genClasses>
-    <genClasses ecoreClass="atomicDevs.ecore#//ClaseE">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//ClaseE/atomicdevs"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

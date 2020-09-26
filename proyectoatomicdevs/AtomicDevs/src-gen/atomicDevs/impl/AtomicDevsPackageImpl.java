@@ -5,11 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.ClaseA;
-import atomicDevs.ClaseB;
-import atomicDevs.ClaseC;
-import atomicDevs.ClaseD;
-import atomicDevs.ClaseE;
 import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
@@ -278,41 +273,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass claseAEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass claseBEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass claseCEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass claseDEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass claseEEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum primitiveEEnum = null;
 
 	/**
@@ -455,46 +415,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	@Override
 	public EReference getAtomicDEVS_IncludesInputPort() {
 		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAtomicDEVS_Clasea() {
-		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAtomicDEVS_Claseb() {
-		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAtomicDEVS_Clasec() {
-		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAtomicDEVS_Clased() {
-		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1193,86 +1113,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getClaseA() {
-		return claseAEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getClaseB() {
-		return claseBEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getClaseB_Atomicdevs() {
-		return (EReference) claseBEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getClaseC() {
-		return claseCEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getClaseD() {
-		return claseDEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getClaseD_Atomicdevs() {
-		return (EReference) claseDEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getClaseE() {
-		return claseEEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getClaseE_Atomicdevs() {
-		return (EReference) claseEEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getPrimitive() {
 		return primitiveEEnum;
 	}
@@ -1314,10 +1154,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__STATEPHASE);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__INCLUDES_OUTPUT_PORT);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__INCLUDES_INPUT_PORT);
-		createEReference(atomicDEVSEClass, ATOMIC_DEVS__CLASEA);
-		createEReference(atomicDEVSEClass, ATOMIC_DEVS__CLASEB);
-		createEReference(atomicDEVSEClass, ATOMIC_DEVS__CLASEC);
-		createEReference(atomicDEVSEClass, ATOMIC_DEVS__CLASED);
 
 		stateStructureEClass = createEClass(STATE_STRUCTURE);
 		createEReference(stateStructureEClass, STATE_STRUCTURE__STATEVARIABLE);
@@ -1418,19 +1254,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(valueDataEClass, VALUE_DATA__STATEVARIABLE);
 		createEReference(valueDataEClass, VALUE_DATA__TRANSITIONDATA);
 
-		claseAEClass = createEClass(CLASE_A);
-
-		claseBEClass = createEClass(CLASE_B);
-		createEReference(claseBEClass, CLASE_B__ATOMICDEVS);
-
-		claseCEClass = createEClass(CLASE_C);
-
-		claseDEClass = createEClass(CLASE_D);
-		createEReference(claseDEClass, CLASE_D__ATOMICDEVS);
-
-		claseEEClass = createEClass(CLASE_E);
-		createEReference(claseEEClass, CLASE_E__ATOMICDEVS);
-
 		// Create enums
 		primitiveEEnum = createEEnum(PRIMITIVE);
 	}
@@ -1501,18 +1324,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAtomicDEVS_IncludesInputPort(), this.getInputPort(), null, "includesInputPort", null, 0, -1,
 				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAtomicDEVS_Clasea(), this.getClaseA(), null, "clasea", null, 0, 1, AtomicDEVS.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAtomicDEVS_Claseb(), this.getClaseB(), this.getClaseB_Atomicdevs(), "claseb", null, 0, 1,
-				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAtomicDEVS_Clasec(), this.getClaseC(), null, "clasec", null, 0, -1, AtomicDEVS.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAtomicDEVS_Clased(), this.getClaseD(), this.getClaseD_Atomicdevs(), "clased", null, 0, -1,
-				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateStructureEClass, StateStructure.class, "StateStructure", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1703,25 +1514,6 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEReference(getValueData_Transitiondata(), this.getTransitionData(), this.getTransitionData_Valuedata(),
 				"transitiondata", null, 1, 1, ValueData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(claseAEClass, ClaseA.class, "ClaseA", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(claseBEClass, ClaseB.class, "ClaseB", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClaseB_Atomicdevs(), this.getAtomicDEVS(), this.getAtomicDEVS_Claseb(), "atomicdevs", null, 0,
-				1, ClaseB.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(claseCEClass, ClaseC.class, "ClaseC", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(claseDEClass, ClaseD.class, "ClaseD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClaseD_Atomicdevs(), this.getAtomicDEVS(), this.getAtomicDEVS_Clased(), "atomicdevs", null, 0,
-				1, ClaseD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(claseEEClass, ClaseE.class, "ClaseE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClaseE_Atomicdevs(), this.getAtomicDEVS(), null, "atomicdevs", null, 0, 1, ClaseE.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(primitiveEEnum, Primitive.class, "Primitive");

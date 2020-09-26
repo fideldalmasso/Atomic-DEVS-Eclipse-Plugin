@@ -5,11 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.ClaseA;
-import atomicDevs.ClaseB;
-import atomicDevs.ClaseC;
-import atomicDevs.ClaseD;
-import atomicDevs.ClaseE;
 import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
@@ -153,16 +148,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createInputPort();
 		case AtomicDevsPackage.VALUE_DATA:
 			return createValueData();
-		case AtomicDevsPackage.CLASE_A:
-			return createClaseA();
-		case AtomicDevsPackage.CLASE_B:
-			return createClaseB();
-		case AtomicDevsPackage.CLASE_C:
-			return createClaseC();
-		case AtomicDevsPackage.CLASE_D:
-			return createClaseD();
-		case AtomicDevsPackage.CLASE_E:
-			return createClaseE();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -537,61 +522,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	public ValueData createValueData() {
 		ValueDataImpl valueData = new ValueDataImpl();
 		return valueData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClaseA createClaseA() {
-		ClaseAImpl claseA = new ClaseAImpl();
-		return claseA;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClaseB createClaseB() {
-		ClaseBImpl claseB = new ClaseBImpl();
-		return claseB;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClaseC createClaseC() {
-		ClaseCImpl claseC = new ClaseCImpl();
-		return claseC;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClaseD createClaseD() {
-		ClaseDImpl claseD = new ClaseDImpl();
-		return claseD;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClaseE createClaseE() {
-		ClaseEImpl claseE = new ClaseEImpl();
-		return claseE;
 	}
 
 	/**
