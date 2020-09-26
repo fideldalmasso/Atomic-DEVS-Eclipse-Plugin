@@ -4,6 +4,11 @@ package atomicDevs.util;
 
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.ClaseA;
+import atomicDevs.ClaseB;
+import atomicDevs.ClaseC;
+import atomicDevs.ClaseD;
+import atomicDevs.ClaseE;
 import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
@@ -342,6 +347,41 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 		case AtomicDevsPackage.VALUE_DATA: {
 			ValueData valueData = (ValueData) theEObject;
 			T result = caseValueData(valueData);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.CLASE_A: {
+			ClaseA claseA = (ClaseA) theEObject;
+			T result = caseClaseA(claseA);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.CLASE_B: {
+			ClaseB claseB = (ClaseB) theEObject;
+			T result = caseClaseB(claseB);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.CLASE_C: {
+			ClaseC claseC = (ClaseC) theEObject;
+			T result = caseClaseC(claseC);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.CLASE_D: {
+			ClaseD claseD = (ClaseD) theEObject;
+			T result = caseClaseD(claseD);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.CLASE_E: {
+			ClaseE claseE = (ClaseE) theEObject;
+			T result = caseClaseE(claseE);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -813,6 +853,81 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValueData(ValueData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clase A</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clase A</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClaseA(ClaseA object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clase B</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clase B</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClaseB(ClaseB object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clase C</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clase C</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClaseC(ClaseC object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clase D</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clase D</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClaseD(ClaseD object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clase E</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clase E</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClaseE(ClaseE object) {
 		return null;
 	}
 

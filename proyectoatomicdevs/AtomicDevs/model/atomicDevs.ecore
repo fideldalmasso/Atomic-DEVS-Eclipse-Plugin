@@ -28,6 +28,13 @@
         eType="#//OutputPort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includesInputPort" upperBound="-1"
         eType="#//InputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clasea" eType="#//ClaseA"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="claseb" eType="#//ClaseB"
+        eOpposite="#//ClaseB/atomicdevs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clasec" upperBound="-1"
+        eType="#//ClaseC" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clased" upperBound="-1"
+        eType="#//ClaseD" containment="true" eOpposite="#//ClaseD/atomicdevs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateStructure">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -230,5 +237,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" eType="#//StateVariable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitiondata" lowerBound="1"
         eType="#//TransitionData" eOpposite="#//TransitionData/valuedata"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClaseA"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClaseB">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" eType="#//AtomicDEVS"
+        eOpposite="#//AtomicDEVS/claseb"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClaseC"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClaseD">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" eType="#//AtomicDEVS"
+        eOpposite="#//AtomicDEVS/clased"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClaseE">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" eType="#//AtomicDEVS"/>
   </eClassifiers>
 </ecore:EPackage>

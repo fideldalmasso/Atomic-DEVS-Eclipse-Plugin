@@ -23,6 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.AtomicDEVS#getStatephase <em>Statephase</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesOutputPort <em>Includes Output Port</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesInputPort <em>Includes Input Port</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getClasea <em>Clasea</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getClaseb <em>Claseb</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getClasec <em>Clasec</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getClased <em>Clased</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS()
@@ -136,5 +140,77 @@ public interface AtomicDEVS extends EObject {
 	 * @generated
 	 */
 	EList<InputPort> getIncludesInputPort();
+
+	/**
+	 * Returns the value of the '<em><b>Clasea</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Clasea</em>' reference.
+	 * @see #setClasea(ClaseA)
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Clasea()
+	 * @model
+	 * @generated
+	 */
+	ClaseA getClasea();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getClasea <em>Clasea</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Clasea</em>' reference.
+	 * @see #getClasea()
+	 * @generated
+	 */
+	void setClasea(ClaseA value);
+
+	/**
+	 * Returns the value of the '<em><b>Claseb</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link atomicDevs.ClaseB#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Claseb</em>' reference.
+	 * @see #setClaseb(ClaseB)
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Claseb()
+	 * @see atomicDevs.ClaseB#getAtomicdevs
+	 * @model opposite="atomicdevs"
+	 * @generated
+	 */
+	ClaseB getClaseb();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getClaseb <em>Claseb</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Claseb</em>' reference.
+	 * @see #getClaseb()
+	 * @generated
+	 */
+	void setClaseb(ClaseB value);
+
+	/**
+	 * Returns the value of the '<em><b>Clasec</b></em>' containment reference list.
+	 * The list contents are of type {@link atomicDevs.ClaseC}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Clasec</em>' containment reference list.
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Clasec()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ClaseC> getClasec();
+
+	/**
+	 * Returns the value of the '<em><b>Clased</b></em>' containment reference list.
+	 * The list contents are of type {@link atomicDevs.ClaseD}.
+	 * It is bidirectional and its opposite is '{@link atomicDevs.ClaseD#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Clased</em>' containment reference list.
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Clased()
+	 * @see atomicDevs.ClaseD#getAtomicdevs
+	 * @model opposite="atomicdevs" containment="true"
+	 * @generated
+	 */
+	EList<ClaseD> getClased();
 
 } // AtomicDEVS

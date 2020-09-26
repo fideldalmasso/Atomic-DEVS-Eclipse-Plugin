@@ -50,6 +50,11 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.ClaseA;
+import atomicDevs.ClaseB;
+import atomicDevs.ClaseC;
+import atomicDevs.ClaseD;
+import atomicDevs.ClaseE;
 import atomicDevs.CustomVariable;
 import atomicDevs.InitialState;
 import atomicDevs.InputPort;
@@ -63,6 +68,7 @@ import atomicDevs.StateStructure;
 import atomicDevs.StateVariable;
 import atomicDevs.UserDefinedType;
 import atomicDevs.Value;
+import atomicDevs.impl.AtomicDEVSImpl;
 import atomicDevs.pages.InputPortRegister;
 import atomicDevs.pages.Message;
 import atomicDevs.pages.Message.Type;
@@ -271,6 +277,37 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		AtomicDEVS atomicDEVSObject = (AtomicDEVS) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("AtomicDEVS"));
 		atomicDEVSObject.setName(modelName);
 		
+		
+		
+		
+		
+		ClaseA claseAObject = (ClaseA) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ClaseA"));
+		atomicDEVSObject.setClasea(claseAObject);
+		
+		ClaseB claseBObject = (ClaseB) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ClaseB"));
+		atomicDEVSObject.setClaseb(claseBObject);
+		claseBObject.setAtomicdevs(atomicDEVSObject);
+		
+		ClaseC claseCObject = (ClaseC) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ClaseC"));
+		atomicDEVSObject.getClasec().add(claseCObject);
+		//List<ClaseC> lista1 = new ArrayList<ClaseC>();
+		//lista1.add(claseCObject);
+		//atomicDEVSObject.eSet(claseCObject.eContainingFeature(), claseCObject);
+		
+		ClaseD claseDObject = (ClaseD) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ClaseD"));
+		claseDObject.setAtomicdevs(atomicDEVSObject);
+		atomicDEVSObject.getClased().add(claseDObject);
+		
+		ClaseE claseEObject = (ClaseE) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ClaseE"));
+		claseEObject.setAtomicdevs(atomicDEVSObject);
+		
+		
+		
+		
+		
+		
+		
+		
 		StateStructure stateStructureObject = (StateStructure) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateStructure"));
 		atomicDEVSObject.setDefinition(stateStructureObject);
 		
@@ -281,6 +318,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		StatePhase statePhaseObject = (StatePhase) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StatePhase"));
 		statePhaseObject.setValue(stateVariables.get(0).value);
 		statePhaseObject.setAtomicdevs(atomicDEVSObject);
+		atomicDEVSObject.getStatephase().add(statePhaseObject);
 		
 		
 		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
@@ -446,8 +484,12 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 							AtomicDEVS atomicDEVS = (AtomicDEVS) rootObject;
 							resource.getContents().add(atomicDEVS);
 							resource.getContents().add((StateStructure) atomicDEVS.getDefinition());
-							resource.getContents().add((StatePhase) atomicDEVS.getStatephase().get(0));
+							//resource.getContents().add((StatePhase) atomicDEVS.getStatephase().get(0));
 							resource.getContents().add((InitialState) atomicDEVS.getInitialization());
+							
+							resource.getContents().add((ClaseA) atomicDEVS.getClasea());
+							resource.getContents().add((ClaseB) atomicDEVS.getClaseb());
+							
 							
 							for(InputPort p : (EList<InputPort>) atomicDEVS.getIncludesInputPort()) 
 								resource.getContents().add(p);

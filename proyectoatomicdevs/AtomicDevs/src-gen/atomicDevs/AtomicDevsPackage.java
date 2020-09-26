@@ -126,13 +126,49 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__INCLUDES_INPUT_PORT = 5;
 
 	/**
+	 * The feature id for the '<em><b>Clasea</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__CLASEA = 6;
+
+	/**
+	 * The feature id for the '<em><b>Claseb</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__CLASEB = 7;
+
+	/**
+	 * The feature id for the '<em><b>Clasec</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__CLASEC = 8;
+
+	/**
+	 * The feature id for the '<em><b>Clased</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__CLASED = 9;
+
+	/**
 	 * The number of structural features of the '<em>Atomic DEVS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_DEVS_FEATURE_COUNT = 6;
+	int ATOMIC_DEVS_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Atomic DEVS</em>' class.
@@ -1614,6 +1650,173 @@ public interface AtomicDevsPackage extends EPackage {
 	int VALUE_DATA_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ClaseAImpl <em>Clase A</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ClaseAImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseA()
+	 * @generated
+	 */
+	int CLASE_A = 31;
+
+	/**
+	 * The number of structural features of the '<em>Clase A</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_A_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Clase A</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_A_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ClaseBImpl <em>Clase B</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ClaseBImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseB()
+	 * @generated
+	 */
+	int CLASE_B = 32;
+
+	/**
+	 * The feature id for the '<em><b>Atomicdevs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_B__ATOMICDEVS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Clase B</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_B_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Clase B</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_B_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ClaseCImpl <em>Clase C</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ClaseCImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseC()
+	 * @generated
+	 */
+	int CLASE_C = 33;
+
+	/**
+	 * The number of structural features of the '<em>Clase C</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_C_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Clase C</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_C_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ClaseDImpl <em>Clase D</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ClaseDImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseD()
+	 * @generated
+	 */
+	int CLASE_D = 34;
+
+	/**
+	 * The feature id for the '<em><b>Atomicdevs</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_D__ATOMICDEVS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Clase D</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_D_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Clase D</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_D_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ClaseEImpl <em>Clase E</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ClaseEImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseE()
+	 * @generated
+	 */
+	int CLASE_E = 35;
+
+	/**
+	 * The feature id for the '<em><b>Atomicdevs</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_E__ATOMICDEVS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Clase E</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_E_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Clase E</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASE_E_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1621,7 +1824,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 31;
+	int PRIMITIVE = 36;
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.AtomicDEVS <em>Atomic DEVS</em>}'.
@@ -1698,6 +1901,50 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAtomicDEVS_IncludesInputPort();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.AtomicDEVS#getClasea <em>Clasea</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Clasea</em>'.
+	 * @see atomicDevs.AtomicDEVS#getClasea()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Clasea();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.AtomicDEVS#getClaseb <em>Claseb</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Claseb</em>'.
+	 * @see atomicDevs.AtomicDEVS#getClaseb()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Claseb();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link atomicDevs.AtomicDEVS#getClasec <em>Clasec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Clasec</em>'.
+	 * @see atomicDevs.AtomicDEVS#getClasec()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Clasec();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link atomicDevs.AtomicDEVS#getClased <em>Clased</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Clased</em>'.
+	 * @see atomicDevs.AtomicDEVS#getClased()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Clased();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.StateStructure <em>State Structure</em>}'.
@@ -2429,6 +2676,89 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getValueData_Transitiondata();
 
 	/**
+	 * Returns the meta object for class '{@link atomicDevs.ClaseA <em>Clase A</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clase A</em>'.
+	 * @see atomicDevs.ClaseA
+	 * @generated
+	 */
+	EClass getClaseA();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ClaseB <em>Clase B</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clase B</em>'.
+	 * @see atomicDevs.ClaseB
+	 * @generated
+	 */
+	EClass getClaseB();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.ClaseB#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Atomicdevs</em>'.
+	 * @see atomicDevs.ClaseB#getAtomicdevs()
+	 * @see #getClaseB()
+	 * @generated
+	 */
+	EReference getClaseB_Atomicdevs();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ClaseC <em>Clase C</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clase C</em>'.
+	 * @see atomicDevs.ClaseC
+	 * @generated
+	 */
+	EClass getClaseC();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ClaseD <em>Clase D</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clase D</em>'.
+	 * @see atomicDevs.ClaseD
+	 * @generated
+	 */
+	EClass getClaseD();
+
+	/**
+	 * Returns the meta object for the container reference '{@link atomicDevs.ClaseD#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Atomicdevs</em>'.
+	 * @see atomicDevs.ClaseD#getAtomicdevs()
+	 * @see #getClaseD()
+	 * @generated
+	 */
+	EReference getClaseD_Atomicdevs();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ClaseE <em>Clase E</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clase E</em>'.
+	 * @see atomicDevs.ClaseE
+	 * @generated
+	 */
+	EClass getClaseE();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.ClaseE#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Atomicdevs</em>'.
+	 * @see atomicDevs.ClaseE#getAtomicdevs()
+	 * @see #getClaseE()
+	 * @generated
+	 */
+	EReference getClaseE_Atomicdevs();
+
+	/**
 	 * Returns the meta object for enum '{@link atomicDevs.Primitive <em>Primitive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2518,6 +2848,38 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATOMIC_DEVS__INCLUDES_INPUT_PORT = eINSTANCE.getAtomicDEVS_IncludesInputPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Clasea</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__CLASEA = eINSTANCE.getAtomicDEVS_Clasea();
+
+		/**
+		 * The meta object literal for the '<em><b>Claseb</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__CLASEB = eINSTANCE.getAtomicDEVS_Claseb();
+
+		/**
+		 * The meta object literal for the '<em><b>Clasec</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__CLASEC = eINSTANCE.getAtomicDEVS_Clasec();
+
+		/**
+		 * The meta object literal for the '<em><b>Clased</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__CLASED = eINSTANCE.getAtomicDEVS_Clased();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.StateStructureImpl <em>State Structure</em>}' class.
@@ -3131,6 +3493,80 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VALUE_DATA__TRANSITIONDATA = eINSTANCE.getValueData_Transitiondata();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ClaseAImpl <em>Clase A</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ClaseAImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseA()
+		 * @generated
+		 */
+		EClass CLASE_A = eINSTANCE.getClaseA();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ClaseBImpl <em>Clase B</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ClaseBImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseB()
+		 * @generated
+		 */
+		EClass CLASE_B = eINSTANCE.getClaseB();
+
+		/**
+		 * The meta object literal for the '<em><b>Atomicdevs</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASE_B__ATOMICDEVS = eINSTANCE.getClaseB_Atomicdevs();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ClaseCImpl <em>Clase C</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ClaseCImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseC()
+		 * @generated
+		 */
+		EClass CLASE_C = eINSTANCE.getClaseC();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ClaseDImpl <em>Clase D</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ClaseDImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseD()
+		 * @generated
+		 */
+		EClass CLASE_D = eINSTANCE.getClaseD();
+
+		/**
+		 * The meta object literal for the '<em><b>Atomicdevs</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASE_D__ATOMICDEVS = eINSTANCE.getClaseD_Atomicdevs();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ClaseEImpl <em>Clase E</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ClaseEImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getClaseE()
+		 * @generated
+		 */
+		EClass CLASE_E = eINSTANCE.getClaseE();
+
+		/**
+		 * The meta object literal for the '<em><b>Atomicdevs</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASE_E__ATOMICDEVS = eINSTANCE.getClaseE_Atomicdevs();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.

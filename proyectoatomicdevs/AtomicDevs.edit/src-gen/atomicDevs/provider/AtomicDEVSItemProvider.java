@@ -61,6 +61,8 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			addInitializationPropertyDescriptor(object);
 			addIncludesOutputPortPropertyDescriptor(object);
 			addIncludesInputPortPropertyDescriptor(object);
+			addClaseaPropertyDescriptor(object);
+			addClasebPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -144,6 +146,36 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
+	 * This adds a property descriptor for the Clasea feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClaseaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AtomicDEVS_clasea_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_clasea_feature",
+								"_UI_AtomicDEVS_type"),
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASEA, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Claseb feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClasebPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AtomicDEVS_claseb_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_claseb_feature",
+								"_UI_AtomicDEVS_type"),
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASEB, true, false, true, null, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -156,6 +188,8 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASEC);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASED);
 		}
 		return childrenFeatures;
 	}
@@ -223,6 +257,8 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
+		case AtomicDevsPackage.ATOMIC_DEVS__CLASEC:
+		case AtomicDevsPackage.ATOMIC_DEVS__CLASED:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -242,6 +278,12 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE,
 				AtomicDevsFactory.eINSTANCE.createStatePhase()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASEC,
+				AtomicDevsFactory.eINSTANCE.createClaseC()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__CLASED,
+				AtomicDevsFactory.eINSTANCE.createClaseD()));
 	}
 
 	/**

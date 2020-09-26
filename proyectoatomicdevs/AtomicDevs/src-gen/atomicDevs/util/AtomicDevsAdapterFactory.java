@@ -4,6 +4,11 @@ package atomicDevs.util;
 
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.ClaseA;
+import atomicDevs.ClaseB;
+import atomicDevs.ClaseC;
+import atomicDevs.ClaseD;
+import atomicDevs.ClaseE;
 import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
@@ -246,6 +251,31 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseValueData(ValueData object) {
 			return createValueDataAdapter();
+		}
+
+		@Override
+		public Adapter caseClaseA(ClaseA object) {
+			return createClaseAAdapter();
+		}
+
+		@Override
+		public Adapter caseClaseB(ClaseB object) {
+			return createClaseBAdapter();
+		}
+
+		@Override
+		public Adapter caseClaseC(ClaseC object) {
+			return createClaseCAdapter();
+		}
+
+		@Override
+		public Adapter caseClaseD(ClaseD object) {
+			return createClaseDAdapter();
+		}
+
+		@Override
+		public Adapter caseClaseE(ClaseE object) {
+			return createClaseEAdapter();
 		}
 
 		@Override
@@ -698,6 +728,76 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createValueDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ClaseA <em>Clase A</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ClaseA
+	 * @generated
+	 */
+	public Adapter createClaseAAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ClaseB <em>Clase B</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ClaseB
+	 * @generated
+	 */
+	public Adapter createClaseBAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ClaseC <em>Clase C</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ClaseC
+	 * @generated
+	 */
+	public Adapter createClaseCAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ClaseD <em>Clase D</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ClaseD
+	 * @generated
+	 */
+	public Adapter createClaseDAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ClaseE <em>Clase E</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ClaseE
+	 * @generated
+	 */
+	public Adapter createClaseEAdapter() {
 		return null;
 	}
 

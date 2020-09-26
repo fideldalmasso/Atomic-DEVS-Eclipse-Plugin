@@ -786,6 +786,121 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ClaseA} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClaseAItemProvider claseAItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ClaseA}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClaseAAdapter() {
+		if (claseAItemProvider == null) {
+			claseAItemProvider = new ClaseAItemProvider(this);
+		}
+
+		return claseAItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ClaseB} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClaseBItemProvider claseBItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ClaseB}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClaseBAdapter() {
+		if (claseBItemProvider == null) {
+			claseBItemProvider = new ClaseBItemProvider(this);
+		}
+
+		return claseBItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ClaseC} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClaseCItemProvider claseCItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ClaseC}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClaseCAdapter() {
+		if (claseCItemProvider == null) {
+			claseCItemProvider = new ClaseCItemProvider(this);
+		}
+
+		return claseCItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ClaseD} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClaseDItemProvider claseDItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ClaseD}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClaseDAdapter() {
+		if (claseDItemProvider == null) {
+			claseDItemProvider = new ClaseDItemProvider(this);
+		}
+
+		return claseDItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ClaseE} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClaseEItemProvider claseEItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ClaseE}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClaseEAdapter() {
+		if (claseEItemProvider == null) {
+			claseEItemProvider = new ClaseEItemProvider(this);
+		}
+
+		return claseEItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -952,6 +1067,16 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			inputPortItemProvider.dispose();
 		if (valueDataItemProvider != null)
 			valueDataItemProvider.dispose();
+		if (claseAItemProvider != null)
+			claseAItemProvider.dispose();
+		if (claseBItemProvider != null)
+			claseBItemProvider.dispose();
+		if (claseCItemProvider != null)
+			claseCItemProvider.dispose();
+		if (claseDItemProvider != null)
+			claseDItemProvider.dispose();
+		if (claseEItemProvider != null)
+			claseEItemProvider.dispose();
 	}
 
 }

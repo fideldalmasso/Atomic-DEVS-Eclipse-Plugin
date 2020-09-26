@@ -301,6 +301,51 @@ public interface AtomicDevsFactory extends EFactory {
 	ValueData createValueData();
 
 	/**
+	 * Returns a new object of class '<em>Clase A</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clase A</em>'.
+	 * @generated
+	 */
+	ClaseA createClaseA();
+
+	/**
+	 * Returns a new object of class '<em>Clase B</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clase B</em>'.
+	 * @generated
+	 */
+	ClaseB createClaseB();
+
+	/**
+	 * Returns a new object of class '<em>Clase C</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clase C</em>'.
+	 * @generated
+	 */
+	ClaseC createClaseC();
+
+	/**
+	 * Returns a new object of class '<em>Clase D</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clase D</em>'.
+	 * @generated
+	 */
+	ClaseD createClaseD();
+
+	/**
+	 * Returns a new object of class '<em>Clase E</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clase E</em>'.
+	 * @generated
+	 */
+	ClaseE createClaseE();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

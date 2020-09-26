@@ -4,6 +4,11 @@ package atomicDevs.util;
 
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.ClaseA;
+import atomicDevs.ClaseB;
+import atomicDevs.ClaseC;
+import atomicDevs.ClaseD;
+import atomicDevs.ClaseE;
 import atomicDevs.Condition;
 import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
@@ -177,6 +182,16 @@ public class AtomicDevsValidator extends EObjectValidator {
 			return validateInputPort((InputPort) value, diagnostics, context);
 		case AtomicDevsPackage.VALUE_DATA:
 			return validateValueData((ValueData) value, diagnostics, context);
+		case AtomicDevsPackage.CLASE_A:
+			return validateClaseA((ClaseA) value, diagnostics, context);
+		case AtomicDevsPackage.CLASE_B:
+			return validateClaseB((ClaseB) value, diagnostics, context);
+		case AtomicDevsPackage.CLASE_C:
+			return validateClaseC((ClaseC) value, diagnostics, context);
+		case AtomicDevsPackage.CLASE_D:
+			return validateClaseD((ClaseD) value, diagnostics, context);
+		case AtomicDevsPackage.CLASE_E:
+			return validateClaseE((ClaseE) value, diagnostics, context);
 		case AtomicDevsPackage.PRIMITIVE:
 			return validatePrimitive((Primitive) value, diagnostics, context);
 		default:
@@ -1123,6 +1138,51 @@ public class AtomicDevsValidator extends EObjectValidator {
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "valueMatchesTargetPhaseWhenStateVariableIsPhase",
 				VALUE_DATA__VALUE_MATCHES_TARGET_PHASE_WHEN_STATE_VARIABLE_IS_PHASE__EEXPRESSION, Diagnostic.ERROR,
 				DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClaseA(ClaseA claseA, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(claseA, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClaseB(ClaseB claseB, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(claseB, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClaseC(ClaseC claseC, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(claseC, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClaseD(ClaseD claseD, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(claseD, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClaseE(ClaseE claseE, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(claseE, diagnostics, context);
 	}
 
 	/**
