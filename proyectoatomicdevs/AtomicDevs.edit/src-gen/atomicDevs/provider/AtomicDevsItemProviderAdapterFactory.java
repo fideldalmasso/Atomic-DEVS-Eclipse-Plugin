@@ -119,29 +119,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.StateVariable} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StateVariableItemProvider stateVariableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link atomicDevs.StateVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createStateVariableAdapter() {
-		if (stateVariableItemProvider == null) {
-			stateVariableItemProvider = new StateVariableItemProvider(this);
-		}
-
-		return stateVariableItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link atomicDevs.PhaseVariable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -349,29 +326,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Value} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ValueItemProvider valueItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link atomicDevs.Value}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createValueAdapter() {
-		if (valueItemProvider == null) {
-			valueItemProvider = new ValueItemProvider(this);
-		}
-
-		return valueItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link atomicDevs.Double} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -510,29 +464,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Transition} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TransitionItemProvider transitionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link atomicDevs.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTransitionAdapter() {
-		if (transitionItemProvider == null) {
-			transitionItemProvider = new TransitionItemProvider(this);
-		}
-
-		return transitionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link atomicDevs.Condition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -599,29 +530,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 		}
 
 		return externalTransitionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.TransitionData} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TransitionDataItemProvider transitionDataItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link atomicDevs.TransitionData}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTransitionDataAdapter() {
-		if (transitionDataItemProvider == null) {
-			transitionDataItemProvider = new TransitionDataItemProvider(this);
-		}
-
-		return transitionDataItemProvider;
 	}
 
 	/**
@@ -917,8 +825,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			atomicDEVSItemProvider.dispose();
 		if (stateStructureItemProvider != null)
 			stateStructureItemProvider.dispose();
-		if (stateVariableItemProvider != null)
-			stateVariableItemProvider.dispose();
 		if (phaseVariableItemProvider != null)
 			phaseVariableItemProvider.dispose();
 		if (sigmaVariableItemProvider != null)
@@ -937,8 +843,6 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			internalTransitionDataItemProvider.dispose();
 		if (initialStateItemProvider != null)
 			initialStateItemProvider.dispose();
-		if (valueItemProvider != null)
-			valueItemProvider.dispose();
 		if (doubleItemProvider != null)
 			doubleItemProvider.dispose();
 		if (stringItemProvider != null)
@@ -951,16 +855,12 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			integerItemProvider.dispose();
 		if (infinityItemProvider != null)
 			infinityItemProvider.dispose();
-		if (transitionItemProvider != null)
-			transitionItemProvider.dispose();
 		if (conditionItemProvider != null)
 			conditionItemProvider.dispose();
 		if (internalTransitionItemProvider != null)
 			internalTransitionItemProvider.dispose();
 		if (externalTransitionItemProvider != null)
 			externalTransitionItemProvider.dispose();
-		if (transitionDataItemProvider != null)
-			transitionDataItemProvider.dispose();
 		if (externalTransitionDataItemProvider != null)
 			externalTransitionDataItemProvider.dispose();
 		if (portItemProvider != null)

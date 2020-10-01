@@ -40,15 +40,6 @@ public interface AtomicDevsFactory extends EFactory {
 	StateStructure createStateStructure();
 
 	/**
-	 * Returns a new object of class '<em>State Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>State Variable</em>'.
-	 * @generated
-	 */
-	StateVariable createStateVariable();
-
-	/**
 	 * Returns a new object of class '<em>Phase Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,15 +121,6 @@ public interface AtomicDevsFactory extends EFactory {
 	InitialState createInitialState();
 
 	/**
-	 * Returns a new object of class '<em>Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Value</em>'.
-	 * @generated
-	 */
-	Value createValue();
-
-	/**
 	 * Returns a new object of class '<em>Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,15 +175,6 @@ public interface AtomicDevsFactory extends EFactory {
 	Infinity createInfinity();
 
 	/**
-	 * Returns a new object of class '<em>Transition</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transition</em>'.
-	 * @generated
-	 */
-	Transition createTransition();
-
-	/**
 	 * Returns a new object of class '<em>Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,15 +200,6 @@ public interface AtomicDevsFactory extends EFactory {
 	 * @generated
 	 */
 	ExternalTransition createExternalTransition();
-
-	/**
-	 * Returns a new object of class '<em>Transition Data</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transition Data</em>'.
-	 * @generated
-	 */
-	TransitionData createTransitionData();
 
 	/**
 	 * Returns a new object of class '<em>External Transition Data</em>'.

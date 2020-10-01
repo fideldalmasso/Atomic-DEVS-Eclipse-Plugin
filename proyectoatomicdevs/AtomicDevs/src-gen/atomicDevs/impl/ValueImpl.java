@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class ValueImpl extends MinimalEObjectImpl.Container implements Value {
+public abstract class ValueImpl extends MinimalEObjectImpl.Container implements Value {
 	/**
 	 * The cached value of the '{@link #getStatevariable() <em>Statevariable</em>}' reference.
 	 * <!-- begin-user-doc -->

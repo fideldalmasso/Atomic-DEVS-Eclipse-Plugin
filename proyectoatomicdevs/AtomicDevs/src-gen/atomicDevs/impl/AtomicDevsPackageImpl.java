@@ -1413,7 +1413,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				StateStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stateVariableEClass, StateVariable.class, "StateVariable", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(stateVariableEClass, StateVariable.class, "StateVariable", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStateVariable_Type(), this.getType(), null, "type", null, 1, 1, StateVariable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
@@ -1474,7 +1474,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				"atomicdevs", null, 1, 1, InitialState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValue_Statevariable(), this.getStateVariable(), null, "statevariable", null, 1, 1,
 				Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1508,7 +1508,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEClass(infinityEClass, Infinity.class, "Infinity", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(transitionEClass, Transition.class, "Transition", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Target(), this.getStatePhase(), this.getStatePhase_TransitionIn(), "target", null,
 				1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -1531,7 +1531,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEClass(externalTransitionEClass, ExternalTransition.class, "ExternalTransition", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(transitionDataEClass, TransitionData.class, "TransitionData", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(transitionDataEClass, TransitionData.class, "TransitionData", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransitionData_Condition(), this.getCondition(), null, "condition", null, 1, 1,
 				TransitionData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,

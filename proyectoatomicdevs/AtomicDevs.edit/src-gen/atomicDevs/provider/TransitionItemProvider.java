@@ -184,9 +184,6 @@ public class TransitionItemProvider extends ItemProviderAdapter implements IEdit
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.TRANSITION__TRANSITIONDATA,
-				AtomicDevsFactory.eINSTANCE.createTransitionData()));
-
-		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.TRANSITION__TRANSITIONDATA,
 				AtomicDevsFactory.eINSTANCE.createInternalTransitionData()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.TRANSITION__TRANSITIONDATA,

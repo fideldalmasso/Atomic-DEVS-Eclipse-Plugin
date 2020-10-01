@@ -168,9 +168,6 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
 				AtomicDevsFactory.eINSTANCE.createDouble()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,

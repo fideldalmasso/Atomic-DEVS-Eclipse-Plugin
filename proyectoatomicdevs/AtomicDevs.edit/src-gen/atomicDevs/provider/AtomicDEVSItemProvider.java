@@ -274,9 +274,6 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 				AtomicDevsFactory.eINSTANCE.createStatePhase()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
-				AtomicDevsFactory.eINSTANCE.createTransition()));
-
-		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
 				AtomicDevsFactory.eINSTANCE.createInternalTransition()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,

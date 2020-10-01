@@ -151,9 +151,6 @@ public class StateStructureItemProvider extends ItemProviderAdapter implements I
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.STATE_STRUCTURE__STATEVARIABLE,
-				AtomicDevsFactory.eINSTANCE.createStateVariable()));
-
-		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.STATE_STRUCTURE__STATEVARIABLE,
 				AtomicDevsFactory.eINSTANCE.createPhaseVariable()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.STATE_STRUCTURE__STATEVARIABLE,

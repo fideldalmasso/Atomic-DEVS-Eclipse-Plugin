@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getTransitionData()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='everyVariableMustHaveAValueData'"
+ * @model abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='everyVariableMustHaveAValueData'"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot everyVariableMustHaveAValueData='\n\t\tself.transition.source.atomicdevs.definition.statevariable-&gt;\n\t\tforAll(s: StateVariable | \n\t\t\tself.valuedata-&gt;one(vd:ValueData|vd.statevariable = s)\n\t\t)'"
  * @generated
  */

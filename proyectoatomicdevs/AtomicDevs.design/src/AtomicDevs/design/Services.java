@@ -11,7 +11,6 @@ import atomicDevs.InputPort;
 import atomicDevs.InternalTransitionData;
 import atomicDevs.Output;
 import atomicDevs.OutputPort;
-import atomicDevs.TransitionData;
 
 /**
  * The services class used by VSM.

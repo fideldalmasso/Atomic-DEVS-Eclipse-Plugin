@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getTransition()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Transition extends EObject {

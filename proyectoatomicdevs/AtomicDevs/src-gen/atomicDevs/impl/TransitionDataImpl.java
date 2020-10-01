@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class TransitionDataImpl extends MinimalEObjectImpl.Container implements TransitionData {
+public abstract class TransitionDataImpl extends MinimalEObjectImpl.Container implements TransitionData {
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->

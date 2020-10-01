@@ -40,7 +40,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="ExternalTransitionData" domainClass="atomicDevs::ExternalTransitionData">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="40" height="9">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getExternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="40" height="9">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>

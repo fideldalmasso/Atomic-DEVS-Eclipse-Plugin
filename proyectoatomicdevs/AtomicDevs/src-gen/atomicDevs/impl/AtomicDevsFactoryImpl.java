@@ -25,13 +25,9 @@ import atomicDevs.PrimitiveType;
 import atomicDevs.SigmaVariable;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
-import atomicDevs.StateVariable;
-import atomicDevs.Transition;
-import atomicDevs.TransitionData;
 import atomicDevs.Type;
 import atomicDevs.UserDefined;
 import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
 import atomicDevs.ValueData;
 
 import org.eclipse.emf.ecore.EClass;
@@ -91,8 +87,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createAtomicDEVS();
 		case AtomicDevsPackage.STATE_STRUCTURE:
 			return createStateStructure();
-		case AtomicDevsPackage.STATE_VARIABLE:
-			return createStateVariable();
 		case AtomicDevsPackage.PHASE_VARIABLE:
 			return createPhaseVariable();
 		case AtomicDevsPackage.SIGMA_VARIABLE:
@@ -111,8 +105,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createInternalTransitionData();
 		case AtomicDevsPackage.INITIAL_STATE:
 			return createInitialState();
-		case AtomicDevsPackage.VALUE:
-			return createValue();
 		case AtomicDevsPackage.DOUBLE:
 			return createDouble();
 		case AtomicDevsPackage.STRING:
@@ -125,16 +117,12 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createInteger();
 		case AtomicDevsPackage.INFINITY:
 			return createInfinity();
-		case AtomicDevsPackage.TRANSITION:
-			return createTransition();
 		case AtomicDevsPackage.CONDITION:
 			return createCondition();
 		case AtomicDevsPackage.INTERNAL_TRANSITION:
 			return createInternalTransition();
 		case AtomicDevsPackage.EXTERNAL_TRANSITION:
 			return createExternalTransition();
-		case AtomicDevsPackage.TRANSITION_DATA:
-			return createTransitionData();
 		case AtomicDevsPackage.EXTERNAL_TRANSITION_DATA:
 			return createExternalTransitionData();
 		case AtomicDevsPackage.PORT:
@@ -206,17 +194,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	public StateStructure createStateStructure() {
 		StateStructureImpl stateStructure = new StateStructureImpl();
 		return stateStructure;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public StateVariable createStateVariable() {
-		StateVariableImpl stateVariable = new StateVariableImpl();
-		return stateVariable;
 	}
 
 	/**
@@ -324,17 +301,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public Value createValue() {
-		ValueImpl value = new ValueImpl();
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public atomicDevs.Double createDouble() {
 		DoubleImpl double_ = new DoubleImpl();
 		return double_;
@@ -401,17 +367,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public Transition createTransition() {
-		TransitionImpl transition = new TransitionImpl();
-		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Condition createCondition() {
 		ConditionImpl condition = new ConditionImpl();
 		return condition;
@@ -437,17 +392,6 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	public ExternalTransition createExternalTransition() {
 		ExternalTransitionImpl externalTransition = new ExternalTransitionImpl();
 		return externalTransition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public TransitionData createTransitionData() {
-		TransitionDataImpl transitionData = new TransitionDataImpl();
-		return transitionData;
 	}
 
 	/**
