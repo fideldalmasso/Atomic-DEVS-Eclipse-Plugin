@@ -10,6 +10,7 @@ import atomicDevs.OutputPort;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
 
+import atomicDevs.Transition;
 import java.lang.String;
 
 import java.util.Collection;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -43,6 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getStatephase <em>Statephase</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getIncludesOutputPort <em>Includes Output Port</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getIncludesInputPort <em>Includes Input Port</em>}</li>
+ *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getTransition <em>Transition</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,7 +72,7 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference.
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDefinition()
@@ -79,7 +82,7 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	protected StateStructure definition;
 
 	/**
-	 * The cached value of the '{@link #getInitialization() <em>Initialization</em>}' reference.
+	 * The cached value of the '{@link #getInitialization() <em>Initialization</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInitialization()
@@ -117,6 +120,16 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * @ordered
 	 */
 	protected EList<InputPort> includesInputPort;
+
+	/**
+	 * The cached value of the '{@link #getTransition() <em>Transition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transition> transition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,15 +180,6 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 */
 	@Override
 	public StateStructure getDefinition() {
-		if (definition != null && definition.eIsProxy()) {
-			InternalEObject oldDefinition = (InternalEObject) definition;
-			definition = (StateStructure) eResolveProxy(oldDefinition);
-			if (definition != oldDefinition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AtomicDevsPackage.ATOMIC_DEVS__DEFINITION,
-							oldDefinition, definition));
-			}
-		}
 		return definition;
 	}
 
@@ -184,8 +188,18 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateStructure basicGetDefinition() {
-		return definition;
+	public NotificationChain basicSetDefinition(StateStructure newDefinition, NotificationChain msgs) {
+		StateStructure oldDefinition = definition;
+		definition = newDefinition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AtomicDevsPackage.ATOMIC_DEVS__DEFINITION, oldDefinition, newDefinition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -195,11 +209,20 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 */
 	@Override
 	public void setDefinition(StateStructure newDefinition) {
-		StateStructure oldDefinition = definition;
-		definition = newDefinition;
-		if (eNotificationRequired())
+		if (newDefinition != definition) {
+			NotificationChain msgs = null;
+			if (definition != null)
+				msgs = ((InternalEObject) definition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__DEFINITION, null, msgs);
+			if (newDefinition != null)
+				msgs = ((InternalEObject) newDefinition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__DEFINITION, null, msgs);
+			msgs = basicSetDefinition(newDefinition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.ATOMIC_DEVS__DEFINITION,
-					oldDefinition, definition));
+					newDefinition, newDefinition));
 	}
 
 	/**
@@ -209,24 +232,6 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 */
 	@Override
 	public InitialState getInitialization() {
-		if (initialization != null && initialization.eIsProxy()) {
-			InternalEObject oldInitialization = (InternalEObject) initialization;
-			initialization = (InitialState) eResolveProxy(oldInitialization);
-			if (initialization != oldInitialization) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION, oldInitialization, initialization));
-			}
-		}
-		return initialization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InitialState basicGetInitialization() {
 		return initialization;
 	}
 
@@ -319,6 +324,20 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<Transition> getTransition() {
+		if (transition == null) {
+			transition = new EObjectContainmentEList<Transition>(Transition.class, this,
+					AtomicDevsPackage.ATOMIC_DEVS__TRANSITION);
+		}
+		return transition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -326,7 +345,7 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION:
 			if (initialization != null)
 				msgs = ((InternalEObject) initialization).eInverseRemove(this,
-						AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS, InitialState.class, msgs);
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION, null, msgs);
 			return basicSetInitialization((InitialState) otherEnd, msgs);
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getStatephase()).basicAdd(otherEnd, msgs);
@@ -342,10 +361,14 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case AtomicDevsPackage.ATOMIC_DEVS__DEFINITION:
+			return basicSetDefinition(null, msgs);
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION:
 			return basicSetInitialization(null, msgs);
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
 			return ((InternalEList<?>) getStatephase()).basicRemove(otherEnd, msgs);
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+			return ((InternalEList<?>) getTransition()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -361,19 +384,17 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__NAME:
 			return getName();
 		case AtomicDevsPackage.ATOMIC_DEVS__DEFINITION:
-			if (resolve)
-				return getDefinition();
-			return basicGetDefinition();
+			return getDefinition();
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION:
-			if (resolve)
-				return getInitialization();
-			return basicGetInitialization();
+			return getInitialization();
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
 			return getStatephase();
 		case AtomicDevsPackage.ATOMIC_DEVS__INCLUDES_OUTPUT_PORT:
 			return getIncludesOutputPort();
 		case AtomicDevsPackage.ATOMIC_DEVS__INCLUDES_INPUT_PORT:
 			return getIncludesInputPort();
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+			return getTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -408,6 +429,10 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			getIncludesInputPort().clear();
 			getIncludesInputPort().addAll((Collection<? extends InputPort>) newValue);
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+			getTransition().clear();
+			getTransition().addAll((Collection<? extends Transition>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -438,6 +463,9 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__INCLUDES_INPUT_PORT:
 			getIncludesInputPort().clear();
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+			getTransition().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -462,6 +490,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return includesOutputPort != null && !includesOutputPort.isEmpty();
 		case AtomicDevsPackage.ATOMIC_DEVS__INCLUDES_INPUT_PORT:
 			return includesInputPort != null && !includesInputPort.isEmpty();
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+			return transition != null && !transition.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

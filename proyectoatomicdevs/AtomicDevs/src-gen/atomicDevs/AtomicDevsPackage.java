@@ -81,7 +81,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' reference.
+	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -90,7 +90,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__DEFINITION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Initialization</b></em>' reference.
+	 * The feature id for the '<em><b>Initialization</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,13 +126,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__INCLUDES_INPUT_PORT = 5;
 
 	/**
+	 * The feature id for the '<em><b>Transition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__TRANSITION = 6;
+
+	/**
 	 * The number of structural features of the '<em>Atomic DEVS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_DEVS_FEATURE_COUNT = 6;
+	int ATOMIC_DEVS_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Atomic DEVS</em>' class.
@@ -678,7 +687,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_STATE__VALUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Atomicdevs</b></em>' reference.
+	 * The feature id for the '<em><b>Atomicdevs</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -687,13 +696,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_STATE__ATOMICDEVS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Statephase</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__STATEPHASE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Initial State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE_FEATURE_COUNT = 2;
+	int INITIAL_STATE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Initial State</em>' class.
@@ -1645,10 +1663,10 @@ public interface AtomicDevsPackage extends EPackage {
 	EAttribute getAtomicDEVS_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.AtomicDEVS#getDefinition <em>Definition</em>}'.
+	 * Returns the meta object for the containment reference '{@link atomicDevs.AtomicDEVS#getDefinition <em>Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Definition</em>'.
+	 * @return the meta object for the containment reference '<em>Definition</em>'.
 	 * @see atomicDevs.AtomicDEVS#getDefinition()
 	 * @see #getAtomicDEVS()
 	 * @generated
@@ -1656,10 +1674,10 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getAtomicDEVS_Definition();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.AtomicDEVS#getInitialization <em>Initialization</em>}'.
+	 * Returns the meta object for the containment reference '{@link atomicDevs.AtomicDEVS#getInitialization <em>Initialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Initialization</em>'.
+	 * @return the meta object for the containment reference '<em>Initialization</em>'.
 	 * @see atomicDevs.AtomicDEVS#getInitialization()
 	 * @see #getAtomicDEVS()
 	 * @generated
@@ -1698,6 +1716,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAtomicDEVS_IncludesInputPort();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link atomicDevs.AtomicDEVS#getTransition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Transition</em>'.
+	 * @see atomicDevs.AtomicDEVS#getTransition()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Transition();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.StateStructure <em>State Structure</em>}'.
@@ -1942,15 +1971,26 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getInitialState_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}'.
+	 * Returns the meta object for the container reference '{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Atomicdevs</em>'.
+	 * @return the meta object for the container reference '<em>Atomicdevs</em>'.
 	 * @see atomicDevs.InitialState#getAtomicdevs()
 	 * @see #getInitialState()
 	 * @generated
 	 */
 	EReference getInitialState_Atomicdevs();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Statephase</em>'.
+	 * @see atomicDevs.InitialState#getStatephase()
+	 * @see #getInitialState()
+	 * @generated
+	 */
+	EReference getInitialState_Statephase();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Value <em>Value</em>}'.
@@ -2480,7 +2520,7 @@ public interface AtomicDevsPackage extends EPackage {
 		EAttribute ATOMIC_DEVS__NAME = eINSTANCE.getAtomicDEVS_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2488,7 +2528,7 @@ public interface AtomicDevsPackage extends EPackage {
 		EReference ATOMIC_DEVS__DEFINITION = eINSTANCE.getAtomicDEVS_Definition();
 
 		/**
-		 * The meta object literal for the '<em><b>Initialization</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Initialization</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2518,6 +2558,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATOMIC_DEVS__INCLUDES_INPUT_PORT = eINSTANCE.getAtomicDEVS_IncludesInputPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Transition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__TRANSITION = eINSTANCE.getAtomicDEVS_Transition();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.StateStructureImpl <em>State Structure</em>}' class.
@@ -2726,12 +2774,20 @@ public interface AtomicDevsPackage extends EPackage {
 		EReference INITIAL_STATE__VALUE = eINSTANCE.getInitialState_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Atomicdevs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Atomicdevs</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference INITIAL_STATE__ATOMICDEVS = eINSTANCE.getInitialState_Atomicdevs();
+
+		/**
+		 * The meta object literal for the '<em><b>Statephase</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIAL_STATE__STATEPHASE = eINSTANCE.getInitialState_Statephase();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ValueImpl <em>Value</em>}' class.

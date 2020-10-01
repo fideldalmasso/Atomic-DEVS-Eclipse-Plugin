@@ -274,14 +274,16 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		StateStructure stateStructureObject = (StateStructure) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateStructure"));
 		atomicDEVSObject.setDefinition(stateStructureObject);
 		
-		InitialState initialStateObject = (InitialState) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InitialState"));
-		initialStateObject.setAtomicdevs(atomicDEVSObject);
-		atomicDEVSObject.setInitialization(initialStateObject);
+		
 		
 		StatePhase statePhaseObject = (StatePhase) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StatePhase"));
 		statePhaseObject.setValue(stateVariables.get(0).value);
 		statePhaseObject.setAtomicdevs(atomicDEVSObject);
 		
+		InitialState initialStateObject = (InitialState) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InitialState"));
+		initialStateObject.setAtomicdevs(atomicDEVSObject);
+		atomicDEVSObject.setInitialization(initialStateObject);
+		initialStateObject.setStatephase(statePhaseObject);
 		
 		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
 		userTypes = new ArrayList<UserDefinedType>();
@@ -445,9 +447,9 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 							//resource.getContents().add(rootObject);
 							AtomicDEVS atomicDEVS = (AtomicDEVS) rootObject;
 							resource.getContents().add(atomicDEVS);
-							resource.getContents().add((StateStructure) atomicDEVS.getDefinition());
-							resource.getContents().add((StatePhase) atomicDEVS.getStatephase().get(0));
-							resource.getContents().add((InitialState) atomicDEVS.getInitialization());
+//							resource.getContents().add((StateStructure) atomicDEVS.getDefinition());
+//							resource.getContents().add((StatePhase) atomicDEVS.getStatephase().get(0));
+//							resource.getContents().add((InitialState) atomicDEVS.getInitialization());
 							
 							for(InputPort p : (EList<InputPort>) atomicDEVS.getIncludesInputPort()) 
 								resource.getContents().add(p);

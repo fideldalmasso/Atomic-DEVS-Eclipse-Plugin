@@ -56,6 +56,7 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 			super.getPropertyDescriptors(object);
 
 			addAtomicdevsPropertyDescriptor(object);
+			addStatephasePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,6 +74,21 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialState_atomicdevs_feature",
 								"_UI_InitialState_type"),
 						AtomicDevsPackage.Literals.INITIAL_STATE__ATOMICDEVS, false, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Statephase feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatephasePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_InitialState_statephase_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InitialState_statephase_feature",
+								"_UI_InitialState_type"),
+						AtomicDevsPackage.Literals.INITIAL_STATE__STATEPHASE, false, false, true, null, null, null));
 	}
 
 	/**

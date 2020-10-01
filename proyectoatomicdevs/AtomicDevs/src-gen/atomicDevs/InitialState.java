@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link atomicDevs.InitialState#getValue <em>Value</em>}</li>
  *   <li>{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}</li>
+ *   <li>{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getInitialState()
@@ -38,27 +39,49 @@ public interface InitialState extends EObject {
 	EList<Value> getValue();
 
 	/**
-	 * Returns the value of the '<em><b>Atomicdevs</b></em>' reference.
+	 * Returns the value of the '<em><b>Atomicdevs</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link atomicDevs.AtomicDEVS#getInitialization <em>Initialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Atomicdevs</em>' reference.
+	 * @return the value of the '<em>Atomicdevs</em>' container reference.
 	 * @see #setAtomicdevs(AtomicDEVS)
 	 * @see atomicDevs.AtomicDevsPackage#getInitialState_Atomicdevs()
 	 * @see atomicDevs.AtomicDEVS#getInitialization
-	 * @model opposite="initialization" required="true"
+	 * @model opposite="initialization" required="true" transient="false"
 	 * @generated
 	 */
 	AtomicDEVS getAtomicdevs();
 
 	/**
-	 * Sets the value of the '{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}' reference.
+	 * Sets the value of the '{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Atomicdevs</em>' reference.
+	 * @param value the new value of the '<em>Atomicdevs</em>' container reference.
 	 * @see #getAtomicdevs()
 	 * @generated
 	 */
 	void setAtomicdevs(AtomicDEVS value);
+
+	/**
+	 * Returns the value of the '<em><b>Statephase</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Statephase</em>' reference.
+	 * @see #setStatephase(StatePhase)
+	 * @see atomicDevs.AtomicDevsPackage#getInitialState_Statephase()
+	 * @model required="true"
+	 * @generated
+	 */
+	StatePhase getStatephase();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Statephase</em>' reference.
+	 * @see #getStatephase()
+	 * @generated
+	 */
+	void setStatephase(StatePhase value);
 
 } // InitialState

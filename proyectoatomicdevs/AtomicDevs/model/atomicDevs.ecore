@@ -19,15 +19,19 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
-        eType="#//StateStructure"/>
+        eType="#//StateStructure" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialization" lowerBound="1"
-        eType="#//InitialState" eOpposite="#//InitialState/atomicdevs"/>
+        eType="#//InitialState" containment="true" eOpposite="#//InitialState/atomicdevs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statephase" lowerBound="1"
         upperBound="-1" eType="#//StatePhase" containment="true" eOpposite="#//StatePhase/atomicdevs"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includesOutputPort" upperBound="-1"
         eType="#//OutputPort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includesInputPort" upperBound="-1"
         eType="#//InputPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
+        eType="#//Transition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialdot" lowerBound="1"
+        eType="#//InitialDot" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateStructure">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -104,6 +108,8 @@
         eType="#//Value" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="atomicdevs" lowerBound="1"
         eType="#//AtomicDEVS" eOpposite="#//AtomicDEVS/initialization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statephase" lowerBound="1"
+        eType="#//StatePhase"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" lowerBound="1"
@@ -230,5 +236,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" eType="#//StateVariable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitiondata" lowerBound="1"
         eType="#//TransitionData" eOpposite="#//TransitionData/valuedata"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialDot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statephase" lowerBound="1"
+        eType="#//StatePhase"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statestructure" lowerBound="1"
+        eType="#//StateStructure"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialstate" lowerBound="1"
+        eType="#//InitialState"/>
   </eClassifiers>
 </ecore:EPackage>

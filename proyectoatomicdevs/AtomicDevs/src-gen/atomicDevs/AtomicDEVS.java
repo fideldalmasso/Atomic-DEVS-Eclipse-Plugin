@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.AtomicDEVS#getStatephase <em>Statephase</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesOutputPort <em>Includes Output Port</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesInputPort <em>Includes Input Port</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getTransition <em>Transition</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS()
@@ -54,46 +55,46 @@ public interface AtomicDEVS extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' reference.
+	 * Returns the value of the '<em><b>Definition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Definition</em>' reference.
+	 * @return the value of the '<em>Definition</em>' containment reference.
 	 * @see #setDefinition(StateStructure)
 	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Definition()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	StateStructure getDefinition();
 
 	/**
-	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getDefinition <em>Definition</em>}' reference.
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getDefinition <em>Definition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definition</em>' reference.
+	 * @param value the new value of the '<em>Definition</em>' containment reference.
 	 * @see #getDefinition()
 	 * @generated
 	 */
 	void setDefinition(StateStructure value);
 
 	/**
-	 * Returns the value of the '<em><b>Initialization</b></em>' reference.
+	 * Returns the value of the '<em><b>Initialization</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initialization</em>' reference.
+	 * @return the value of the '<em>Initialization</em>' containment reference.
 	 * @see #setInitialization(InitialState)
 	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Initialization()
 	 * @see atomicDevs.InitialState#getAtomicdevs
-	 * @model opposite="atomicdevs" required="true"
+	 * @model opposite="atomicdevs" containment="true" required="true"
 	 * @generated
 	 */
 	InitialState getInitialization();
 
 	/**
-	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getInitialization <em>Initialization</em>}' reference.
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getInitialization <em>Initialization</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Initialization</em>' reference.
+	 * @param value the new value of the '<em>Initialization</em>' containment reference.
 	 * @see #getInitialization()
 	 * @generated
 	 */
@@ -136,5 +137,17 @@ public interface AtomicDEVS extends EObject {
 	 * @generated
 	 */
 	EList<InputPort> getIncludesInputPort();
+
+	/**
+	 * Returns the value of the '<em><b>Transition</b></em>' containment reference list.
+	 * The list contents are of type {@link atomicDevs.Transition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transition</em>' containment reference list.
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Transition()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Transition> getTransition();
 
 } // AtomicDEVS

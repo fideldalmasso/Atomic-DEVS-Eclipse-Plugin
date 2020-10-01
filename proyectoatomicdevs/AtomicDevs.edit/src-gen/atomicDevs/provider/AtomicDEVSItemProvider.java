@@ -155,7 +155,10 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__DEFINITION);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALIZATION);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION);
 		}
 		return childrenFeatures;
 	}
@@ -222,7 +225,10 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 		case AtomicDevsPackage.ATOMIC_DEVS__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__DEFINITION:
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION:
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
+		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -240,8 +246,23 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__DEFINITION,
+				AtomicDevsFactory.eINSTANCE.createStateStructure()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALIZATION,
+				AtomicDevsFactory.eINSTANCE.createInitialState()));
+
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE,
 				AtomicDevsFactory.eINSTANCE.createStatePhase()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
+				AtomicDevsFactory.eINSTANCE.createTransition()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
+				AtomicDevsFactory.eINSTANCE.createInternalTransition()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
+				AtomicDevsFactory.eINSTANCE.createExternalTransition()));
 	}
 
 	/**

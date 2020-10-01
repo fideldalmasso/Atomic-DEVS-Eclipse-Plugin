@@ -423,6 +423,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
+	public EReference getAtomicDEVS_Transition() {
+		return (EReference) atomicDEVSEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStateStructure() {
 		return stateStructureEClass;
 	}
@@ -655,6 +665,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	@Override
 	public EReference getInitialState_Atomicdevs() {
 		return (EReference) initialStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInitialState_Statephase() {
+		return (EReference) initialStateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1154,6 +1174,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__STATEPHASE);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__INCLUDES_OUTPUT_PORT);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__INCLUDES_INPUT_PORT);
+		createEReference(atomicDEVSEClass, ATOMIC_DEVS__TRANSITION);
 
 		stateStructureEClass = createEClass(STATE_STRUCTURE);
 		createEReference(stateStructureEClass, STATE_STRUCTURE__STATEVARIABLE);
@@ -1189,6 +1210,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initialStateEClass = createEClass(INITIAL_STATE);
 		createEReference(initialStateEClass, INITIAL_STATE__VALUE);
 		createEReference(initialStateEClass, INITIAL_STATE__ATOMICDEVS);
+		createEReference(initialStateEClass, INITIAL_STATE__STATEPHASE);
 
 		valueEClass = createEClass(VALUE);
 		createEReference(valueEClass, VALUE__STATEVARIABLE);
@@ -1311,11 +1333,11 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEAttribute(getAtomicDEVS_Name(), ecorePackage.getEString(), "name", null, 1, 1, AtomicDEVS.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAtomicDEVS_Definition(), this.getStateStructure(), null, "definition", null, 1, 1,
-				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAtomicDEVS_Initialization(), this.getInitialState(), this.getInitialState_Atomicdevs(),
 				"initialization", null, 1, 1, AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAtomicDEVS_Statephase(), this.getStatePhase(), this.getStatePhase_Atomicdevs(), "statephase",
 				null, 1, -1, AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1324,6 +1346,9 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAtomicDEVS_IncludesInputPort(), this.getInputPort(), null, "includesInputPort", null, 0, -1,
 				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAtomicDEVS_Transition(), this.getTransition(), null, "transition", null, 0, -1,
+				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateStructureEClass, StateStructure.class, "StateStructure", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1391,7 +1416,10 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInitialState_Atomicdevs(), this.getAtomicDEVS(), this.getAtomicDEVS_Initialization(),
 				"atomicdevs", null, 1, 1, InitialState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInitialState_Statephase(), this.getStatePhase(), null, "statephase", null, 1, 1,
+				InitialState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValue_Statevariable(), this.getStateVariable(), null, "statevariable", null, 1, 1,
