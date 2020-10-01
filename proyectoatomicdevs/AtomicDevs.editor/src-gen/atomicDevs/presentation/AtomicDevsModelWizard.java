@@ -34,9 +34,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -51,6 +48,7 @@ import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsFactory;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.CustomVariable;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.InputPort;
 import atomicDevs.OutputPort;
@@ -275,7 +273,6 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		atomicDEVSObject.setDefinition(stateStructureObject);
 		
 		
-		
 		StatePhase statePhaseObject = (StatePhase) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StatePhase"));
 		statePhaseObject.setValue(stateVariables.get(0).value);
 		statePhaseObject.setAtomicdevs(atomicDEVSObject);
@@ -283,7 +280,13 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		InitialState initialStateObject = (InitialState) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InitialState"));
 		initialStateObject.setAtomicdevs(atomicDEVSObject);
 		atomicDEVSObject.setInitialization(initialStateObject);
-		initialStateObject.setStatephase(statePhaseObject);
+		
+		InitialDot initialDotObject= (InitialDot) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InitialDot"));
+		atomicDEVSObject.setInitialdot(initialDotObject);
+		initialDotObject.setStatestructure(stateStructureObject);
+		initialDotObject.setStatephase(statePhaseObject);
+		initialDotObject.setInitialstate(initialStateObject);
+		
 		
 		primitiveTypes = new ArrayList<atomicDevs.PrimitiveType>();
 		userTypes = new ArrayList<UserDefinedType>();

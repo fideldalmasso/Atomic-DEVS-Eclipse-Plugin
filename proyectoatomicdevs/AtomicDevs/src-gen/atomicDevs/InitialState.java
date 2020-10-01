@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link atomicDevs.InitialState#getValue <em>Value</em>}</li>
  *   <li>{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}</li>
- *   <li>{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getInitialState()
@@ -61,27 +60,5 @@ public interface InitialState extends EObject {
 	 * @generated
 	 */
 	void setAtomicdevs(AtomicDEVS value);
-
-	/**
-	 * Returns the value of the '<em><b>Statephase</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Statephase</em>' reference.
-	 * @see #setStatephase(StatePhase)
-	 * @see atomicDevs.AtomicDevsPackage#getInitialState_Statephase()
-	 * @model required="true"
-	 * @generated
-	 */
-	StatePhase getStatephase();
-
-	/**
-	 * Sets the value of the '{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Statephase</em>' reference.
-	 * @see #getStatephase()
-	 * @generated
-	 */
-	void setStatephase(StatePhase value);
 
 } // InitialState

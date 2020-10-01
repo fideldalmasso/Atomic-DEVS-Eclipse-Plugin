@@ -301,6 +301,15 @@ public interface AtomicDevsFactory extends EFactory {
 	ValueData createValueData();
 
 	/**
+	 * Returns a new object of class '<em>Initial Dot</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Initial Dot</em>'.
+	 * @generated
+	 */
+	InitialDot createInitialDot();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

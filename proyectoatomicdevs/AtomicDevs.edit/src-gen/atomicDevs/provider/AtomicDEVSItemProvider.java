@@ -61,6 +61,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			addInitializationPropertyDescriptor(object);
 			addIncludesOutputPortPropertyDescriptor(object);
 			addIncludesInputPortPropertyDescriptor(object);
+			addInitialdotPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -144,6 +145,21 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
+	 * This adds a property descriptor for the Initialdot feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInitialdotPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AtomicDEVS_initialdot_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_initialdot_feature",
+								"_UI_AtomicDEVS_type"),
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALDOT, false, false, false, null, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -159,6 +175,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALIZATION);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALDOT);
 		}
 		return childrenFeatures;
 	}
@@ -229,6 +246,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALIZATION:
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -263,6 +281,9 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION,
 				AtomicDevsFactory.eINSTANCE.createExternalTransition()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALDOT,
+				AtomicDevsFactory.eINSTANCE.createInitialDot()));
 	}
 
 	/**

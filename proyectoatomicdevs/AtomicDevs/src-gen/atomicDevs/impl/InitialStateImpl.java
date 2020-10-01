@@ -5,7 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.InitialState;
-import atomicDevs.StatePhase;
 import atomicDevs.Value;
 
 import java.util.Collection;
@@ -35,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link atomicDevs.impl.InitialStateImpl#getValue <em>Value</em>}</li>
  *   <li>{@link atomicDevs.impl.InitialStateImpl#getAtomicdevs <em>Atomicdevs</em>}</li>
- *   <li>{@link atomicDevs.impl.InitialStateImpl#getStatephase <em>Statephase</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,16 +48,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 	 * @ordered
 	 */
 	protected EList<Value> value;
-
-	/**
-	 * The cached value of the '{@link #getStatephase() <em>Statephase</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatephase()
-	 * @generated
-	 * @ordered
-	 */
-	protected StatePhase statephase;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,48 +134,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 	 * @generated
 	 */
 	@Override
-	public StatePhase getStatephase() {
-		if (statephase != null && statephase.eIsProxy()) {
-			InternalEObject oldStatephase = (InternalEObject) statephase;
-			statephase = (StatePhase) eResolveProxy(oldStatephase);
-			if (statephase != oldStatephase) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AtomicDevsPackage.INITIAL_STATE__STATEPHASE, oldStatephase, statephase));
-			}
-		}
-		return statephase;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StatePhase basicGetStatephase() {
-		return statephase;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setStatephase(StatePhase newStatephase) {
-		StatePhase oldStatephase = statephase;
-		statephase = newStatephase;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.INITIAL_STATE__STATEPHASE,
-					oldStatephase, statephase));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
@@ -241,10 +187,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 			return getValue();
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			return getAtomicdevs();
-		case AtomicDevsPackage.INITIAL_STATE__STATEPHASE:
-			if (resolve)
-				return getStatephase();
-			return basicGetStatephase();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -265,9 +207,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) newValue);
 			return;
-		case AtomicDevsPackage.INITIAL_STATE__STATEPHASE:
-			setStatephase((StatePhase) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -286,9 +225,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) null);
 			return;
-		case AtomicDevsPackage.INITIAL_STATE__STATEPHASE:
-			setStatephase((StatePhase) null);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -305,8 +241,6 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 			return value != null && !value.isEmpty();
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			return getAtomicdevs() != null;
-		case AtomicDevsPackage.INITIAL_STATE__STATEPHASE:
-			return statephase != null;
 		}
 		return super.eIsSet(featureID);
 	}

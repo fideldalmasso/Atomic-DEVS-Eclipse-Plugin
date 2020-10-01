@@ -786,6 +786,29 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.InitialDot} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InitialDotItemProvider initialDotItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.InitialDot}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInitialDotAdapter() {
+		if (initialDotItemProvider == null) {
+			initialDotItemProvider = new InitialDotItemProvider(this);
+		}
+
+		return initialDotItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -952,6 +975,8 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			inputPortItemProvider.dispose();
 		if (valueDataItemProvider != null)
 			valueDataItemProvider.dispose();
+		if (initialDotItemProvider != null)
+			initialDotItemProvider.dispose();
 	}
 
 }

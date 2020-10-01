@@ -10,6 +10,7 @@ import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
 import atomicDevs.Infinity;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -148,6 +149,8 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createInputPort();
 		case AtomicDevsPackage.VALUE_DATA:
 			return createValueData();
+		case AtomicDevsPackage.INITIAL_DOT:
+			return createInitialDot();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -522,6 +525,17 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	public ValueData createValueData() {
 		ValueDataImpl valueData = new ValueDataImpl();
 		return valueData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public InitialDot createInitialDot() {
+		InitialDotImpl initialDot = new InitialDotImpl();
+		return initialDot;
 	}
 
 	/**

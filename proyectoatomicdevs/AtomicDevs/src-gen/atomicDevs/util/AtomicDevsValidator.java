@@ -9,6 +9,7 @@ import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
 import atomicDevs.Infinity;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -177,6 +178,8 @@ public class AtomicDevsValidator extends EObjectValidator {
 			return validateInputPort((InputPort) value, diagnostics, context);
 		case AtomicDevsPackage.VALUE_DATA:
 			return validateValueData((ValueData) value, diagnostics, context);
+		case AtomicDevsPackage.INITIAL_DOT:
+			return validateInitialDot((InitialDot) value, diagnostics, context);
 		case AtomicDevsPackage.PRIMITIVE:
 			return validatePrimitive((Primitive) value, diagnostics, context);
 		default:
@@ -1123,6 +1126,15 @@ public class AtomicDevsValidator extends EObjectValidator {
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "valueMatchesTargetPhaseWhenStateVariableIsPhase",
 				VALUE_DATA__VALUE_MATCHES_TARGET_PHASE_WHEN_STATE_VARIABLE_IS_PHASE__EEXPRESSION, Diagnostic.ERROR,
 				DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInitialDot(InitialDot initialDot, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(initialDot, diagnostics, context);
 	}
 
 	/**

@@ -9,6 +9,7 @@ import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
 import atomicDevs.Infinity;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -246,6 +247,11 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseValueData(ValueData object) {
 			return createValueDataAdapter();
+		}
+
+		@Override
+		public Adapter caseInitialDot(InitialDot object) {
+			return createInitialDotAdapter();
 		}
 
 		@Override
@@ -698,6 +704,20 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createValueDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.InitialDot <em>Initial Dot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.InitialDot
+	 * @generated
+	 */
+	public Adapter createInitialDotAdapter() {
 		return null;
 	}
 

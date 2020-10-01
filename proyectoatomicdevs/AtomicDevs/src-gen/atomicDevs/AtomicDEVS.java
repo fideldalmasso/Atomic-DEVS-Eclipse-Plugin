@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesOutputPort <em>Includes Output Port</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesInputPort <em>Includes Input Port</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getTransition <em>Transition</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getInitialdot <em>Initialdot</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS()
@@ -149,5 +150,27 @@ public interface AtomicDEVS extends EObject {
 	 * @generated
 	 */
 	EList<Transition> getTransition();
+
+	/**
+	 * Returns the value of the '<em><b>Initialdot</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Initialdot</em>' containment reference.
+	 * @see #setInitialdot(InitialDot)
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Initialdot()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	InitialDot getInitialdot();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getInitialdot <em>Initialdot</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Initialdot</em>' containment reference.
+	 * @see #getInitialdot()
+	 * @generated
+	 */
+	void setInitialdot(InitialDot value);
 
 } // AtomicDEVS

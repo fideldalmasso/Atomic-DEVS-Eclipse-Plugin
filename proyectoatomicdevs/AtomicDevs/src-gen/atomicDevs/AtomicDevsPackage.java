@@ -135,13 +135,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__TRANSITION = 6;
 
 	/**
+	 * The feature id for the '<em><b>Initialdot</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__INITIALDOT = 7;
+
+	/**
 	 * The number of structural features of the '<em>Atomic DEVS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_DEVS_FEATURE_COUNT = 7;
+	int ATOMIC_DEVS_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Atomic DEVS</em>' class.
@@ -696,22 +705,13 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_STATE__ATOMICDEVS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Statephase</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INITIAL_STATE__STATEPHASE = 2;
-
-	/**
 	 * The number of structural features of the '<em>Initial State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE_FEATURE_COUNT = 3;
+	int INITIAL_STATE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Initial State</em>' class.
@@ -1632,6 +1632,61 @@ public interface AtomicDevsPackage extends EPackage {
 	int VALUE_DATA_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link atomicDevs.impl.InitialDotImpl <em>Initial Dot</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.InitialDotImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInitialDot()
+	 * @generated
+	 */
+	int INITIAL_DOT = 31;
+
+	/**
+	 * The feature id for the '<em><b>Statephase</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT__STATEPHASE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Statestructure</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT__STATESTRUCTURE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Initialstate</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT__INITIALSTATE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Initial Dot</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Initial Dot</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1639,7 +1694,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 31;
+	int PRIMITIVE = 32;
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.AtomicDEVS <em>Atomic DEVS</em>}'.
@@ -1727,6 +1782,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAtomicDEVS_Transition();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link atomicDevs.AtomicDEVS#getInitialdot <em>Initialdot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Initialdot</em>'.
+	 * @see atomicDevs.AtomicDEVS#getInitialdot()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Initialdot();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.StateStructure <em>State Structure</em>}'.
@@ -1980,17 +2046,6 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInitialState_Atomicdevs();
-
-	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.InitialState#getStatephase <em>Statephase</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Statephase</em>'.
-	 * @see atomicDevs.InitialState#getStatephase()
-	 * @see #getInitialState()
-	 * @generated
-	 */
-	EReference getInitialState_Statephase();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Value <em>Value</em>}'.
@@ -2469,6 +2524,49 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getValueData_Transitiondata();
 
 	/**
+	 * Returns the meta object for class '{@link atomicDevs.InitialDot <em>Initial Dot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Initial Dot</em>'.
+	 * @see atomicDevs.InitialDot
+	 * @generated
+	 */
+	EClass getInitialDot();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.InitialDot#getStatephase <em>Statephase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Statephase</em>'.
+	 * @see atomicDevs.InitialDot#getStatephase()
+	 * @see #getInitialDot()
+	 * @generated
+	 */
+	EReference getInitialDot_Statephase();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.InitialDot#getStatestructure <em>Statestructure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Statestructure</em>'.
+	 * @see atomicDevs.InitialDot#getStatestructure()
+	 * @see #getInitialDot()
+	 * @generated
+	 */
+	EReference getInitialDot_Statestructure();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.InitialDot#getInitialstate <em>Initialstate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Initialstate</em>'.
+	 * @see atomicDevs.InitialDot#getInitialstate()
+	 * @see #getInitialDot()
+	 * @generated
+	 */
+	EReference getInitialDot_Initialstate();
+
+	/**
 	 * Returns the meta object for enum '{@link atomicDevs.Primitive <em>Primitive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2566,6 +2664,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATOMIC_DEVS__TRANSITION = eINSTANCE.getAtomicDEVS_Transition();
+
+		/**
+		 * The meta object literal for the '<em><b>Initialdot</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__INITIALDOT = eINSTANCE.getAtomicDEVS_Initialdot();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.StateStructureImpl <em>State Structure</em>}' class.
@@ -2780,14 +2886,6 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INITIAL_STATE__ATOMICDEVS = eINSTANCE.getInitialState_Atomicdevs();
-
-		/**
-		 * The meta object literal for the '<em><b>Statephase</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INITIAL_STATE__STATEPHASE = eINSTANCE.getInitialState_Statephase();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ValueImpl <em>Value</em>}' class.
@@ -3187,6 +3285,40 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VALUE_DATA__TRANSITIONDATA = eINSTANCE.getValueData_Transitiondata();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.InitialDotImpl <em>Initial Dot</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.InitialDotImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInitialDot()
+		 * @generated
+		 */
+		EClass INITIAL_DOT = eINSTANCE.getInitialDot();
+
+		/**
+		 * The meta object literal for the '<em><b>Statephase</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIAL_DOT__STATEPHASE = eINSTANCE.getInitialDot_Statephase();
+
+		/**
+		 * The meta object literal for the '<em><b>Statestructure</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIAL_DOT__STATESTRUCTURE = eINSTANCE.getInitialDot_Statestructure();
+
+		/**
+		 * The meta object literal for the '<em><b>Initialstate</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIAL_DOT__INITIALSTATE = eINSTANCE.getInitialDot_Initialstate();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.

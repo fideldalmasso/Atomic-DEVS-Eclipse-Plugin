@@ -4,6 +4,7 @@ package atomicDevs.impl;
 
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.InputPort;
 import atomicDevs.OutputPort;
@@ -46,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getIncludesOutputPort <em>Includes Output Port</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getIncludesInputPort <em>Includes Input Port</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getTransition <em>Transition</em>}</li>
+ *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getInitialdot <em>Initialdot</em>}</li>
  * </ul>
  *
  * @generated
@@ -130,6 +132,16 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * @ordered
 	 */
 	protected EList<Transition> transition;
+
+	/**
+	 * The cached value of the '{@link #getInitialdot() <em>Initialdot</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInitialdot()
+	 * @generated
+	 * @ordered
+	 */
+	protected InitialDot initialdot;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -338,6 +350,58 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public InitialDot getInitialdot() {
+		return initialdot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInitialdot(InitialDot newInitialdot, NotificationChain msgs) {
+		InitialDot oldInitialdot = initialdot;
+		initialdot = newInitialdot;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT, oldInitialdot, newInitialdot);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setInitialdot(InitialDot newInitialdot) {
+		if (newInitialdot != initialdot) {
+			NotificationChain msgs = null;
+			if (initialdot != null)
+				msgs = ((InternalEObject) initialdot).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT, null, msgs);
+			if (newInitialdot != null)
+				msgs = ((InternalEObject) newInitialdot).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT, null, msgs);
+			msgs = basicSetInitialdot(newInitialdot, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT,
+					newInitialdot, newInitialdot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -369,6 +433,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return ((InternalEList<?>) getStatephase()).basicRemove(otherEnd, msgs);
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 			return ((InternalEList<?>) getTransition()).basicRemove(otherEnd, msgs);
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+			return basicSetInitialdot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -395,6 +461,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return getIncludesInputPort();
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 			return getTransition();
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+			return getInitialdot();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -433,6 +501,9 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			getTransition().clear();
 			getTransition().addAll((Collection<? extends Transition>) newValue);
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+			setInitialdot((InitialDot) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -466,6 +537,9 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 			getTransition().clear();
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+			setInitialdot((InitialDot) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -492,6 +566,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return includesInputPort != null && !includesInputPort.isEmpty();
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 			return transition != null && !transition.isEmpty();
+		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+			return initialdot != null;
 		}
 		return super.eIsSet(featureID);
 	}

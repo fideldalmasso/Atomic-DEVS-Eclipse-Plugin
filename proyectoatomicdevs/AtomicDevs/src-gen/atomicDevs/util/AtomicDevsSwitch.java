@@ -9,6 +9,7 @@ import atomicDevs.CustomVariable;
 import atomicDevs.ExternalTransition;
 import atomicDevs.ExternalTransitionData;
 import atomicDevs.Infinity;
+import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.Input;
 import atomicDevs.InputPort;
@@ -342,6 +343,13 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 		case AtomicDevsPackage.VALUE_DATA: {
 			ValueData valueData = (ValueData) theEObject;
 			T result = caseValueData(valueData);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.INITIAL_DOT: {
+			InitialDot initialDot = (InitialDot) theEObject;
+			T result = caseInitialDot(initialDot);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -813,6 +821,21 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValueData(ValueData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Initial Dot</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Initial Dot</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInitialDot(InitialDot object) {
 		return null;
 	}
 
