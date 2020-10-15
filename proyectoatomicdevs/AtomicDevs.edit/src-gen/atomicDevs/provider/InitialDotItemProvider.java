@@ -69,7 +69,7 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_InitialDot_statephase_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_statephase_feature",
 								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__STATEPHASE, false, false, true, null, null, null));
+						AtomicDevsPackage.Literals.INITIAL_DOT__STATEPHASE, false, false, false, null, null, null));
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_InitialDot_statestructure_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_statestructure_feature",
 								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__STATESTRUCTURE, false, false, true, null, null, null));
+						AtomicDevsPackage.Literals.INITIAL_DOT__STATESTRUCTURE, false, false, false, null, null, null));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_InitialDot_initialstate_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_initialstate_feature",
 								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__INITIALSTATE, false, false, true, null, null, null));
+						AtomicDevsPackage.Literals.INITIAL_DOT__INITIALSTATE, false, false, false, null, null, null));
 	}
 
 	/**

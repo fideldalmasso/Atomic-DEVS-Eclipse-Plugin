@@ -10,8 +10,8 @@ import atomicDevs.InputPort;
 import atomicDevs.OutputPort;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
-
 import atomicDevs.Transition;
+
 import java.lang.String;
 
 import java.util.Collection;

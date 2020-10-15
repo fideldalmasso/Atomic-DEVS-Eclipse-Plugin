@@ -158,7 +158,7 @@ public interface AtomicDEVS extends EObject {
 	 * @return the value of the '<em>Initialdot</em>' containment reference.
 	 * @see #setInitialdot(InitialDot)
 	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Initialdot()
-	 * @model containment="true" required="true"
+	 * @model containment="true" required="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	InitialDot getInitialdot();

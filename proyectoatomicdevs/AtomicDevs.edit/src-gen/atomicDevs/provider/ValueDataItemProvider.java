@@ -88,7 +88,7 @@ public class ValueDataItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_ValueData_statevariable_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_ValueData_statevariable_feature",
 								"_UI_ValueData_type"),
-						AtomicDevsPackage.Literals.VALUE_DATA__STATEVARIABLE, false, false, true, null, null, null));
+						AtomicDevsPackage.Literals.VALUE_DATA__STATEVARIABLE, false, false, false, null, null, null));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ValueDataItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_ValueData_transitiondata_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_ValueData_transitiondata_feature",
 								"_UI_ValueData_type"),
-						AtomicDevsPackage.Literals.VALUE_DATA__TRANSITIONDATA, false, false, true, null, null, null));
+						AtomicDevsPackage.Literals.VALUE_DATA__TRANSITIONDATA, false, false, false, null, null, null));
 	}
 
 	/**

@@ -30,7 +30,7 @@ public interface InitialDot extends EObject {
 	 * @return the value of the '<em>Statephase</em>' reference.
 	 * @see #setStatephase(StatePhase)
 	 * @see atomicDevs.AtomicDevsPackage#getInitialDot_Statephase()
-	 * @model required="true"
+	 * @model required="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	StatePhase getStatephase();
@@ -52,7 +52,7 @@ public interface InitialDot extends EObject {
 	 * @return the value of the '<em>Statestructure</em>' reference.
 	 * @see #setStatestructure(StateStructure)
 	 * @see atomicDevs.AtomicDevsPackage#getInitialDot_Statestructure()
-	 * @model required="true"
+	 * @model required="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	StateStructure getStatestructure();
@@ -74,7 +74,7 @@ public interface InitialDot extends EObject {
 	 * @return the value of the '<em>Initialstate</em>' reference.
 	 * @see #setInitialstate(InitialState)
 	 * @see atomicDevs.AtomicDevsPackage#getInitialDot_Initialstate()
-	 * @model required="true"
+	 * @model required="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	InitialState getInitialstate();

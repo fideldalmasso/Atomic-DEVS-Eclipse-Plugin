@@ -61,7 +61,7 @@ public class Services {
     
     
     public String getInternalTransitionData(InternalTransitionData data){
-    	String cadena = "Output: ";
+    	String cadena = "Input: ";
     	Output output = data.getOutput();
     	
     	if(output!=null) {

@@ -20,15 +20,15 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//AtomicDEVS/name"/>
       <genFeatures property="Readonly" children="true" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/definition"/>
-      <genFeatures property="Readonly" children="true" createChild="true" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/initialization"/>
+      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/initialization"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/statephase"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesOutputPort"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/includesInputPort"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/transition"/>
-      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/initialdot"/>
+      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//AtomicDEVS/initialdot"
+          suppressedUnsetVisibility="true"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//StateStructure">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//StateStructure/statevariable"/>
@@ -62,8 +62,7 @@
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//InitialState">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/value"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/atomicdevs"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialState/atomicdevs"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//Value">
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
@@ -97,9 +96,10 @@
     <genClasses ecoreClass="atomicDevs.ecore#//ExternalTransition"/>
     <genClasses ecoreClass="atomicDevs.ecore#//TransitionData">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/valuedata"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/transition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/valuedata"
+          suppressedGetVisibility="false" suppressedSetVisibility="true" suppressedIsSetVisibility="false"
+          suppressedUnsetVisibility="true"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//TransitionData/transition"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//ExternalTransitionData">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//ExternalTransitionData/elapsedTimeVariable"/>
@@ -126,18 +126,17 @@
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//ValueData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//ValueData/value"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/statevariable"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/transitiondata"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/statevariable"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//ValueData/transitiondata"
+          suppressedGetVisibility="false" suppressedSetVisibility="true" suppressedUnsetVisibility="true"/>
     </genClasses>
     <genClasses ecoreClass="atomicDevs.ecore#//InitialDot">
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/statephase"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/statestructure"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/initialstate"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/statephase"
+          suppressedUnsetVisibility="true"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/statestructure"
+          suppressedUnsetVisibility="true"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference atomicDevs.ecore#//InitialDot/initialstate"
+          suppressedUnsetVisibility="true"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

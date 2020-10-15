@@ -58,7 +58,7 @@ public interface TransitionData extends EObject {
 	 * @return the value of the '<em>Valuedata</em>' containment reference list.
 	 * @see atomicDevs.AtomicDevsPackage#getTransitionData_Valuedata()
 	 * @see atomicDevs.ValueData#getTransitiondata
-	 * @model opposite="transitiondata" containment="true" required="true"
+	 * @model opposite="transitiondata" containment="true" required="true" suppressedSetVisibility="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	EList<ValueData> getValuedata();

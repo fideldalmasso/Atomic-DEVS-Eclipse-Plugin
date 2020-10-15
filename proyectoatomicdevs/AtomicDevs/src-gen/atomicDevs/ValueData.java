@@ -76,22 +76,11 @@ public interface ValueData extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitiondata</em>' container reference.
-	 * @see #setTransitiondata(TransitionData)
 	 * @see atomicDevs.AtomicDevsPackage#getValueData_Transitiondata()
 	 * @see atomicDevs.TransitionData#getValuedata
-	 * @model opposite="valuedata" required="true" transient="false"
+	 * @model opposite="valuedata" required="true" transient="false" suppressedSetVisibility="true" suppressedUnsetVisibility="true"
 	 * @generated
 	 */
 	TransitionData getTransitiondata();
-
-	/**
-	 * Sets the value of the '{@link atomicDevs.ValueData#getTransitiondata <em>Transitiondata</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transitiondata</em>' container reference.
-	 * @see #getTransitiondata()
-	 * @generated
-	 */
-	void setTransitiondata(TransitionData value);
 
 } // ValueData

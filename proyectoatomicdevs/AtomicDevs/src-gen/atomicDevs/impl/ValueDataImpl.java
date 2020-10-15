@@ -179,7 +179,6 @@ public class ValueDataImpl extends MinimalEObjectImpl.Container implements Value
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setTransitiondata(TransitionData newTransitiondata) {
 		if (newTransitiondata != eInternalContainer()
 				|| (eContainerFeatureID() != AtomicDevsPackage.VALUE_DATA__TRANSITIONDATA
