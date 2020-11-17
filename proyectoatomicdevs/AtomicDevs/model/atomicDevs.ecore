@@ -32,6 +32,8 @@
         eType="#//Transition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialdot" lowerBound="1"
         eType="#//InitialDot" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterlist" eType="#//ParameterList"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateStructure">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -242,5 +244,70 @@
         eType="#//StateStructure"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialstate" lowerBound="1"
         eType="#//InitialState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterlist" eType="#//ParameterList"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterUserDefined" eSuperTypes="#//ParameterValue">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsString parameterTypeIsString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsString" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterInteger" eSuperTypes="#//ParameterValue">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsInteger"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsInteger" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterDouble" eSuperTypes="#//ParameterValue">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsDouble"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsDouble" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterString" eSuperTypes="#//ParameterValue">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsString"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsString" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterBoolean" eSuperTypes="#//ParameterValue">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="typeIsBoolean"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="typeIsBoolean" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        eType="#//Parameter" eOpposite="#//Parameter/parametervalue"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        upperBound="-1" eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parametervalue" lowerBound="1"
+        eType="#//ParameterValue" eOpposite="#//ParameterValue/parameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
   </eClassifiers>
 </ecore:EPackage>
