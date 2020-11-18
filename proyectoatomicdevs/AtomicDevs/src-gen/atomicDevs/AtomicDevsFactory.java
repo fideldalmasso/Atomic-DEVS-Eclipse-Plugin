@@ -274,6 +274,69 @@ public interface AtomicDevsFactory extends EFactory {
 	InitialDot createInitialDot();
 
 	/**
+	 * Returns a new object of class '<em>Parameter User Defined</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter User Defined</em>'.
+	 * @generated
+	 */
+	ParameterUserDefined createParameterUserDefined();
+
+	/**
+	 * Returns a new object of class '<em>Parameter Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter Integer</em>'.
+	 * @generated
+	 */
+	ParameterInteger createParameterInteger();
+
+	/**
+	 * Returns a new object of class '<em>Parameter Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter Double</em>'.
+	 * @generated
+	 */
+	ParameterDouble createParameterDouble();
+
+	/**
+	 * Returns a new object of class '<em>Parameter String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter String</em>'.
+	 * @generated
+	 */
+	ParameterString createParameterString();
+
+	/**
+	 * Returns a new object of class '<em>Parameter Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter Boolean</em>'.
+	 * @generated
+	 */
+	ParameterBoolean createParameterBoolean();
+
+	/**
+	 * Returns a new object of class '<em>Parameter List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter List</em>'.
+	 * @generated
+	 */
+	ParameterList createParameterList();
+
+	/**
+	 * Returns a new object of class '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter</em>'.
+	 * @generated
+	 */
+	Parameter createParameter();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

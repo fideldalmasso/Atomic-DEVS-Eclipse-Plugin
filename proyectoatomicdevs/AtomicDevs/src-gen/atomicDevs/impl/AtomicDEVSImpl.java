@@ -8,6 +8,7 @@ import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.InputPort;
 import atomicDevs.OutputPort;
+import atomicDevs.ParameterList;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
 import atomicDevs.Transition;
@@ -48,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getIncludesInputPort <em>Includes Input Port</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getTransition <em>Transition</em>}</li>
  *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getInitialdot <em>Initialdot</em>}</li>
+ *   <li>{@link atomicDevs.impl.AtomicDEVSImpl#getParameterlist <em>Parameterlist</em>}</li>
  * </ul>
  *
  * @generated
@@ -142,6 +144,16 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * @ordered
 	 */
 	protected InitialDot initialdot;
+
+	/**
+	 * The cached value of the '{@link #getParameterlist() <em>Parameterlist</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterlist()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterList parameterlist;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -402,6 +414,58 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public ParameterList getParameterlist() {
+		return parameterlist;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParameterlist(ParameterList newParameterlist, NotificationChain msgs) {
+		ParameterList oldParameterlist = parameterlist;
+		parameterlist = newParameterlist;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST, oldParameterlist, newParameterlist);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setParameterlist(ParameterList newParameterlist) {
+		if (newParameterlist != parameterlist) {
+			NotificationChain msgs = null;
+			if (parameterlist != null)
+				msgs = ((InternalEObject) parameterlist).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST, null, msgs);
+			if (newParameterlist != null)
+				msgs = ((InternalEObject) newParameterlist).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST, null, msgs);
+			msgs = basicSetParameterlist(newParameterlist, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST,
+					newParameterlist, newParameterlist));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -435,6 +499,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return ((InternalEList<?>) getTransition()).basicRemove(otherEnd, msgs);
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			return basicSetInitialdot(null, msgs);
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
+			return basicSetParameterlist(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -463,6 +529,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return getTransition();
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			return getInitialdot();
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
+			return getParameterlist();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -504,6 +572,9 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			setInitialdot((InitialDot) newValue);
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
+			setParameterlist((ParameterList) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -540,6 +611,9 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			setInitialdot((InitialDot) null);
 			return;
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
+			setParameterlist((ParameterList) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -568,6 +642,8 @@ public class AtomicDEVSImpl extends MinimalEObjectImpl.Container implements Atom
 			return transition != null && !transition.isEmpty();
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
 			return initialdot != null;
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
+			return parameterlist != null;
 		}
 		return super.eIsSet(featureID);
 	}

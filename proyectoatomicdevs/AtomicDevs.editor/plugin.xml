@@ -10,13 +10,13 @@
       <!-- @generated atomicDevs -->
       <category
             name="DEVS Wizard"
-            id="org.eclipse.emf.ecore.Wizard.category.ID">
+            id="AtomicDEVS.editor.category.ID">
       </category>
       <wizard
             id="atomicDevs.presentation.AtomicDevsModelWizardID"
             name="%_UI_AtomicDevsModelWizard_label"
             class="atomicDevs.presentation.AtomicDevsModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="AtomicDEVS.editor.category.ID"
             icon="icons/full/obj16/AtomicDevsModelFile.gif">
          <description>%_UI_AtomicDevsModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

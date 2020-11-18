@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.InitialDot#getStatephase <em>Statephase</em>}</li>
  *   <li>{@link atomicDevs.InitialDot#getStatestructure <em>Statestructure</em>}</li>
  *   <li>{@link atomicDevs.InitialDot#getInitialstate <em>Initialstate</em>}</li>
+ *   <li>{@link atomicDevs.InitialDot#getParameterlist <em>Parameterlist</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getInitialDot()
@@ -88,5 +89,27 @@ public interface InitialDot extends EObject {
 	 * @generated
 	 */
 	void setInitialstate(InitialState value);
+
+	/**
+	 * Returns the value of the '<em><b>Parameterlist</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameterlist</em>' reference.
+	 * @see #setParameterlist(ParameterList)
+	 * @see atomicDevs.AtomicDevsPackage#getInitialDot_Parameterlist()
+	 * @model
+	 * @generated
+	 */
+	ParameterList getParameterlist();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.InitialDot#getParameterlist <em>Parameterlist</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parameterlist</em>' reference.
+	 * @see #getParameterlist()
+	 * @generated
+	 */
+	void setParameterlist(ParameterList value);
 
 } // InitialDot

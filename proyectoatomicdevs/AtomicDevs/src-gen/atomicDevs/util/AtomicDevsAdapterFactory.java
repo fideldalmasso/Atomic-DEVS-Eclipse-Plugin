@@ -17,6 +17,14 @@ import atomicDevs.InternalTransition;
 import atomicDevs.InternalTransitionData;
 import atomicDevs.Output;
 import atomicDevs.OutputPort;
+import atomicDevs.Parameter;
+import atomicDevs.ParameterBoolean;
+import atomicDevs.ParameterDouble;
+import atomicDevs.ParameterInteger;
+import atomicDevs.ParameterList;
+import atomicDevs.ParameterString;
+import atomicDevs.ParameterUserDefined;
+import atomicDevs.ParameterValue;
 import atomicDevs.PhaseVariable;
 import atomicDevs.Port;
 import atomicDevs.PrimitiveType;
@@ -252,6 +260,46 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseInitialDot(InitialDot object) {
 			return createInitialDotAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterUserDefined(ParameterUserDefined object) {
+			return createParameterUserDefinedAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterInteger(ParameterInteger object) {
+			return createParameterIntegerAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterDouble(ParameterDouble object) {
+			return createParameterDoubleAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterString(ParameterString object) {
+			return createParameterStringAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterBoolean(ParameterBoolean object) {
+			return createParameterBooleanAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterValue(ParameterValue object) {
+			return createParameterValueAdapter();
+		}
+
+		@Override
+		public Adapter caseParameterList(ParameterList object) {
+			return createParameterListAdapter();
+		}
+
+		@Override
+		public Adapter caseParameter(Parameter object) {
+			return createParameterAdapter();
 		}
 
 		@Override
@@ -718,6 +766,118 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInitialDotAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterUserDefined <em>Parameter User Defined</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterUserDefined
+	 * @generated
+	 */
+	public Adapter createParameterUserDefinedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterInteger <em>Parameter Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterInteger
+	 * @generated
+	 */
+	public Adapter createParameterIntegerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterDouble <em>Parameter Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterDouble
+	 * @generated
+	 */
+	public Adapter createParameterDoubleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterString <em>Parameter String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterString
+	 * @generated
+	 */
+	public Adapter createParameterStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterBoolean <em>Parameter Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterBoolean
+	 * @generated
+	 */
+	public Adapter createParameterBooleanAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterValue <em>Parameter Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterValue
+	 * @generated
+	 */
+	public Adapter createParameterValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.ParameterList <em>Parameter List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.ParameterList
+	 * @generated
+	 */
+	public Adapter createParameterListAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link atomicDevs.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see atomicDevs.Parameter
+	 * @generated
+	 */
+	public Adapter createParameterAdapter() {
 		return null;
 	}
 

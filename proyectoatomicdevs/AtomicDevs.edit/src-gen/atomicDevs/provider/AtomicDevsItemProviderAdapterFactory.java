@@ -717,6 +717,167 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterUserDefined} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterUserDefinedItemProvider parameterUserDefinedItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterUserDefined}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterUserDefinedAdapter() {
+		if (parameterUserDefinedItemProvider == null) {
+			parameterUserDefinedItemProvider = new ParameterUserDefinedItemProvider(this);
+		}
+
+		return parameterUserDefinedItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterInteger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterIntegerItemProvider parameterIntegerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterInteger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterIntegerAdapter() {
+		if (parameterIntegerItemProvider == null) {
+			parameterIntegerItemProvider = new ParameterIntegerItemProvider(this);
+		}
+
+		return parameterIntegerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterDouble} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterDoubleItemProvider parameterDoubleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterDouble}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterDoubleAdapter() {
+		if (parameterDoubleItemProvider == null) {
+			parameterDoubleItemProvider = new ParameterDoubleItemProvider(this);
+		}
+
+		return parameterDoubleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterStringItemProvider parameterStringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterString}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterStringAdapter() {
+		if (parameterStringItemProvider == null) {
+			parameterStringItemProvider = new ParameterStringItemProvider(this);
+		}
+
+		return parameterStringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterBoolean} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterBooleanItemProvider parameterBooleanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterBoolean}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterBooleanAdapter() {
+		if (parameterBooleanItemProvider == null) {
+			parameterBooleanItemProvider = new ParameterBooleanItemProvider(this);
+		}
+
+		return parameterBooleanItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.ParameterList} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterListItemProvider parameterListItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.ParameterList}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterListAdapter() {
+		if (parameterListItemProvider == null) {
+			parameterListItemProvider = new ParameterListItemProvider(this);
+		}
+
+		return parameterListItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link atomicDevs.Parameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterItemProvider parameterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link atomicDevs.Parameter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParameterAdapter() {
+		if (parameterItemProvider == null) {
+			parameterItemProvider = new ParameterItemProvider(this);
+		}
+
+		return parameterItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -877,6 +1038,20 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			valueDataItemProvider.dispose();
 		if (initialDotItemProvider != null)
 			initialDotItemProvider.dispose();
+		if (parameterUserDefinedItemProvider != null)
+			parameterUserDefinedItemProvider.dispose();
+		if (parameterIntegerItemProvider != null)
+			parameterIntegerItemProvider.dispose();
+		if (parameterDoubleItemProvider != null)
+			parameterDoubleItemProvider.dispose();
+		if (parameterStringItemProvider != null)
+			parameterStringItemProvider.dispose();
+		if (parameterBooleanItemProvider != null)
+			parameterBooleanItemProvider.dispose();
+		if (parameterListItemProvider != null)
+			parameterListItemProvider.dispose();
+		if (parameterItemProvider != null)
+			parameterItemProvider.dispose();
 	}
 
 }

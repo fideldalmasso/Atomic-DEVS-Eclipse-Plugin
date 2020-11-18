@@ -176,6 +176,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__STATEPHASE);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__TRANSITION);
 			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALDOT);
+			childrenFeatures.add(AtomicDevsPackage.Literals.ATOMIC_DEVS__PARAMETERLIST);
 		}
 		return childrenFeatures;
 	}
@@ -247,6 +248,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 		case AtomicDevsPackage.ATOMIC_DEVS__STATEPHASE:
 		case AtomicDevsPackage.ATOMIC_DEVS__TRANSITION:
 		case AtomicDevsPackage.ATOMIC_DEVS__INITIALDOT:
+		case AtomicDevsPackage.ATOMIC_DEVS__PARAMETERLIST:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -281,6 +283,9 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__INITIALDOT,
 				AtomicDevsFactory.eINSTANCE.createInitialDot()));
+
+		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.ATOMIC_DEVS__PARAMETERLIST,
+				AtomicDevsFactory.eINSTANCE.createParameterList()));
 	}
 
 	/**

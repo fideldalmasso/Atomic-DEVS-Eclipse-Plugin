@@ -18,6 +18,13 @@ import atomicDevs.InternalTransition;
 import atomicDevs.InternalTransitionData;
 import atomicDevs.Output;
 import atomicDevs.OutputPort;
+import atomicDevs.Parameter;
+import atomicDevs.ParameterBoolean;
+import atomicDevs.ParameterDouble;
+import atomicDevs.ParameterInteger;
+import atomicDevs.ParameterList;
+import atomicDevs.ParameterString;
+import atomicDevs.ParameterUserDefined;
 import atomicDevs.PhaseVariable;
 import atomicDevs.Port;
 import atomicDevs.Primitive;
@@ -139,6 +146,20 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createValueData();
 		case AtomicDevsPackage.INITIAL_DOT:
 			return createInitialDot();
+		case AtomicDevsPackage.PARAMETER_USER_DEFINED:
+			return createParameterUserDefined();
+		case AtomicDevsPackage.PARAMETER_INTEGER:
+			return createParameterInteger();
+		case AtomicDevsPackage.PARAMETER_DOUBLE:
+			return createParameterDouble();
+		case AtomicDevsPackage.PARAMETER_STRING:
+			return createParameterString();
+		case AtomicDevsPackage.PARAMETER_BOOLEAN:
+			return createParameterBoolean();
+		case AtomicDevsPackage.PARAMETER_LIST:
+			return createParameterList();
+		case AtomicDevsPackage.PARAMETER:
+			return createParameter();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -480,6 +501,83 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	public InitialDot createInitialDot() {
 		InitialDotImpl initialDot = new InitialDotImpl();
 		return initialDot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterUserDefined createParameterUserDefined() {
+		ParameterUserDefinedImpl parameterUserDefined = new ParameterUserDefinedImpl();
+		return parameterUserDefined;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterInteger createParameterInteger() {
+		ParameterIntegerImpl parameterInteger = new ParameterIntegerImpl();
+		return parameterInteger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterDouble createParameterDouble() {
+		ParameterDoubleImpl parameterDouble = new ParameterDoubleImpl();
+		return parameterDouble;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterString createParameterString() {
+		ParameterStringImpl parameterString = new ParameterStringImpl();
+		return parameterString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterBoolean createParameterBoolean() {
+		ParameterBooleanImpl parameterBoolean = new ParameterBooleanImpl();
+		return parameterBoolean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterList createParameterList() {
+		ParameterListImpl parameterList = new ParameterListImpl();
+		return parameterList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Parameter createParameter() {
+		ParameterImpl parameter = new ParameterImpl();
+		return parameter;
 	}
 
 	/**

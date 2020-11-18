@@ -17,6 +17,14 @@ import atomicDevs.InternalTransition;
 import atomicDevs.InternalTransitionData;
 import atomicDevs.Output;
 import atomicDevs.OutputPort;
+import atomicDevs.Parameter;
+import atomicDevs.ParameterBoolean;
+import atomicDevs.ParameterDouble;
+import atomicDevs.ParameterInteger;
+import atomicDevs.ParameterList;
+import atomicDevs.ParameterString;
+import atomicDevs.ParameterUserDefined;
+import atomicDevs.ParameterValue;
 import atomicDevs.PhaseVariable;
 import atomicDevs.Port;
 import atomicDevs.PrimitiveType;
@@ -350,6 +358,72 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 		case AtomicDevsPackage.INITIAL_DOT: {
 			InitialDot initialDot = (InitialDot) theEObject;
 			T result = caseInitialDot(initialDot);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_USER_DEFINED: {
+			ParameterUserDefined parameterUserDefined = (ParameterUserDefined) theEObject;
+			T result = caseParameterUserDefined(parameterUserDefined);
+			if (result == null)
+				result = caseParameterValue(parameterUserDefined);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_INTEGER: {
+			ParameterInteger parameterInteger = (ParameterInteger) theEObject;
+			T result = caseParameterInteger(parameterInteger);
+			if (result == null)
+				result = caseParameterValue(parameterInteger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_DOUBLE: {
+			ParameterDouble parameterDouble = (ParameterDouble) theEObject;
+			T result = caseParameterDouble(parameterDouble);
+			if (result == null)
+				result = caseParameterValue(parameterDouble);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_STRING: {
+			ParameterString parameterString = (ParameterString) theEObject;
+			T result = caseParameterString(parameterString);
+			if (result == null)
+				result = caseParameterValue(parameterString);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_BOOLEAN: {
+			ParameterBoolean parameterBoolean = (ParameterBoolean) theEObject;
+			T result = caseParameterBoolean(parameterBoolean);
+			if (result == null)
+				result = caseParameterValue(parameterBoolean);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_VALUE: {
+			ParameterValue parameterValue = (ParameterValue) theEObject;
+			T result = caseParameterValue(parameterValue);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER_LIST: {
+			ParameterList parameterList = (ParameterList) theEObject;
+			T result = caseParameterList(parameterList);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.PARAMETER: {
+			Parameter parameter = (Parameter) theEObject;
+			T result = caseParameter(parameter);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -836,6 +910,126 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInitialDot(InitialDot object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter User Defined</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter User Defined</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterUserDefined(ParameterUserDefined object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Integer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterInteger(ParameterInteger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Double</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterDouble(ParameterDouble object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter String</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter String</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterString(ParameterString object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Boolean</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterBoolean(ParameterBoolean object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterValue(ParameterValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterList(ParameterList object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameter(Parameter object) {
 		return null;
 	}
 

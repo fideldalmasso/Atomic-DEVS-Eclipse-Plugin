@@ -248,7 +248,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterUserDefined" eSuperTypes="#//ParameterValue">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="typeIsString parameterTypeIsString"/>
+      <details key="constraints" value="typeIsString"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="typeIsString" value="self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>

@@ -5,6 +5,7 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
+import atomicDevs.ParameterList;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link atomicDevs.impl.InitialDotImpl#getStatephase <em>Statephase</em>}</li>
  *   <li>{@link atomicDevs.impl.InitialDotImpl#getStatestructure <em>Statestructure</em>}</li>
  *   <li>{@link atomicDevs.impl.InitialDotImpl#getInitialstate <em>Initialstate</em>}</li>
+ *   <li>{@link atomicDevs.impl.InitialDotImpl#getParameterlist <em>Parameterlist</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +63,16 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 	 * @ordered
 	 */
 	protected InitialState initialstate;
+
+	/**
+	 * The cached value of the '{@link #getParameterlist() <em>Parameterlist</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterlist()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterList parameterlist;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,6 +225,48 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 	 * @generated
 	 */
 	@Override
+	public ParameterList getParameterlist() {
+		if (parameterlist != null && parameterlist.eIsProxy()) {
+			InternalEObject oldParameterlist = (InternalEObject) parameterlist;
+			parameterlist = (ParameterList) eResolveProxy(oldParameterlist);
+			if (parameterlist != oldParameterlist) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST, oldParameterlist, parameterlist));
+			}
+		}
+		return parameterlist;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterList basicGetParameterlist() {
+		return parameterlist;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setParameterlist(ParameterList newParameterlist) {
+		ParameterList oldParameterlist = parameterlist;
+		parameterlist = newParameterlist;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST,
+					oldParameterlist, parameterlist));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case AtomicDevsPackage.INITIAL_DOT__STATEPHASE:
@@ -227,6 +281,10 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 			if (resolve)
 				return getInitialstate();
 			return basicGetInitialstate();
+		case AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST:
+			if (resolve)
+				return getParameterlist();
+			return basicGetParameterlist();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -247,6 +305,9 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 			return;
 		case AtomicDevsPackage.INITIAL_DOT__INITIALSTATE:
 			setInitialstate((InitialState) newValue);
+			return;
+		case AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST:
+			setParameterlist((ParameterList) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -269,6 +330,9 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 		case AtomicDevsPackage.INITIAL_DOT__INITIALSTATE:
 			setInitialstate((InitialState) null);
 			return;
+		case AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST:
+			setParameterlist((ParameterList) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -287,6 +351,8 @@ public class InitialDotImpl extends MinimalEObjectImpl.Container implements Init
 			return statestructure != null;
 		case AtomicDevsPackage.INITIAL_DOT__INITIALSTATE:
 			return initialstate != null;
+		case AtomicDevsPackage.INITIAL_DOT__PARAMETERLIST:
+			return parameterlist != null;
 		}
 		return super.eIsSet(featureID);
 	}

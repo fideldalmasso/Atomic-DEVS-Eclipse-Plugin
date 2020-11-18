@@ -144,13 +144,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__INITIALDOT = 7;
 
 	/**
+	 * The feature id for the '<em><b>Parameterlist</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__PARAMETERLIST = 8;
+
+	/**
 	 * The number of structural features of the '<em>Atomic DEVS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_DEVS_FEATURE_COUNT = 8;
+	int ATOMIC_DEVS_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Atomic DEVS</em>' class.
@@ -1669,13 +1678,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_DOT__INITIALSTATE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Parameterlist</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_DOT__PARAMETERLIST = 3;
+
+	/**
 	 * The number of structural features of the '<em>Initial Dot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_DOT_FEATURE_COUNT = 3;
+	int INITIAL_DOT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Initial Dot</em>' class.
@@ -1687,6 +1705,365 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_DOT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterValueImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterValue()
+	 * @generated
+	 */
+	int PARAMETER_VALUE = 37;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_VALUE__PARAMETER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_VALUE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_VALUE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterUserDefinedImpl <em>Parameter User Defined</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterUserDefinedImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterUserDefined()
+	 * @generated
+	 */
+	int PARAMETER_USER_DEFINED = 32;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_USER_DEFINED__PARAMETER = PARAMETER_VALUE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_USER_DEFINED__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter User Defined</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_USER_DEFINED_FEATURE_COUNT = PARAMETER_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter User Defined</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_USER_DEFINED_OPERATION_COUNT = PARAMETER_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterIntegerImpl <em>Parameter Integer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterIntegerImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterInteger()
+	 * @generated
+	 */
+	int PARAMETER_INTEGER = 33;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_INTEGER__PARAMETER = PARAMETER_VALUE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_INTEGER__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Integer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_INTEGER_FEATURE_COUNT = PARAMETER_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter Integer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_INTEGER_OPERATION_COUNT = PARAMETER_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterDoubleImpl <em>Parameter Double</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterDoubleImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterDouble()
+	 * @generated
+	 */
+	int PARAMETER_DOUBLE = 34;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DOUBLE__PARAMETER = PARAMETER_VALUE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DOUBLE__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Double</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DOUBLE_FEATURE_COUNT = PARAMETER_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter Double</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_DOUBLE_OPERATION_COUNT = PARAMETER_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterStringImpl <em>Parameter String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterStringImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterString()
+	 * @generated
+	 */
+	int PARAMETER_STRING = 35;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_STRING__PARAMETER = PARAMETER_VALUE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_STRING__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_STRING_FEATURE_COUNT = PARAMETER_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_STRING_OPERATION_COUNT = PARAMETER_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterBooleanImpl <em>Parameter Boolean</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterBooleanImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterBoolean()
+	 * @generated
+	 */
+	int PARAMETER_BOOLEAN = 36;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_BOOLEAN__PARAMETER = PARAMETER_VALUE__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_BOOLEAN__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_BOOLEAN_FEATURE_COUNT = PARAMETER_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_BOOLEAN_OPERATION_COUNT = PARAMETER_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterListImpl <em>Parameter List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterListImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterList()
+	 * @generated
+	 */
+	int PARAMETER_LIST = 38;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_LIST__PARAMETER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Parameter List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_LIST_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Parameter List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_LIST_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link atomicDevs.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see atomicDevs.impl.ParameterImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameter()
+	 * @generated
+	 */
+	int PARAMETER = 39;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Parametervalue</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__PARAMETERVALUE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TYPE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1694,7 +2071,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getPrimitive()
 	 * @generated
 	 */
-	int PRIMITIVE = 32;
+	int PRIMITIVE = 40;
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.AtomicDEVS <em>Atomic DEVS</em>}'.
@@ -1793,6 +2170,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAtomicDEVS_Initialdot();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link atomicDevs.AtomicDEVS#getParameterlist <em>Parameterlist</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Parameterlist</em>'.
+	 * @see atomicDevs.AtomicDEVS#getParameterlist()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EReference getAtomicDEVS_Parameterlist();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.StateStructure <em>State Structure</em>}'.
@@ -2567,6 +2955,207 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getInitialDot_Initialstate();
 
 	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.InitialDot#getParameterlist <em>Parameterlist</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parameterlist</em>'.
+	 * @see atomicDevs.InitialDot#getParameterlist()
+	 * @see #getInitialDot()
+	 * @generated
+	 */
+	EReference getInitialDot_Parameterlist();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterUserDefined <em>Parameter User Defined</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter User Defined</em>'.
+	 * @see atomicDevs.ParameterUserDefined
+	 * @generated
+	 */
+	EClass getParameterUserDefined();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterUserDefined#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.ParameterUserDefined#getVariable()
+	 * @see #getParameterUserDefined()
+	 * @generated
+	 */
+	EAttribute getParameterUserDefined_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterInteger <em>Parameter Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Integer</em>'.
+	 * @see atomicDevs.ParameterInteger
+	 * @generated
+	 */
+	EClass getParameterInteger();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterInteger#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.ParameterInteger#getVariable()
+	 * @see #getParameterInteger()
+	 * @generated
+	 */
+	EAttribute getParameterInteger_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterDouble <em>Parameter Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Double</em>'.
+	 * @see atomicDevs.ParameterDouble
+	 * @generated
+	 */
+	EClass getParameterDouble();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterDouble#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.ParameterDouble#getVariable()
+	 * @see #getParameterDouble()
+	 * @generated
+	 */
+	EAttribute getParameterDouble_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterString <em>Parameter String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter String</em>'.
+	 * @see atomicDevs.ParameterString
+	 * @generated
+	 */
+	EClass getParameterString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterString#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.ParameterString#getVariable()
+	 * @see #getParameterString()
+	 * @generated
+	 */
+	EAttribute getParameterString_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterBoolean <em>Parameter Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Boolean</em>'.
+	 * @see atomicDevs.ParameterBoolean
+	 * @generated
+	 */
+	EClass getParameterBoolean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterBoolean#isVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.ParameterBoolean#isVariable()
+	 * @see #getParameterBoolean()
+	 * @generated
+	 */
+	EAttribute getParameterBoolean_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterValue <em>Parameter Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Value</em>'.
+	 * @see atomicDevs.ParameterValue
+	 * @generated
+	 */
+	EClass getParameterValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterValue#getParameter()
+	 * @see #getParameterValue()
+	 * @generated
+	 */
+	EReference getParameterValue_Parameter();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.ParameterList <em>Parameter List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter List</em>'.
+	 * @see atomicDevs.ParameterList
+	 * @generated
+	 */
+	EClass getParameterList();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link atomicDevs.ParameterList#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterList#getParameter()
+	 * @see #getParameterList()
+	 * @generated
+	 */
+	EReference getParameterList_Parameter();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.Parameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter</em>'.
+	 * @see atomicDevs.Parameter
+	 * @generated
+	 */
+	EClass getParameter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.Parameter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see atomicDevs.Parameter#getName()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parametervalue</em>'.
+	 * @see atomicDevs.Parameter#getParametervalue()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_Parametervalue();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.Parameter#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see atomicDevs.Parameter#getType()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_Type();
+
+	/**
 	 * Returns the meta object for enum '{@link atomicDevs.Primitive <em>Primitive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2672,6 +3261,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATOMIC_DEVS__INITIALDOT = eINSTANCE.getAtomicDEVS_Initialdot();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameterlist</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_DEVS__PARAMETERLIST = eINSTANCE.getAtomicDEVS_Parameterlist();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.StateStructureImpl <em>State Structure</em>}' class.
@@ -3319,6 +3916,174 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INITIAL_DOT__INITIALSTATE = eINSTANCE.getInitialDot_Initialstate();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameterlist</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INITIAL_DOT__PARAMETERLIST = eINSTANCE.getInitialDot_Parameterlist();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterUserDefinedImpl <em>Parameter User Defined</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterUserDefinedImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterUserDefined()
+		 * @generated
+		 */
+		EClass PARAMETER_USER_DEFINED = eINSTANCE.getParameterUserDefined();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_USER_DEFINED__VARIABLE = eINSTANCE.getParameterUserDefined_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterIntegerImpl <em>Parameter Integer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterIntegerImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterInteger()
+		 * @generated
+		 */
+		EClass PARAMETER_INTEGER = eINSTANCE.getParameterInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_INTEGER__VARIABLE = eINSTANCE.getParameterInteger_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterDoubleImpl <em>Parameter Double</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterDoubleImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterDouble()
+		 * @generated
+		 */
+		EClass PARAMETER_DOUBLE = eINSTANCE.getParameterDouble();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_DOUBLE__VARIABLE = eINSTANCE.getParameterDouble_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterStringImpl <em>Parameter String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterStringImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterString()
+		 * @generated
+		 */
+		EClass PARAMETER_STRING = eINSTANCE.getParameterString();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_STRING__VARIABLE = eINSTANCE.getParameterString_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterBooleanImpl <em>Parameter Boolean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterBooleanImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterBoolean()
+		 * @generated
+		 */
+		EClass PARAMETER_BOOLEAN = eINSTANCE.getParameterBoolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_BOOLEAN__VARIABLE = eINSTANCE.getParameterBoolean_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterValueImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterValue()
+		 * @generated
+		 */
+		EClass PARAMETER_VALUE = eINSTANCE.getParameterValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER_VALUE__PARAMETER = eINSTANCE.getParameterValue_Parameter();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterListImpl <em>Parameter List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterListImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameterList()
+		 * @generated
+		 */
+		EClass PARAMETER_LIST = eINSTANCE.getParameterList();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER_LIST__PARAMETER = eINSTANCE.getParameterList_Parameter();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.ParameterImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getParameter()
+		 * @generated
+		 */
+		EClass PARAMETER = eINSTANCE.getParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Parametervalue</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__PARAMETERVALUE = eINSTANCE.getParameter_Parametervalue();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.

@@ -267,15 +267,15 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="StateDefinition" domainClass="atomicDevs::StateStructure">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'State Definition: ' + (self.statevariable.name->sep('(', ',', ')'))" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="3">
+        <nodeMappings name="InitialState" domainClass="atomicDevs::InitialState">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'Initial State: ' + self.value.variable->sep('(', ',', ')')" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="InitialState" domainClass="atomicDevs::InitialState">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'Initial State: ' + self.value.variable->sep('(', ',', ')')" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="3">
+        <nodeMappings name="StateDefinition" domainClass="atomicDevs::StateStructure">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'State Definition: ' + (self.statevariable.name->sep(   '('    ,    ','    ,     ')'      ))" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

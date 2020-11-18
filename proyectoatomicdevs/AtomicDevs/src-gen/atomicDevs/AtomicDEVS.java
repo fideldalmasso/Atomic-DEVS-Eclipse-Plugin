@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.AtomicDEVS#getIncludesInputPort <em>Includes Input Port</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getTransition <em>Transition</em>}</li>
  *   <li>{@link atomicDevs.AtomicDEVS#getInitialdot <em>Initialdot</em>}</li>
+ *   <li>{@link atomicDevs.AtomicDEVS#getParameterlist <em>Parameterlist</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS()
@@ -172,5 +173,27 @@ public interface AtomicDEVS extends EObject {
 	 * @generated
 	 */
 	void setInitialdot(InitialDot value);
+
+	/**
+	 * Returns the value of the '<em><b>Parameterlist</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameterlist</em>' containment reference.
+	 * @see #setParameterlist(ParameterList)
+	 * @see atomicDevs.AtomicDevsPackage#getAtomicDEVS_Parameterlist()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ParameterList getParameterlist();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.AtomicDEVS#getParameterlist <em>Parameterlist</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parameterlist</em>' containment reference.
+	 * @see #getParameterlist()
+	 * @generated
+	 */
+	void setParameterlist(ParameterList value);
 
 } // AtomicDEVS

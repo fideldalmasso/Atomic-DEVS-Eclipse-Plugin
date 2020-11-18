@@ -3,6 +3,7 @@
 package atomicDevs.provider;
 
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.Parameter;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,15 +20,17 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.InitialDot} object.
+ * This is the item provider adapter for a {@link atomicDevs.Parameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class InitialDotItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class ParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -35,7 +38,7 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InitialDotItemProvider(AdapterFactory adapterFactory) {
+	public ParameterItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -50,83 +53,68 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStatephasePropertyDescriptor(object);
-			addStatestructurePropertyDescriptor(object);
-			addInitialstatePropertyDescriptor(object);
-			addParameterlistPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addParametervaluePropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Statephase feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStatephasePropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InitialDot_statephase_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_statephase_feature",
-								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__STATEPHASE, false, false, false, null, null, null));
+						getResourceLocator(), getString("_UI_Parameter_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_name_feature",
+								"_UI_Parameter_type"),
+						AtomicDevsPackage.Literals.PARAMETER__NAME, false, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Statestructure feature.
+	 * This adds a property descriptor for the Parametervalue feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStatestructurePropertyDescriptor(Object object) {
+	protected void addParametervaluePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InitialDot_statestructure_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_statestructure_feature",
-								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__STATESTRUCTURE, false, false, false, null, null, null));
+						getResourceLocator(), getString("_UI_Parameter_parametervalue_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_parametervalue_feature",
+								"_UI_Parameter_type"),
+						AtomicDevsPackage.Literals.PARAMETER__PARAMETERVALUE, false, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Initialstate feature.
+	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addInitialstatePropertyDescriptor(Object object) {
+	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InitialDot_initialstate_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_initialstate_feature",
-								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__INITIALSTATE, false, false, false, null, null, null));
+						getResourceLocator(), getString("_UI_Parameter_type_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_type_feature",
+								"_UI_Parameter_type"),
+						AtomicDevsPackage.Literals.PARAMETER__TYPE, false, false, true, null, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Parameterlist feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addParameterlistPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_InitialDot_parameterlist_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_InitialDot_parameterlist_feature",
-								"_UI_InitialDot_type"),
-						AtomicDevsPackage.Literals.INITIAL_DOT__PARAMETERLIST, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This returns InitialDot.gif.
+	 * This returns Parameter.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/InitialDot"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Parameter"));
 	}
 
 	/**
@@ -147,7 +135,9 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_InitialDot_type");
+		String label = ((Parameter) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Parameter_type")
+				: getString("_UI_Parameter_type") + " " + label;
 	}
 
 	/**
@@ -160,6 +150,12 @@ public class InitialDotItemProvider extends ItemProviderAdapter implements IEdit
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Parameter.class)) {
+		case AtomicDevsPackage.PARAMETER__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 
