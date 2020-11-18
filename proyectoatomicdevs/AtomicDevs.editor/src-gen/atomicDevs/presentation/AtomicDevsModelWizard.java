@@ -52,6 +52,9 @@ import atomicDevs.InitialDot;
 import atomicDevs.InitialState;
 import atomicDevs.InputPort;
 import atomicDevs.OutputPort;
+import atomicDevs.Parameter;
+import atomicDevs.ParameterList;
+import atomicDevs.ParameterValue;
 import atomicDevs.PhaseVariable;
 import atomicDevs.Primitive;
 import atomicDevs.PrimitiveType;
@@ -269,6 +272,98 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		}
 	}
 	
+	private Value generateValueFromStateVariableRegister(StateVariableRegister v) {
+		Value valueObject1;
+		
+		switch(v.type) {
+		case "INTEGER":{
+			atomicDevs.Integer valueObject2 = (atomicDevs.Integer) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Integer"));
+			valueObject2.setVariable(Integer.parseInt(v.value));
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "DOUBLE":{
+			Double valueTemp;
+			atomicDevs.Double valueObject2;
+			if(v.value.equals("infinity")) {
+				valueObject2 = (atomicDevs.Infinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Infinity"));
+				valueTemp = Double.POSITIVE_INFINITY;
+			}
+			else {
+				valueObject2 = (atomicDevs.Double) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Double"));
+				valueTemp = Double.parseDouble(v.value);
+			}
+			
+			valueObject2.setVariable(valueTemp);
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "BOOLEAN":{
+			atomicDevs.Boolean valueObject2 = (atomicDevs.Boolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Boolean"));
+			valueObject2.setVariable(Boolean.getBoolean(v.value));
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "STRING":{
+			atomicDevs.String valueObject2 = (atomicDevs.String) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("String"));
+			valueObject2.setVariable(v.value);
+			valueObject1 = valueObject2;
+			break;
+		}
+		default:{
+			atomicDevs.UserDefined valueObject2 = (atomicDevs.UserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("UserDefined"));
+			valueObject2.setVariable(v.value);
+			valueObject1 = valueObject2;
+			break;
+		}
+		
+	}
+	
+		return valueObject1;
+	}
+	
+	private ParameterValue generateValueFromParameterRegister(ParameterRegister p) {
+		ParameterValue valueObject1;
+		
+		switch(p.type) {
+		case "INTEGER":{
+			atomicDevs.ParameterInteger valueObject2 = (atomicDevs.ParameterInteger) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterInteger"));
+			valueObject2.setVariable(Integer.parseInt(p.value));
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "DOUBLE":{
+			atomicDevs.ParameterDouble valueObject2 = (atomicDevs.ParameterDouble) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterDouble"));
+			valueObject2.setVariable(Double.parseDouble(p.value));
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "BOOLEAN":{
+			atomicDevs.ParameterBoolean valueObject2 = (atomicDevs.ParameterBoolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterBoolean"));
+			valueObject2.setVariable(Boolean.getBoolean(p.value));
+			valueObject1 = valueObject2;
+			break;
+		}
+		case "STRING":{
+			atomicDevs.ParameterString valueObject2 = (atomicDevs.ParameterString) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterString"));
+			valueObject2.setVariable(p.value);
+			valueObject1 = valueObject2;
+			break;
+		}
+		default:{
+			atomicDevs.ParameterUserDefined valueObject2 = (atomicDevs.ParameterUserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterUserDefined"));
+			valueObject2.setVariable(p.value);
+			valueObject1 = valueObject2;
+			break;
+		}
+		
+	}
+	
+		return valueObject1;
+	}
+	
+	
+	
 	protected EObject createInitialModel() {
 //		EClass eClass = (EClass) atomicDevsPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
 		
@@ -301,6 +396,8 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		
 		for(StateVariableRegister s : stateVariables)
 			usedTypes.add(s.type);
+		for(ParameterRegister p : parameters)
+			usedTypes.add(p.type);
 		for(InputPortRegister p : inputPorts)
 			usedTypes.add(p.type);
 		for(OutputPortRegister p : outputPorts)
@@ -345,56 +442,35 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			stateVariableObject.setType(getTypeByName(v.type));
 			stateStructureObject.getStatevariable().add(stateVariableObject);
 			
-			Value valueObject1;
-			
-			switch(v.type) {
-				case "INTEGER":{
-					atomicDevs.Integer valueObject2 = (atomicDevs.Integer) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Integer"));
-					valueObject2.setVariable(Integer.parseInt(v.value));
-					valueObject1 = valueObject2;
-					break;
-				}
-				case "DOUBLE":{
-					Double valueTemp;
-					atomicDevs.Double valueObject2;
-					if(v.value.equals("infinity")) {
-						valueObject2 = (atomicDevs.Infinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Infinity"));
-						valueTemp = Double.POSITIVE_INFINITY;
-					}
-					else {
-						valueObject2 = (atomicDevs.Double) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Double"));
-						valueTemp = Double.parseDouble(v.value);
-					}
-					
-					valueObject2.setVariable(valueTemp);
-					valueObject1 = valueObject2;
-					break;
-				}
-				case "BOOLEAN":{
-					atomicDevs.Boolean valueObject2 = (atomicDevs.Boolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Boolean"));
-					valueObject2.setVariable(Boolean.getBoolean(v.value));
-					valueObject1 = valueObject2;
-					break;
-				}
-				case "STRING":{
-					atomicDevs.String valueObject2 = (atomicDevs.String) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("String"));
-					valueObject2.setVariable(v.value);
-					valueObject1 = valueObject2;
-					break;
-				}
-				default:{
-					atomicDevs.UserDefined valueObject2 = (atomicDevs.UserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("UserDefined"));
-					valueObject2.setVariable(v.value);
-					valueObject1 = valueObject2;
-					break;
-				}
-				
-			}
+			Value valueObject1 = generateValueFromStateVariableRegister(v);
+	
 			valueObject1.setStatevariable(stateVariableObject);
 			initialStateObject.getValue().add(valueObject1);
 		
 		}
 		
+		
+		
+		if(!parameters.isEmpty()) {
+			
+			ParameterList parameterListObject = (ParameterList) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterList"));
+			
+			for(ParameterRegister p: parameters) {
+				Parameter parameterObject = (Parameter) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Parameter"));
+				parameterObject.setName(p.name);
+				
+				ParameterValue valueObject1 = generateValueFromParameterRegister(p);
+				valueObject1.setParameter(parameterObject);
+				parameterObject.setParametervalue(valueObject1);
+				
+				parameterObject.setType(getTypeByName(p.type));
+				
+				parameterListObject.getParameter().add(parameterObject);	
+			}
+			
+			atomicDEVSObject.setParameterlist(parameterListObject);
+			initialDotObject.setParameterlist(parameterListObject);
+		}
 		
 		for(InputPortRegister p : inputPorts) {
 			InputPort inputPortObject = (InputPort) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("InputPort"));
