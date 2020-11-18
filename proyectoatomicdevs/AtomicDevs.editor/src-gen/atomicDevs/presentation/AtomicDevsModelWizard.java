@@ -70,6 +70,9 @@ import atomicDevs.pages.Page02;
 import atomicDevs.pages.Page03;
 import atomicDevs.pages.Page04;
 import atomicDevs.pages.Page05;
+import atomicDevs.pages.Page06;
+import atomicDevs.pages.Page07;
+import atomicDevs.pages.ParameterRegister;
 import atomicDevs.pages.StateVariableRegister;
 import atomicDevs.pages.Utilities;
 
@@ -90,6 +93,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	public static List<InputPortRegister> inputPorts;
 	public static List<OutputPortRegister> outputPorts;
 	public static List<StateVariableRegister> stateVariables;
+	public static List<ParameterRegister> parameters;
 	
 	List<atomicDevs.PrimitiveType> primitiveTypes;
 	List<atomicDevs.UserDefinedType> userTypes;
@@ -99,6 +103,8 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	protected Page03 page03;
 	protected Page04 page04;
 	protected Page05 page05;
+	protected Page06 page06;
+	protected Page07 page07;
 	
 	/**
 	 * The supported extensions for created files.
@@ -589,6 +595,10 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		addPage(page04);
 		page05 = new Page05("Whatever05");
 		addPage(page05);
+		page06 = new Page06("Whatever06");
+		addPage(page06);
+		page07 = new Page07("Whatever07");
+		addPage(page07);
 		
 
 		
@@ -607,7 +617,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	
 	@Override
 	public boolean canFinish(){
-		if(getContainer().getCurrentPage()==page05)
+		if(getContainer().getCurrentPage()==page07)
 			return true;
 		else
 			return false;

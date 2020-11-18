@@ -14,13 +14,13 @@ import org.eclipse.swt.events.*;
 import atomicDevs.pages.Message.Type;
 import atomicDevs.presentation.AtomicDevsModelWizard;
 
-public class Page05 extends WizardPage{
+public class Page07 extends WizardPage{
 
 
-	public Page05(String pageId) {
+	public Page07(String pageId) {
 		super(pageId);
 		
-		this.setTitle("Set variables initial values");
+		this.setTitle("Set parameters initial values");
 		this.setDescription("Clic on a value to edit it");
 		
 	}
@@ -111,7 +111,7 @@ public class Page05 extends WizardPage{
 					 m = askNewValue(selectedItem.getText(1), selectedItem.getText(2));
 					 
 					 if(m.success()) { 
-						  AtomicDevsModelWizard.stateVariables.get(index).value = m.text();
+						  AtomicDevsModelWizard.parameters.get(index).value = m.text();
 						  this.updateTable();
 					 }
 					  
@@ -141,13 +141,13 @@ public class Page05 extends WizardPage{
 		if(table.getItemCount()>0)
 			table.removeAll();
 		
-		if(AtomicDevsModelWizard.stateVariables.isEmpty())
+		if(AtomicDevsModelWizard.parameters.isEmpty())
 			return;
 
 		table.removeAll();
 		
 		
-		for(StateVariableRegister s : AtomicDevsModelWizard.stateVariables) {
+		for(ParameterRegister s : AtomicDevsModelWizard.parameters) {
 			
 			TableItem item = new TableItem(table, SWT.NONE);
 			item.setText(0, s.name);
