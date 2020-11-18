@@ -1715,7 +1715,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_VALUE = 37;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1752,7 +1752,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_USER_DEFINED = 32;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1798,7 +1798,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_INTEGER = 33;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1844,7 +1844,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_DOUBLE = 34;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1890,7 +1890,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_STRING = 35;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1936,7 +1936,7 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_BOOLEAN = 36;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' reference.
+	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2028,22 +2028,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Parametervalue</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__PARAMETERVALUE = 1;
-
-	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__TYPE = 2;
+	int PARAMETER__TYPE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Parametervalue</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__PARAMETERVALUE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -3081,10 +3081,10 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the container reference '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parameter</em>'.
+	 * @return the meta object for the container reference '<em>Parameter</em>'.
 	 * @see atomicDevs.ParameterValue#getParameter()
 	 * @see #getParameterValue()
 	 * @generated
@@ -3134,17 +3134,6 @@ public interface AtomicDevsPackage extends EPackage {
 	EAttribute getParameter_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parametervalue</em>'.
-	 * @see atomicDevs.Parameter#getParametervalue()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EReference getParameter_Parametervalue();
-
-	/**
 	 * Returns the meta object for the reference '{@link atomicDevs.Parameter#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3154,6 +3143,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getParameter_Type();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Parametervalue</em>'.
+	 * @see atomicDevs.Parameter#getParametervalue()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_Parametervalue();
 
 	/**
 	 * Returns the meta object for enum '{@link atomicDevs.Primitive <em>Primitive</em>}'.
@@ -4026,7 +4026,7 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_VALUE = eINSTANCE.getParameterValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4070,20 +4070,20 @@ public interface AtomicDevsPackage extends EPackage {
 		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Parametervalue</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARAMETER__PARAMETERVALUE = eINSTANCE.getParameter_Parametervalue();
-
-		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Parametervalue</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__PARAMETERVALUE = eINSTANCE.getParameter_Parametervalue();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.

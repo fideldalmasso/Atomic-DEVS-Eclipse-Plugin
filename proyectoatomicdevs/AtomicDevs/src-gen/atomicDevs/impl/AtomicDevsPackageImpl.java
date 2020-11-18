@@ -1425,7 +1425,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EReference getParameter_Parametervalue() {
+	public EReference getParameter_Type() {
 		return (EReference) parameterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1435,7 +1435,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EReference getParameter_Type() {
+	public EReference getParameter_Parametervalue() {
 		return (EReference) parameterEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1618,8 +1618,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__NAME);
-		createEReference(parameterEClass, PARAMETER__PARAMETERVALUE);
 		createEReference(parameterEClass, PARAMETER__TYPE);
+		createEReference(parameterEClass, PARAMETER__PARAMETERVALUE);
 
 		// Create enums
 		primitiveEEnum = createEEnum(PRIMITIVE);
@@ -1945,7 +1945,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParameterValue_Parameter(), this.getParameter(), this.getParameter_Parametervalue(),
 				"parameter", null, 1, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterListEClass, ParameterList.class, "ParameterList", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1957,12 +1957,12 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParameter_Parametervalue(), this.getParameterValue(), this.getParameterValue_Parameter(),
-				"parametervalue", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_Type(), this.getType(), null, "type", null, 1, 1, Parameter.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getParameter_Parametervalue(), this.getParameterValue(), this.getParameterValue_Parameter(),
+				"parametervalue", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(primitiveEEnum, Primitive.class, "Primitive");

@@ -306,8 +306,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parametervalue" lowerBound="1"
-        eType="#//ParameterValue" eOpposite="#//ParameterValue/parameter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parametervalue" lowerBound="1"
+        eType="#//ParameterValue" containment="true" eOpposite="#//ParameterValue/parameter"/>
   </eClassifiers>
 </ecore:EPackage>

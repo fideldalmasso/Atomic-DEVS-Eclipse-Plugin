@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link atomicDevs.impl.ParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link atomicDevs.impl.ParameterImpl#getParametervalue <em>Parametervalue</em>}</li>
  *   <li>{@link atomicDevs.impl.ParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link atomicDevs.impl.ParameterImpl#getParametervalue <em>Parametervalue</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,16 +55,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getParametervalue() <em>Parametervalue</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParametervalue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ParameterValue parametervalue;
-
-	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +63,16 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @ordered
 	 */
 	protected Type type;
+
+	/**
+	 * The cached value of the '{@link #getParametervalue() <em>Parametervalue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParametervalue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterValue parametervalue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,17 +122,17 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @generated
 	 */
 	@Override
-	public ParameterValue getParametervalue() {
-		if (parametervalue != null && parametervalue.eIsProxy()) {
-			InternalEObject oldParametervalue = (InternalEObject) parametervalue;
-			parametervalue = (ParameterValue) eResolveProxy(oldParametervalue);
-			if (parametervalue != oldParametervalue) {
+	public Type getType() {
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject) type;
+			type = (Type) eResolveProxy(oldType);
+			if (type != oldType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AtomicDevsPackage.PARAMETER__PARAMETERVALUE, oldParametervalue, parametervalue));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AtomicDevsPackage.PARAMETER__TYPE,
+							oldType, type));
 			}
 		}
-		return parametervalue;
+		return type;
 	}
 
 	/**
@@ -140,7 +140,30 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterValue basicGetParametervalue() {
+	public Type basicGetType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setType(Type newType) {
+		Type oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ParameterValue getParametervalue() {
 		return parametervalue;
 	}
 
@@ -192,53 +215,12 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @generated
 	 */
 	@Override
-	public Type getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject) type;
-			type = (Type) eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AtomicDevsPackage.PARAMETER__TYPE,
-							oldType, type));
-			}
-		}
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setType(Type newType) {
-		Type oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
 			if (parametervalue != null)
 				msgs = ((InternalEObject) parametervalue).eInverseRemove(this,
-						AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, ParameterValue.class, msgs);
+						EOPPOSITE_FEATURE_BASE - AtomicDevsPackage.PARAMETER__PARAMETERVALUE, null, msgs);
 			return basicSetParametervalue((ParameterValue) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -268,14 +250,12 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER__NAME:
 			return getName();
-		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
-			if (resolve)
-				return getParametervalue();
-			return basicGetParametervalue();
 		case AtomicDevsPackage.PARAMETER__TYPE:
 			if (resolve)
 				return getType();
 			return basicGetType();
+		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
+			return getParametervalue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -291,11 +271,11 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		case AtomicDevsPackage.PARAMETER__NAME:
 			setName((String) newValue);
 			return;
-		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
-			setParametervalue((ParameterValue) newValue);
-			return;
 		case AtomicDevsPackage.PARAMETER__TYPE:
 			setType((Type) newValue);
+			return;
+		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
+			setParametervalue((ParameterValue) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -312,11 +292,11 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		case AtomicDevsPackage.PARAMETER__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
-			setParametervalue((ParameterValue) null);
-			return;
 		case AtomicDevsPackage.PARAMETER__TYPE:
 			setType((Type) null);
+			return;
+		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
+			setParametervalue((ParameterValue) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -332,10 +312,10 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
-			return parametervalue != null;
 		case AtomicDevsPackage.PARAMETER__TYPE:
 			return type != null;
+		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
+			return parametervalue != null;
 		}
 		return super.eIsSet(featureID);
 	}

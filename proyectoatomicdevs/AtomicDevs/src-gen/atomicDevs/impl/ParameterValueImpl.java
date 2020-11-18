@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Parameter Value</b></em>'.
@@ -29,16 +31,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container implements ParameterValue {
-	/**
-	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected Parameter parameter;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,25 +57,9 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public Parameter getParameter() {
-		if (parameter != null && parameter.eIsProxy()) {
-			InternalEObject oldParameter = (InternalEObject) parameter;
-			parameter = (Parameter) eResolveProxy(oldParameter);
-			if (parameter != oldParameter) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, oldParameter, parameter));
-			}
-		}
-		return parameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Parameter basicGetParameter() {
-		return parameter;
+		if (eContainerFeatureID() != AtomicDevsPackage.PARAMETER_VALUE__PARAMETER)
+			return null;
+		return (Parameter) eInternalContainer();
 	}
 
 	/**
@@ -92,16 +68,7 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	public NotificationChain basicSetParameter(Parameter newParameter, NotificationChain msgs) {
-		Parameter oldParameter = parameter;
-		parameter = newParameter;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, oldParameter, newParameter);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject) newParameter, AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, msgs);
 		return msgs;
 	}
 
@@ -112,11 +79,13 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public void setParameter(Parameter newParameter) {
-		if (newParameter != parameter) {
+		if (newParameter != eInternalContainer()
+				|| (eContainerFeatureID() != AtomicDevsPackage.PARAMETER_VALUE__PARAMETER && newParameter != null)) {
+			if (EcoreUtil.isAncestor(this, newParameter))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (parameter != null)
-				msgs = ((InternalEObject) parameter).eInverseRemove(this, AtomicDevsPackage.PARAMETER__PARAMETERVALUE,
-						Parameter.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newParameter != null)
 				msgs = ((InternalEObject) newParameter).eInverseAdd(this, AtomicDevsPackage.PARAMETER__PARAMETERVALUE,
 						Parameter.class, msgs);
@@ -137,9 +106,8 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER_VALUE__PARAMETER:
-			if (parameter != null)
-				msgs = ((InternalEObject) parameter).eInverseRemove(this, AtomicDevsPackage.PARAMETER__PARAMETERVALUE,
-						Parameter.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			return basicSetParameter((Parameter) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -165,12 +133,25 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case AtomicDevsPackage.PARAMETER_VALUE__PARAMETER:
+			return eInternalContainer().eInverseRemove(this, AtomicDevsPackage.PARAMETER__PARAMETERVALUE,
+					Parameter.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER_VALUE__PARAMETER:
-			if (resolve)
-				return getParameter();
-			return basicGetParameter();
+			return getParameter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,7 +195,7 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case AtomicDevsPackage.PARAMETER_VALUE__PARAMETER:
-			return parameter != null;
+			return getParameter() != null;
 		}
 		return super.eIsSet(featureID);
 	}

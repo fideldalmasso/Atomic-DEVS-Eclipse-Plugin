@@ -165,9 +165,8 @@
     <genClasses ecoreClass="atomicDevs.ecore#//Parameter">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute atomicDevs.ecore#//Parameter/name"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference atomicDevs.ecore#//Parameter/parametervalue"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference atomicDevs.ecore#//Parameter/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference atomicDevs.ecore#//Parameter/parametervalue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

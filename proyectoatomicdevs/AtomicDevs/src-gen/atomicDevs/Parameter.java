@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link atomicDevs.Parameter#getName <em>Name</em>}</li>
- *   <li>{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}</li>
  *   <li>{@link atomicDevs.Parameter#getType <em>Type</em>}</li>
+ *   <li>{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getParameter()
@@ -48,30 +48,6 @@ public interface Parameter extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Parametervalue</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parametervalue</em>' reference.
-	 * @see #setParametervalue(ParameterValue)
-	 * @see atomicDevs.AtomicDevsPackage#getParameter_Parametervalue()
-	 * @see atomicDevs.ParameterValue#getParameter
-	 * @model opposite="parameter" required="true"
-	 * @generated
-	 */
-	ParameterValue getParametervalue();
-
-	/**
-	 * Sets the value of the '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parametervalue</em>' reference.
-	 * @see #getParametervalue()
-	 * @generated
-	 */
-	void setParametervalue(ParameterValue value);
-
-	/**
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,5 +68,29 @@ public interface Parameter extends EObject {
 	 * @generated
 	 */
 	void setType(Type value);
+
+	/**
+	 * Returns the value of the '<em><b>Parametervalue</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parametervalue</em>' containment reference.
+	 * @see #setParametervalue(ParameterValue)
+	 * @see atomicDevs.AtomicDevsPackage#getParameter_Parametervalue()
+	 * @see atomicDevs.ParameterValue#getParameter
+	 * @model opposite="parameter" containment="true" required="true"
+	 * @generated
+	 */
+	ParameterValue getParametervalue();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parametervalue</em>' containment reference.
+	 * @see #getParametervalue()
+	 * @generated
+	 */
+	void setParametervalue(ParameterValue value);
 
 } // Parameter

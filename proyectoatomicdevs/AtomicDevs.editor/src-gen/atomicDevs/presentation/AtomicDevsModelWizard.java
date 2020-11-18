@@ -463,6 +463,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 				valueObject1.setParameter(parameterObject);
 				parameterObject.setParametervalue(valueObject1);
 				
+				
 				parameterObject.setType(getTypeByName(p.type));
 				
 				parameterListObject.getParameter().add(parameterObject);	

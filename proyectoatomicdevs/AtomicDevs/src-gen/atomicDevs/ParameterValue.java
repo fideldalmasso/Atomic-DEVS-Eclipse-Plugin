@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ParameterValue extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Parameter</b></em>' reference.
+	 * Returns the value of the '<em><b>Parameter</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter</em>' reference.
+	 * @return the value of the '<em>Parameter</em>' container reference.
 	 * @see #setParameter(Parameter)
 	 * @see atomicDevs.AtomicDevsPackage#getParameterValue_Parameter()
 	 * @see atomicDevs.Parameter#getParametervalue
-	 * @model opposite="parametervalue" required="true"
+	 * @model opposite="parametervalue" required="true" transient="false"
 	 * @generated
 	 */
 	Parameter getParameter();
 
 	/**
-	 * Sets the value of the '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}' reference.
+	 * Sets the value of the '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parameter</em>' reference.
+	 * @param value the new value of the '<em>Parameter</em>' container reference.
 	 * @see #getParameter()
 	 * @generated
 	 */
