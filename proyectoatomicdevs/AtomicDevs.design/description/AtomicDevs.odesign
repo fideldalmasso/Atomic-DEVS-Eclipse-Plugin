@@ -3,7 +3,7 @@
   <ownedViewpoints name="AtomicDEVSViewpoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="AtomicDEVS" domainClass="atomicDevs.AtomicDEVS" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="StatePhase" domainClass="atomicDevs::StatePhase">
+        <nodeMappings name="StatePhase" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='StatePhasexd']" domainClass="atomicDevs::StatePhase">
           <style xsi:type="style:SquareDescription" labelSize="14" showIcon="false" labelExpression="feature:value" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="4">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
@@ -289,6 +289,21 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="StatePhasexd" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.transitionIn+self.transitionOut">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.source.atomicdevs">
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="transition" elementExpression="var:i"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="custom">
@@ -331,8 +346,8 @@
           </initialOperation>
         </controls>
       </groups>
-      <groups name="Value Data" labelExpression="Transition Properties" domainClass="atomicDevs::ValueData" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="Value" valueExpression="feature:value">
+      <groups name="Value Data" labelExpression="Transition Value Properties" domainClass="atomicDevs::ValueData" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="Value" helpExpression="Use this field to write an expression for the variable to transition to" valueExpression="feature:value">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.statevariable.name&lt;>'Phase'">
