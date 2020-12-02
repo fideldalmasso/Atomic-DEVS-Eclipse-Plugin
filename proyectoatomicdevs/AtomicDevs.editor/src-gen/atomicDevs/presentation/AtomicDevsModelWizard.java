@@ -35,6 +35,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -92,6 +95,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	//TODO variables propias
 
 	public static String modelName = "NewModel";
+	public static String modelDescription = "";
 	public static List<String> validTypes;
 	public static Set<String> usedTypes;
 	public static List<InputPortRegister> inputPorts;
@@ -374,6 +378,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		
 		AtomicDEVS atomicDEVSObject = (AtomicDEVS) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("AtomicDEVS"));
 		atomicDEVSObject.setName(modelName);
+		atomicDEVSObject.setDescription(modelDescription);
 		
 		StateStructure stateStructureObject = (StateStructure) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateStructure"));
 		atomicDEVSObject.setDefinition(stateStructureObject);
@@ -567,6 +572,16 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 						
 						
 						resource.save(options);
+						
+//						Intentar crear la instancia de sirius automaticamente
+//						Session sesion = SessionFactory.INSTANCE.createSession(fileURI, progressMonitor);
+//						sesion.addSemanticResource(fileURI, progressMonitor);
+//						sesion.open(progressMonitor);
+//						https://www.eclipse.org/forums/index.php/t/1093940/
+//						https://www.eclipse.org/sirius/doc/developer/Architecture.html#session
+						
+						
+						
 					} catch (Exception exception) {
 						AtomicDevsEditorPlugin.INSTANCE.log(exception);
 					} finally {
@@ -608,10 +623,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			AtomicDevsEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
-		
-		
-		
-		
+	
 	}
 
 
