@@ -95,7 +95,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	//TODO variables propias
 
 	public static String modelName = "NewModel";
-	public static String modelDescription = "";
+	public static String modelDescription = " ";
 	public static List<String> validTypes;
 	public static Set<String> usedTypes;
 	public static List<InputPortRegister> inputPorts;
@@ -211,7 +211,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		if (text==null || text.length()==0)
 			return new Message(Type.ERROR, "Please enter a new type name");
 		
-		if(AtomicDevsModelWizard.validateNameRegex(text))
+		if(!AtomicDevsModelWizard.validateNameRegex(text))
 			return new Message(Type.ERROR, "The name must begin with a letter and can only contain letters, numbers and _");
 		
 		text = text.toUpperCase();
@@ -639,6 +639,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		//
 		
 		modelName = "NewModel";
+		modelDescription= " ";
 		validTypes = new ArrayList<String>(Arrays.asList("INTEGER", "DOUBLE", "STRING", "BOOLEAN"));
 		inputPorts = new ArrayList<InputPortRegister>();
 		outputPorts = new ArrayList<OutputPortRegister>();

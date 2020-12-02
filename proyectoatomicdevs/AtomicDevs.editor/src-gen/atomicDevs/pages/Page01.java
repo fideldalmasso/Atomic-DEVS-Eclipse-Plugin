@@ -17,9 +17,9 @@ import atomicDevs.presentation.AtomicDevsEditorPlugin;
 import atomicDevs.presentation.AtomicDevsModelWizard;
 
 public class Page01 extends WizardNewFileCreationPage {
-	
+
 	private Text description;
-	
+
 	/**
 	 * Pass in the selection.
 	 * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class Page01 extends WizardNewFileCreationPage {
 			}
 			//TODO guardo el nombre del modelo y su descripcion
 			AtomicDevsModelWizard.modelName = getFileName().substring(0,getFileName().length()-6);
-			AtomicDevsModelWizard.modelDescription = description.getText();
+			AtomicDevsModelWizard.modelDescription = description==null?" ":description.getText();
 			return true;
 		}
 		return false;
@@ -69,16 +69,14 @@ public class Page01 extends WizardNewFileCreationPage {
 	public void createControl(Composite parent) {
 		super.createControl(parent);
 		Composite composite = (Composite) getControl();
-		//		Group group = new Group(composite,SWT.NONE);
-
-
 
 		Composite c = new Composite(composite, SWT.NONE);
+		c.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL |	GridData.HORIZONTAL_ALIGN_FILL));
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
+		layout.numColumns = 2;
 		c.setLayout(layout);
 		GridData data;
-		
+
 		Label descriptionLabel = new Label(c, SWT.NONE);
 		{
 			data = new GridData();
@@ -88,17 +86,14 @@ public class Page01 extends WizardNewFileCreationPage {
 		}
 
 		{
-			description = new Text(composite,SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL );
-			data =new GridData(GridData.FILL_BOTH);
+			description = new Text(c,SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL );
+			description.setText("");
+			data =new GridData(GridData.FILL, GridData.FILL, true, true);
 			data.heightHint=60;
 			description.setLayoutData(data);
-			description.setMessage("Write a description of your model...");
+			//			description.setMessage("Write a description of your model..."); // no funciona sin SWT.SEARCH
 		}
 
-		//		group.setLayout(new GridLayout());
-		//		 group.setText("Automatic_sample_section_generation");
-		//	      group.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL |
-		//	         GridData.HORIZONTAL_ALIGN_FILL));
 
 	}
 
@@ -106,6 +101,6 @@ public class Page01 extends WizardNewFileCreationPage {
 	public IFile getModelFile() {
 		return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 	}
-	
-	
+
+
 }
