@@ -58,6 +58,7 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 			addTransitionOutPropertyDescriptor(object);
 			addPhasevariablePropertyDescriptor(object);
 			addAtomicdevsPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -90,7 +91,7 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_StatePhase_transitionIn_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_StatePhase_transitionIn_feature",
 								"_UI_StatePhase_type"),
-						AtomicDevsPackage.Literals.STATE_PHASE__TRANSITION_IN, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.STATE_PHASE__TRANSITION_IN, false, false, true, null, null, null));
 	}
 
 	/**
@@ -105,7 +106,7 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_StatePhase_transitionOut_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_StatePhase_transitionOut_feature",
 								"_UI_StatePhase_type"),
-						AtomicDevsPackage.Literals.STATE_PHASE__TRANSITION_OUT, true, false, true, null, null, null));
+						AtomicDevsPackage.Literals.STATE_PHASE__TRANSITION_OUT, false, false, true, null, null, null));
 	}
 
 	/**
@@ -136,6 +137,22 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 						getString("_UI_PropertyDescriptor_description", "_UI_StatePhase_atomicdevs_feature",
 								"_UI_StatePhase_type"),
 						AtomicDevsPackage.Literals.STATE_PHASE__ATOMICDEVS, false, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_StatePhase_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StatePhase_description_feature",
+								"_UI_StatePhase_type"),
+						AtomicDevsPackage.Literals.STATE_PHASE__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -185,6 +202,7 @@ public class StatePhaseItemProvider extends ItemProviderAdapter implements IEdit
 
 		switch (notification.getFeatureID(StatePhase.class)) {
 		case AtomicDevsPackage.STATE_PHASE__VALUE:
+		case AtomicDevsPackage.STATE_PHASE__DESCRIPTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

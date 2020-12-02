@@ -1,5 +1,7 @@
 package atomicDevs.pages;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.eclipse.jface.wizard.WizardPage;
@@ -275,14 +277,18 @@ public class Page06 extends WizardPage{
 		if(AtomicDevsModelWizard.parameters == null) 
 			AtomicDevsModelWizard.parameters = new ArrayList<ParameterRegister>();
 
+		
 		if(name== null || name.length() == 0)
 			return new Message(Type.ERROR,"Please enter a name");
 		
-		if(name.contains(" "))
-			return new Message(Type.ERROR, "The name must not contain whitespaces");
+
+		if(!AtomicDevsModelWizard.validateNameRegex(name))
+			return new Message(Type.ERROR, "The name must begin with a letter and can only contain letters, numbers and _\n An at sign (@) will be added automatically.");
 		
 		if(type== null || type.length() == 0)
 			return new Message(Type.ERROR,"Please select a valid type");
+		
+		name = "@"+name;
 		
 		if(AtomicDevsModelWizard.parameters.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
 			return new Message(Type.ERROR,"There is already a Parameter called "+name);

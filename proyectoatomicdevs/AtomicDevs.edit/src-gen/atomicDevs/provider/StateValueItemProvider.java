@@ -22,12 +22,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.Value} object.
+ * This is the item provider adapter for a {@link atomicDevs.StateValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class StateValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -35,7 +35,7 @@ public class ValueItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueItemProvider(AdapterFactory adapterFactory) {
+	public StateValueItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,21 +64,21 @@ public class ValueItemProvider extends ItemProviderAdapter implements IEditingDo
 	protected void addStatevariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Value_statevariable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Value_statevariable_feature",
-								"_UI_Value_type"),
-						AtomicDevsPackage.Literals.VALUE__STATEVARIABLE, false, false, true, null, null, null));
+						getResourceLocator(), getString("_UI_StateValue_statevariable_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateValue_statevariable_feature",
+								"_UI_StateValue_type"),
+						AtomicDevsPackage.Literals.STATE_VALUE__STATEVARIABLE, false, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns Value.gif.
+	 * This returns StateValue.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Value"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateValue"));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ValueItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Value_type");
+		return getString("_UI_StateValue_type");
 	}
 
 	/**

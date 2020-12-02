@@ -3,6 +3,7 @@
 package atomicDevs.provider;
 
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.StateInteger;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,19 +17,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.Double} object.
+ * This is the item provider adapter for a {@link atomicDevs.StateInteger} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DoubleItemProvider extends ValueItemProvider {
+public class StateIntegerItemProvider extends StateValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DoubleItemProvider(AdapterFactory adapterFactory) {
+	public StateIntegerItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,22 +58,22 @@ public class DoubleItemProvider extends ValueItemProvider {
 	protected void addVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Double_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Double_variable_feature",
-								"_UI_Double_type"),
-						AtomicDevsPackage.Literals.DOUBLE__VARIABLE, false, false, false,
-						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+						getResourceLocator(), getString("_UI_StateInteger_variable_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateInteger_variable_feature",
+								"_UI_StateInteger_type"),
+						AtomicDevsPackage.Literals.STATE_INTEGER__VARIABLE, false, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns Double.gif.
+	 * This returns StateInteger.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Double"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateInteger"));
 	}
 
 	/**
@@ -93,8 +94,8 @@ public class DoubleItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		atomicDevs.Double double_ = (atomicDevs.Double) object;
-		return getString("_UI_Double_type") + " " + double_.getVariable();
+		StateInteger stateInteger = (StateInteger) object;
+		return getString("_UI_StateInteger_type") + " " + stateInteger.getVariable();
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class DoubleItemProvider extends ValueItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(atomicDevs.Double.class)) {
-		case AtomicDevsPackage.DOUBLE__VARIABLE:
+		switch (notification.getFeatureID(StateInteger.class)) {
+		case AtomicDevsPackage.STATE_INTEGER__VARIABLE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -2,8 +2,6 @@
  */
 package atomicDevs;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.StatePhase#getTransitionOut <em>Transition Out</em>}</li>
  *   <li>{@link atomicDevs.StatePhase#getPhasevariable <em>Phasevariable</em>}</li>
  *   <li>{@link atomicDevs.StatePhase#getAtomicdevs <em>Atomicdevs</em>}</li>
+ *   <li>{@link atomicDevs.StatePhase#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getStatePhase()
@@ -124,5 +123,28 @@ public interface StatePhase extends EObject {
 	 * @generated
 	 */
 	void setAtomicdevs(AtomicDEVS value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see atomicDevs.AtomicDevsPackage#getStatePhase_Description()
+	 * @model default="" required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.StatePhase#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // StatePhase

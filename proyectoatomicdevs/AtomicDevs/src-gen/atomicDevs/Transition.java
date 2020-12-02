@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link atomicDevs.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link atomicDevs.Transition#getTransitiondata <em>Transitiondata</em>}</li>
+ *   <li>{@link atomicDevs.Transition#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getTransition()
@@ -94,5 +95,28 @@ public interface Transition extends EObject {
 	 * @generated
 	 */
 	void setTransitiondata(TransitionData value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see atomicDevs.AtomicDevsPackage#getTransition_Description()
+	 * @model default="" required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.Transition#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // Transition

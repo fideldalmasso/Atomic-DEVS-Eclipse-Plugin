@@ -279,8 +279,8 @@ public class Page03 extends WizardPage{
 		if(name== null || name.length() == 0)
 			return new Message(Type.ERROR,"Please enter a name");
 		
-		if(name.contains(" "))
-			return new Message(Type.ERROR, "The name must not contain whitespaces");
+		if(!AtomicDevsModelWizard.validateNameRegex(name))
+			return new Message(Type.ERROR, "The name must begin with a letter and can only contain letters, numbers and _");
 		
 		if(type== null || type.length() == 0)
 			return new Message(Type.ERROR,"Please select a valid type");

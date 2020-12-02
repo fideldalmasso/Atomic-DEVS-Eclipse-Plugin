@@ -5,8 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.ParameterBoolean;
 
-import java.lang.Boolean;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,31 +19,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.ParameterBooleanImpl#isVariable <em>Variable</em>}</li>
+ *   <li>{@link atomicDevs.impl.ParameterBooleanImpl#isParameter <em>Parameter</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ParameterBooleanImpl extends ParameterValueImpl implements ParameterBoolean {
 	/**
-	 * The default value of the '{@link #isVariable() <em>Variable</em>}' attribute.
+	 * The default value of the '{@link #isParameter() <em>Parameter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVariable()
+	 * @see #isParameter()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VARIABLE_EDEFAULT = false;
+	protected static final boolean PARAMETER_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isVariable() <em>Variable</em>}' attribute.
+	 * The cached value of the '{@link #isParameter() <em>Parameter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVariable()
+	 * @see #isParameter()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean variable = VARIABLE_EDEFAULT;
+	protected boolean parameter = PARAMETER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +70,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	 * @generated
 	 */
 	@Override
-	public boolean isVariable() {
-		return variable;
+	public boolean isParameter() {
+		return parameter;
 	}
 
 	/**
@@ -82,12 +80,12 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	 * @generated
 	 */
 	@Override
-	public void setVariable(boolean newVariable) {
-		boolean oldVariable = variable;
-		variable = newVariable;
+	public void setParameter(boolean newParameter) {
+		boolean oldParameter = parameter;
+		parameter = newParameter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE,
-					oldVariable, variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER,
+					oldParameter, parameter));
 	}
 
 	/**
@@ -98,8 +96,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE:
-			return isVariable();
+		case AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER:
+			return isParameter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,8 +110,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE:
-			setVariable((Boolean) newValue);
+		case AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER:
+			setParameter((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,8 +125,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE:
-			setVariable(VARIABLE_EDEFAULT);
+		case AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER:
+			setParameter(PARAMETER_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -142,8 +140,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE:
-			return variable != VARIABLE_EDEFAULT;
+		case AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER:
+			return parameter != PARAMETER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -159,8 +157,8 @@ public class ParameterBooleanImpl extends ParameterValueImpl implements Paramete
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (variable: ");
-		result.append(variable);
+		result.append(" (parameter: ");
+		result.append(parameter);
 		result.append(')');
 		return result.toString();
 	}

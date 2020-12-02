@@ -3,6 +3,7 @@
 package atomicDevs.provider;
 
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.StateUserDefined;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,19 +17,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.Integer} object.
+ * This is the item provider adapter for a {@link atomicDevs.StateUserDefined} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class IntegerItemProvider extends ValueItemProvider {
+public class StateUserDefinedItemProvider extends StateValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerItemProvider(AdapterFactory adapterFactory) {
+	public StateUserDefinedItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,22 +58,22 @@ public class IntegerItemProvider extends ValueItemProvider {
 	protected void addVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Integer_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Integer_variable_feature",
-								"_UI_Integer_type"),
-						AtomicDevsPackage.Literals.INTEGER__VARIABLE, false, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						getResourceLocator(), getString("_UI_StateUserDefined_variable_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateUserDefined_variable_feature",
+								"_UI_StateUserDefined_type"),
+						AtomicDevsPackage.Literals.STATE_USER_DEFINED__VARIABLE, false, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns Integer.gif.
+	 * This returns StateUserDefined.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Integer"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateUserDefined"));
 	}
 
 	/**
@@ -93,8 +94,9 @@ public class IntegerItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		atomicDevs.Integer integer = (atomicDevs.Integer) object;
-		return getString("_UI_Integer_type") + " " + integer.getVariable();
+		String label = ((StateUserDefined) object).getVariable();
+		return label == null || label.length() == 0 ? getString("_UI_StateUserDefined_type")
+				: getString("_UI_StateUserDefined_type") + " " + label;
 	}
 
 	/**
@@ -108,8 +110,8 @@ public class IntegerItemProvider extends ValueItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(atomicDevs.Integer.class)) {
-		case AtomicDevsPackage.INTEGER__VARIABLE:
+		switch (notification.getFeatureID(StateUserDefined.class)) {
+		case AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

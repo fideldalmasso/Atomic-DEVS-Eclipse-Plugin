@@ -2,44 +2,7 @@
  */
 package atomicDevs.util;
 
-import atomicDevs.AtomicDEVS;
-import atomicDevs.AtomicDevsPackage;
-import atomicDevs.Condition;
-import atomicDevs.CustomVariable;
-import atomicDevs.ExternalTransition;
-import atomicDevs.ExternalTransitionData;
-import atomicDevs.Infinity;
-import atomicDevs.InitialDot;
-import atomicDevs.InitialState;
-import atomicDevs.Input;
-import atomicDevs.InputPort;
-import atomicDevs.InternalTransition;
-import atomicDevs.InternalTransitionData;
-import atomicDevs.Output;
-import atomicDevs.OutputPort;
-import atomicDevs.Parameter;
-import atomicDevs.ParameterBoolean;
-import atomicDevs.ParameterDouble;
-import atomicDevs.ParameterInteger;
-import atomicDevs.ParameterList;
-import atomicDevs.ParameterString;
-import atomicDevs.ParameterUserDefined;
-import atomicDevs.ParameterValue;
-import atomicDevs.PhaseVariable;
-import atomicDevs.Port;
-import atomicDevs.Primitive;
-import atomicDevs.PrimitiveType;
-import atomicDevs.SigmaVariable;
-import atomicDevs.StatePhase;
-import atomicDevs.StateStructure;
-import atomicDevs.StateVariable;
-import atomicDevs.Transition;
-import atomicDevs.TransitionData;
-import atomicDevs.Type;
-import atomicDevs.UserDefined;
-import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
-import atomicDevs.ValueData;
+import atomicDevs.*;
 
 import java.util.Map;
 
@@ -148,18 +111,18 @@ public class AtomicDevsValidator extends EObjectValidator {
 			return validateInternalTransitionData((InternalTransitionData) value, diagnostics, context);
 		case AtomicDevsPackage.INITIAL_STATE:
 			return validateInitialState((InitialState) value, diagnostics, context);
-		case AtomicDevsPackage.VALUE:
-			return validateValue((Value) value, diagnostics, context);
-		case AtomicDevsPackage.DOUBLE:
-			return validateDouble((atomicDevs.Double) value, diagnostics, context);
-		case AtomicDevsPackage.STRING:
-			return validateString((atomicDevs.String) value, diagnostics, context);
-		case AtomicDevsPackage.BOOLEAN:
-			return validateBoolean((atomicDevs.Boolean) value, diagnostics, context);
-		case AtomicDevsPackage.USER_DEFINED:
-			return validateUserDefined((UserDefined) value, diagnostics, context);
-		case AtomicDevsPackage.INTEGER:
-			return validateInteger((atomicDevs.Integer) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_VALUE:
+			return validateStateValue((StateValue) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_DOUBLE:
+			return validateStateDouble((StateDouble) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_STRING:
+			return validateStateString((StateString) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_BOOLEAN:
+			return validateStateBoolean((StateBoolean) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_USER_DEFINED:
+			return validateStateUserDefined((StateUserDefined) value, diagnostics, context);
+		case AtomicDevsPackage.STATE_INTEGER:
+			return validateStateInteger((StateInteger) value, diagnostics, context);
 		case AtomicDevsPackage.INFINITY:
 			return validateInfinity((Infinity) value, diagnostics, context);
 		case AtomicDevsPackage.TRANSITION:
@@ -633,7 +596,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 */
 	protected static final String INITIAL_STATE__EVERY_VARIABLE_MUST_HAVE_AVALUE__EEXPRESSION = "\n"
 			+ "\t\tself.atomicdevs.definition.statevariable->\n" + "\t\tforAll(s: StateVariable | \n"
-			+ "\t\t\tself.value->one(v:Value|v.statevariable = s)\n" + "\t\t)";
+			+ "\t\t\tself.value->one(sv:StateValue|sv.statevariable = s)\n" + "\t\t)";
 
 	/**
 	 * Validates the everyVariableMustHaveAValue constraint of '<em>Initial State</em>'.
@@ -653,8 +616,8 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateValue(Value value, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(value, diagnostics, context);
+	public boolean validateStateValue(StateValue stateValue, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(stateValue, diagnostics, context);
 	}
 
 	/**
@@ -662,48 +625,49 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDouble(atomicDevs.Double double_, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(double_, diagnostics, context))
+	public boolean validateStateDouble(StateDouble stateDouble, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateDouble, diagnostics, context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(double_, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(double_, diagnostics, context);
+			result &= validate_EveryDataValueConforms(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(double_, diagnostics, context);
+			result &= validate_EveryReferenceIsContained(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(double_, diagnostics, context);
+			result &= validate_EveryBidirectionalReferenceIsPaired(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(double_, diagnostics, context);
+			result &= validate_EveryProxyResolves(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_UniqueID(double_, diagnostics, context);
+			result &= validate_UniqueID(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(double_, diagnostics, context);
+			result &= validate_EveryKeyUnique(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(double_, diagnostics, context);
+			result &= validate_EveryMapEntryUnique(stateDouble, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDouble_typeIsDouble(double_, diagnostics, context);
+			result &= validateStateDouble_typeIsDouble(stateDouble, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the typeIsDouble constraint of '<em>Double</em>'.
+	 * The cached validation expression for the typeIsDouble constraint of '<em>State Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE";
+	protected static final String STATE_DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE";
 
 	/**
-	 * Validates the typeIsDouble constraint of '<em>Double</em>'.
+	 * Validates the typeIsDouble constraint of '<em>State Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDouble_typeIsDouble(atomicDevs.Double double_, DiagnosticChain diagnostics,
+	public boolean validateStateDouble_typeIsDouble(StateDouble stateDouble, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate(AtomicDevsPackage.Literals.DOUBLE, double_, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsDouble", DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION,
-				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+		return validate(AtomicDevsPackage.Literals.STATE_DOUBLE, stateDouble, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsDouble",
+				STATE_DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -711,148 +675,49 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateString(atomicDevs.String string, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(string, diagnostics, context))
+	public boolean validateStateString(StateString stateString, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateString, diagnostics, context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(string, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(string, diagnostics, context);
+			result &= validate_EveryDataValueConforms(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(string, diagnostics, context);
+			result &= validate_EveryReferenceIsContained(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(string, diagnostics, context);
+			result &= validate_EveryBidirectionalReferenceIsPaired(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(string, diagnostics, context);
+			result &= validate_EveryProxyResolves(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_UniqueID(string, diagnostics, context);
+			result &= validate_UniqueID(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(string, diagnostics, context);
+			result &= validate_EveryKeyUnique(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(string, diagnostics, context);
+			result &= validate_EveryMapEntryUnique(stateString, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateString_typeIsString(string, diagnostics, context);
+			result &= validateStateString_typeIsString(stateString, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the typeIsString constraint of '<em>String</em>'.
+	 * The cached validation expression for the typeIsString constraint of '<em>State String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String STRING__TYPE_IS_STRING__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+	protected static final String STATE_STRING__TYPE_IS_STRING__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
 
 	/**
-	 * Validates the typeIsString constraint of '<em>String</em>'.
+	 * Validates the typeIsString constraint of '<em>State String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateString_typeIsString(atomicDevs.String string, DiagnosticChain diagnostics,
+	public boolean validateStateString_typeIsString(StateString stateString, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate(AtomicDevsPackage.Literals.STRING, string, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString", STRING__TYPE_IS_STRING__EEXPRESSION,
-				Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBoolean(atomicDevs.Boolean boolean_, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(boolean_, diagnostics, context))
-			return false;
-		boolean result = validate_EveryMultiplicityConforms(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_UniqueID(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(boolean_, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateBoolean_typeIsBoolean(boolean_, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the typeIsBoolean constraint of '<em>Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN";
-
-	/**
-	 * Validates the typeIsBoolean constraint of '<em>Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateBoolean_typeIsBoolean(atomicDevs.Boolean boolean_, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return validate(AtomicDevsPackage.Literals.BOOLEAN, boolean_, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsBoolean",
-				BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUserDefined(UserDefined userDefined, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(userDefined, diagnostics, context))
-			return false;
-		boolean result = validate_EveryMultiplicityConforms(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_UniqueID(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(userDefined, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateUserDefined_typeIsString(userDefined, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * The cached validation expression for the typeIsString constraint of '<em>User Defined</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
-
-	/**
-	 * Validates the typeIsString constraint of '<em>User Defined</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUserDefined_typeIsString(UserDefined userDefined, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return validate(AtomicDevsPackage.Literals.USER_DEFINED, userDefined, diagnostics, context,
+		return validate(AtomicDevsPackage.Literals.STATE_STRING, stateString, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString",
-				USER_DEFINED__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				STATE_STRING__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -860,49 +725,149 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInteger(atomicDevs.Integer integer, DiagnosticChain diagnostics,
+	public boolean validateStateBoolean(StateBoolean stateBoolean, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(integer, diagnostics, context))
+		if (!validate_NoCircularContainment(stateBoolean, diagnostics, context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(integer, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryDataValueConforms(integer, diagnostics, context);
+			result &= validate_EveryDataValueConforms(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(integer, diagnostics, context);
+			result &= validate_EveryReferenceIsContained(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryBidirectionalReferenceIsPaired(integer, diagnostics, context);
+			result &= validate_EveryBidirectionalReferenceIsPaired(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(integer, diagnostics, context);
+			result &= validate_EveryProxyResolves(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_UniqueID(integer, diagnostics, context);
+			result &= validate_UniqueID(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(integer, diagnostics, context);
+			result &= validate_EveryKeyUnique(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(integer, diagnostics, context);
+			result &= validate_EveryMapEntryUnique(stateBoolean, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateInteger_typeIsInteger(integer, diagnostics, context);
+			result &= validateStateBoolean_typeIsBoolean(stateBoolean, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the typeIsInteger constraint of '<em>Integer</em>'.
+	 * The cached validation expression for the typeIsBoolean constraint of '<em>State Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String INTEGER__TYPE_IS_INTEGER__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER";
+	protected static final String STATE_BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN";
 
 	/**
-	 * Validates the typeIsInteger constraint of '<em>Integer</em>'.
+	 * Validates the typeIsBoolean constraint of '<em>State Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInteger_typeIsInteger(atomicDevs.Integer integer, DiagnosticChain diagnostics,
+	public boolean validateStateBoolean_typeIsBoolean(StateBoolean stateBoolean, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return validate(AtomicDevsPackage.Literals.INTEGER, integer, diagnostics, context,
+		return validate(AtomicDevsPackage.Literals.STATE_BOOLEAN, stateBoolean, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsBoolean",
+				STATE_BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateUserDefined(StateUserDefined stateUserDefined, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateUserDefined, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stateUserDefined, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStateUserDefined_typeIsString(stateUserDefined, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the typeIsString constraint of '<em>State User Defined</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String STATE_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+
+	/**
+	 * Validates the typeIsString constraint of '<em>State User Defined</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateUserDefined_typeIsString(StateUserDefined stateUserDefined, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.STATE_USER_DEFINED, stateUserDefined, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString",
+				STATE_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateInteger(StateInteger stateInteger, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateInteger, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stateInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStateInteger_typeIsInteger(stateInteger, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the typeIsInteger constraint of '<em>State Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String STATE_INTEGER__TYPE_IS_INTEGER__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER";
+
+	/**
+	 * Validates the typeIsInteger constraint of '<em>State Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateInteger_typeIsInteger(StateInteger stateInteger, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.STATE_INTEGER, stateInteger, diagnostics, context,
 				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsInteger",
-				INTEGER__TYPE_IS_INTEGER__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				STATE_INTEGER__TYPE_IS_INTEGER__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -929,7 +894,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(infinity, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDouble_typeIsDouble(infinity, diagnostics, context);
+			result &= validateStateDouble_typeIsDouble(infinity, diagnostics, context);
 		return result;
 	}
 
@@ -1196,7 +1161,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+	protected static final String PARAMETER_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
 
 	/**
 	 * Validates the typeIsString constraint of '<em>Parameter User Defined</em>'.
@@ -1246,7 +1211,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_INTEGER__TYPE_IS_INTEGER__EEXPRESSION = "self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER";
+	protected static final String PARAMETER_INTEGER__TYPE_IS_INTEGER__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER";
 
 	/**
 	 * Validates the typeIsInteger constraint of '<em>Parameter Integer</em>'.
@@ -1296,7 +1261,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION = "self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE";
+	protected static final String PARAMETER_DOUBLE__TYPE_IS_DOUBLE__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE";
 
 	/**
 	 * Validates the typeIsDouble constraint of '<em>Parameter Double</em>'.
@@ -1346,7 +1311,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_STRING__TYPE_IS_STRING__EEXPRESSION = "self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+	protected static final String PARAMETER_STRING__TYPE_IS_STRING__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
 
 	/**
 	 * Validates the typeIsString constraint of '<em>Parameter String</em>'.
@@ -1396,7 +1361,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION = "self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN";
+	protected static final String PARAMETER_BOOLEAN__TYPE_IS_BOOLEAN__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN";
 
 	/**
 	 * Validates the typeIsBoolean constraint of '<em>Parameter Boolean</em>'.
@@ -1437,7 +1402,48 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateParameter(Parameter parameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(parameter, diagnostics, context);
+		if (!validate_NoCircularContainment(parameter, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateParameter_nameStartsWithAtSign(parameter, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the nameStartsWithAtSign constraint of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String PARAMETER__NAME_STARTS_WITH_AT_SIGN__EEXPRESSION = "\n"
+			+ "\t\t\tself.name.substring(1,1)='@'";
+
+	/**
+	 * Validates the nameStartsWithAtSign constraint of '<em>Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameter_nameStartsWithAtSign(Parameter parameter, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.PARAMETER, parameter, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "nameStartsWithAtSign",
+				PARAMETER__NAME_STARTS_WITH_AT_SIGN__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**

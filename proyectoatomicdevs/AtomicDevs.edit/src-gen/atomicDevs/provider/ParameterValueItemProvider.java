@@ -50,24 +50,25 @@ public class ParameterValueItemProvider extends ItemProviderAdapter implements I
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParameterPropertyDescriptor(object);
+			addAssociatedParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Parameter feature.
+	 * This adds a property descriptor for the Associated Parameter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParameterPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ParameterValue_parameter_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ParameterValue_parameter_feature",
-								"_UI_ParameterValue_type"),
-						AtomicDevsPackage.Literals.PARAMETER_VALUE__PARAMETER, false, false, true, null, null, null));
+	protected void addAssociatedParameterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ParameterValue_associatedParameter_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterValue_associatedParameter_feature",
+						"_UI_ParameterValue_type"),
+				AtomicDevsPackage.Literals.PARAMETER_VALUE__ASSOCIATED_PARAMETER, false, false, true, null, null,
+				null));
 	}
 
 	/**

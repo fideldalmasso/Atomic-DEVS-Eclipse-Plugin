@@ -17,17 +17,18 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link atomicDevs.InitialState#getValue <em>Value</em>}</li>
  *   <li>{@link atomicDevs.InitialState#getAtomicdevs <em>Atomicdevs</em>}</li>
+ *   <li>{@link atomicDevs.InitialState#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getInitialState()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='everyVariableMustHaveAValue'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot everyVariableMustHaveAValue='\n\t\tself.atomicdevs.definition.statevariable-&gt;\n\t\tforAll(s: StateVariable | \n\t\t\tself.value-&gt;one(v:Value|v.statevariable = s)\n\t\t)'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot everyVariableMustHaveAValue='\n\t\tself.atomicdevs.definition.statevariable-&gt;\n\t\tforAll(s: StateVariable | \n\t\t\tself.value-&gt;one(sv:StateValue|sv.statevariable = s)\n\t\t)'"
  * @generated
  */
 public interface InitialState extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference list.
-	 * The list contents are of type {@link atomicDevs.Value}.
+	 * The list contents are of type {@link atomicDevs.StateValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference list.
@@ -35,7 +36,7 @@ public interface InitialState extends EObject {
 	 * @model containment="true" lower="2"
 	 * @generated
 	 */
-	EList<Value> getValue();
+	EList<StateValue> getValue();
 
 	/**
 	 * Returns the value of the '<em><b>Atomicdevs</b></em>' container reference.
@@ -60,5 +61,28 @@ public interface InitialState extends EObject {
 	 * @generated
 	 */
 	void setAtomicdevs(AtomicDEVS value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see atomicDevs.AtomicDevsPackage#getInitialState_Description()
+	 * @model default="" required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.InitialState#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // InitialState

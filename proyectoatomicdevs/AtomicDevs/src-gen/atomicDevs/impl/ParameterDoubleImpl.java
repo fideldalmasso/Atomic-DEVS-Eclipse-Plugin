@@ -5,8 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.ParameterDouble;
 
-import java.lang.Double;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,31 +19,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.ParameterDoubleImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link atomicDevs.impl.ParameterDoubleImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ParameterDoubleImpl extends ParameterValueImpl implements ParameterDouble {
 	/**
-	 * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
+	 * The default value of the '{@link #getParameter() <em>Parameter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariable()
+	 * @see #getParameter()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double VARIABLE_EDEFAULT = 0.0;
+	protected static final double PARAMETER_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' attribute.
+	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariable()
+	 * @see #getParameter()
 	 * @generated
 	 * @ordered
 	 */
-	protected double variable = VARIABLE_EDEFAULT;
+	protected double parameter = PARAMETER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +70,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	 * @generated
 	 */
 	@Override
-	public double getVariable() {
-		return variable;
+	public double getParameter() {
+		return parameter;
 	}
 
 	/**
@@ -82,12 +80,12 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	 * @generated
 	 */
 	@Override
-	public void setVariable(double newVariable) {
-		double oldVariable = variable;
-		variable = newVariable;
+	public void setParameter(double newParameter) {
+		double oldParameter = parameter;
+		parameter = newParameter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER_DOUBLE__VARIABLE,
-					oldVariable, variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER_DOUBLE__PARAMETER,
+					oldParameter, parameter));
 	}
 
 	/**
@@ -98,8 +96,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_DOUBLE__VARIABLE:
-			return getVariable();
+		case AtomicDevsPackage.PARAMETER_DOUBLE__PARAMETER:
+			return getParameter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,8 +110,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_DOUBLE__VARIABLE:
-			setVariable((Double) newValue);
+		case AtomicDevsPackage.PARAMETER_DOUBLE__PARAMETER:
+			setParameter((Double) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,8 +125,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_DOUBLE__VARIABLE:
-			setVariable(VARIABLE_EDEFAULT);
+		case AtomicDevsPackage.PARAMETER_DOUBLE__PARAMETER:
+			setParameter(PARAMETER_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -142,8 +140,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.PARAMETER_DOUBLE__VARIABLE:
-			return variable != VARIABLE_EDEFAULT;
+		case AtomicDevsPackage.PARAMETER_DOUBLE__PARAMETER:
+			return parameter != PARAMETER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -159,8 +157,8 @@ public class ParameterDoubleImpl extends ParameterValueImpl implements Parameter
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (variable: ");
-		result.append(variable);
+		result.append(" (parameter: ");
+		result.append(parameter);
 		result.append(')');
 		return result.toString();
 	}

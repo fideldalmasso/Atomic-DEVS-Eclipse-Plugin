@@ -2,8 +2,6 @@
  */
 package atomicDevs;
 
-import java.lang.String;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>External Transition Data</b></em>'.

@@ -6,8 +6,6 @@ import atomicDevs.AtomicDevsPackage;
 import atomicDevs.Port;
 import atomicDevs.Type;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -27,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link atomicDevs.impl.PortImpl#getName <em>Name</em>}</li>
  *   <li>{@link atomicDevs.impl.PortImpl#getVariable <em>Variable</em>}</li>
  *   <li>{@link atomicDevs.impl.PortImpl#getType <em>Type</em>}</li>
+ *   <li>{@link atomicDevs.impl.PortImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,6 +80,26 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 	 * @ordered
 	 */
 	protected Type type;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +214,30 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 	 * @generated
 	 */
 	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PORT__DESCRIPTION, oldDescription,
+					description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case AtomicDevsPackage.PORT__NAME:
@@ -205,6 +248,8 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 			if (resolve)
 				return getType();
 			return basicGetType();
+		case AtomicDevsPackage.PORT__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +270,9 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 			return;
 		case AtomicDevsPackage.PORT__TYPE:
 			setType((Type) newValue);
+			return;
+		case AtomicDevsPackage.PORT__DESCRIPTION:
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -247,6 +295,9 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 		case AtomicDevsPackage.PORT__TYPE:
 			setType((Type) null);
 			return;
+		case AtomicDevsPackage.PORT__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -265,6 +316,8 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 			return VARIABLE_EDEFAULT == null ? variable != null : !VARIABLE_EDEFAULT.equals(variable);
 		case AtomicDevsPackage.PORT__TYPE:
 			return type != null;
+		case AtomicDevsPackage.PORT__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -284,6 +337,8 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port {
 		result.append(name);
 		result.append(", variable: ");
 		result.append(variable);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

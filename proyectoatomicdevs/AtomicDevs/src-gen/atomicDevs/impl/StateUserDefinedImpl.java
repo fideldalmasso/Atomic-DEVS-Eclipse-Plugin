@@ -3,9 +3,7 @@
 package atomicDevs.impl;
 
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.UserDefined;
-
-import java.lang.String;
+import atomicDevs.StateUserDefined;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,18 +13,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>User Defined</b></em>'.
+ * An implementation of the model object '<em><b>State User Defined</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.UserDefinedImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link atomicDevs.impl.StateUserDefinedImpl#getVariable <em>Variable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class UserDefinedImpl extends ValueImpl implements UserDefined {
+public class StateUserDefinedImpl extends StateValueImpl implements StateUserDefined {
 	/**
 	 * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +50,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UserDefinedImpl() {
+	protected StateUserDefinedImpl() {
 		super();
 	}
 
@@ -63,7 +61,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AtomicDevsPackage.Literals.USER_DEFINED;
+		return AtomicDevsPackage.Literals.STATE_USER_DEFINED;
 	}
 
 	/**
@@ -86,8 +84,8 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 		String oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.USER_DEFINED__VARIABLE, oldVariable,
-					variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE,
+					oldVariable, variable));
 	}
 
 	/**
@@ -98,7 +96,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.USER_DEFINED__VARIABLE:
+		case AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE:
 			return getVariable();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +110,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.USER_DEFINED__VARIABLE:
+		case AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE:
 			setVariable((String) newValue);
 			return;
 		}
@@ -127,7 +125,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.USER_DEFINED__VARIABLE:
+		case AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE:
 			setVariable(VARIABLE_EDEFAULT);
 			return;
 		}
@@ -142,7 +140,7 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.USER_DEFINED__VARIABLE:
+		case AtomicDevsPackage.STATE_USER_DEFINED__VARIABLE:
 			return VARIABLE_EDEFAULT == null ? variable != null : !VARIABLE_EDEFAULT.equals(variable);
 		}
 		return super.eIsSet(featureID);
@@ -165,4 +163,4 @@ public class UserDefinedImpl extends ValueImpl implements UserDefined {
 		return result.toString();
 	}
 
-} //UserDefinedImpl
+} //StateUserDefinedImpl

@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -61,9 +62,9 @@ import atomicDevs.PrimitiveType;
 import atomicDevs.SigmaVariable;
 import atomicDevs.StatePhase;
 import atomicDevs.StateStructure;
+import atomicDevs.StateValue;
 import atomicDevs.StateVariable;
 import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
 import atomicDevs.pages.InputPortRegister;
 import atomicDevs.pages.Message;
 import atomicDevs.pages.Message.Type;
@@ -190,6 +191,10 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	
+	public static boolean validateNameRegex(String name) {
+		return Pattern.compile("[a-zA-Z][a-zA-z_0-9]*").matcher(name).matches();
+	}
+	
 	public static Message addNewType() {
 		
 		Message input = Utilities.newInputDialog("New State Variable type...", "Enter a new type name", "newTypeName");
@@ -202,8 +207,8 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		if (text==null || text.length()==0)
 			return new Message(Type.ERROR, "Please enter a new type name");
 		
-		if(text.contains(" "))
-			return new Message(Type.ERROR, "The name must not contain whitespaces");
+		if(AtomicDevsModelWizard.validateNameRegex(text))
+			return new Message(Type.ERROR, "The name must begin with a letter and can only contain letters, numbers and _");
 		
 		text = text.toUpperCase();
 		
@@ -272,25 +277,25 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		}
 	}
 	
-	private Value generateValueFromStateVariableRegister(StateVariableRegister v) {
-		Value valueObject1;
+	private StateValue generateValueFromStateVariableRegister(StateVariableRegister v) {
+		StateValue valueObject1;
 		
 		switch(v.type) {
 		case "INTEGER":{
-			atomicDevs.Integer valueObject2 = (atomicDevs.Integer) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Integer"));
+			atomicDevs.StateInteger valueObject2 = (atomicDevs.StateInteger) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateInteger"));
 			valueObject2.setVariable(Integer.parseInt(v.value));
 			valueObject1 = valueObject2;
 			break;
 		}
 		case "DOUBLE":{
 			Double valueTemp;
-			atomicDevs.Double valueObject2;
+			atomicDevs.StateDouble valueObject2;
 			if(v.value.equals("infinity")) {
 				valueObject2 = (atomicDevs.Infinity) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Infinity"));
 				valueTemp = Double.POSITIVE_INFINITY;
 			}
 			else {
-				valueObject2 = (atomicDevs.Double) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Double"));
+				valueObject2 = (atomicDevs.StateDouble) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateDouble"));
 				valueTemp = Double.parseDouble(v.value);
 			}
 			
@@ -299,19 +304,19 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			break;
 		}
 		case "BOOLEAN":{
-			atomicDevs.Boolean valueObject2 = (atomicDevs.Boolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("Boolean"));
+			atomicDevs.StateBoolean valueObject2 = (atomicDevs.StateBoolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateBoolean"));
 			valueObject2.setVariable(Boolean.getBoolean(v.value));
 			valueObject1 = valueObject2;
 			break;
 		}
 		case "STRING":{
-			atomicDevs.String valueObject2 = (atomicDevs.String) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("String"));
+			atomicDevs.StateString valueObject2 = (atomicDevs.StateString) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateString"));
 			valueObject2.setVariable(v.value);
 			valueObject1 = valueObject2;
 			break;
 		}
 		default:{
-			atomicDevs.UserDefined valueObject2 = (atomicDevs.UserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("UserDefined"));
+			atomicDevs.StateUserDefined valueObject2 = (atomicDevs.StateUserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateUserDefined"));
 			valueObject2.setVariable(v.value);
 			valueObject1 = valueObject2;
 			break;
@@ -328,31 +333,31 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		switch(p.type) {
 		case "INTEGER":{
 			atomicDevs.ParameterInteger valueObject2 = (atomicDevs.ParameterInteger) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterInteger"));
-			valueObject2.setVariable(Integer.parseInt(p.value));
+			valueObject2.setParameter(Integer.parseInt(p.value));
 			valueObject1 = valueObject2;
 			break;
 		}
 		case "DOUBLE":{
 			atomicDevs.ParameterDouble valueObject2 = (atomicDevs.ParameterDouble) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterDouble"));
-			valueObject2.setVariable(Double.parseDouble(p.value));
+			valueObject2.setParameter(Double.parseDouble(p.value));
 			valueObject1 = valueObject2;
 			break;
 		}
 		case "BOOLEAN":{
 			atomicDevs.ParameterBoolean valueObject2 = (atomicDevs.ParameterBoolean) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterBoolean"));
-			valueObject2.setVariable(Boolean.getBoolean(p.value));
+			valueObject2.setParameter(Boolean.getBoolean(p.value));
 			valueObject1 = valueObject2;
 			break;
 		}
 		case "STRING":{
 			atomicDevs.ParameterString valueObject2 = (atomicDevs.ParameterString) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterString"));
-			valueObject2.setVariable(p.value);
+			valueObject2.setParameter(p.value);
 			valueObject1 = valueObject2;
 			break;
 		}
 		default:{
 			atomicDevs.ParameterUserDefined valueObject2 = (atomicDevs.ParameterUserDefined) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("ParameterUserDefined"));
-			valueObject2.setVariable(p.value);
+			valueObject2.setParameter(p.value);
 			valueObject1 = valueObject2;
 			break;
 		}
@@ -442,7 +447,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			stateVariableObject.setType(getTypeByName(v.type));
 			stateStructureObject.getStatevariable().add(stateVariableObject);
 			
-			Value valueObject1 = generateValueFromStateVariableRegister(v);
+			StateValue valueObject1 = generateValueFromStateVariableRegister(v);
 	
 			valueObject1.setStatevariable(stateVariableObject);
 			initialStateObject.getValue().add(valueObject1);
@@ -460,7 +465,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 				parameterObject.setName(p.name);
 				
 				ParameterValue valueObject1 = generateValueFromParameterRegister(p);
-				valueObject1.setParameter(parameterObject);
+				valueObject1.setAssociatedParameter(parameterObject);
 				parameterObject.setParametervalue(valueObject1);
 				
 				
@@ -603,6 +608,10 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			AtomicDevsEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
+		
+		
+		
+		
 	}
 
 

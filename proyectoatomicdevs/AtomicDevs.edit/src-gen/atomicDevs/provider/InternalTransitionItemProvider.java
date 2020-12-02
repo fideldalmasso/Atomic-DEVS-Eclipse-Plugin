@@ -2,6 +2,8 @@
  */
 package atomicDevs.provider;
 
+import atomicDevs.InternalTransition;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -71,7 +73,9 @@ public class InternalTransitionItemProvider extends TransitionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_InternalTransition_type");
+		String label = ((InternalTransition) object).getDescription();
+		return label == null || label.length() == 0 ? getString("_UI_InternalTransition_type")
+				: getString("_UI_InternalTransition_type") + " " + label;
 	}
 
 	/**

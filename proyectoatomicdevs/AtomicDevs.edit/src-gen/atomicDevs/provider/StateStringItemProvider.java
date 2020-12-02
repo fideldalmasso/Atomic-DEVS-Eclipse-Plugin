@@ -3,7 +3,7 @@
 package atomicDevs.provider;
 
 import atomicDevs.AtomicDevsPackage;
-import atomicDevs.UserDefined;
+import atomicDevs.StateString;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,19 +17,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.UserDefined} object.
+ * This is the item provider adapter for a {@link atomicDevs.StateString} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class UserDefinedItemProvider extends ValueItemProvider {
+public class StateStringItemProvider extends StateValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UserDefinedItemProvider(AdapterFactory adapterFactory) {
+	public StateStringItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,22 +58,22 @@ public class UserDefinedItemProvider extends ValueItemProvider {
 	protected void addVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_UserDefined_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_UserDefined_variable_feature",
-								"_UI_UserDefined_type"),
-						AtomicDevsPackage.Literals.USER_DEFINED__VARIABLE, false, false, false,
+						getResourceLocator(), getString("_UI_StateString_variable_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateString_variable_feature",
+								"_UI_StateString_type"),
+						AtomicDevsPackage.Literals.STATE_STRING__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns UserDefined.gif.
+	 * This returns StateString.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/UserDefined"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateString"));
 	}
 
 	/**
@@ -94,9 +94,9 @@ public class UserDefinedItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((UserDefined) object).getVariable();
-		return label == null || label.length() == 0 ? getString("_UI_UserDefined_type")
-				: getString("_UI_UserDefined_type") + " " + label;
+		String label = ((StateString) object).getVariable();
+		return label == null || label.length() == 0 ? getString("_UI_StateString_type")
+				: getString("_UI_StateString_type") + " " + label;
 	}
 
 	/**
@@ -110,8 +110,8 @@ public class UserDefinedItemProvider extends ValueItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(UserDefined.class)) {
-		case AtomicDevsPackage.USER_DEFINED__VARIABLE:
+		switch (notification.getFeatureID(StateString.class)) {
+		case AtomicDevsPackage.STATE_STRING__VARIABLE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

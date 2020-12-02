@@ -3,8 +3,7 @@
 package atomicDevs.impl;
 
 import atomicDevs.AtomicDevsPackage;
-
-import java.lang.String;
+import atomicDevs.StateInteger;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +13,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String</b></em>'.
+ * An implementation of the model object '<em><b>State Integer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.StringImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link atomicDevs.impl.StateIntegerImpl#getVariable <em>Variable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StringImpl extends ValueImpl implements atomicDevs.String {
+public class StateIntegerImpl extends StateValueImpl implements StateInteger {
 	/**
 	 * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -34,7 +33,7 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VARIABLE_EDEFAULT = null;
+	protected static final int VARIABLE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' attribute.
@@ -44,14 +43,14 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	 * @generated
 	 * @ordered
 	 */
-	protected String variable = VARIABLE_EDEFAULT;
+	protected int variable = VARIABLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringImpl() {
+	protected StateIntegerImpl() {
 		super();
 	}
 
@@ -62,7 +61,7 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AtomicDevsPackage.Literals.STRING;
+		return AtomicDevsPackage.Literals.STATE_INTEGER;
 	}
 
 	/**
@@ -71,7 +70,7 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	 * @generated
 	 */
 	@Override
-	public String getVariable() {
+	public int getVariable() {
 		return variable;
 	}
 
@@ -81,12 +80,12 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	 * @generated
 	 */
 	@Override
-	public void setVariable(String newVariable) {
-		String oldVariable = variable;
+	public void setVariable(int newVariable) {
+		int oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STRING__VARIABLE, oldVariable,
-					variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_INTEGER__VARIABLE,
+					oldVariable, variable));
 	}
 
 	/**
@@ -97,7 +96,7 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.STRING__VARIABLE:
+		case AtomicDevsPackage.STATE_INTEGER__VARIABLE:
 			return getVariable();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -111,8 +110,8 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.STRING__VARIABLE:
-			setVariable((String) newValue);
+		case AtomicDevsPackage.STATE_INTEGER__VARIABLE:
+			setVariable((Integer) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,7 +125,7 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.STRING__VARIABLE:
+		case AtomicDevsPackage.STATE_INTEGER__VARIABLE:
 			setVariable(VARIABLE_EDEFAULT);
 			return;
 		}
@@ -141,8 +140,8 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.STRING__VARIABLE:
-			return VARIABLE_EDEFAULT == null ? variable != null : !VARIABLE_EDEFAULT.equals(variable);
+		case AtomicDevsPackage.STATE_INTEGER__VARIABLE:
+			return variable != VARIABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -164,4 +163,4 @@ public class StringImpl extends ValueImpl implements atomicDevs.String {
 		return result.toString();
 	}
 
-} //StringImpl
+} //StateIntegerImpl

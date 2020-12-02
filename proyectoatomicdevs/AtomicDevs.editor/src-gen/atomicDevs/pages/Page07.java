@@ -20,7 +20,7 @@ public class Page07 extends WizardPage{
 	public Page07(String pageId) {
 		super(pageId);
 		
-		this.setTitle("Set parameters initial values");
+		this.setTitle("Set parameters values");
 		this.setDescription("Clic on a value to edit it");
 		
 	}
@@ -214,13 +214,11 @@ public class Page07 extends WizardPage{
 			}
 			break;
 		case "DOUBLE":{
-			if(text.equals("infinity"))
-				break;
 			try{
 				Double.parseDouble(text);
 			}
 			catch(NumberFormatException e) {
-				return new Message(Type.ERROR,"The input must be a Double or 'infinity'");
+				return new Message(Type.ERROR,"The input must be a Double");
 			}
 			break;
 		}

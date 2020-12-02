@@ -3,8 +3,7 @@
 package atomicDevs.impl;
 
 import atomicDevs.AtomicDevsPackage;
-
-import java.lang.Double;
+import atomicDevs.StateBoolean;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Double</b></em>'.
+ * An implementation of the model object '<em><b>State Boolean</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.DoubleImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link atomicDevs.impl.StateBooleanImpl#isVariable <em>Variable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
+public class StateBooleanImpl extends StateValueImpl implements StateBoolean {
 	/**
-	 * The default value of the '{@link #getVariable() <em>Variable</em>}' attribute.
+	 * The default value of the '{@link #isVariable() <em>Variable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariable()
+	 * @see #isVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double VARIABLE_EDEFAULT = 0.0;
+	protected static final boolean VARIABLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' attribute.
+	 * The cached value of the '{@link #isVariable() <em>Variable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariable()
+	 * @see #isVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected double variable = VARIABLE_EDEFAULT;
+	protected boolean variable = VARIABLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DoubleImpl() {
+	protected StateBooleanImpl() {
 		super();
 	}
 
@@ -62,7 +61,7 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AtomicDevsPackage.Literals.DOUBLE;
+		return AtomicDevsPackage.Literals.STATE_BOOLEAN;
 	}
 
 	/**
@@ -71,7 +70,7 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	 * @generated
 	 */
 	@Override
-	public double getVariable() {
+	public boolean isVariable() {
 		return variable;
 	}
 
@@ -81,12 +80,12 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	 * @generated
 	 */
 	@Override
-	public void setVariable(double newVariable) {
-		double oldVariable = variable;
+	public void setVariable(boolean newVariable) {
+		boolean oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.DOUBLE__VARIABLE, oldVariable,
-					variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_BOOLEAN__VARIABLE,
+					oldVariable, variable));
 	}
 
 	/**
@@ -97,8 +96,8 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.DOUBLE__VARIABLE:
-			return getVariable();
+		case AtomicDevsPackage.STATE_BOOLEAN__VARIABLE:
+			return isVariable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,8 +110,8 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.DOUBLE__VARIABLE:
-			setVariable((Double) newValue);
+		case AtomicDevsPackage.STATE_BOOLEAN__VARIABLE:
+			setVariable((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,7 +125,7 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.DOUBLE__VARIABLE:
+		case AtomicDevsPackage.STATE_BOOLEAN__VARIABLE:
 			setVariable(VARIABLE_EDEFAULT);
 			return;
 		}
@@ -141,7 +140,7 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.DOUBLE__VARIABLE:
+		case AtomicDevsPackage.STATE_BOOLEAN__VARIABLE:
 			return variable != VARIABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -164,4 +163,4 @@ public class DoubleImpl extends ValueImpl implements atomicDevs.Double {
 		return result.toString();
 	}
 
-} //DoubleImpl
+} //StateBooleanImpl

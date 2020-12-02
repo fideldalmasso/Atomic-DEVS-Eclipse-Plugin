@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -56,6 +57,7 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 			super.getPropertyDescriptors(object);
 
 			addAtomicdevsPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,6 +75,22 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 						getString("_UI_PropertyDescriptor_description", "_UI_InitialState_atomicdevs_feature",
 								"_UI_InitialState_type"),
 						AtomicDevsPackage.Literals.INITIAL_STATE__ATOMICDEVS, false, false, false, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_InitialState_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_InitialState_description_feature",
+								"_UI_InitialState_type"),
+						AtomicDevsPackage.Literals.INITIAL_STATE__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -134,7 +152,9 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_InitialState_type");
+		String label = ((InitialState) object).getDescription();
+		return label == null || label.length() == 0 ? getString("_UI_InitialState_type")
+				: getString("_UI_InitialState_type") + " " + label;
 	}
 
 	/**
@@ -149,6 +169,9 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(InitialState.class)) {
+		case AtomicDevsPackage.INITIAL_STATE__DESCRIPTION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		case AtomicDevsPackage.INITIAL_STATE__VALUE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -168,19 +191,19 @@ public class InitialStateItemProvider extends ItemProviderAdapter implements IEd
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createDouble()));
+				AtomicDevsFactory.eINSTANCE.createStateDouble()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createString()));
+				AtomicDevsFactory.eINSTANCE.createStateString()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createBoolean()));
+				AtomicDevsFactory.eINSTANCE.createStateBoolean()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createUserDefined()));
+				AtomicDevsFactory.eINSTANCE.createStateUserDefined()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
-				AtomicDevsFactory.eINSTANCE.createInteger()));
+				AtomicDevsFactory.eINSTANCE.createStateInteger()));
 
 		newChildDescriptors.add(createChildParameter(AtomicDevsPackage.Literals.INITIAL_STATE__VALUE,
 				AtomicDevsFactory.eINSTANCE.createInfinity()));

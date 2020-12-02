@@ -2,43 +2,7 @@
  */
 package atomicDevs.util;
 
-import atomicDevs.AtomicDEVS;
-import atomicDevs.AtomicDevsPackage;
-import atomicDevs.Condition;
-import atomicDevs.CustomVariable;
-import atomicDevs.ExternalTransition;
-import atomicDevs.ExternalTransitionData;
-import atomicDevs.Infinity;
-import atomicDevs.InitialDot;
-import atomicDevs.InitialState;
-import atomicDevs.Input;
-import atomicDevs.InputPort;
-import atomicDevs.InternalTransition;
-import atomicDevs.InternalTransitionData;
-import atomicDevs.Output;
-import atomicDevs.OutputPort;
-import atomicDevs.Parameter;
-import atomicDevs.ParameterBoolean;
-import atomicDevs.ParameterDouble;
-import atomicDevs.ParameterInteger;
-import atomicDevs.ParameterList;
-import atomicDevs.ParameterString;
-import atomicDevs.ParameterUserDefined;
-import atomicDevs.ParameterValue;
-import atomicDevs.PhaseVariable;
-import atomicDevs.Port;
-import atomicDevs.PrimitiveType;
-import atomicDevs.SigmaVariable;
-import atomicDevs.StatePhase;
-import atomicDevs.StateStructure;
-import atomicDevs.StateVariable;
-import atomicDevs.Transition;
-import atomicDevs.TransitionData;
-import atomicDevs.Type;
-import atomicDevs.UserDefined;
-import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
-import atomicDevs.ValueData;
+import atomicDevs.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -163,33 +127,33 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseValue(Value object) {
-			return createValueAdapter();
+		public Adapter caseStateValue(StateValue object) {
+			return createStateValueAdapter();
 		}
 
 		@Override
-		public Adapter caseDouble(atomicDevs.Double object) {
-			return createDoubleAdapter();
+		public Adapter caseStateDouble(StateDouble object) {
+			return createStateDoubleAdapter();
 		}
 
 		@Override
-		public Adapter caseString(atomicDevs.String object) {
-			return createStringAdapter();
+		public Adapter caseStateString(StateString object) {
+			return createStateStringAdapter();
 		}
 
 		@Override
-		public Adapter caseBoolean(atomicDevs.Boolean object) {
-			return createBooleanAdapter();
+		public Adapter caseStateBoolean(StateBoolean object) {
+			return createStateBooleanAdapter();
 		}
 
 		@Override
-		public Adapter caseUserDefined(UserDefined object) {
-			return createUserDefinedAdapter();
+		public Adapter caseStateUserDefined(StateUserDefined object) {
+			return createStateUserDefinedAdapter();
 		}
 
 		@Override
-		public Adapter caseInteger(atomicDevs.Integer object) {
-			return createIntegerAdapter();
+		public Adapter caseStateInteger(StateInteger object) {
+			return createStateIntegerAdapter();
 		}
 
 		@Override
@@ -490,86 +454,86 @@ public class AtomicDevsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.Value <em>Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateValue <em>State Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.Value
+	 * @see atomicDevs.StateValue
 	 * @generated
 	 */
-	public Adapter createValueAdapter() {
+	public Adapter createStateValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.Double <em>Double</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateDouble <em>State Double</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.Double
+	 * @see atomicDevs.StateDouble
 	 * @generated
 	 */
-	public Adapter createDoubleAdapter() {
+	public Adapter createStateDoubleAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.String <em>String</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateString <em>State String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.String
+	 * @see atomicDevs.StateString
 	 * @generated
 	 */
-	public Adapter createStringAdapter() {
+	public Adapter createStateStringAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.Boolean <em>Boolean</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateBoolean <em>State Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.Boolean
+	 * @see atomicDevs.StateBoolean
 	 * @generated
 	 */
-	public Adapter createBooleanAdapter() {
+	public Adapter createStateBooleanAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.UserDefined <em>User Defined</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateUserDefined <em>State User Defined</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.UserDefined
+	 * @see atomicDevs.StateUserDefined
 	 * @generated
 	 */
-	public Adapter createUserDefinedAdapter() {
+	public Adapter createStateUserDefinedAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link atomicDevs.Integer <em>Integer</em>}'.
+	 * Creates a new adapter for an object of class '{@link atomicDevs.StateInteger <em>State Integer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see atomicDevs.Integer
+	 * @see atomicDevs.StateInteger
 	 * @generated
 	 */
-	public Adapter createIntegerAdapter() {
+	public Adapter createStateIntegerAdapter() {
 		return null;
 	}
 

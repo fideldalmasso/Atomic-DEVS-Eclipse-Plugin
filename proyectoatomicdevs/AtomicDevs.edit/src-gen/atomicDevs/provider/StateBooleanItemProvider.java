@@ -3,6 +3,7 @@
 package atomicDevs.provider;
 
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.StateBoolean;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,19 +17,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link atomicDevs.Boolean} object.
+ * This is the item provider adapter for a {@link atomicDevs.StateBoolean} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class BooleanItemProvider extends ValueItemProvider {
+public class StateBooleanItemProvider extends StateValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanItemProvider(AdapterFactory adapterFactory) {
+	public StateBooleanItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,22 +58,22 @@ public class BooleanItemProvider extends ValueItemProvider {
 	protected void addVariablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Boolean_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Boolean_variable_feature",
-								"_UI_Boolean_type"),
-						AtomicDevsPackage.Literals.BOOLEAN__VARIABLE, false, false, false,
+						getResourceLocator(), getString("_UI_StateBoolean_variable_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateBoolean_variable_feature",
+								"_UI_StateBoolean_type"),
+						AtomicDevsPackage.Literals.STATE_BOOLEAN__VARIABLE, false, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns Boolean.gif.
+	 * This returns StateBoolean.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Boolean"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StateBoolean"));
 	}
 
 	/**
@@ -93,8 +94,8 @@ public class BooleanItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		atomicDevs.Boolean boolean_ = (atomicDevs.Boolean) object;
-		return getString("_UI_Boolean_type") + " " + boolean_.isVariable();
+		StateBoolean stateBoolean = (StateBoolean) object;
+		return getString("_UI_StateBoolean_type") + " " + stateBoolean.isVariable();
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class BooleanItemProvider extends ValueItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(atomicDevs.Boolean.class)) {
-		case AtomicDevsPackage.BOOLEAN__VARIABLE:
+		switch (notification.getFeatureID(StateBoolean.class)) {
+		case AtomicDevsPackage.STATE_BOOLEAN__VARIABLE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

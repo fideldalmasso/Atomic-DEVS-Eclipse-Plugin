@@ -62,6 +62,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 			addIncludesOutputPortPropertyDescriptor(object);
 			addIncludesInputPortPropertyDescriptor(object);
 			addInitialdotPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -160,6 +161,22 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 	}
 
 	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AtomicDEVS_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AtomicDEVS_description_feature",
+								"_UI_AtomicDEVS_type"),
+						AtomicDevsPackage.Literals.ATOMIC_DEVS__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -241,6 +258,7 @@ public class AtomicDEVSItemProvider extends ItemProviderAdapter implements IEdit
 
 		switch (notification.getFeatureID(AtomicDEVS.class)) {
 		case AtomicDevsPackage.ATOMIC_DEVS__NAME:
+		case AtomicDevsPackage.ATOMIC_DEVS__DESCRIPTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case AtomicDevsPackage.ATOMIC_DEVS__DEFINITION:

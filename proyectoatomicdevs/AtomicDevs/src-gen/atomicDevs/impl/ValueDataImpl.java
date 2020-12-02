@@ -7,8 +7,6 @@ import atomicDevs.StateVariable;
 import atomicDevs.TransitionData;
 import atomicDevs.ValueData;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 

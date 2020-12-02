@@ -121,49 +121,49 @@ public interface AtomicDevsFactory extends EFactory {
 	InitialState createInitialState();
 
 	/**
-	 * Returns a new object of class '<em>Double</em>'.
+	 * Returns a new object of class '<em>State Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Double</em>'.
+	 * @return a new object of class '<em>State Double</em>'.
 	 * @generated
 	 */
-	Double createDouble();
+	StateDouble createStateDouble();
 
 	/**
-	 * Returns a new object of class '<em>String</em>'.
+	 * Returns a new object of class '<em>State String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String</em>'.
+	 * @return a new object of class '<em>State String</em>'.
 	 * @generated
 	 */
-	String createString();
+	StateString createStateString();
 
 	/**
-	 * Returns a new object of class '<em>Boolean</em>'.
+	 * Returns a new object of class '<em>State Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean</em>'.
+	 * @return a new object of class '<em>State Boolean</em>'.
 	 * @generated
 	 */
-	Boolean createBoolean();
+	StateBoolean createStateBoolean();
 
 	/**
-	 * Returns a new object of class '<em>User Defined</em>'.
+	 * Returns a new object of class '<em>State User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>User Defined</em>'.
+	 * @return a new object of class '<em>State User Defined</em>'.
 	 * @generated
 	 */
-	UserDefined createUserDefined();
+	StateUserDefined createStateUserDefined();
 
 	/**
-	 * Returns a new object of class '<em>Integer</em>'.
+	 * Returns a new object of class '<em>State Integer</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer</em>'.
+	 * @return a new object of class '<em>State Integer</em>'.
 	 * @generated
 	 */
-	Integer createInteger();
+	StateInteger createStateInteger();
 
 	/**
 	 * Returns a new object of class '<em>Infinity</em>'.

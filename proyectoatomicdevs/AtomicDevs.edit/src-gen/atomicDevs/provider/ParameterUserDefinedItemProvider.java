@@ -44,24 +44,24 @@ public class ParameterUserDefinedItemProvider extends ParameterValueItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVariablePropertyDescriptor(object);
+			addParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Variable feature.
+	 * This adds a property descriptor for the Parameter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVariablePropertyDescriptor(Object object) {
+	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ParameterUserDefined_variable_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ParameterUserDefined_variable_feature",
+				getString("_UI_ParameterUserDefined_parameter_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterUserDefined_parameter_feature",
 						"_UI_ParameterUserDefined_type"),
-				AtomicDevsPackage.Literals.PARAMETER_USER_DEFINED__VARIABLE, false, false, false,
+				AtomicDevsPackage.Literals.PARAMETER_USER_DEFINED__PARAMETER, false, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -94,7 +94,7 @@ public class ParameterUserDefinedItemProvider extends ParameterValueItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ParameterUserDefined) object).getVariable();
+		String label = ((ParameterUserDefined) object).getParameter();
 		return label == null || label.length() == 0 ? getString("_UI_ParameterUserDefined_type")
 				: getString("_UI_ParameterUserDefined_type") + " " + label;
 	}
@@ -111,7 +111,7 @@ public class ParameterUserDefinedItemProvider extends ParameterValueItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParameterUserDefined.class)) {
-		case AtomicDevsPackage.PARAMETER_USER_DEFINED__VARIABLE:
+		case AtomicDevsPackage.PARAMETER_USER_DEFINED__PARAMETER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

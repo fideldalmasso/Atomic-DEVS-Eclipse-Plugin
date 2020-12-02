@@ -55,6 +55,7 @@ public class StateVariableItemProvider extends ItemProviderAdapter implements IE
 
 			addTypePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,6 +88,22 @@ public class StateVariableItemProvider extends ItemProviderAdapter implements IE
 						getString("_UI_PropertyDescriptor_description", "_UI_StateVariable_name_feature",
 								"_UI_StateVariable_type"),
 						AtomicDevsPackage.Literals.STATE_VARIABLE__NAME, false, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_StateVariable_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_StateVariable_description_feature",
+								"_UI_StateVariable_type"),
+						AtomicDevsPackage.Literals.STATE_VARIABLE__DESCRIPTION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -137,6 +154,7 @@ public class StateVariableItemProvider extends ItemProviderAdapter implements IE
 
 		switch (notification.getFeatureID(StateVariable.class)) {
 		case AtomicDevsPackage.STATE_VARIABLE__NAME:
+		case AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

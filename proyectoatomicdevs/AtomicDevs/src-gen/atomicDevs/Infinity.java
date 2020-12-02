@@ -12,5 +12,5 @@ package atomicDevs;
  * @model
  * @generated
  */
-public interface Infinity extends atomicDevs.Double {
+public interface Infinity extends StateDouble {
 } // Infinity

@@ -2,8 +2,6 @@
  */
 package atomicDevs;
 
-import java.lang.String;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link atomicDevs.StateVariable#getType <em>Type</em>}</li>
  *   <li>{@link atomicDevs.StateVariable#getName <em>Name</em>}</li>
+ *   <li>{@link atomicDevs.StateVariable#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getStateVariable()
@@ -67,5 +66,28 @@ public interface StateVariable extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see atomicDevs.AtomicDevsPackage#getStateVariable_Description()
+	 * @model default="" required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.StateVariable#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // StateVariable

@@ -2,40 +2,7 @@
  */
 package atomicDevs.impl;
 
-import atomicDevs.AtomicDEVS;
-import atomicDevs.AtomicDevsFactory;
-import atomicDevs.AtomicDevsPackage;
-import atomicDevs.Condition;
-import atomicDevs.CustomVariable;
-import atomicDevs.ExternalTransition;
-import atomicDevs.ExternalTransitionData;
-import atomicDevs.Infinity;
-import atomicDevs.InitialDot;
-import atomicDevs.InitialState;
-import atomicDevs.Input;
-import atomicDevs.InputPort;
-import atomicDevs.InternalTransition;
-import atomicDevs.InternalTransitionData;
-import atomicDevs.Output;
-import atomicDevs.OutputPort;
-import atomicDevs.Parameter;
-import atomicDevs.ParameterBoolean;
-import atomicDevs.ParameterDouble;
-import atomicDevs.ParameterInteger;
-import atomicDevs.ParameterList;
-import atomicDevs.ParameterString;
-import atomicDevs.ParameterUserDefined;
-import atomicDevs.PhaseVariable;
-import atomicDevs.Port;
-import atomicDevs.Primitive;
-import atomicDevs.PrimitiveType;
-import atomicDevs.SigmaVariable;
-import atomicDevs.StatePhase;
-import atomicDevs.StateStructure;
-import atomicDevs.Type;
-import atomicDevs.UserDefined;
-import atomicDevs.UserDefinedType;
-import atomicDevs.ValueData;
+import atomicDevs.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -112,16 +79,16 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 			return createInternalTransitionData();
 		case AtomicDevsPackage.INITIAL_STATE:
 			return createInitialState();
-		case AtomicDevsPackage.DOUBLE:
-			return createDouble();
-		case AtomicDevsPackage.STRING:
-			return createString();
-		case AtomicDevsPackage.BOOLEAN:
-			return createBoolean();
-		case AtomicDevsPackage.USER_DEFINED:
-			return createUserDefined();
-		case AtomicDevsPackage.INTEGER:
-			return createInteger();
+		case AtomicDevsPackage.STATE_DOUBLE:
+			return createStateDouble();
+		case AtomicDevsPackage.STATE_STRING:
+			return createStateString();
+		case AtomicDevsPackage.STATE_BOOLEAN:
+			return createStateBoolean();
+		case AtomicDevsPackage.STATE_USER_DEFINED:
+			return createStateUserDefined();
+		case AtomicDevsPackage.STATE_INTEGER:
+			return createStateInteger();
 		case AtomicDevsPackage.INFINITY:
 			return createInfinity();
 		case AtomicDevsPackage.CONDITION:
@@ -322,9 +289,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public atomicDevs.Double createDouble() {
-		DoubleImpl double_ = new DoubleImpl();
-		return double_;
+	public StateDouble createStateDouble() {
+		StateDoubleImpl stateDouble = new StateDoubleImpl();
+		return stateDouble;
 	}
 
 	/**
@@ -333,9 +300,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public atomicDevs.String createString() {
-		StringImpl string = new StringImpl();
-		return string;
+	public StateString createStateString() {
+		StateStringImpl stateString = new StateStringImpl();
+		return stateString;
 	}
 
 	/**
@@ -344,9 +311,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public atomicDevs.Boolean createBoolean() {
-		BooleanImpl boolean_ = new BooleanImpl();
-		return boolean_;
+	public StateBoolean createStateBoolean() {
+		StateBooleanImpl stateBoolean = new StateBooleanImpl();
+		return stateBoolean;
 	}
 
 	/**
@@ -355,9 +322,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public UserDefined createUserDefined() {
-		UserDefinedImpl userDefined = new UserDefinedImpl();
-		return userDefined;
+	public StateUserDefined createStateUserDefined() {
+		StateUserDefinedImpl stateUserDefined = new StateUserDefinedImpl();
+		return stateUserDefined;
 	}
 
 	/**
@@ -366,9 +333,9 @@ public class AtomicDevsFactoryImpl extends EFactoryImpl implements AtomicDevsFac
 	 * @generated
 	 */
 	@Override
-	public atomicDevs.Integer createInteger() {
-		IntegerImpl integer = new IntegerImpl();
-		return integer;
+	public StateInteger createStateInteger() {
+		StateIntegerImpl stateInteger = new StateIntegerImpl();
+		return stateInteger;
 	}
 
 	/**

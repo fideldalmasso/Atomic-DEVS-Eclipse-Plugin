@@ -2,8 +2,6 @@
  */
 package atomicDevs;
 
-import java.lang.String;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link atomicDevs.Port#getName <em>Name</em>}</li>
  *   <li>{@link atomicDevs.Port#getVariable <em>Variable</em>}</li>
  *   <li>{@link atomicDevs.Port#getType <em>Type</em>}</li>
+ *   <li>{@link atomicDevs.Port#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getPort()
@@ -90,5 +89,28 @@ public interface Port extends EObject {
 	 * @generated
 	 */
 	void setType(Type value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see atomicDevs.AtomicDevsPackage#getPort_Description()
+	 * @model default="" required="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link atomicDevs.Port#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // Port

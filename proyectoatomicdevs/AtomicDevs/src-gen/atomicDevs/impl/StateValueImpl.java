@@ -3,8 +3,8 @@
 package atomicDevs.impl;
 
 import atomicDevs.AtomicDevsPackage;
+import atomicDevs.StateValue;
 import atomicDevs.StateVariable;
-import atomicDevs.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -16,18 +16,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Value</b></em>'.
+ * An implementation of the model object '<em><b>State Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.impl.ValueImpl#getStatevariable <em>Statevariable</em>}</li>
+ *   <li>{@link atomicDevs.impl.StateValueImpl#getStatevariable <em>Statevariable</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ValueImpl extends MinimalEObjectImpl.Container implements Value {
+public abstract class StateValueImpl extends MinimalEObjectImpl.Container implements StateValue {
 	/**
 	 * The cached value of the '{@link #getStatevariable() <em>Statevariable</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -43,7 +43,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ValueImpl() {
+	protected StateValueImpl() {
 		super();
 	}
 
@@ -54,7 +54,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AtomicDevsPackage.Literals.VALUE;
+		return AtomicDevsPackage.Literals.STATE_VALUE;
 	}
 
 	/**
@@ -69,8 +69,8 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 			statevariable = (StateVariable) eResolveProxy(oldStatevariable);
 			if (statevariable != oldStatevariable) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AtomicDevsPackage.VALUE__STATEVARIABLE,
-							oldStatevariable, statevariable));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							AtomicDevsPackage.STATE_VALUE__STATEVARIABLE, oldStatevariable, statevariable));
 			}
 		}
 		return statevariable;
@@ -95,7 +95,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 		StateVariable oldStatevariable = statevariable;
 		statevariable = newStatevariable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.VALUE__STATEVARIABLE,
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_VALUE__STATEVARIABLE,
 					oldStatevariable, statevariable));
 	}
 
@@ -107,7 +107,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AtomicDevsPackage.VALUE__STATEVARIABLE:
+		case AtomicDevsPackage.STATE_VALUE__STATEVARIABLE:
 			if (resolve)
 				return getStatevariable();
 			return basicGetStatevariable();
@@ -123,7 +123,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AtomicDevsPackage.VALUE__STATEVARIABLE:
+		case AtomicDevsPackage.STATE_VALUE__STATEVARIABLE:
 			setStatevariable((StateVariable) newValue);
 			return;
 		}
@@ -138,7 +138,7 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.VALUE__STATEVARIABLE:
+		case AtomicDevsPackage.STATE_VALUE__STATEVARIABLE:
 			setStatevariable((StateVariable) null);
 			return;
 		}
@@ -153,10 +153,10 @@ public abstract class ValueImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AtomicDevsPackage.VALUE__STATEVARIABLE:
+		case AtomicDevsPackage.STATE_VALUE__STATEVARIABLE:
 			return statevariable != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ValueImpl
+} //StateValueImpl

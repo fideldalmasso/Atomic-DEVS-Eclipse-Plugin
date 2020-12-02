@@ -6,8 +6,6 @@ import atomicDevs.AtomicDevsPackage;
 import atomicDevs.ExternalTransitionData;
 import atomicDevs.Input;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 

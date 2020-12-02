@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class InfinityImpl extends DoubleImpl implements Infinity {
+public class InfinityImpl extends StateDoubleImpl implements Infinity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

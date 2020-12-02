@@ -31,15 +31,19 @@ import atomicDevs.Port;
 import atomicDevs.Primitive;
 import atomicDevs.PrimitiveType;
 import atomicDevs.SigmaVariable;
+import atomicDevs.StateBoolean;
+import atomicDevs.StateDouble;
+import atomicDevs.StateInteger;
 import atomicDevs.StatePhase;
+import atomicDevs.StateString;
 import atomicDevs.StateStructure;
+import atomicDevs.StateUserDefined;
+import atomicDevs.StateValue;
 import atomicDevs.StateVariable;
 import atomicDevs.Transition;
 import atomicDevs.TransitionData;
 import atomicDevs.Type;
-import atomicDevs.UserDefined;
 import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
 import atomicDevs.ValueData;
 
 import atomicDevs.util.AtomicDevsValidator;
@@ -149,42 +153,42 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass valueEClass = null;
+	private EClass stateValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass doubleEClass = null;
+	private EClass stateDoubleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringEClass = null;
+	private EClass stateStringEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanEClass = null;
+	private EClass stateBooleanEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass userDefinedEClass = null;
+	private EClass stateUserDefinedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerEClass = null;
+	private EClass stateIntegerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -525,6 +529,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAtomicDEVS_Description() {
+		return (EAttribute) atomicDEVSEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStateStructure() {
 		return stateStructureEClass;
 	}
@@ -567,6 +581,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	@Override
 	public EAttribute getStateVariable_Name() {
 		return (EAttribute) stateVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStateVariable_Description() {
+		return (EAttribute) stateVariableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -675,6 +699,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getStatePhase_Description() {
+		return (EAttribute) statePhaseEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPrimitiveType() {
 		return primitiveTypeEClass;
 	}
@@ -765,8 +799,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getValue() {
-		return valueEClass;
+	public EAttribute getInitialState_Description() {
+		return (EAttribute) initialStateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -775,8 +809,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EReference getValue_Statevariable() {
-		return (EReference) valueEClass.getEStructuralFeatures().get(0);
+	public EClass getStateValue() {
+		return stateValueEClass;
 	}
 
 	/**
@@ -785,8 +819,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getDouble() {
-		return doubleEClass;
+	public EReference getStateValue_Statevariable() {
+		return (EReference) stateValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -795,8 +829,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDouble_Variable() {
-		return (EAttribute) doubleEClass.getEStructuralFeatures().get(0);
+	public EClass getStateDouble() {
+		return stateDoubleEClass;
 	}
 
 	/**
@@ -805,8 +839,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getString() {
-		return stringEClass;
+	public EAttribute getStateDouble_Variable() {
+		return (EAttribute) stateDoubleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -815,8 +849,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getString_Variable() {
-		return (EAttribute) stringEClass.getEStructuralFeatures().get(0);
+	public EClass getStateString() {
+		return stateStringEClass;
 	}
 
 	/**
@@ -825,8 +859,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getBoolean() {
-		return booleanEClass;
+	public EAttribute getStateString_Variable() {
+		return (EAttribute) stateStringEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -835,8 +869,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBoolean_Variable() {
-		return (EAttribute) booleanEClass.getEStructuralFeatures().get(0);
+	public EClass getStateBoolean() {
+		return stateBooleanEClass;
 	}
 
 	/**
@@ -845,8 +879,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getUserDefined() {
-		return userDefinedEClass;
+	public EAttribute getStateBoolean_Variable() {
+		return (EAttribute) stateBooleanEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -855,8 +889,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getUserDefined_Variable() {
-		return (EAttribute) userDefinedEClass.getEStructuralFeatures().get(0);
+	public EClass getStateUserDefined() {
+		return stateUserDefinedEClass;
 	}
 
 	/**
@@ -865,8 +899,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EClass getInteger() {
-		return integerEClass;
+	public EAttribute getStateUserDefined_Variable() {
+		return (EAttribute) stateUserDefinedEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -875,8 +909,18 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInteger_Variable() {
-		return (EAttribute) integerEClass.getEStructuralFeatures().get(0);
+	public EClass getStateInteger() {
+		return stateIntegerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStateInteger_Variable() {
+		return (EAttribute) stateIntegerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -927,6 +971,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	@Override
 	public EReference getTransition_Transitiondata() {
 		return (EReference) transitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTransition_Description() {
+		return (EAttribute) transitionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1077,6 +1131,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	@Override
 	public EReference getPort_Type() {
 		return (EReference) portEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPort_Description() {
+		return (EAttribute) portEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1275,7 +1339,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameterUserDefined_Variable() {
+	public EAttribute getParameterUserDefined_Parameter() {
 		return (EAttribute) parameterUserDefinedEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1295,7 +1359,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameterInteger_Variable() {
+	public EAttribute getParameterInteger_Parameter() {
 		return (EAttribute) parameterIntegerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1315,7 +1379,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameterDouble_Variable() {
+	public EAttribute getParameterDouble_Parameter() {
 		return (EAttribute) parameterDoubleEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1335,7 +1399,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameterString_Variable() {
+	public EAttribute getParameterString_Parameter() {
 		return (EAttribute) parameterStringEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1355,7 +1419,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameterBoolean_Variable() {
+	public EAttribute getParameterBoolean_Parameter() {
 		return (EAttribute) parameterBooleanEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1375,7 +1439,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
-	public EReference getParameterValue_Parameter() {
+	public EReference getParameterValue_AssociatedParameter() {
 		return (EReference) parameterValueEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1445,6 +1509,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getParameter_Description() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPrimitive() {
 		return primitiveEEnum;
 	}
@@ -1489,6 +1563,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__TRANSITION);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__INITIALDOT);
 		createEReference(atomicDEVSEClass, ATOMIC_DEVS__PARAMETERLIST);
+		createEAttribute(atomicDEVSEClass, ATOMIC_DEVS__DESCRIPTION);
 
 		stateStructureEClass = createEClass(STATE_STRUCTURE);
 		createEReference(stateStructureEClass, STATE_STRUCTURE__STATEVARIABLE);
@@ -1496,6 +1571,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		stateVariableEClass = createEClass(STATE_VARIABLE);
 		createEReference(stateVariableEClass, STATE_VARIABLE__TYPE);
 		createEAttribute(stateVariableEClass, STATE_VARIABLE__NAME);
+		createEAttribute(stateVariableEClass, STATE_VARIABLE__DESCRIPTION);
 
 		phaseVariableEClass = createEClass(PHASE_VARIABLE);
 
@@ -1511,6 +1587,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(statePhaseEClass, STATE_PHASE__TRANSITION_OUT);
 		createEReference(statePhaseEClass, STATE_PHASE__PHASEVARIABLE);
 		createEReference(statePhaseEClass, STATE_PHASE__ATOMICDEVS);
+		createEAttribute(statePhaseEClass, STATE_PHASE__DESCRIPTION);
 
 		primitiveTypeEClass = createEClass(PRIMITIVE_TYPE);
 		createEAttribute(primitiveTypeEClass, PRIMITIVE_TYPE__PRIMITIVE);
@@ -1524,24 +1601,25 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initialStateEClass = createEClass(INITIAL_STATE);
 		createEReference(initialStateEClass, INITIAL_STATE__VALUE);
 		createEReference(initialStateEClass, INITIAL_STATE__ATOMICDEVS);
+		createEAttribute(initialStateEClass, INITIAL_STATE__DESCRIPTION);
 
-		valueEClass = createEClass(VALUE);
-		createEReference(valueEClass, VALUE__STATEVARIABLE);
+		stateValueEClass = createEClass(STATE_VALUE);
+		createEReference(stateValueEClass, STATE_VALUE__STATEVARIABLE);
 
-		doubleEClass = createEClass(DOUBLE);
-		createEAttribute(doubleEClass, DOUBLE__VARIABLE);
+		stateDoubleEClass = createEClass(STATE_DOUBLE);
+		createEAttribute(stateDoubleEClass, STATE_DOUBLE__VARIABLE);
 
-		stringEClass = createEClass(STRING);
-		createEAttribute(stringEClass, STRING__VARIABLE);
+		stateStringEClass = createEClass(STATE_STRING);
+		createEAttribute(stateStringEClass, STATE_STRING__VARIABLE);
 
-		booleanEClass = createEClass(BOOLEAN);
-		createEAttribute(booleanEClass, BOOLEAN__VARIABLE);
+		stateBooleanEClass = createEClass(STATE_BOOLEAN);
+		createEAttribute(stateBooleanEClass, STATE_BOOLEAN__VARIABLE);
 
-		userDefinedEClass = createEClass(USER_DEFINED);
-		createEAttribute(userDefinedEClass, USER_DEFINED__VARIABLE);
+		stateUserDefinedEClass = createEClass(STATE_USER_DEFINED);
+		createEAttribute(stateUserDefinedEClass, STATE_USER_DEFINED__VARIABLE);
 
-		integerEClass = createEClass(INTEGER);
-		createEAttribute(integerEClass, INTEGER__VARIABLE);
+		stateIntegerEClass = createEClass(STATE_INTEGER);
+		createEAttribute(stateIntegerEClass, STATE_INTEGER__VARIABLE);
 
 		infinityEClass = createEClass(INFINITY);
 
@@ -1549,6 +1627,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(transitionEClass, TRANSITION__TARGET);
 		createEReference(transitionEClass, TRANSITION__SOURCE);
 		createEReference(transitionEClass, TRANSITION__TRANSITIONDATA);
+		createEAttribute(transitionEClass, TRANSITION__DESCRIPTION);
 
 		conditionEClass = createEClass(CONDITION);
 		createEAttribute(conditionEClass, CONDITION__EXPRESSION);
@@ -1570,6 +1649,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEAttribute(portEClass, PORT__NAME);
 		createEAttribute(portEClass, PORT__VARIABLE);
 		createEReference(portEClass, PORT__TYPE);
+		createEAttribute(portEClass, PORT__DESCRIPTION);
 
 		outputEClass = createEClass(OUTPUT);
 		createEAttribute(outputEClass, OUTPUT__VALUE);
@@ -1596,22 +1676,22 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEReference(initialDotEClass, INITIAL_DOT__PARAMETERLIST);
 
 		parameterUserDefinedEClass = createEClass(PARAMETER_USER_DEFINED);
-		createEAttribute(parameterUserDefinedEClass, PARAMETER_USER_DEFINED__VARIABLE);
+		createEAttribute(parameterUserDefinedEClass, PARAMETER_USER_DEFINED__PARAMETER);
 
 		parameterIntegerEClass = createEClass(PARAMETER_INTEGER);
-		createEAttribute(parameterIntegerEClass, PARAMETER_INTEGER__VARIABLE);
+		createEAttribute(parameterIntegerEClass, PARAMETER_INTEGER__PARAMETER);
 
 		parameterDoubleEClass = createEClass(PARAMETER_DOUBLE);
-		createEAttribute(parameterDoubleEClass, PARAMETER_DOUBLE__VARIABLE);
+		createEAttribute(parameterDoubleEClass, PARAMETER_DOUBLE__PARAMETER);
 
 		parameterStringEClass = createEClass(PARAMETER_STRING);
-		createEAttribute(parameterStringEClass, PARAMETER_STRING__VARIABLE);
+		createEAttribute(parameterStringEClass, PARAMETER_STRING__PARAMETER);
 
 		parameterBooleanEClass = createEClass(PARAMETER_BOOLEAN);
-		createEAttribute(parameterBooleanEClass, PARAMETER_BOOLEAN__VARIABLE);
+		createEAttribute(parameterBooleanEClass, PARAMETER_BOOLEAN__PARAMETER);
 
 		parameterValueEClass = createEClass(PARAMETER_VALUE);
-		createEReference(parameterValueEClass, PARAMETER_VALUE__PARAMETER);
+		createEReference(parameterValueEClass, PARAMETER_VALUE__ASSOCIATED_PARAMETER);
 
 		parameterListEClass = createEClass(PARAMETER_LIST);
 		createEReference(parameterListEClass, PARAMETER_LIST__PARAMETER);
@@ -1620,6 +1700,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		createEAttribute(parameterEClass, PARAMETER__NAME);
 		createEReference(parameterEClass, PARAMETER__TYPE);
 		createEReference(parameterEClass, PARAMETER__PARAMETERVALUE);
+		createEAttribute(parameterEClass, PARAMETER__DESCRIPTION);
 
 		// Create enums
 		primitiveEEnum = createEEnum(PRIMITIVE);
@@ -1660,12 +1741,12 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		primitiveTypeEClass.getESuperTypes().add(this.getType());
 		userDefinedTypeEClass.getESuperTypes().add(this.getType());
 		internalTransitionDataEClass.getESuperTypes().add(this.getTransitionData());
-		doubleEClass.getESuperTypes().add(this.getValue());
-		stringEClass.getESuperTypes().add(this.getValue());
-		booleanEClass.getESuperTypes().add(this.getValue());
-		userDefinedEClass.getESuperTypes().add(this.getValue());
-		integerEClass.getESuperTypes().add(this.getValue());
-		infinityEClass.getESuperTypes().add(this.getDouble());
+		stateDoubleEClass.getESuperTypes().add(this.getStateValue());
+		stateStringEClass.getESuperTypes().add(this.getStateValue());
+		stateBooleanEClass.getESuperTypes().add(this.getStateValue());
+		stateUserDefinedEClass.getESuperTypes().add(this.getStateValue());
+		stateIntegerEClass.getESuperTypes().add(this.getStateValue());
+		infinityEClass.getESuperTypes().add(this.getStateDouble());
 		internalTransitionEClass.getESuperTypes().add(this.getTransition());
 		externalTransitionEClass.getESuperTypes().add(this.getTransition());
 		externalTransitionDataEClass.getESuperTypes().add(this.getTransitionData());
@@ -1706,6 +1787,9 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEReference(getAtomicDEVS_Parameterlist(), this.getParameterList(), null, "parameterlist", null, 0, 1,
 				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAtomicDEVS_Description(), ecorePackage.getEString(), "description", "", 1, 1,
+				AtomicDEVS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateStructureEClass, StateStructure.class, "StateStructure", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1720,6 +1804,9 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, StateVariable.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStateVariable_Description(), ecorePackage.getEString(), "description", "", 1, 1,
+				StateVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(phaseVariableEClass, PhaseVariable.class, "PhaseVariable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1748,6 +1835,9 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEReference(getStatePhase_Atomicdevs(), this.getAtomicDEVS(), this.getAtomicDEVS_Statephase(), "atomicdevs",
 				null, 1, 1, StatePhase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStatePhase_Description(), ecorePackage.getEString(), "description", "", 1, 1,
+				StatePhase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1767,42 +1857,47 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 
 		initEClass(initialStateEClass, InitialState.class, "InitialState", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInitialState_Value(), this.getValue(), null, "value", null, 2, -1, InitialState.class,
+		initEReference(getInitialState_Value(), this.getStateValue(), null, "value", null, 2, -1, InitialState.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInitialState_Atomicdevs(), this.getAtomicDEVS(), this.getAtomicDEVS_Initialization(),
 				"atomicdevs", null, 1, 1, InitialState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getValue_Statevariable(), this.getStateVariable(), null, "statevariable", null, 1, 1,
-				Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(doubleEClass, atomicDevs.Double.class, "Double", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDouble_Variable(), ecorePackage.getEDouble(), "variable", null, 1, 1, atomicDevs.Double.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(stringEClass, atomicDevs.String.class, "String", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getString_Variable(), ecorePackage.getEString(), "variable", null, 1, 1, atomicDevs.String.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(booleanEClass, atomicDevs.Boolean.class, "Boolean", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoolean_Variable(), ecorePackage.getEBoolean(), "variable", null, 1, 1,
-				atomicDevs.Boolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getInitialState_Description(), ecorePackage.getEString(), "description", "", 1, 1,
+				InitialState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(userDefinedEClass, UserDefined.class, "UserDefined", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(stateValueEClass, StateValue.class, "StateValue", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUserDefined_Variable(), ecorePackage.getEString(), "variable", null, 1, 1, UserDefined.class,
+		initEReference(getStateValue_Statevariable(), this.getStateVariable(), null, "statevariable", null, 1, 1,
+				StateValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stateDoubleEClass, StateDouble.class, "StateDouble", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateDouble_Variable(), ecorePackage.getEDouble(), "variable", null, 1, 1, StateDouble.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(integerEClass, atomicDevs.Integer.class, "Integer", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(stateStringEClass, StateString.class, "StateString", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInteger_Variable(), ecorePackage.getEInt(), "variable", null, 1, 1, atomicDevs.Integer.class,
+		initEAttribute(getStateString_Variable(), ecorePackage.getEString(), "variable", null, 1, 1, StateString.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stateBooleanEClass, StateBoolean.class, "StateBoolean", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateBoolean_Variable(), ecorePackage.getEBoolean(), "variable", null, 1, 1,
+				StateBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(stateUserDefinedEClass, StateUserDefined.class, "StateUserDefined", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateUserDefined_Variable(), ecorePackage.getEString(), "variable", null, 1, 1,
+				StateUserDefined.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(stateIntegerEClass, StateInteger.class, "StateInteger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStateInteger_Variable(), ecorePackage.getEInt(), "variable", null, 1, 1, StateInteger.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(infinityEClass, Infinity.class, "Infinity", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1819,6 +1914,9 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEReference(getTransition_Transitiondata(), this.getTransitionData(), this.getTransitionData_Transition(),
 				"transitiondata", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Description(), ecorePackage.getEString(), "description", "", 1, 1,
+				Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1860,6 +1958,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEReference(getPort_Type(), this.getType(), null, "type", null, 1, 1, Port.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getPort_Description(), ecorePackage.getEString(), "description", "", 1, 1, Port.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOutput_Value(), ecorePackage.getEString(), "value", "", 1, 1, Output.class, !IS_TRANSIENT,
@@ -1913,38 +2013,38 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 
 		initEClass(parameterUserDefinedEClass, ParameterUserDefined.class, "ParameterUserDefined", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterUserDefined_Variable(), ecorePackage.getEString(), "variable", null, 1, 1,
+		initEAttribute(getParameterUserDefined_Parameter(), ecorePackage.getEString(), "parameter", null, 1, 1,
 				ParameterUserDefined.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterIntegerEClass, ParameterInteger.class, "ParameterInteger", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterInteger_Variable(), ecorePackage.getEInt(), "variable", null, 1, 1,
+		initEAttribute(getParameterInteger_Parameter(), ecorePackage.getEInt(), "parameter", null, 1, 1,
 				ParameterInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterDoubleEClass, ParameterDouble.class, "ParameterDouble", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterDouble_Variable(), ecorePackage.getEDouble(), "variable", null, 1, 1,
+		initEAttribute(getParameterDouble_Parameter(), ecorePackage.getEDouble(), "parameter", null, 1, 1,
 				ParameterDouble.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterStringEClass, ParameterString.class, "ParameterString", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterString_Variable(), ecorePackage.getEString(), "variable", null, 1, 1,
+		initEAttribute(getParameterString_Parameter(), ecorePackage.getEString(), "parameter", null, 1, 1,
 				ParameterString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterBooleanEClass, ParameterBoolean.class, "ParameterBoolean", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterBoolean_Variable(), ecorePackage.getEBoolean(), "variable", null, 1, 1,
+		initEAttribute(getParameterBoolean_Parameter(), ecorePackage.getEBoolean(), "parameter", null, 1, 1,
 				ParameterBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterValueEClass, ParameterValue.class, "ParameterValue", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameterValue_Parameter(), this.getParameter(), this.getParameter_Parametervalue(),
-				"parameter", null, 1, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+		initEReference(getParameterValue_AssociatedParameter(), this.getParameter(), this.getParameter_Parametervalue(),
+				"associatedParameter", null, 1, 1, ParameterValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterListEClass, ParameterList.class, "ParameterList", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1955,14 +2055,17 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class,
+		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_Type(), this.getType(), null, "type", null, 1, 1, Parameter.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getParameter_Parametervalue(), this.getParameterValue(), this.getParameterValue_Parameter(),
-				"parametervalue", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Parametervalue(), this.getParameterValue(),
+				this.getParameterValue_AssociatedParameter(), "parametervalue", null, 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Description(), ecorePackage.getEString(), "description", "", 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(primitiveEEnum, Primitive.class, "Primitive");
@@ -2013,11 +2116,11 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		addAnnotation(phaseVariableEClass, source, new String[] { "constraints", "typeIsString nameIsPhase" });
 		addAnnotation(sigmaVariableEClass, source, new String[] { "constraints", "typeIsDouble nameIsSigma" });
 		addAnnotation(initialStateEClass, source, new String[] { "constraints", "everyVariableMustHaveAValue" });
-		addAnnotation(doubleEClass, source, new String[] { "constraints", "typeIsDouble" });
-		addAnnotation(stringEClass, source, new String[] { "constraints", "typeIsString" });
-		addAnnotation(booleanEClass, source, new String[] { "constraints", "typeIsBoolean" });
-		addAnnotation(userDefinedEClass, source, new String[] { "constraints", "typeIsString" });
-		addAnnotation(integerEClass, source, new String[] { "constraints", "typeIsInteger" });
+		addAnnotation(stateDoubleEClass, source, new String[] { "constraints", "typeIsDouble" });
+		addAnnotation(stateStringEClass, source, new String[] { "constraints", "typeIsString" });
+		addAnnotation(stateBooleanEClass, source, new String[] { "constraints", "typeIsBoolean" });
+		addAnnotation(stateUserDefinedEClass, source, new String[] { "constraints", "typeIsString" });
+		addAnnotation(stateIntegerEClass, source, new String[] { "constraints", "typeIsInteger" });
 		addAnnotation(transitionDataEClass, source, new String[] { "constraints", "everyVariableMustHaveAValueData" });
 		addAnnotation(valueDataEClass, source,
 				new String[] { "constraints", "valueMatchesTargetPhaseWhenStateVariableIsPhase" });
@@ -2026,6 +2129,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		addAnnotation(parameterDoubleEClass, source, new String[] { "constraints", "typeIsDouble" });
 		addAnnotation(parameterStringEClass, source, new String[] { "constraints", "typeIsString" });
 		addAnnotation(parameterBooleanEClass, source, new String[] { "constraints", "typeIsBoolean" });
+		addAnnotation(parameterEClass, source, new String[] { "constraints", "nameStartsWithAtSign" });
 	}
 
 	/**
@@ -2053,31 +2157,33 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				new String[] { "typeIsDouble", "\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE",
 						"nameIsSigma", "\n\t\tself.name = \'Sigma\'" });
 		addAnnotation(initialStateEClass, source, new String[] { "everyVariableMustHaveAValue",
-				"\n\t\tself.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.value->one(v:Value|v.statevariable = s)\n\t\t)" });
-		addAnnotation(doubleEClass, source, new String[] { "typeIsDouble",
+				"\n\t\tself.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.value->one(sv:StateValue|sv.statevariable = s)\n\t\t)" });
+		addAnnotation(stateDoubleEClass, source, new String[] { "typeIsDouble",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE" });
-		addAnnotation(stringEClass, source, new String[] { "typeIsString",
+		addAnnotation(stateStringEClass, source, new String[] { "typeIsString",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
-		addAnnotation(booleanEClass, source, new String[] { "typeIsBoolean",
+		addAnnotation(stateBooleanEClass, source, new String[] { "typeIsBoolean",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN" });
-		addAnnotation(userDefinedEClass, source, new String[] { "typeIsString",
+		addAnnotation(stateUserDefinedEClass, source, new String[] { "typeIsString",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
-		addAnnotation(integerEClass, source, new String[] { "typeIsInteger",
+		addAnnotation(stateIntegerEClass, source, new String[] { "typeIsInteger",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER" });
 		addAnnotation(transitionDataEClass, source, new String[] { "everyVariableMustHaveAValueData",
 				"\n\t\tself.transition.source.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.valuedata->one(vd:ValueData|vd.statevariable = s)\n\t\t)" });
 		addAnnotation(valueDataEClass, source, new String[] { "valueMatchesTargetPhaseWhenStateVariableIsPhase",
 				"\n\t\tself.statevariable.name=\'phase\' implies \n\t\tself.value = self.transitiondata.transition.target.value" });
 		addAnnotation(parameterUserDefinedEClass, source, new String[] { "typeIsString",
-				"self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
+				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
 		addAnnotation(parameterIntegerEClass, source, new String[] { "typeIsInteger",
-				"self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER" });
+				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER" });
 		addAnnotation(parameterDoubleEClass, source, new String[] { "typeIsDouble",
-				"self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE" });
+				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE" });
 		addAnnotation(parameterStringEClass, source, new String[] { "typeIsString",
-				"self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
+				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
 		addAnnotation(parameterBooleanEClass, source, new String[] { "typeIsBoolean",
-				"self.parameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN" });
+				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN" });
+		addAnnotation(parameterEClass, source,
+				new String[] { "nameStartsWithAtSign", "\n\t\t\tself.name.substring(1,1)=\'@\'" });
 	}
 
 } //AtomicDevsPackageImpl

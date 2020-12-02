@@ -7,8 +7,6 @@ import atomicDevs.Parameter;
 import atomicDevs.ParameterValue;
 import atomicDevs.Type;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -29,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link atomicDevs.impl.ParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link atomicDevs.impl.ParameterImpl#getType <em>Type</em>}</li>
  *   <li>{@link atomicDevs.impl.ParameterImpl#getParametervalue <em>Parametervalue</em>}</li>
+ *   <li>{@link atomicDevs.impl.ParameterImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +72,26 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 	 * @ordered
 	 */
 	protected ParameterValue parametervalue;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,16 +216,40 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			NotificationChain msgs = null;
 			if (parametervalue != null)
 				msgs = ((InternalEObject) parametervalue).eInverseRemove(this,
-						AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, ParameterValue.class, msgs);
+						AtomicDevsPackage.PARAMETER_VALUE__ASSOCIATED_PARAMETER, ParameterValue.class, msgs);
 			if (newParametervalue != null)
 				msgs = ((InternalEObject) newParametervalue).eInverseAdd(this,
-						AtomicDevsPackage.PARAMETER_VALUE__PARAMETER, ParameterValue.class, msgs);
+						AtomicDevsPackage.PARAMETER_VALUE__ASSOCIATED_PARAMETER, ParameterValue.class, msgs);
 			msgs = basicSetParametervalue(newParametervalue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER__PARAMETERVALUE,
 					newParametervalue, newParametervalue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.PARAMETER__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -256,6 +299,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			return basicGetType();
 		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
 			return getParametervalue();
+		case AtomicDevsPackage.PARAMETER__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -276,6 +321,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			return;
 		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
 			setParametervalue((ParameterValue) newValue);
+			return;
+		case AtomicDevsPackage.PARAMETER__DESCRIPTION:
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -298,6 +346,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
 			setParametervalue((ParameterValue) null);
 			return;
+		case AtomicDevsPackage.PARAMETER__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -316,6 +367,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 			return type != null;
 		case AtomicDevsPackage.PARAMETER__PARAMETERVALUE:
 			return parametervalue != null;
+		case AtomicDevsPackage.PARAMETER__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -333,6 +386,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

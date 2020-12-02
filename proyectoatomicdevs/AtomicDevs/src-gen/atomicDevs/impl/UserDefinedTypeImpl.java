@@ -5,8 +5,6 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.UserDefinedType;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

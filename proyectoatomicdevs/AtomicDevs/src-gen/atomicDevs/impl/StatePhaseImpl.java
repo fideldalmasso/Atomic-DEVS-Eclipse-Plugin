@@ -8,8 +8,6 @@ import atomicDevs.PhaseVariable;
 import atomicDevs.StatePhase;
 import atomicDevs.Transition;
 
-import java.lang.String;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -40,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link atomicDevs.impl.StatePhaseImpl#getTransitionOut <em>Transition Out</em>}</li>
  *   <li>{@link atomicDevs.impl.StatePhaseImpl#getPhasevariable <em>Phasevariable</em>}</li>
  *   <li>{@link atomicDevs.impl.StatePhaseImpl#getAtomicdevs <em>Atomicdevs</em>}</li>
+ *   <li>{@link atomicDevs.impl.StatePhaseImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -94,6 +93,26 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 	 * @ordered
 	 */
 	protected PhaseVariable phasevariable;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,6 +279,30 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_PHASE__DESCRIPTION,
+					oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -329,6 +372,8 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 			return basicGetPhasevariable();
 		case AtomicDevsPackage.STATE_PHASE__ATOMICDEVS:
 			return getAtomicdevs();
+		case AtomicDevsPackage.STATE_PHASE__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -359,6 +404,9 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 		case AtomicDevsPackage.STATE_PHASE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) newValue);
 			return;
+		case AtomicDevsPackage.STATE_PHASE__DESCRIPTION:
+			setDescription((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -386,6 +434,9 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 		case AtomicDevsPackage.STATE_PHASE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) null);
 			return;
+		case AtomicDevsPackage.STATE_PHASE__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -408,6 +459,8 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 			return phasevariable != null;
 		case AtomicDevsPackage.STATE_PHASE__ATOMICDEVS:
 			return getAtomicdevs() != null;
+		case AtomicDevsPackage.STATE_PHASE__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -425,6 +478,8 @@ public class StatePhaseImpl extends MinimalEObjectImpl.Container implements Stat
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (value: ");
 		result.append(value);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

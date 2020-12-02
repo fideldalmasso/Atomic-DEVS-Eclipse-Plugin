@@ -2,6 +2,8 @@
  */
 package atomicDevs.provider;
 
+import atomicDevs.ExternalTransition;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -71,7 +73,9 @@ public class ExternalTransitionItemProvider extends TransitionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ExternalTransition_type");
+		String label = ((ExternalTransition) object).getDescription();
+		return label == null || label.length() == 0 ? getString("_UI_ExternalTransition_type")
+				: getString("_UI_ExternalTransition_type") + " " + label;
 	}
 
 	/**

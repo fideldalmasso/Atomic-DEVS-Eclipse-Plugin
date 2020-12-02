@@ -5,7 +5,7 @@ package atomicDevs.impl;
 import atomicDevs.AtomicDEVS;
 import atomicDevs.AtomicDevsPackage;
 import atomicDevs.InitialState;
-import atomicDevs.Value;
+import atomicDevs.StateValue;
 
 import java.util.Collection;
 
@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link atomicDevs.impl.InitialStateImpl#getValue <em>Value</em>}</li>
  *   <li>{@link atomicDevs.impl.InitialStateImpl#getAtomicdevs <em>Atomicdevs</em>}</li>
+ *   <li>{@link atomicDevs.impl.InitialStateImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,7 +48,27 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Value> value;
+	protected EList<StateValue> value;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,9 +95,10 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 	 * @generated
 	 */
 	@Override
-	public EList<Value> getValue() {
+	public EList<StateValue> getValue() {
 		if (value == null) {
-			value = new EObjectContainmentEList<Value>(Value.class, this, AtomicDevsPackage.INITIAL_STATE__VALUE);
+			value = new EObjectContainmentEList<StateValue>(StateValue.class, this,
+					AtomicDevsPackage.INITIAL_STATE__VALUE);
 		}
 		return value;
 	}
@@ -126,6 +148,30 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS,
 					newAtomicdevs, newAtomicdevs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.INITIAL_STATE__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -187,6 +233,8 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 			return getValue();
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			return getAtomicdevs();
+		case AtomicDevsPackage.INITIAL_STATE__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,10 +250,13 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 		switch (featureID) {
 		case AtomicDevsPackage.INITIAL_STATE__VALUE:
 			getValue().clear();
-			getValue().addAll((Collection<? extends Value>) newValue);
+			getValue().addAll((Collection<? extends StateValue>) newValue);
 			return;
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) newValue);
+			return;
+		case AtomicDevsPackage.INITIAL_STATE__DESCRIPTION:
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,6 +276,9 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			setAtomicdevs((AtomicDEVS) null);
 			return;
+		case AtomicDevsPackage.INITIAL_STATE__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -241,8 +295,27 @@ public class InitialStateImpl extends MinimalEObjectImpl.Container implements In
 			return value != null && !value.isEmpty();
 		case AtomicDevsPackage.INITIAL_STATE__ATOMICDEVS:
 			return getAtomicdevs() != null;
+		case AtomicDevsPackage.INITIAL_STATE__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (description: ");
+		result.append(description);
+		result.append(')');
+		return result.toString();
 	}
 
 } //InitialStateImpl

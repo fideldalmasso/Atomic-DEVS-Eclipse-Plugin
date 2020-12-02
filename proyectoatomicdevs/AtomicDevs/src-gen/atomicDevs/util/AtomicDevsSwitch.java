@@ -2,43 +2,7 @@
  */
 package atomicDevs.util;
 
-import atomicDevs.AtomicDEVS;
-import atomicDevs.AtomicDevsPackage;
-import atomicDevs.Condition;
-import atomicDevs.CustomVariable;
-import atomicDevs.ExternalTransition;
-import atomicDevs.ExternalTransitionData;
-import atomicDevs.Infinity;
-import atomicDevs.InitialDot;
-import atomicDevs.InitialState;
-import atomicDevs.Input;
-import atomicDevs.InputPort;
-import atomicDevs.InternalTransition;
-import atomicDevs.InternalTransitionData;
-import atomicDevs.Output;
-import atomicDevs.OutputPort;
-import atomicDevs.Parameter;
-import atomicDevs.ParameterBoolean;
-import atomicDevs.ParameterDouble;
-import atomicDevs.ParameterInteger;
-import atomicDevs.ParameterList;
-import atomicDevs.ParameterString;
-import atomicDevs.ParameterUserDefined;
-import atomicDevs.ParameterValue;
-import atomicDevs.PhaseVariable;
-import atomicDevs.Port;
-import atomicDevs.PrimitiveType;
-import atomicDevs.SigmaVariable;
-import atomicDevs.StatePhase;
-import atomicDevs.StateStructure;
-import atomicDevs.StateVariable;
-import atomicDevs.Transition;
-import atomicDevs.TransitionData;
-import atomicDevs.Type;
-import atomicDevs.UserDefined;
-import atomicDevs.UserDefinedType;
-import atomicDevs.Value;
-import atomicDevs.ValueData;
+import atomicDevs.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -198,54 +162,54 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case AtomicDevsPackage.VALUE: {
-			Value value = (Value) theEObject;
-			T result = caseValue(value);
+		case AtomicDevsPackage.STATE_VALUE: {
+			StateValue stateValue = (StateValue) theEObject;
+			T result = caseStateValue(stateValue);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case AtomicDevsPackage.DOUBLE: {
-			atomicDevs.Double double_ = (atomicDevs.Double) theEObject;
-			T result = caseDouble(double_);
+		case AtomicDevsPackage.STATE_DOUBLE: {
+			StateDouble stateDouble = (StateDouble) theEObject;
+			T result = caseStateDouble(stateDouble);
 			if (result == null)
-				result = caseValue(double_);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case AtomicDevsPackage.STRING: {
-			atomicDevs.String string = (atomicDevs.String) theEObject;
-			T result = caseString(string);
-			if (result == null)
-				result = caseValue(string);
+				result = caseStateValue(stateDouble);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case AtomicDevsPackage.BOOLEAN: {
-			atomicDevs.Boolean boolean_ = (atomicDevs.Boolean) theEObject;
-			T result = caseBoolean(boolean_);
+		case AtomicDevsPackage.STATE_STRING: {
+			StateString stateString = (StateString) theEObject;
+			T result = caseStateString(stateString);
 			if (result == null)
-				result = caseValue(boolean_);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case AtomicDevsPackage.USER_DEFINED: {
-			UserDefined userDefined = (UserDefined) theEObject;
-			T result = caseUserDefined(userDefined);
-			if (result == null)
-				result = caseValue(userDefined);
+				result = caseStateValue(stateString);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case AtomicDevsPackage.INTEGER: {
-			atomicDevs.Integer integer = (atomicDevs.Integer) theEObject;
-			T result = caseInteger(integer);
+		case AtomicDevsPackage.STATE_BOOLEAN: {
+			StateBoolean stateBoolean = (StateBoolean) theEObject;
+			T result = caseStateBoolean(stateBoolean);
 			if (result == null)
-				result = caseValue(integer);
+				result = caseStateValue(stateBoolean);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.STATE_USER_DEFINED: {
+			StateUserDefined stateUserDefined = (StateUserDefined) theEObject;
+			T result = caseStateUserDefined(stateUserDefined);
+			if (result == null)
+				result = caseStateValue(stateUserDefined);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AtomicDevsPackage.STATE_INTEGER: {
+			StateInteger stateInteger = (StateInteger) theEObject;
+			T result = caseStateInteger(stateInteger);
+			if (result == null)
+				result = caseStateValue(stateInteger);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -254,9 +218,9 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 			Infinity infinity = (Infinity) theEObject;
 			T result = caseInfinity(infinity);
 			if (result == null)
-				result = caseDouble(infinity);
+				result = caseStateDouble(infinity);
 			if (result == null)
-				result = caseValue(infinity);
+				result = caseStateValue(infinity);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -614,92 +578,92 @@ public class AtomicDevsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseValue(Value object) {
+	public T caseStateValue(StateValue object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Double</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Double</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Double</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDouble(atomicDevs.Double object) {
+	public T caseStateDouble(StateDouble object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State String</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State String</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseString(atomicDevs.String object) {
+	public T caseStateString(StateString object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Boolean</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBoolean(atomicDevs.Boolean object) {
+	public T caseStateBoolean(StateBoolean object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>User Defined</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>User Defined</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State User Defined</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseUserDefined(UserDefined object) {
+	public T caseStateUserDefined(StateUserDefined object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>State Integer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>State Integer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInteger(atomicDevs.Integer object) {
+	public T caseStateInteger(StateInteger object) {
 		return null;
 	}
 

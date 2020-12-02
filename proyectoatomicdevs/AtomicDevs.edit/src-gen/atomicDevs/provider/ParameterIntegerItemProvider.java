@@ -44,24 +44,24 @@ public class ParameterIntegerItemProvider extends ParameterValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVariablePropertyDescriptor(object);
+			addParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Variable feature.
+	 * This adds a property descriptor for the Parameter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVariablePropertyDescriptor(Object object) {
+	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ParameterInteger_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ParameterInteger_variable_feature",
+						getResourceLocator(), getString("_UI_ParameterInteger_parameter_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ParameterInteger_parameter_feature",
 								"_UI_ParameterInteger_type"),
-						AtomicDevsPackage.Literals.PARAMETER_INTEGER__VARIABLE, false, false, false,
+						AtomicDevsPackage.Literals.PARAMETER_INTEGER__PARAMETER, false, false, false,
 						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -95,7 +95,7 @@ public class ParameterIntegerItemProvider extends ParameterValueItemProvider {
 	@Override
 	public String getText(Object object) {
 		ParameterInteger parameterInteger = (ParameterInteger) object;
-		return getString("_UI_ParameterInteger_type") + " " + parameterInteger.getVariable();
+		return getString("_UI_ParameterInteger_type") + " " + parameterInteger.getParameter();
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class ParameterIntegerItemProvider extends ParameterValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParameterInteger.class)) {
-		case AtomicDevsPackage.PARAMETER_INTEGER__VARIABLE:
+		case AtomicDevsPackage.PARAMETER_INTEGER__PARAMETER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link atomicDevs.ParameterValue#getAssociatedParameter <em>Associated Parameter</em>}</li>
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getParameterValue()
@@ -22,27 +22,27 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ParameterValue extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Parameter</b></em>' container reference.
+	 * Returns the value of the '<em><b>Associated Parameter</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link atomicDevs.Parameter#getParametervalue <em>Parametervalue</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter</em>' container reference.
-	 * @see #setParameter(Parameter)
-	 * @see atomicDevs.AtomicDevsPackage#getParameterValue_Parameter()
+	 * @return the value of the '<em>Associated Parameter</em>' container reference.
+	 * @see #setAssociatedParameter(Parameter)
+	 * @see atomicDevs.AtomicDevsPackage#getParameterValue_AssociatedParameter()
 	 * @see atomicDevs.Parameter#getParametervalue
 	 * @model opposite="parametervalue" required="true" transient="false"
 	 * @generated
 	 */
-	Parameter getParameter();
+	Parameter getAssociatedParameter();
 
 	/**
-	 * Sets the value of the '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}' container reference.
+	 * Sets the value of the '{@link atomicDevs.ParameterValue#getAssociatedParameter <em>Associated Parameter</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parameter</em>' container reference.
-	 * @see #getParameter()
+	 * @param value the new value of the '<em>Associated Parameter</em>' container reference.
+	 * @see #getAssociatedParameter()
 	 * @generated
 	 */
-	void setParameter(Parameter value);
+	void setAssociatedParameter(Parameter value);
 
 } // ParameterValue

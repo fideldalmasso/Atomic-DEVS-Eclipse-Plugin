@@ -2,8 +2,6 @@
  */
 package atomicDevs;
 
-import java.lang.String;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -153,13 +151,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int ATOMIC_DEVS__PARAMETERLIST = 8;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_DEVS__DESCRIPTION = 9;
+
+	/**
 	 * The number of structural features of the '<em>Atomic DEVS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_DEVS_FEATURE_COUNT = 9;
+	int ATOMIC_DEVS_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Atomic DEVS</em>' class.
@@ -236,13 +243,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int STATE_VARIABLE__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_VARIABLE__DESCRIPTION = 2;
+
+	/**
 	 * The number of structural features of the '<em>State Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_VARIABLE_FEATURE_COUNT = 2;
+	int STATE_VARIABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>State Variable</em>' class.
@@ -280,6 +296,15 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @ordered
 	 */
 	int PHASE_VARIABLE__NAME = STATE_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHASE_VARIABLE__DESCRIPTION = STATE_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>Phase Variable</em>' class.
@@ -328,6 +353,15 @@ public interface AtomicDevsPackage extends EPackage {
 	int SIGMA_VARIABLE__NAME = STATE_VARIABLE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGMA_VARIABLE__DESCRIPTION = STATE_VARIABLE__DESCRIPTION;
+
+	/**
 	 * The number of structural features of the '<em>Sigma Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -372,6 +406,15 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CUSTOM_VARIABLE__NAME = STATE_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VARIABLE__DESCRIPTION = STATE_VARIABLE__DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>Custom Variable</em>' class.
@@ -475,13 +518,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int STATE_PHASE__ATOMICDEVS = 4;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_PHASE__DESCRIPTION = 5;
+
+	/**
 	 * The number of structural features of the '<em>State Phase</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_PHASE_FEATURE_COUNT = 5;
+	int STATE_PHASE_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>State Phase</em>' class.
@@ -714,13 +766,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_STATE__ATOMICDEVS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_STATE__DESCRIPTION = 2;
+
+	/**
 	 * The number of structural features of the '<em>Initial State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INITIAL_STATE_FEATURE_COUNT = 2;
+	int INITIAL_STATE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Initial State</em>' class.
@@ -732,14 +793,14 @@ public interface AtomicDevsPackage extends EPackage {
 	int INITIAL_STATE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.ValueImpl <em>Value</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateValueImpl <em>State Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.ValueImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getValue()
+	 * @see atomicDevs.impl.StateValueImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateValue()
 	 * @generated
 	 */
-	int VALUE = 12;
+	int STATE_VALUE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -748,35 +809,35 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE__STATEVARIABLE = 0;
+	int STATE_VALUE__STATEVARIABLE = 0;
 
 	/**
-	 * The number of structural features of the '<em>Value</em>' class.
+	 * The number of structural features of the '<em>State Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_FEATURE_COUNT = 1;
+	int STATE_VALUE_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Value</em>' class.
+	 * The number of operations of the '<em>State Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OPERATION_COUNT = 0;
+	int STATE_VALUE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.DoubleImpl <em>Double</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateDoubleImpl <em>State Double</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.DoubleImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getDouble()
+	 * @see atomicDevs.impl.StateDoubleImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateDouble()
 	 * @generated
 	 */
-	int DOUBLE = 13;
+	int STATE_DOUBLE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -785,7 +846,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOUBLE__STATEVARIABLE = VALUE__STATEVARIABLE;
+	int STATE_DOUBLE__STATEVARIABLE = STATE_VALUE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -794,35 +855,35 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOUBLE__VARIABLE = VALUE_FEATURE_COUNT + 0;
+	int STATE_DOUBLE__VARIABLE = STATE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Double</em>' class.
+	 * The number of structural features of the '<em>State Double</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOUBLE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STATE_DOUBLE_FEATURE_COUNT = STATE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Double</em>' class.
+	 * The number of operations of the '<em>State Double</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOUBLE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int STATE_DOUBLE_OPERATION_COUNT = STATE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.StringImpl <em>String</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateStringImpl <em>State String</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.StringImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getString()
+	 * @see atomicDevs.impl.StateStringImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateString()
 	 * @generated
 	 */
-	int STRING = 14;
+	int STATE_STRING = 14;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -831,7 +892,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING__STATEVARIABLE = VALUE__STATEVARIABLE;
+	int STATE_STRING__STATEVARIABLE = STATE_VALUE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -840,35 +901,35 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING__VARIABLE = VALUE_FEATURE_COUNT + 0;
+	int STATE_STRING__VARIABLE = STATE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>String</em>' class.
+	 * The number of structural features of the '<em>State String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STATE_STRING_FEATURE_COUNT = STATE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>String</em>' class.
+	 * The number of operations of the '<em>State String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int STATE_STRING_OPERATION_COUNT = STATE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.BooleanImpl <em>Boolean</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateBooleanImpl <em>State Boolean</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.BooleanImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getBoolean()
+	 * @see atomicDevs.impl.StateBooleanImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 15;
+	int STATE_BOOLEAN = 15;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -877,7 +938,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN__STATEVARIABLE = VALUE__STATEVARIABLE;
+	int STATE_BOOLEAN__STATEVARIABLE = STATE_VALUE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -886,35 +947,35 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN__VARIABLE = VALUE_FEATURE_COUNT + 0;
+	int STATE_BOOLEAN__VARIABLE = STATE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Boolean</em>' class.
+	 * The number of structural features of the '<em>State Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STATE_BOOLEAN_FEATURE_COUNT = STATE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Boolean</em>' class.
+	 * The number of operations of the '<em>State Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int STATE_BOOLEAN_OPERATION_COUNT = STATE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.UserDefinedImpl <em>User Defined</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateUserDefinedImpl <em>State User Defined</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.UserDefinedImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getUserDefined()
+	 * @see atomicDevs.impl.StateUserDefinedImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateUserDefined()
 	 * @generated
 	 */
-	int USER_DEFINED = 16;
+	int STATE_USER_DEFINED = 16;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -923,7 +984,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_DEFINED__STATEVARIABLE = VALUE__STATEVARIABLE;
+	int STATE_USER_DEFINED__STATEVARIABLE = STATE_VALUE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -932,35 +993,35 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_DEFINED__VARIABLE = VALUE_FEATURE_COUNT + 0;
+	int STATE_USER_DEFINED__VARIABLE = STATE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>User Defined</em>' class.
+	 * The number of structural features of the '<em>State User Defined</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_DEFINED_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STATE_USER_DEFINED_FEATURE_COUNT = STATE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>User Defined</em>' class.
+	 * The number of operations of the '<em>State User Defined</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_DEFINED_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int STATE_USER_DEFINED_OPERATION_COUNT = STATE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link atomicDevs.impl.IntegerImpl <em>Integer</em>}' class.
+	 * The meta object id for the '{@link atomicDevs.impl.StateIntegerImpl <em>State Integer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see atomicDevs.impl.IntegerImpl
-	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInteger()
+	 * @see atomicDevs.impl.StateIntegerImpl
+	 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateInteger()
 	 * @generated
 	 */
-	int INTEGER = 17;
+	int STATE_INTEGER = 17;
 
 	/**
 	 * The feature id for the '<em><b>Statevariable</b></em>' reference.
@@ -969,7 +1030,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER__STATEVARIABLE = VALUE__STATEVARIABLE;
+	int STATE_INTEGER__STATEVARIABLE = STATE_VALUE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -978,25 +1039,25 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER__VARIABLE = VALUE_FEATURE_COUNT + 0;
+	int STATE_INTEGER__VARIABLE = STATE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Integer</em>' class.
+	 * The number of structural features of the '<em>State Integer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int STATE_INTEGER_FEATURE_COUNT = STATE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Integer</em>' class.
+	 * The number of operations of the '<em>State Integer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int STATE_INTEGER_OPERATION_COUNT = STATE_VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link atomicDevs.impl.InfinityImpl <em>Infinity</em>}' class.
@@ -1015,7 +1076,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFINITY__STATEVARIABLE = DOUBLE__STATEVARIABLE;
+	int INFINITY__STATEVARIABLE = STATE_DOUBLE__STATEVARIABLE;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1024,7 +1085,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFINITY__VARIABLE = DOUBLE__VARIABLE;
+	int INFINITY__VARIABLE = STATE_DOUBLE__VARIABLE;
 
 	/**
 	 * The number of structural features of the '<em>Infinity</em>' class.
@@ -1033,7 +1094,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFINITY_FEATURE_COUNT = DOUBLE_FEATURE_COUNT + 0;
+	int INFINITY_FEATURE_COUNT = STATE_DOUBLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Infinity</em>' class.
@@ -1042,7 +1103,7 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFINITY_OPERATION_COUNT = DOUBLE_OPERATION_COUNT + 0;
+	int INFINITY_OPERATION_COUNT = STATE_DOUBLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link atomicDevs.impl.TransitionImpl <em>Transition</em>}' class.
@@ -1082,13 +1143,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int TRANSITION__TRANSITIONDATA = 2;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__DESCRIPTION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = 3;
+	int TRANSITION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Transition</em>' class.
@@ -1174,6 +1244,15 @@ public interface AtomicDevsPackage extends EPackage {
 	int INTERNAL_TRANSITION__TRANSITIONDATA = TRANSITION__TRANSITIONDATA;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERNAL_TRANSITION__DESCRIPTION = TRANSITION__DESCRIPTION;
+
+	/**
 	 * The number of structural features of the '<em>Internal Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1227,6 +1306,15 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXTERNAL_TRANSITION__TRANSITIONDATA = TRANSITION__TRANSITIONDATA;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_TRANSITION__DESCRIPTION = TRANSITION__DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>External Transition</em>' class.
@@ -1357,13 +1445,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PORT__TYPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__DESCRIPTION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = 3;
+	int PORT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Port</em>' class.
@@ -1495,6 +1592,15 @@ public interface AtomicDevsPackage extends EPackage {
 	int OUTPUT_PORT__TYPE = PORT__TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PORT__DESCRIPTION = PORT__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1557,6 +1663,15 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PORT__TYPE = PORT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PORT__DESCRIPTION = PORT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Input</b></em>' reference list.
@@ -1715,13 +1830,13 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_VALUE = 37;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_VALUE__PARAMETER = 0;
+	int PARAMETER_VALUE__ASSOCIATED_PARAMETER = 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Value</em>' class.
@@ -1752,22 +1867,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_USER_DEFINED = 32;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_USER_DEFINED__PARAMETER = PARAMETER_VALUE__PARAMETER;
+	int PARAMETER_USER_DEFINED__ASSOCIATED_PARAMETER = PARAMETER_VALUE__ASSOCIATED_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_USER_DEFINED__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+	int PARAMETER_USER_DEFINED__PARAMETER = PARAMETER_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter User Defined</em>' class.
@@ -1798,22 +1913,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_INTEGER = 33;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_INTEGER__PARAMETER = PARAMETER_VALUE__PARAMETER;
+	int PARAMETER_INTEGER__ASSOCIATED_PARAMETER = PARAMETER_VALUE__ASSOCIATED_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_INTEGER__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+	int PARAMETER_INTEGER__PARAMETER = PARAMETER_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Integer</em>' class.
@@ -1844,22 +1959,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_DOUBLE = 34;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DOUBLE__PARAMETER = PARAMETER_VALUE__PARAMETER;
+	int PARAMETER_DOUBLE__ASSOCIATED_PARAMETER = PARAMETER_VALUE__ASSOCIATED_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DOUBLE__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+	int PARAMETER_DOUBLE__PARAMETER = PARAMETER_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Double</em>' class.
@@ -1890,22 +2005,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_STRING = 35;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_STRING__PARAMETER = PARAMETER_VALUE__PARAMETER;
+	int PARAMETER_STRING__ASSOCIATED_PARAMETER = PARAMETER_VALUE__ASSOCIATED_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_STRING__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+	int PARAMETER_STRING__PARAMETER = PARAMETER_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter String</em>' class.
@@ -1936,22 +2051,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER_BOOLEAN = 36;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' container reference.
+	 * The feature id for the '<em><b>Associated Parameter</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_BOOLEAN__PARAMETER = PARAMETER_VALUE__PARAMETER;
+	int PARAMETER_BOOLEAN__ASSOCIATED_PARAMETER = PARAMETER_VALUE__ASSOCIATED_PARAMETER;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' attribute.
+	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_BOOLEAN__VARIABLE = PARAMETER_VALUE_FEATURE_COUNT + 0;
+	int PARAMETER_BOOLEAN__PARAMETER = PARAMETER_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Boolean</em>' class.
@@ -2046,13 +2161,22 @@ public interface AtomicDevsPackage extends EPackage {
 	int PARAMETER__PARAMETERVALUE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__DESCRIPTION = 3;
+
+	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = 3;
+	int PARAMETER_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -2183,6 +2307,17 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getAtomicDEVS_Parameterlist();
 
 	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.AtomicDEVS#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.AtomicDEVS#getDescription()
+	 * @see #getAtomicDEVS()
+	 * @generated
+	 */
+	EAttribute getAtomicDEVS_Description();
+
+	/**
 	 * Returns the meta object for class '{@link atomicDevs.StateStructure <em>State Structure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2234,6 +2369,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStateVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateVariable#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.StateVariable#getDescription()
+	 * @see #getStateVariable()
+	 * @generated
+	 */
+	EAttribute getStateVariable_Description();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.PhaseVariable <em>Phase Variable</em>}'.
@@ -2341,6 +2487,17 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getStatePhase_Atomicdevs();
 
 	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.StatePhase#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.StatePhase#getDescription()
+	 * @see #getStatePhase()
+	 * @generated
+	 */
+	EAttribute getStatePhase_Description();
+
+	/**
 	 * Returns the meta object for class '{@link atomicDevs.PrimitiveType <em>Primitive Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2436,130 +2593,141 @@ public interface AtomicDevsPackage extends EPackage {
 	EReference getInitialState_Atomicdevs();
 
 	/**
-	 * Returns the meta object for class '{@link atomicDevs.Value <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.InitialState#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Value</em>'.
-	 * @see atomicDevs.Value
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.InitialState#getDescription()
+	 * @see #getInitialState()
 	 * @generated
 	 */
-	EClass getValue();
+	EAttribute getInitialState_Description();
 
 	/**
-	 * Returns the meta object for the reference '{@link atomicDevs.Value#getStatevariable <em>Statevariable</em>}'.
+	 * Returns the meta object for class '{@link atomicDevs.StateValue <em>State Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Value</em>'.
+	 * @see atomicDevs.StateValue
+	 * @generated
+	 */
+	EClass getStateValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link atomicDevs.StateValue#getStatevariable <em>Statevariable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Statevariable</em>'.
-	 * @see atomicDevs.Value#getStatevariable()
-	 * @see #getValue()
+	 * @see atomicDevs.StateValue#getStatevariable()
+	 * @see #getStateValue()
 	 * @generated
 	 */
-	EReference getValue_Statevariable();
+	EReference getStateValue_Statevariable();
 
 	/**
-	 * Returns the meta object for class '{@link atomicDevs.Double <em>Double</em>}'.
+	 * Returns the meta object for class '{@link atomicDevs.StateDouble <em>State Double</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Double</em>'.
-	 * @see atomicDevs.Double
+	 * @return the meta object for class '<em>State Double</em>'.
+	 * @see atomicDevs.StateDouble
 	 * @generated
 	 */
-	EClass getDouble();
+	EClass getStateDouble();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.Double#getVariable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.Double#getVariable()
-	 * @see #getDouble()
-	 * @generated
-	 */
-	EAttribute getDouble_Variable();
-
-	/**
-	 * Returns the meta object for class '{@link atomicDevs.String <em>String</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>String</em>'.
-	 * @see atomicDevs.String
-	 * @generated
-	 */
-	EClass getString();
-
-	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.String#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateDouble#getVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.String#getVariable()
-	 * @see #getString()
+	 * @see atomicDevs.StateDouble#getVariable()
+	 * @see #getStateDouble()
 	 * @generated
 	 */
-	EAttribute getString_Variable();
+	EAttribute getStateDouble_Variable();
 
 	/**
-	 * Returns the meta object for class '{@link atomicDevs.Boolean <em>Boolean</em>}'.
+	 * Returns the meta object for class '{@link atomicDevs.StateString <em>State String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean</em>'.
-	 * @see atomicDevs.Boolean
+	 * @return the meta object for class '<em>State String</em>'.
+	 * @see atomicDevs.StateString
 	 * @generated
 	 */
-	EClass getBoolean();
+	EClass getStateString();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.Boolean#isVariable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.Boolean#isVariable()
-	 * @see #getBoolean()
-	 * @generated
-	 */
-	EAttribute getBoolean_Variable();
-
-	/**
-	 * Returns the meta object for class '{@link atomicDevs.UserDefined <em>User Defined</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>User Defined</em>'.
-	 * @see atomicDevs.UserDefined
-	 * @generated
-	 */
-	EClass getUserDefined();
-
-	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.UserDefined#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateString#getVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.UserDefined#getVariable()
-	 * @see #getUserDefined()
+	 * @see atomicDevs.StateString#getVariable()
+	 * @see #getStateString()
 	 * @generated
 	 */
-	EAttribute getUserDefined_Variable();
+	EAttribute getStateString_Variable();
 
 	/**
-	 * Returns the meta object for class '{@link atomicDevs.Integer <em>Integer</em>}'.
+	 * Returns the meta object for class '{@link atomicDevs.StateBoolean <em>State Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer</em>'.
-	 * @see atomicDevs.Integer
+	 * @return the meta object for class '<em>State Boolean</em>'.
+	 * @see atomicDevs.StateBoolean
 	 * @generated
 	 */
-	EClass getInteger();
+	EClass getStateBoolean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.Integer#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateBoolean#isVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.Integer#getVariable()
-	 * @see #getInteger()
+	 * @see atomicDevs.StateBoolean#isVariable()
+	 * @see #getStateBoolean()
 	 * @generated
 	 */
-	EAttribute getInteger_Variable();
+	EAttribute getStateBoolean_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.StateUserDefined <em>State User Defined</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State User Defined</em>'.
+	 * @see atomicDevs.StateUserDefined
+	 * @generated
+	 */
+	EClass getStateUserDefined();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateUserDefined#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.StateUserDefined#getVariable()
+	 * @see #getStateUserDefined()
+	 * @generated
+	 */
+	EAttribute getStateUserDefined_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link atomicDevs.StateInteger <em>State Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Integer</em>'.
+	 * @see atomicDevs.StateInteger
+	 * @generated
+	 */
+	EClass getStateInteger();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.StateInteger#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable</em>'.
+	 * @see atomicDevs.StateInteger#getVariable()
+	 * @see #getStateInteger()
+	 * @generated
+	 */
+	EAttribute getStateInteger_Variable();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Infinity <em>Infinity</em>}'.
@@ -2613,6 +2781,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransition_Transitiondata();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.Transition#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.Transition#getDescription()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_Description();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Condition <em>Condition</em>}'.
@@ -2772,6 +2951,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPort_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.Port#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.Port#getDescription()
+	 * @see #getPort()
+	 * @generated
+	 */
+	EAttribute getPort_Description();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.Output <em>Output</em>}'.
@@ -2976,15 +3166,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterUserDefined();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterUserDefined#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterUserDefined#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.ParameterUserDefined#getVariable()
+	 * @return the meta object for the attribute '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterUserDefined#getParameter()
 	 * @see #getParameterUserDefined()
 	 * @generated
 	 */
-	EAttribute getParameterUserDefined_Variable();
+	EAttribute getParameterUserDefined_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterInteger <em>Parameter Integer</em>}'.
@@ -2997,15 +3187,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterInteger();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterInteger#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterInteger#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.ParameterInteger#getVariable()
+	 * @return the meta object for the attribute '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterInteger#getParameter()
 	 * @see #getParameterInteger()
 	 * @generated
 	 */
-	EAttribute getParameterInteger_Variable();
+	EAttribute getParameterInteger_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterDouble <em>Parameter Double</em>}'.
@@ -3018,15 +3208,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterDouble();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterDouble#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterDouble#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.ParameterDouble#getVariable()
+	 * @return the meta object for the attribute '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterDouble#getParameter()
 	 * @see #getParameterDouble()
 	 * @generated
 	 */
-	EAttribute getParameterDouble_Variable();
+	EAttribute getParameterDouble_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterString <em>Parameter String</em>}'.
@@ -3039,15 +3229,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterString();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterString#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterString#getParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.ParameterString#getVariable()
+	 * @return the meta object for the attribute '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterString#getParameter()
 	 * @see #getParameterString()
 	 * @generated
 	 */
-	EAttribute getParameterString_Variable();
+	EAttribute getParameterString_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterBoolean <em>Parameter Boolean</em>}'.
@@ -3060,15 +3250,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterBoolean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterBoolean#isVariable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link atomicDevs.ParameterBoolean#isParameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable</em>'.
-	 * @see atomicDevs.ParameterBoolean#isVariable()
+	 * @return the meta object for the attribute '<em>Parameter</em>'.
+	 * @see atomicDevs.ParameterBoolean#isParameter()
 	 * @see #getParameterBoolean()
 	 * @generated
 	 */
-	EAttribute getParameterBoolean_Variable();
+	EAttribute getParameterBoolean_Parameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterValue <em>Parameter Value</em>}'.
@@ -3081,15 +3271,15 @@ public interface AtomicDevsPackage extends EPackage {
 	EClass getParameterValue();
 
 	/**
-	 * Returns the meta object for the container reference '{@link atomicDevs.ParameterValue#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the container reference '{@link atomicDevs.ParameterValue#getAssociatedParameter <em>Associated Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parameter</em>'.
-	 * @see atomicDevs.ParameterValue#getParameter()
+	 * @return the meta object for the container reference '<em>Associated Parameter</em>'.
+	 * @see atomicDevs.ParameterValue#getAssociatedParameter()
 	 * @see #getParameterValue()
 	 * @generated
 	 */
-	EReference getParameterValue_Parameter();
+	EReference getParameterValue_AssociatedParameter();
 
 	/**
 	 * Returns the meta object for class '{@link atomicDevs.ParameterList <em>Parameter List</em>}'.
@@ -3154,6 +3344,17 @@ public interface AtomicDevsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getParameter_Parametervalue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link atomicDevs.Parameter#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see atomicDevs.Parameter#getDescription()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_Description();
 
 	/**
 	 * Returns the meta object for enum '{@link atomicDevs.Primitive <em>Primitive</em>}'.
@@ -3271,6 +3472,14 @@ public interface AtomicDevsPackage extends EPackage {
 		EReference ATOMIC_DEVS__PARAMETERLIST = eINSTANCE.getAtomicDEVS_Parameterlist();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATOMIC_DEVS__DESCRIPTION = eINSTANCE.getAtomicDEVS_Description();
+
+		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.StateStructureImpl <em>State Structure</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3313,6 +3522,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STATE_VARIABLE__NAME = eINSTANCE.getStateVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_VARIABLE__DESCRIPTION = eINSTANCE.getStateVariable_Description();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.PhaseVariableImpl <em>Phase Variable</em>}' class.
@@ -3405,6 +3622,14 @@ public interface AtomicDevsPackage extends EPackage {
 		EReference STATE_PHASE__ATOMICDEVS = eINSTANCE.getStatePhase_Atomicdevs();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_PHASE__DESCRIPTION = eINSTANCE.getStatePhase_Description();
+
+		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3485,14 +3710,22 @@ public interface AtomicDevsPackage extends EPackage {
 		EReference INITIAL_STATE__ATOMICDEVS = eINSTANCE.getInitialState_Atomicdevs();
 
 		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.ValueImpl <em>Value</em>}' class.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.ValueImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getValue()
 		 * @generated
 		 */
-		EClass VALUE = eINSTANCE.getValue();
+		EAttribute INITIAL_STATE__DESCRIPTION = eINSTANCE.getInitialState_Description();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.StateValueImpl <em>State Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.StateValueImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateValue()
+		 * @generated
+		 */
+		EClass STATE_VALUE = eINSTANCE.getStateValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Statevariable</b></em>' reference feature.
@@ -3500,35 +3733,17 @@ public interface AtomicDevsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VALUE__STATEVARIABLE = eINSTANCE.getValue_Statevariable();
+		EReference STATE_VALUE__STATEVARIABLE = eINSTANCE.getStateValue_Statevariable();
 
 		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.DoubleImpl <em>Double</em>}' class.
+		 * The meta object literal for the '{@link atomicDevs.impl.StateDoubleImpl <em>State Double</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.DoubleImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getDouble()
+		 * @see atomicDevs.impl.StateDoubleImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateDouble()
 		 * @generated
 		 */
-		EClass DOUBLE = eINSTANCE.getDouble();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOUBLE__VARIABLE = eINSTANCE.getDouble_Variable();
-
-		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.StringImpl <em>String</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.StringImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getString()
-		 * @generated
-		 */
-		EClass STRING = eINSTANCE.getString();
+		EClass STATE_DOUBLE = eINSTANCE.getStateDouble();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
@@ -3536,35 +3751,17 @@ public interface AtomicDevsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STRING__VARIABLE = eINSTANCE.getString_Variable();
+		EAttribute STATE_DOUBLE__VARIABLE = eINSTANCE.getStateDouble_Variable();
 
 		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.BooleanImpl <em>Boolean</em>}' class.
+		 * The meta object literal for the '{@link atomicDevs.impl.StateStringImpl <em>State String</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.BooleanImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getBoolean()
+		 * @see atomicDevs.impl.StateStringImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateString()
 		 * @generated
 		 */
-		EClass BOOLEAN = eINSTANCE.getBoolean();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOLEAN__VARIABLE = eINSTANCE.getBoolean_Variable();
-
-		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.UserDefinedImpl <em>User Defined</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.UserDefinedImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getUserDefined()
-		 * @generated
-		 */
-		EClass USER_DEFINED = eINSTANCE.getUserDefined();
+		EClass STATE_STRING = eINSTANCE.getStateString();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
@@ -3572,17 +3769,17 @@ public interface AtomicDevsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute USER_DEFINED__VARIABLE = eINSTANCE.getUserDefined_Variable();
+		EAttribute STATE_STRING__VARIABLE = eINSTANCE.getStateString_Variable();
 
 		/**
-		 * The meta object literal for the '{@link atomicDevs.impl.IntegerImpl <em>Integer</em>}' class.
+		 * The meta object literal for the '{@link atomicDevs.impl.StateBooleanImpl <em>State Boolean</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see atomicDevs.impl.IntegerImpl
-		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getInteger()
+		 * @see atomicDevs.impl.StateBooleanImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateBoolean()
 		 * @generated
 		 */
-		EClass INTEGER = eINSTANCE.getInteger();
+		EClass STATE_BOOLEAN = eINSTANCE.getStateBoolean();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
@@ -3590,7 +3787,43 @@ public interface AtomicDevsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INTEGER__VARIABLE = eINSTANCE.getInteger_Variable();
+		EAttribute STATE_BOOLEAN__VARIABLE = eINSTANCE.getStateBoolean_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.StateUserDefinedImpl <em>State User Defined</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.StateUserDefinedImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateUserDefined()
+		 * @generated
+		 */
+		EClass STATE_USER_DEFINED = eINSTANCE.getStateUserDefined();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_USER_DEFINED__VARIABLE = eINSTANCE.getStateUserDefined_Variable();
+
+		/**
+		 * The meta object literal for the '{@link atomicDevs.impl.StateIntegerImpl <em>State Integer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see atomicDevs.impl.StateIntegerImpl
+		 * @see atomicDevs.impl.AtomicDevsPackageImpl#getStateInteger()
+		 * @generated
+		 */
+		EClass STATE_INTEGER = eINSTANCE.getStateInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STATE_INTEGER__VARIABLE = eINSTANCE.getStateInteger_Variable();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.InfinityImpl <em>Infinity</em>}' class.
@@ -3635,6 +3868,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION__TRANSITIONDATA = eINSTANCE.getTransition_Transitiondata();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__DESCRIPTION = eINSTANCE.getTransition_Description();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ConditionImpl <em>Condition</em>}' class.
@@ -3768,6 +4009,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PORT__TYPE = eINSTANCE.getPort_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PORT__DESCRIPTION = eINSTANCE.getPort_Description();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.OutputImpl <em>Output</em>}' class.
@@ -3936,12 +4185,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_USER_DEFINED = eINSTANCE.getParameterUserDefined();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_USER_DEFINED__VARIABLE = eINSTANCE.getParameterUserDefined_Variable();
+		EAttribute PARAMETER_USER_DEFINED__PARAMETER = eINSTANCE.getParameterUserDefined_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterIntegerImpl <em>Parameter Integer</em>}' class.
@@ -3954,12 +4203,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_INTEGER = eINSTANCE.getParameterInteger();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_INTEGER__VARIABLE = eINSTANCE.getParameterInteger_Variable();
+		EAttribute PARAMETER_INTEGER__PARAMETER = eINSTANCE.getParameterInteger_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterDoubleImpl <em>Parameter Double</em>}' class.
@@ -3972,12 +4221,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_DOUBLE = eINSTANCE.getParameterDouble();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_DOUBLE__VARIABLE = eINSTANCE.getParameterDouble_Variable();
+		EAttribute PARAMETER_DOUBLE__PARAMETER = eINSTANCE.getParameterDouble_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterStringImpl <em>Parameter String</em>}' class.
@@ -3990,12 +4239,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_STRING = eINSTANCE.getParameterString();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_STRING__VARIABLE = eINSTANCE.getParameterString_Variable();
+		EAttribute PARAMETER_STRING__PARAMETER = eINSTANCE.getParameterString_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterBooleanImpl <em>Parameter Boolean</em>}' class.
@@ -4008,12 +4257,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_BOOLEAN = eINSTANCE.getParameterBoolean();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER_BOOLEAN__VARIABLE = eINSTANCE.getParameterBoolean_Variable();
+		EAttribute PARAMETER_BOOLEAN__PARAMETER = eINSTANCE.getParameterBoolean_Parameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterValueImpl <em>Parameter Value</em>}' class.
@@ -4026,12 +4275,12 @@ public interface AtomicDevsPackage extends EPackage {
 		EClass PARAMETER_VALUE = eINSTANCE.getParameterValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Associated Parameter</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARAMETER_VALUE__PARAMETER = eINSTANCE.getParameterValue_Parameter();
+		EReference PARAMETER_VALUE__ASSOCIATED_PARAMETER = eINSTANCE.getParameterValue_AssociatedParameter();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.impl.ParameterListImpl <em>Parameter List</em>}' class.
@@ -4084,6 +4333,14 @@ public interface AtomicDevsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PARAMETER__PARAMETERVALUE = eINSTANCE.getParameter_Parametervalue();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
 
 		/**
 		 * The meta object literal for the '{@link atomicDevs.Primitive <em>Primitive</em>}' enum.

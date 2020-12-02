@@ -326,118 +326,118 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Double} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.StateDouble} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DoubleItemProvider doubleItemProvider;
+	protected StateDoubleItemProvider stateDoubleItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.Double}.
+	 * This creates an adapter for a {@link atomicDevs.StateDouble}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDoubleAdapter() {
-		if (doubleItemProvider == null) {
-			doubleItemProvider = new DoubleItemProvider(this);
+	public Adapter createStateDoubleAdapter() {
+		if (stateDoubleItemProvider == null) {
+			stateDoubleItemProvider = new StateDoubleItemProvider(this);
 		}
 
-		return doubleItemProvider;
+		return stateDoubleItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.String} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.StateString} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringItemProvider stringItemProvider;
+	protected StateStringItemProvider stateStringItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.String}.
+	 * This creates an adapter for a {@link atomicDevs.StateString}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringAdapter() {
-		if (stringItemProvider == null) {
-			stringItemProvider = new StringItemProvider(this);
+	public Adapter createStateStringAdapter() {
+		if (stateStringItemProvider == null) {
+			stateStringItemProvider = new StateStringItemProvider(this);
 		}
 
-		return stringItemProvider;
+		return stateStringItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Boolean} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.StateBoolean} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BooleanItemProvider booleanItemProvider;
+	protected StateBooleanItemProvider stateBooleanItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.Boolean}.
+	 * This creates an adapter for a {@link atomicDevs.StateBoolean}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBooleanAdapter() {
-		if (booleanItemProvider == null) {
-			booleanItemProvider = new BooleanItemProvider(this);
+	public Adapter createStateBooleanAdapter() {
+		if (stateBooleanItemProvider == null) {
+			stateBooleanItemProvider = new StateBooleanItemProvider(this);
 		}
 
-		return booleanItemProvider;
+		return stateBooleanItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.UserDefined} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.StateUserDefined} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UserDefinedItemProvider userDefinedItemProvider;
+	protected StateUserDefinedItemProvider stateUserDefinedItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.UserDefined}.
+	 * This creates an adapter for a {@link atomicDevs.StateUserDefined}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createUserDefinedAdapter() {
-		if (userDefinedItemProvider == null) {
-			userDefinedItemProvider = new UserDefinedItemProvider(this);
+	public Adapter createStateUserDefinedAdapter() {
+		if (stateUserDefinedItemProvider == null) {
+			stateUserDefinedItemProvider = new StateUserDefinedItemProvider(this);
 		}
 
-		return userDefinedItemProvider;
+		return stateUserDefinedItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link atomicDevs.Integer} instances.
+	 * This keeps track of the one adapter used for all {@link atomicDevs.StateInteger} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IntegerItemProvider integerItemProvider;
+	protected StateIntegerItemProvider stateIntegerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link atomicDevs.Integer}.
+	 * This creates an adapter for a {@link atomicDevs.StateInteger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createIntegerAdapter() {
-		if (integerItemProvider == null) {
-			integerItemProvider = new IntegerItemProvider(this);
+	public Adapter createStateIntegerAdapter() {
+		if (stateIntegerItemProvider == null) {
+			stateIntegerItemProvider = new StateIntegerItemProvider(this);
 		}
 
-		return integerItemProvider;
+		return stateIntegerItemProvider;
 	}
 
 	/**
@@ -1004,16 +1004,16 @@ public class AtomicDevsItemProviderAdapterFactory extends AtomicDevsAdapterFacto
 			internalTransitionDataItemProvider.dispose();
 		if (initialStateItemProvider != null)
 			initialStateItemProvider.dispose();
-		if (doubleItemProvider != null)
-			doubleItemProvider.dispose();
-		if (stringItemProvider != null)
-			stringItemProvider.dispose();
-		if (booleanItemProvider != null)
-			booleanItemProvider.dispose();
-		if (userDefinedItemProvider != null)
-			userDefinedItemProvider.dispose();
-		if (integerItemProvider != null)
-			integerItemProvider.dispose();
+		if (stateDoubleItemProvider != null)
+			stateDoubleItemProvider.dispose();
+		if (stateStringItemProvider != null)
+			stateStringItemProvider.dispose();
+		if (stateBooleanItemProvider != null)
+			stateBooleanItemProvider.dispose();
+		if (stateUserDefinedItemProvider != null)
+			stateUserDefinedItemProvider.dispose();
+		if (stateIntegerItemProvider != null)
+			stateIntegerItemProvider.dispose();
 		if (infinityItemProvider != null)
 			infinityItemProvider.dispose();
 		if (conditionItemProvider != null)

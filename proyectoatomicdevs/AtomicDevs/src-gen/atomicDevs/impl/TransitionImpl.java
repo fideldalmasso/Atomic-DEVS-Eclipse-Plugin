@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link atomicDevs.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link atomicDevs.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link atomicDevs.impl.TransitionImpl#getTransitiondata <em>Transitiondata</em>}</li>
+ *   <li>{@link atomicDevs.impl.TransitionImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +62,26 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected TransitionData transitiondata;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -279,6 +300,30 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.TRANSITION__DESCRIPTION,
+					oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case AtomicDevsPackage.TRANSITION__TARGET:
@@ -336,6 +381,8 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 			return basicGetSource();
 		case AtomicDevsPackage.TRANSITION__TRANSITIONDATA:
 			return getTransitiondata();
+		case AtomicDevsPackage.TRANSITION__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -356,6 +403,9 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 			return;
 		case AtomicDevsPackage.TRANSITION__TRANSITIONDATA:
 			setTransitiondata((TransitionData) newValue);
+			return;
+		case AtomicDevsPackage.TRANSITION__DESCRIPTION:
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -378,6 +428,9 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 		case AtomicDevsPackage.TRANSITION__TRANSITIONDATA:
 			setTransitiondata((TransitionData) null);
 			return;
+		case AtomicDevsPackage.TRANSITION__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -396,8 +449,27 @@ public abstract class TransitionImpl extends MinimalEObjectImpl.Container implem
 			return source != null;
 		case AtomicDevsPackage.TRANSITION__TRANSITIONDATA:
 			return transitiondata != null;
+		case AtomicDevsPackage.TRANSITION__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (description: ");
+		result.append(description);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TransitionImpl

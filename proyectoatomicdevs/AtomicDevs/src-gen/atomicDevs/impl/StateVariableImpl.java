@@ -6,8 +6,6 @@ import atomicDevs.AtomicDevsPackage;
 import atomicDevs.StateVariable;
 import atomicDevs.Type;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -26,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link atomicDevs.impl.StateVariableImpl#getType <em>Type</em>}</li>
  *   <li>{@link atomicDevs.impl.StateVariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link atomicDevs.impl.StateVariableImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +59,26 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +171,30 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION,
+					oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case AtomicDevsPackage.STATE_VARIABLE__TYPE:
@@ -160,6 +203,8 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 			return basicGetType();
 		case AtomicDevsPackage.STATE_VARIABLE__NAME:
 			return getName();
+		case AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -177,6 +222,9 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 			return;
 		case AtomicDevsPackage.STATE_VARIABLE__NAME:
 			setName((String) newValue);
+			return;
+		case AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION:
+			setDescription((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -196,6 +244,9 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 		case AtomicDevsPackage.STATE_VARIABLE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
+		case AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -212,6 +263,8 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 			return type != null;
 		case AtomicDevsPackage.STATE_VARIABLE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case AtomicDevsPackage.STATE_VARIABLE__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -229,6 +282,8 @@ public abstract class StateVariableImpl extends MinimalEObjectImpl.Container imp
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

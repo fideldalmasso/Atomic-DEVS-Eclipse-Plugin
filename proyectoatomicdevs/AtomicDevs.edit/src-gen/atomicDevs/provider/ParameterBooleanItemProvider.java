@@ -44,24 +44,24 @@ public class ParameterBooleanItemProvider extends ParameterValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVariablePropertyDescriptor(object);
+			addParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Variable feature.
+	 * This adds a property descriptor for the Parameter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVariablePropertyDescriptor(Object object) {
+	protected void addParameterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ParameterBoolean_variable_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ParameterBoolean_variable_feature",
+						getResourceLocator(), getString("_UI_ParameterBoolean_parameter_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ParameterBoolean_parameter_feature",
 								"_UI_ParameterBoolean_type"),
-						AtomicDevsPackage.Literals.PARAMETER_BOOLEAN__VARIABLE, false, false, false,
+						AtomicDevsPackage.Literals.PARAMETER_BOOLEAN__PARAMETER, false, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -95,7 +95,7 @@ public class ParameterBooleanItemProvider extends ParameterValueItemProvider {
 	@Override
 	public String getText(Object object) {
 		ParameterBoolean parameterBoolean = (ParameterBoolean) object;
-		return getString("_UI_ParameterBoolean_type") + " " + parameterBoolean.isVariable();
+		return getString("_UI_ParameterBoolean_type") + " " + parameterBoolean.isParameter();
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class ParameterBooleanItemProvider extends ParameterValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParameterBoolean.class)) {
-		case AtomicDevsPackage.PARAMETER_BOOLEAN__VARIABLE:
+		case AtomicDevsPackage.PARAMETER_BOOLEAN__PARAMETER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
