@@ -65,6 +65,10 @@ public class Page01 extends WizardNewFileCreationPage {
 	 * @generated
 	 */
 
+	public String getModelDescription() {
+		return description==null?"":description.getText();
+	}
+	
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);

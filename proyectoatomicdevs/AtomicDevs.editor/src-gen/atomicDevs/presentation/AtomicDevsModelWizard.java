@@ -378,7 +378,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 		
 		AtomicDEVS atomicDEVSObject = (AtomicDEVS) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("AtomicDEVS"));
 		atomicDEVSObject.setName(modelName);
-		atomicDEVSObject.setDescription(modelDescription);
+		atomicDEVSObject.setDescription(page01.getModelDescription());
 		
 		StateStructure stateStructureObject = (StateStructure) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("StateStructure"));
 		atomicDEVSObject.setDefinition(stateStructureObject);
