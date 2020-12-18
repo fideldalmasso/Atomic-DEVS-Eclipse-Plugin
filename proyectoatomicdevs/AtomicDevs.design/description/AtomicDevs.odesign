@@ -498,7 +498,9 @@
             <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="OutputPort" valueExpression="aql:self.output.outputport" candidatesExpression="aql:self.eContainer().eContainer().includesOutputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+') ('+candidate.type.toString().tokenize()->at(3)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outputport" valueExpression="var:newValue"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.output">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outputport" valueExpression="var:newValue"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </controls>
@@ -558,7 +560,9 @@
             <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="InputPort" valueExpression="aql:self.input.inputport" candidatesExpression="aql:self.eContainer().eContainer().includesInputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+') ('+candidate.type.toString().tokenize()->at(3)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outputport" valueExpression="var:newValue"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.input">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="inputport" valueExpression="var:newValue"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </controls>
