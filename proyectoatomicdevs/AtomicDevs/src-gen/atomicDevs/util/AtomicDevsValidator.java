@@ -506,7 +506,48 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateStatePhase(StatePhase statePhase, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(statePhase, diagnostics, context);
+		if (!validate_NoCircularContainment(statePhase, diagnostics, context))
+			return false;
+		boolean result = validate_EveryMultiplicityConforms(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(statePhase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStatePhase_statePhaseCannotBeIsolated(statePhase, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the statePhaseCannotBeIsolated constraint of '<em>State Phase</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String STATE_PHASE__STATE_PHASE_CANNOT_BE_ISOLATED__EEXPRESSION = "\n"
+			+ "\t\t(self.transitionIn->size() <> 0) or (self.transitionOut->size() <> 0)";
+
+	/**
+	 * Validates the statePhaseCannotBeIsolated constraint of '<em>State Phase</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStatePhase_statePhaseCannotBeIsolated(StatePhase statePhase, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return validate(AtomicDevsPackage.Literals.STATE_PHASE, statePhase, diagnostics, context,
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "statePhaseCannotBeIsolated",
+				STATE_PHASE__STATE_PHASE_CANNOT_BE_ISOLATED__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -795,29 +836,29 @@ public class AtomicDevsValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(stateUserDefined, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateStateUserDefined_typeIsString(stateUserDefined, diagnostics, context);
+			result &= validateStateUserDefined_typeIsUserDefined(stateUserDefined, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the typeIsString constraint of '<em>State User Defined</em>'.
+	 * The cached validation expression for the typeIsUserDefined constraint of '<em>State User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String STATE_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+	protected static final String STATE_USER_DEFINED__TYPE_IS_USER_DEFINED__EEXPRESSION = "self.statevariable.type.oclIsTypeOf(UserDefinedType)";
 
 	/**
-	 * Validates the typeIsString constraint of '<em>State User Defined</em>'.
+	 * Validates the typeIsUserDefined constraint of '<em>State User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateStateUserDefined_typeIsString(StateUserDefined stateUserDefined, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public boolean validateStateUserDefined_typeIsUserDefined(StateUserDefined stateUserDefined,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate(AtomicDevsPackage.Literals.STATE_USER_DEFINED, stateUserDefined, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString",
-				STATE_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsUserDefined",
+				STATE_USER_DEFINED__TYPE_IS_USER_DEFINED__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -1100,7 +1141,7 @@ public class AtomicDevsValidator extends EObjectValidator {
 	 * @generated
 	 */
 	protected static final String VALUE_DATA__VALUE_MATCHES_TARGET_PHASE_WHEN_STATE_VARIABLE_IS_PHASE__EEXPRESSION = "\n"
-			+ "\t\tself.statevariable.name='phase' implies \n"
+			+ "\t\tself.statevariable.name='Phase' implies \n"
 			+ "\t\tself.value = self.transitiondata.transition.target.value";
 
 	/**
@@ -1151,29 +1192,29 @@ public class AtomicDevsValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(parameterUserDefined, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameterUserDefined_typeIsString(parameterUserDefined, diagnostics, context);
+			result &= validateParameterUserDefined_typeIsUserDefined(parameterUserDefined, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the typeIsString constraint of '<em>Parameter User Defined</em>'.
+	 * The cached validation expression for the typeIsUserDefined constraint of '<em>Parameter User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION = "self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING";
+	protected static final String PARAMETER_USER_DEFINED__TYPE_IS_USER_DEFINED__EEXPRESSION = "self.associatedParameter.type.oclIsTypeOf(UserDefinedType)";
 
 	/**
-	 * Validates the typeIsString constraint of '<em>Parameter User Defined</em>'.
+	 * Validates the typeIsUserDefined constraint of '<em>Parameter User Defined</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameterUserDefined_typeIsString(ParameterUserDefined parameterUserDefined,
+	public boolean validateParameterUserDefined_typeIsUserDefined(ParameterUserDefined parameterUserDefined,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate(AtomicDevsPackage.Literals.PARAMETER_USER_DEFINED, parameterUserDefined, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsString",
-				PARAMETER_USER_DEFINED__TYPE_IS_STRING__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "typeIsUserDefined",
+				PARAMETER_USER_DEFINED__TYPE_IS_USER_DEFINED__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**
@@ -1420,30 +1461,30 @@ public class AtomicDevsValidator extends EObjectValidator {
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(parameter, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateParameter_nameStartsWithAtSign(parameter, diagnostics, context);
+			result &= validateParameter_parameterNameStartsWithAtSign(parameter, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the nameStartsWithAtSign constraint of '<em>Parameter</em>'.
+	 * The cached validation expression for the parameterNameStartsWithAtSign constraint of '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER__NAME_STARTS_WITH_AT_SIGN__EEXPRESSION = "\n"
+	protected static final String PARAMETER__PARAMETER_NAME_STARTS_WITH_AT_SIGN__EEXPRESSION = "\n"
 			+ "\t\t\tself.name.substring(1,1)='@'";
 
 	/**
-	 * Validates the nameStartsWithAtSign constraint of '<em>Parameter</em>'.
+	 * Validates the parameterNameStartsWithAtSign constraint of '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateParameter_nameStartsWithAtSign(Parameter parameter, DiagnosticChain diagnostics,
+	public boolean validateParameter_parameterNameStartsWithAtSign(Parameter parameter, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return validate(AtomicDevsPackage.Literals.PARAMETER, parameter, diagnostics, context,
-				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "nameStartsWithAtSign",
-				PARAMETER__NAME_STARTS_WITH_AT_SIGN__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
+				"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", "parameterNameStartsWithAtSign",
+				PARAMETER__PARAMETER_NAME_STARTS_WITH_AT_SIGN__EEXPRESSION, Diagnostic.ERROR, DIAGNOSTIC_SOURCE, 0);
 	}
 
 	/**

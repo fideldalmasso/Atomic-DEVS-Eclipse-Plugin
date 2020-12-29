@@ -24,7 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getStatePhase()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='statePhaseCannotBeIsolated'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot statePhaseCannotBeIsolated='\n\t\t(self.transitionIn-&gt;size() &lt;&gt; 0) or (self.transitionOut-&gt;size() &lt;&gt; 0)'"
  * @generated
  */
 public interface StatePhase extends EObject {
@@ -35,7 +36,7 @@ public interface StatePhase extends EObject {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see atomicDevs.AtomicDevsPackage#getStatePhase_Value()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getValue();

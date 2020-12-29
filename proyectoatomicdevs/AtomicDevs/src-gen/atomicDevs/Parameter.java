@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getParameter()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='nameStartsWithAtSign'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot nameStartsWithAtSign='\n\t\t\tself.name.substring(1,1)=\'@\''"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='parameterNameStartsWithAtSign'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot parameterNameStartsWithAtSign='\n\t\t\tself.name.substring(1,1)=\'@\''"
  * @generated
  */
 public interface Parameter extends EObject {

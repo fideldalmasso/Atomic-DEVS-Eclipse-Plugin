@@ -15,8 +15,8 @@ package atomicDevs;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getParameterUserDefined()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='typeIsString'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot typeIsString='self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='typeIsUserDefined'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot typeIsUserDefined='self.associatedParameter.type.oclIsTypeOf(UserDefinedType)'"
  * @generated
  */
 public interface ParameterUserDefined extends ParameterValue {

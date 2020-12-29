@@ -76,7 +76,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="CustomVariable" eSuperTypes="#//StateVariable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="StatePhase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="statePhaseCannotBeIsolated"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="statePhaseCannotBeIsolated" value="&#xA;&#x9;&#x9;(self.transitionIn->size() &lt;> 0) or (self.transitionOut->size() &lt;> 0)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionIn" upperBound="-1"
         eType="#//Transition" eOpposite="#//Transition/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transitionOut" upperBound="-1"
@@ -155,10 +162,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateUserDefined" eSuperTypes="#//StateValue">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="typeIsString"/>
+      <details key="constraints" value="typeIsUserDefined"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="typeIsString" value="self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+      <details key="typeIsUserDefined" value="self.statevariable.type.oclIsTypeOf(UserDefinedType)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -214,7 +221,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Port">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
@@ -242,7 +249,7 @@
       <details key="constraints" value="valueMatchesTargetPhaseWhenStateVariableIsPhase"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="valueMatchesTargetPhaseWhenStateVariableIsPhase" value="&#xA;&#x9;&#x9;self.statevariable.name='phase' implies &#xA;&#x9;&#x9;self.value = self.transitiondata.transition.target.value"/>
+      <details key="valueMatchesTargetPhaseWhenStateVariableIsPhase" value="&#xA;&#x9;&#x9;self.statevariable.name='Phase' implies &#xA;&#x9;&#x9;self.value = self.transitiondata.transition.target.value"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statevariable" eType="#//StateVariable"/>
@@ -260,10 +267,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterUserDefined" eSuperTypes="#//ParameterValue">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="typeIsString"/>
+      <details key="constraints" value="typeIsUserDefined"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="typeIsString" value="self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING"/>
+      <details key="typeIsUserDefined" value="self.associatedParameter.type.oclIsTypeOf(UserDefinedType)"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameter" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -318,10 +325,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="nameStartsWithAtSign"/>
+      <details key="constraints" value="parameterNameStartsWithAtSign"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="nameStartsWithAtSign" value="&#xA;&#x9;&#x9;&#x9;self.name.substring(1,1)='@'"/>
+      <details key="parameterNameStartsWithAtSign" value="&#xA;&#x9;&#x9;&#x9;self.name.substring(1,1)='@'"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>

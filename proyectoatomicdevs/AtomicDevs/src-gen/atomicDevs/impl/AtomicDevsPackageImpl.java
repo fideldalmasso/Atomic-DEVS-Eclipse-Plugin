@@ -1822,7 +1822,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEClass(statePhaseEClass, StatePhase.class, "StatePhase", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStatePhase_Value(), ecorePackage.getEString(), "value", null, 1, 1, StatePhase.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStatePhase_TransitionIn(), this.getTransition(), this.getTransition_Target(), "transitionIn",
 				null, 0, -1, StatePhase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1954,7 +1954,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		initEAttribute(getPort_Name(), ecorePackage.getEString(), "name", null, 1, 1, Port.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPort_Variable(), ecorePackage.getEString(), "variable", null, 1, 1, Port.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPort_Type(), this.getType(), null, "type", null, 1, 1, Port.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
@@ -2115,21 +2115,22 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				new String[] { "constraints", "mustHavePhaseVariable mustHaveSigmaVariable" });
 		addAnnotation(phaseVariableEClass, source, new String[] { "constraints", "typeIsString nameIsPhase" });
 		addAnnotation(sigmaVariableEClass, source, new String[] { "constraints", "typeIsDouble nameIsSigma" });
+		addAnnotation(statePhaseEClass, source, new String[] { "constraints", "statePhaseCannotBeIsolated" });
 		addAnnotation(initialStateEClass, source, new String[] { "constraints", "everyVariableMustHaveAValue" });
 		addAnnotation(stateDoubleEClass, source, new String[] { "constraints", "typeIsDouble" });
 		addAnnotation(stateStringEClass, source, new String[] { "constraints", "typeIsString" });
 		addAnnotation(stateBooleanEClass, source, new String[] { "constraints", "typeIsBoolean" });
-		addAnnotation(stateUserDefinedEClass, source, new String[] { "constraints", "typeIsString" });
+		addAnnotation(stateUserDefinedEClass, source, new String[] { "constraints", "typeIsUserDefined" });
 		addAnnotation(stateIntegerEClass, source, new String[] { "constraints", "typeIsInteger" });
 		addAnnotation(transitionDataEClass, source, new String[] { "constraints", "everyVariableMustHaveAValueData" });
 		addAnnotation(valueDataEClass, source,
 				new String[] { "constraints", "valueMatchesTargetPhaseWhenStateVariableIsPhase" });
-		addAnnotation(parameterUserDefinedEClass, source, new String[] { "constraints", "typeIsString" });
+		addAnnotation(parameterUserDefinedEClass, source, new String[] { "constraints", "typeIsUserDefined" });
 		addAnnotation(parameterIntegerEClass, source, new String[] { "constraints", "typeIsInteger" });
 		addAnnotation(parameterDoubleEClass, source, new String[] { "constraints", "typeIsDouble" });
 		addAnnotation(parameterStringEClass, source, new String[] { "constraints", "typeIsString" });
 		addAnnotation(parameterBooleanEClass, source, new String[] { "constraints", "typeIsBoolean" });
-		addAnnotation(parameterEClass, source, new String[] { "constraints", "nameStartsWithAtSign" });
+		addAnnotation(parameterEClass, source, new String[] { "constraints", "parameterNameStartsWithAtSign" });
 	}
 
 	/**
@@ -2156,6 +2157,8 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		addAnnotation(sigmaVariableEClass, source,
 				new String[] { "typeIsDouble", "\n\t\tself.type.oclAsType(PrimitiveType).primitive = Primitive::DOUBLE",
 						"nameIsSigma", "\n\t\tself.name = \'Sigma\'" });
+		addAnnotation(statePhaseEClass, source, new String[] { "statePhaseCannotBeIsolated",
+				"\n\t\t(self.transitionIn->size() <> 0) or (self.transitionOut->size() <> 0)" });
 		addAnnotation(initialStateEClass, source, new String[] { "everyVariableMustHaveAValue",
 				"\n\t\tself.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.value->one(sv:StateValue|sv.statevariable = s)\n\t\t)" });
 		addAnnotation(stateDoubleEClass, source, new String[] { "typeIsDouble",
@@ -2164,16 +2167,16 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
 		addAnnotation(stateBooleanEClass, source, new String[] { "typeIsBoolean",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN" });
-		addAnnotation(stateUserDefinedEClass, source, new String[] { "typeIsString",
-				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
+		addAnnotation(stateUserDefinedEClass, source,
+				new String[] { "typeIsUserDefined", "self.statevariable.type.oclIsTypeOf(UserDefinedType)" });
 		addAnnotation(stateIntegerEClass, source, new String[] { "typeIsInteger",
 				"self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER" });
 		addAnnotation(transitionDataEClass, source, new String[] { "everyVariableMustHaveAValueData",
 				"\n\t\tself.transition.source.atomicdevs.definition.statevariable->\n\t\tforAll(s: StateVariable | \n\t\t\tself.valuedata->one(vd:ValueData|vd.statevariable = s)\n\t\t)" });
 		addAnnotation(valueDataEClass, source, new String[] { "valueMatchesTargetPhaseWhenStateVariableIsPhase",
-				"\n\t\tself.statevariable.name=\'phase\' implies \n\t\tself.value = self.transitiondata.transition.target.value" });
-		addAnnotation(parameterUserDefinedEClass, source, new String[] { "typeIsString",
-				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::STRING" });
+				"\n\t\tself.statevariable.name=\'Phase\' implies \n\t\tself.value = self.transitiondata.transition.target.value" });
+		addAnnotation(parameterUserDefinedEClass, source,
+				new String[] { "typeIsUserDefined", "self.associatedParameter.type.oclIsTypeOf(UserDefinedType)" });
 		addAnnotation(parameterIntegerEClass, source, new String[] { "typeIsInteger",
 				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::INTEGER" });
 		addAnnotation(parameterDoubleEClass, source, new String[] { "typeIsDouble",
@@ -2183,7 +2186,7 @@ public class AtomicDevsPackageImpl extends EPackageImpl implements AtomicDevsPac
 		addAnnotation(parameterBooleanEClass, source, new String[] { "typeIsBoolean",
 				"self.associatedParameter.type.oclAsType(PrimitiveType).primitive = Primitive::BOOLEAN" });
 		addAnnotation(parameterEClass, source,
-				new String[] { "nameStartsWithAtSign", "\n\t\t\tself.name.substring(1,1)=\'@\'" });
+				new String[] { "parameterNameStartsWithAtSign", "\n\t\t\tself.name.substring(1,1)=\'@\'" });
 	}
 
 } //AtomicDevsPackageImpl

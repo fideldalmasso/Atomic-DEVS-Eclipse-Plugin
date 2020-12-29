@@ -15,8 +15,8 @@ package atomicDevs;
  * </ul>
  *
  * @see atomicDevs.AtomicDevsPackage#getStateUserDefined()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='typeIsString'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot typeIsString='self.statevariable.type.oclAsType(PrimitiveType).primitive = Primitive::STRING'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='typeIsUserDefined'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot typeIsUserDefined='self.statevariable.type.oclIsTypeOf(UserDefinedType)'"
  * @generated
  */
 public interface StateUserDefined extends StateValue {

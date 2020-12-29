@@ -53,7 +53,7 @@ public interface Port extends EObject {
 	 * @return the value of the '<em>Variable</em>' attribute.
 	 * @see #setVariable(String)
 	 * @see atomicDevs.AtomicDevsPackage#getPort_Variable()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getVariable();

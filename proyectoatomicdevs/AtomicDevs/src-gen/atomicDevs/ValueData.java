@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see atomicDevs.AtomicDevsPackage#getValueData()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='valueMatchesTargetPhaseWhenStateVariableIsPhase'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot valueMatchesTargetPhaseWhenStateVariableIsPhase='\n\t\tself.statevariable.name=\'phase\' implies \n\t\tself.value = self.transitiondata.transition.target.value'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot valueMatchesTargetPhaseWhenStateVariableIsPhase='\n\t\tself.statevariable.name=\'Phase\' implies \n\t\tself.value = self.transitiondata.transition.target.value'"
  * @generated
  */
 public interface ValueData extends EObject {

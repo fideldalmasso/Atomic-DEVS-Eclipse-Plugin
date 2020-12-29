@@ -19,14 +19,14 @@
           </style>
         </nodeMappings>
         <nodeMappings name="ExternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::ExternalTransitionData">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getExternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="20" height="9">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getExternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="InternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::InternalTransitionData">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getInternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="20" height="9">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getInternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -354,11 +354,19 @@
       <groups name="StatePhaseGroup" labelExpression="StatePhase Properties" domainClass="atomicDevs::StatePhase" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:TextDescription" name="NameText" labelExpression="Name" isEnabledExpression="aql:self.eContainer().initialdot.statephase&lt;>self" valueExpression="feature:value">
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:newValue.size()!=0">
-                <subModelOperations xsi:type="tool_1:For" expression="[self.transitionIn->asSequence()/]">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[i.transitiondata.valuedata->select(p|p.statevariable.name='Phase')/]">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+            <firstModelOperations xsi:type="tool_1:If" conditionExpression="aql:newValue.size()!=0">
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.transitionIn" iteratorName="iterator">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iterator">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata">
+                      <subModelOperations xsi:type="tool_1:For" expression="aql:self.valuedata" iteratorName="iterator2">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iterator2">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.statevariable.name='Phase'">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>

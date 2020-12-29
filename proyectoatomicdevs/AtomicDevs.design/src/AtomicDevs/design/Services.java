@@ -64,7 +64,7 @@ public class Services {
     	String cadena = "Input: ";
     	Output output = data.getOutput();
     	
-    	if(output!=null) {
+    	if(output!=null && output.getValue()!=null && output.getValue().length()>0) {
     		OutputPort outputPort =  data.getOutput().getOutputport();
     		if(outputPort!=null) {
     			cadena+="("+outputPort.getName()+","+outputPort.getVariable()+","+output.getValue()+")";
