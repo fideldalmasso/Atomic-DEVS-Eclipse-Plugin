@@ -112,13 +112,13 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="output" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" semanticCandidatesExpression="feature:eAllContents" domainClass="atomicDevs::Output">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'OutputValue: '+self.value+'\nOutputPort: ('+self.outputport.name+','+self.outputport.variable+')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'Output Value: '+self.value+'\nOutput Port: ('+self.outputport.name+', '+self.outputport.variable+')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="InternalTransition" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Internal Transition" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -142,13 +142,13 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="input" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" semanticCandidatesExpression="feature:eAllContents" domainClass="atomicDevs::Input">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'ElapsedTimeVariable: e\nInputPort: ('+self.inputport.name+','+self.inputport.variable+')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'Elapsed Time Variable: e\nInput Port: ('+self.inputport.name+', '+self.inputport.variable+')'" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="ExternalTransition" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="External Transition" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -158,13 +158,13 @@
         </containerMappings>
         <containerMappings name="InitialState2" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" domainClass="atomicDevs::InitialState" childrenPresentation="List">
           <subNodeMappings name="value" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" semanticCandidatesExpression="feature:eAllContents" domainClass="atomicDevs::StateValue">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.statevariable.name+' -> '+self.variable" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.statevariable.name+' (type: '+self.statevariable.type.toString().tokenize()->at(3)+' -> '+self.variable" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="InitialState">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Initial State">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -174,7 +174,7 @@
         </containerMappings>
         <containerMappings name="ParameterList" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" domainClass="atomicDevs::ParameterList" childrenPresentation="List">
           <subNodeMappings name="value" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" semanticCandidatesExpression="feature:eAllContents" domainClass="atomicDevs::Parameter">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name+' -> '+self.parametervalue.parameter" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name+' (type: '+self.type.toString().tokenize()->at(3)+' -> '+self.parametervalue.parameter" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
@@ -350,7 +350,7 @@
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
     <categories name="Default Category">
-      <pages name="Default Page" labelExpression="General" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.2 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.3 //@extensions.0/@categories.0/@groups.4 //@extensions.0/@categories.0/@groups.5 //@extensions.0/@categories.0/@groups.6 //@extensions.0/@categories.0/@groups.7 //@extensions.0/@categories.0/@groups.8 //@extensions.0/@categories.0/@groups.10 //@extensions.0/@categories.0/@groups.9"/>
+      <pages name="Default Page" labelExpression="General" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0 //@extensions.0/@categories.0/@groups.2 //@extensions.0/@categories.0/@groups.1 //@extensions.0/@categories.0/@groups.3 //@extensions.0/@categories.0/@groups.4 //@extensions.0/@categories.0/@groups.5 //@extensions.0/@categories.0/@groups.6 //@extensions.0/@categories.0/@groups.10 //@extensions.0/@categories.0/@groups.7 //@extensions.0/@categories.0/@groups.11 //@extensions.0/@categories.0/@groups.8 //@extensions.0/@categories.0/@groups.9"/>
       <groups name="StatePhaseGroup" labelExpression="StatePhase Properties" domainClass="atomicDevs::StatePhase" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:TextDescription" name="NameText" labelExpression="Name" isEnabledExpression="aql:self.eContainer().initialdot.statephase&lt;>self" valueExpression="feature:value">
           <initialOperation>
@@ -375,7 +375,7 @@
         </controls>
       </groups>
       <groups name="ValueDataGroup" labelExpression="Transition Value Properties" domainClass="atomicDevs::ValueData" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="Value" helpExpression="Use this field to write an expression for the variable to transition to" isEnabledExpression="aql: not(self.statevariable.name='Phase')" valueExpression="feature:value">
+        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="aql:self.statevariable.name+' ->'" helpExpression="Use this field to write an expression for the variable to transition to" isEnabledExpression="aql: not(self.statevariable.name='Phase')" valueExpression="feature:value">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
@@ -384,7 +384,7 @@
         </controls>
       </groups>
       <groups name="ConditionGroup" labelExpression="Condition Properties" domainClass="atomicDevs::Condition" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:TextDescription" name="ExpressionText" labelExpression="Expression" valueExpression="feature:expression">
+        <controls xsi:type="properties:TextDescription" name="ExpressionText" labelExpression="Condition" valueExpression="feature:expression">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="var:newValue"/>
@@ -393,14 +393,14 @@
         </controls>
       </groups>
       <groups name="OutputGroup" labelExpression="Output Properties" domainClass="atomicDevs::Output" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="Value" valueExpression="feature:value">
+        <controls xsi:type="properties:TextDescription" name="ValueText" labelExpression="Output Value" valueExpression="feature:value">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
             </firstModelOperations>
           </initialOperation>
         </controls>
-        <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="OutputPort" valueExpression="feature:outputport" candidatesExpression="aql:self.eContainer().eContainer().eContainer().includesOutputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+')'">
+        <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Output Port" valueExpression="feature:outputport" candidatesExpression="aql:self.eContainer().eContainer().eContainer().includesOutputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="outputport" valueExpression="var:newValue"/>
@@ -409,7 +409,7 @@
         </controls>
       </groups>
       <groups name="InputGroup" labelExpression="Input Properties" domainClass="atomicDevs::Input" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="InputPort" valueExpression="feature:inputport" candidatesExpression="aql:self.eContainer().eContainer().eContainer().includesInputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+') ('+candidate.type.toString().tokenize()->at(3)">
+        <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Input Port" valueExpression="feature:inputport" candidatesExpression="aql:self.eContainer().eContainer().eContainer().includesInputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="inputport" valueExpression="var:newValue"/>
@@ -437,15 +437,6 @@
           </initialOperation>
         </controls>
       </groups>
-      <groups name="TransitionGroup" labelExpression="Transition Properties" domainClass="atomicDevs::Transition" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:TextAreaDescription" name="DescriptionText" labelExpression="Description" helpExpression="Use this field to write about this Transition" valueExpression="feature:description">
-          <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-              <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
-            </firstModelOperations>
-          </initialOperation>
-        </controls>
-      </groups>
       <groups name="InternalTransitionDataGroup" labelExpression="Transition Properties" domainClass="atomicDevs::InternalTransitionData" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ContainerDescription">
           <controls xsi:type="properties:ContainerDescription">
@@ -457,15 +448,12 @@
             </controls>
             <controls xsi:type="properties:DynamicMappingForDescription" name="variable" iterator="i" iterableExpression="feature:valuedata">
               <ifs name="always" predicateExpression="aql:true">
-                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
+                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name+' -> '" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
                     </firstModelOperations>
                   </initialOperation>
-                  <style>
-                    <fontFormat>italic</fontFormat>
-                  </style>
                 </widget>
               </ifs>
             </controls>
@@ -486,7 +474,7 @@
                 </firstModelOperations>
               </initialOperation>
             </controls>
-            <controls xsi:type="properties:TextDescription" name="Outputvalue" labelExpression="Output value" valueExpression="aql:self.output.value">
+            <controls xsi:type="properties:TextDescription" name="Outputvalue" labelExpression="Output Value" valueExpression="aql:self.output.value">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.output">
@@ -495,7 +483,7 @@
                 </firstModelOperations>
               </initialOperation>
             </controls>
-            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="OutputPort" valueExpression="aql:self.output.outputport" candidatesExpression="aql:self.eContainer().eContainer().includesOutputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+') ('+candidate.type.toString().tokenize()->at(3)">
+            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Output Port" valueExpression="aql:self.output.outputport" candidatesExpression="aql:self.eContainer().eContainer().includesOutputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.output">
@@ -504,8 +492,15 @@
                 </firstModelOperations>
               </initialOperation>
             </controls>
+            <controls xsi:type="properties:TextAreaDescription" name="DescriptionText" labelExpression="Description" helpExpression="Use this field to write about this Transition" valueExpression="aql:self.transition.description">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transition">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
           </controls>
-          <layout xsi:type="properties:GridLayoutDescription" numberOfColumns="2" makeColumnsWithEqualWidth="true"/>
+          <layout xsi:type="properties:GridLayoutDescription" makeColumnsWithEqualWidth="true"/>
         </controls>
       </groups>
       <groups name="ExternalTransitionDataGroup" labelExpression="Transition Properties" domainClass="atomicDevs::ExternalTransitionData" semanticCandidateExpression="var:self">
@@ -519,15 +514,12 @@
             </controls>
             <controls xsi:type="properties:DynamicMappingForDescription" name="variable" iterator="i" iterableExpression="feature:valuedata">
               <ifs name="always" predicateExpression="aql:true">
-                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
+                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name+' ->'" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
                   <initialOperation>
                     <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
                     </firstModelOperations>
                   </initialOperation>
-                  <style>
-                    <fontFormat>italic</fontFormat>
-                  </style>
                 </widget>
               </ifs>
             </controls>
@@ -557,7 +549,7 @@
                 </firstModelOperations>
               </initialOperation>
             </controls>
-            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="InputPort" valueExpression="aql:self.input.inputport" candidatesExpression="aql:self.eContainer().eContainer().includesInputPort" candidateDisplayExpression="aql:'('+candidate.name+', '+candidate.variable+') ('+candidate.type.toString().tokenize()->at(3)">
+            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Input Port" valueExpression="aql:self.input.inputport" candidatesExpression="aql:self.eContainer().eContainer().includesInputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.input">
@@ -566,8 +558,147 @@
                 </firstModelOperations>
               </initialOperation>
             </controls>
+            <controls xsi:type="properties:TextAreaDescription" name="DescriptionText" labelExpression="Description" helpExpression="Use this field to write about this Transition" valueExpression="aql:self.transition.description">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transition">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
           </controls>
-          <layout xsi:type="properties:GridLayoutDescription" numberOfColumns="2" makeColumnsWithEqualWidth="true"/>
+          <layout xsi:type="properties:GridLayoutDescription" makeColumnsWithEqualWidth="true"/>
+        </controls>
+      </groups>
+      <groups name="InternalTransitionGroup" labelExpression="Transition Properties" domainClass="atomicDevs::InternalTransition" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:ContainerDescription">
+            <controls xsi:type="properties:LabelDescription" labelExpression="Variables values">
+              <style labelFontSizeExpression="12">
+                <labelFontFormat>bold</labelFontFormat>
+                <labelFontFormat>italic</labelFontFormat>
+              </style>
+            </controls>
+            <controls xsi:type="properties:DynamicMappingForDescription" name="variable" iterator="i" iterableExpression="aql:self.transitiondata.valuedata">
+              <ifs name="always" predicateExpression="aql:true">
+                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name+' -> '" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+                    </firstModelOperations>
+                  </initialOperation>
+                </widget>
+              </ifs>
+            </controls>
+          </controls>
+          <controls xsi:type="properties:ContainerDescription">
+            <controls xsi:type="properties:LabelDescription" labelExpression="Other properties">
+              <style labelFontSizeExpression="12">
+                <labelFontFormat>bold</labelFontFormat>
+                <labelFontFormat>italic</labelFontFormat>
+              </style>
+            </controls>
+            <controls xsi:type="properties:TextDescription" name="Condition" labelExpression="Condition" valueExpression="aql:self.transitiondata.condition.expression">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata.condition">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:TextDescription" name="Outputvalue" labelExpression="Output Value" valueExpression="aql:self.transitiondata.output.value">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata.output">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Output Port" valueExpression="aql:self.transitiondata.output.outputport" candidatesExpression="aql:self.eContainer().includesOutputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata.output">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outputport" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:TextAreaDescription" name="DescriptionText" labelExpression="Description" helpExpression="Use this field to write about this Transition" valueExpression="aql:self.description">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transition">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+          </controls>
+          <layout xsi:type="properties:GridLayoutDescription" makeColumnsWithEqualWidth="true"/>
+        </controls>
+      </groups>
+      <groups name="ExternalTransitionGroup" labelExpression="Transition Properties" domainClass="atomicDevs::ExternalTransition" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:ContainerDescription">
+            <controls xsi:type="properties:LabelDescription" labelExpression="Variables values">
+              <style labelFontSizeExpression="12">
+                <labelFontFormat>bold</labelFontFormat>
+                <labelFontFormat>italic</labelFontFormat>
+              </style>
+            </controls>
+            <controls xsi:type="properties:DynamicMappingForDescription" name="variable" iterator="i" iterableExpression="aql:self.transitiondata.valuedata">
+              <ifs name="always" predicateExpression="aql:true">
+                <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:i.statevariable.name+' ->'" isEnabledExpression="aql: not (i.statevariable.name='Phase')" valueExpression="aql:i.value">
+                  <initialOperation>
+                    <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+                    </firstModelOperations>
+                  </initialOperation>
+                </widget>
+              </ifs>
+            </controls>
+          </controls>
+          <controls xsi:type="properties:ContainerDescription">
+            <controls xsi:type="properties:LabelDescription" labelExpression="Other properties">
+              <style labelFontSizeExpression="12">
+                <labelFontFormat>bold</labelFontFormat>
+                <labelFontFormat>italic</labelFontFormat>
+              </style>
+            </controls>
+            <controls xsi:type="properties:TextDescription" name="Condition" labelExpression="Condition" valueExpression="aql:self.transitiondata.condition.expression">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata.condition">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:TextDescription" name="Elapsed Time Variable" labelExpression="Elapsed Time Variable" isEnabledExpression="aql:false" valueExpression="aql:self.transitiondata.elapsedTimeVariable">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.output">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:SelectDescription" name="Select Port" labelExpression="Input Port" valueExpression="aql:self.transitiondata.input.inputport" candidatesExpression="aql:self.eContainer().includesInputPort" candidateDisplayExpression="aql:'Port: '+candidate.name+' (control variable: '+candidate.variable+', type: '+candidate.type.toString().tokenize()->at(3)">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transitiondata.input">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="inputport" valueExpression="var:newValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+            <controls xsi:type="properties:TextAreaDescription" name="DescriptionText" labelExpression="Description" helpExpression="Use this field to write about this Transition" valueExpression="aql:self.description">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.transition">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </controls>
+          </controls>
+          <layout xsi:type="properties:GridLayoutDescription" makeColumnsWithEqualWidth="true"/>
         </controls>
       </groups>
       <groups name="ModelGroup" labelExpression="Model Properties" domainClass="atomicDevs::AtomicDEVS" semanticCandidateExpression="var:self">
@@ -585,7 +716,7 @@
         </controls>
         <controls xsi:type="properties:DynamicMappingForDescription" name="port" iterator="i" iterableExpression="aql:self.includesInputPort + self.includesOutputPort" forceRefresh="true">
           <ifs name="always" predicateExpression="aql:true">
-            <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:'Port ('+i.name+', '+i.variable+') ('+i.type.toString().tokenize()->at(3) + ' description'" valueExpression="aql:i.description">
+            <widget xsi:type="properties:TextDescription" name="variableText" labelExpression="aql:'Port: '+i.name+' (control variable: '+i.variable+', type: '+i.type.toString().tokenize()->at(3) + ' description'" valueExpression="aql:i.description">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="description" valueExpression="var:newValue"/>
