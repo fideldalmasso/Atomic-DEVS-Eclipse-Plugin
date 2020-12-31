@@ -34,12 +34,12 @@ public class Page03 extends WizardPage{
 
 	public Page03(String pageId) {
 		super(pageId);
-		
+
 		this.setTitle("Add new Output Ports");
 		this.setDescription("Choose a name and a type and then press the Add button.\nRemember to define at least one port of any kind.");
-		
+
 	}
-	
+
 	static Composite composite;
 	private Combo typesCombo;
 	private Text nameField;
@@ -48,12 +48,13 @@ public class Page03 extends WizardPage{
 	private TableColumn column1;
 	private TableColumn column2;
 	private TableColumn column3;
-	
+	private TableColumn column4;
 
-	
+
+
 	public void createControl(Composite parent) {
-		
-		
+
+
 
 		GridData data = new GridData();
 		composite = new Composite(parent, SWT.NONE);
@@ -68,7 +69,7 @@ public class Page03 extends WizardPage{
 			data.grabExcessVerticalSpace = true;
 			data.horizontalAlignment = GridData.FILL;
 			composite.setLayoutData(data);
-			
+
 		}
 
 		//TABLA-----------------------------------------------------------------------------------------------------
@@ -82,31 +83,34 @@ public class Page03 extends WizardPage{
 			data.verticalSpan = 6;
 			table.setLayoutData(data);
 
-			
+
 			column1 = new TableColumn (table, SWT.NONE);
 			column1.setWidth(100);
 			column1.setText("Name");
-			
+
 			column2 = new TableColumn (table, SWT.NONE);
 			column2.setWidth(100);
 			column2.setText("Type");
-			
+
 			column3 = new TableColumn (table, SWT.NONE);
 			column3.setWidth(57);
 			column3.setText("Control");
-			
-			
+
+			column4 = new TableColumn (table, SWT.NONE);
+			column4.setWidth(200);
+			column4.setText("Description");
+
 			this.updateTable();
-			
-			
-			
+
+
+
 			table.addListener(SWT.MouseDown,  e-> {
 				Point pt = new Point(e.x,e.y);
 				TableItem selectedItem = table.getItem(pt);
 				if(selectedItem == null)
 					return;
 				Rectangle rect = selectedItem.getBounds(2);
-				
+
 				if(rect.contains(pt)) {
 					int index = table.indexOf(selectedItem);
 					OutputPortRegister temp = AtomicDevsModelWizard.outputPorts.get(index);
@@ -115,9 +119,21 @@ public class Page03 extends WizardPage{
 						updateTable();
 					else 
 						Utilities.newMessageDialog(m);
-					
+
 				}
-				
+				else {
+					Rectangle rect2 = selectedItem.getBounds(3);
+
+					if(rect2.contains(pt)) {
+						int index = table.indexOf(selectedItem);
+
+						Message m = askNewDescription(selectedItem.getText(3));
+						if(m.success()) {
+							AtomicDevsModelWizard.outputPorts.get(index).description = m.text();
+							this.updateTable();
+						}
+					}
+				}
 			});
 
 		}
@@ -156,54 +172,54 @@ public class Page03 extends WizardPage{
 			typesCombo.setLayoutData(data);
 
 			this.updateTypeField();
-			
-			 typesCombo.addSelectionListener(new SelectionAdapter() {
-			      public void widgetSelected(SelectionEvent e) {
-			    	  if(typesCombo.getText().equals("Add custom type...")) {
-			    		 Message m;
-			    		 do {
-			    			 m = AtomicDevsModelWizard.addNewType();
-			    			 if(m.success()) {
-				    			 updateTypeField();
-				    			 typesCombo.select(AtomicDevsModelWizard.validTypes.size()-1);
-				    		 }
-			    			 else if(m.error()) {
-				    			 Utilities.newMessageDialog(m);
-				    			 typesCombo.select(0);
-				    		 }	 
-			    		 }
-			    		 while(m.error());
-			    	  }
-			    		  
-			      }
-			 });
-			
+
+			typesCombo.addSelectionListener(new SelectionAdapter() {
+				public void widgetSelected(SelectionEvent e) {
+					if(typesCombo.getText().equals("Add custom type...")) {
+						Message m;
+						do {
+							m = AtomicDevsModelWizard.addNewType();
+							if(m.success()) {
+								updateTypeField();
+								typesCombo.select(AtomicDevsModelWizard.validTypes.size()-1);
+							}
+							else if(m.error()) {
+								Utilities.newMessageDialog(m);
+								typesCombo.select(0);
+							}	 
+						}
+						while(m.error());
+					}
+
+				}
+			});
+
 			typesCombo.addListener(SWT.KeyUp, e->{
 				if(e.character == SWT.CR)
 					typesCombo.setSelection(typesCombo.getSelection());
 			});
-			
-			
+
+
 		}
-		
+
 
 		//BOTON AGREGAR-----------------------------------------------------------------------------------------------------
 		addButton = new Button(composite,SWT.PUSH); {
 
 			data = new GridData();
 			data.horizontalAlignment = GridData.FILL;
-//			data.horizontalSpan = 2;
+			//			data.horizontalSpan = 2;
 			data.verticalAlignment = GridData.BEGINNING;
 			addButton.setLayoutData(data);
 
 			addButton.setText("Add");
-			
-//			addButton.addTraverseListener(e -> {
-//				if(e.detail == SWT.TRAVERSE_RETURN) 
-//					addButton.notifyListeners(SWT.Selection, new Event());
-//			
-//			});
-			
+
+			//			addButton.addTraverseListener(e -> {
+			//				if(e.detail == SWT.TRAVERSE_RETURN) 
+			//					addButton.notifyListeners(SWT.Selection, new Event());
+			//			
+			//			});
+
 			addButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -214,7 +230,7 @@ public class Page03 extends WizardPage{
 						updateTable();
 						nameField.setFocus();
 						validatePage();
-						}
+					}
 					else
 						Utilities.newMessageDialog(m);
 
@@ -225,35 +241,36 @@ public class Page03 extends WizardPage{
 		setPageComplete(validatePage());
 		setControl(composite);
 	}
-	
-	
-	
+
+
+
 	//METODOS AUXILIARES----------------------------------------------------------------------------------------------------
 	private void updateTable() {
 		if(table.getItemCount()>0)
 			table.removeAll();
-		
+
 		if(AtomicDevsModelWizard.outputPorts.isEmpty())
 			return;
-		
+
 		for(OutputPortRegister s : AtomicDevsModelWizard.outputPorts) {
-			
+
 			TableItem item = new TableItem(table, SWT.NONE);
 			item.setText(0, s.name);
 			item.setText(1, s.type);
 			item.setText(2, "Remove");
-			
+			item.setText(3, s.description);
+
 			item.setForeground(2,Display.getCurrent().getSystemColor(SWT.COLOR_RED));
-			
+
 		}
-		
+
 		this.setPageComplete(validatePage());
-		
+
 	}
-	
+
 	private void updateTypeField() {
 		typesCombo.removeAll();
-		
+
 		for (String validType : AtomicDevsModelWizard.validTypes) {
 			typesCombo.add(validType);
 		}
@@ -263,41 +280,41 @@ public class Page03 extends WizardPage{
 	private Message removeOutputPort(OutputPortRegister p) {
 		if(p.name == null)
 			return new Message(Type.ERROR,"Please select an Output Port from the table");
-		
+
 		String name = p.name;
 		AtomicDevsModelWizard.outputPorts.remove(p);
-			
+
 		return new Message(Type.SUCCESS, name + " Output Port deleted successfully");
 	}
 
 	//TODO metodo que se encarga de agregar los descriptores ingresados por el usuario
-	
+
 	private Message addNewOutputPort(String name, String type) {
 		if(AtomicDevsModelWizard.outputPorts == null) 
 			AtomicDevsModelWizard.outputPorts = new ArrayList<OutputPortRegister>();
 
 		if(name== null || name.length() == 0)
 			return new Message(Type.ERROR,"Please enter a name");
-		
+
 		if(!AtomicDevsModelWizard.validateNameRegex(name))
 			return new Message(Type.ERROR, "The name must begin with a letter and can only contain letters, numbers and _");
-		
+
 		if(type== null || type.length() == 0)
 			return new Message(Type.ERROR,"Please select a valid type");
-		
+
 		if(AtomicDevsModelWizard.outputPorts.stream().map(s -> s.name).collect(Collectors.toList()).contains(name))
 			return new Message(Type.ERROR,"There is already an Output Port called "+name);
-		
+
 		if(!AtomicDevsModelWizard.validTypes.contains(type))
 			return new Message(Type.ERROR,"The type entered is not supported. Please select one from the drop-down list");
 
 		AtomicDevsModelWizard.outputPorts.add(new OutputPortRegister(name,type));
 		return new Message(Type.SUCCESS,"Added "+name+", "+ type);			
 	}
-	
+
 
 	protected ModifyListener validator = new ModifyListener() {
-			
+
 		public void modifyText(ModifyEvent e) {
 			setPageComplete(validatePage());
 		}
@@ -319,6 +336,13 @@ public class Page03 extends WizardPage{
 		super.setVisible(visible);
 
 	}
+
+
+	private Message askNewDescription(String actualValue) {
+		Message m = Utilities.newInputDialog("Edit description", "Enter a new value", actualValue);
+		return new Message(Type.SUCCESS,m.text()==null?"":m.text());
+	}
+
 
 
 }

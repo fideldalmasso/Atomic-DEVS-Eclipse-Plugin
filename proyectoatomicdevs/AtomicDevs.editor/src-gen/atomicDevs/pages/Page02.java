@@ -48,6 +48,7 @@ public class Page02 extends WizardPage{
 	private TableColumn column1;
 	private TableColumn column2;
 	private TableColumn column3;
+	private TableColumn column4;
 	
 
 	public void createControl(Composite parent) {
@@ -91,6 +92,10 @@ public class Page02 extends WizardPage{
 			column3 = new TableColumn (table, SWT.NONE);
 			column3.setWidth(57);
 			column3.setText("Control");
+
+			column4 = new TableColumn (table, SWT.NONE);
+			column4.setWidth(200);
+			column4.setText("Description");
 			
 			
 			this.updateTable();
@@ -112,6 +117,22 @@ public class Page02 extends WizardPage{
 					else 
 						Utilities.newMessageDialog(m);
 					
+				}
+				else {
+					Rectangle rect2 = selectedItem.getBounds(3);
+					
+					if(rect2.contains(pt)) {
+						int index = table.indexOf(selectedItem);
+						
+						Message m = askNewDescription(selectedItem.getText(3));
+						if(m.success()) {
+							AtomicDevsModelWizard.inputPorts.get(index).description = m.text();
+							this.updateTable();
+						}
+						
+						
+						
+					}
 				}
 				
 			});
@@ -244,6 +265,7 @@ public class Page02 extends WizardPage{
 			item.setText(0, s.name);
 			item.setText(1, s.type);
 			item.setText(2, "Remove");
+			item.setText(3, s.description);
 			
 			item.setForeground(2,Display.getCurrent().getSystemColor(SWT.COLOR_RED));
 			
@@ -318,6 +340,13 @@ public class Page02 extends WizardPage{
 
 	}
 
+	
+	private Message askNewDescription(String actualValue) {
+		Message m = Utilities.newInputDialog("Edit description", "Enter a new value", actualValue);
+		
+		
+		return new Message(Type.SUCCESS,m.text()==null?"":m.text());
+	}
 	
 	
 	

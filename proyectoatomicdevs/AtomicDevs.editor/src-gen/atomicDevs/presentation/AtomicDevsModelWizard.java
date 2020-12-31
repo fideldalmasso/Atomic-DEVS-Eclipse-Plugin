@@ -448,6 +448,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 				stateVariableObject = (CustomVariable) atomicDevsFactory.create((EClass) atomicDevsPackage.getEClassifier("CustomVariable"));
 			}
 			
+			stateVariableObject.setDescription(v.description);
 			stateVariableObject.setName(v.name);
 			stateVariableObject.setType(getTypeByName(v.type));
 			stateStructureObject.getStatevariable().add(stateVariableObject);
@@ -473,7 +474,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 				valueObject1.setAssociatedParameter(parameterObject);
 				parameterObject.setParametervalue(valueObject1);
 				
-				
+				parameterObject.setDescription(p.description);
 				parameterObject.setType(getTypeByName(p.type));
 				
 				parameterListObject.getParameter().add(parameterObject);	
@@ -488,6 +489,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			inputPortObject.setName(p.name);
 			inputPortObject.setVariable("x"+p.name);
 			inputPortObject.setType(getTypeByName(p.type));
+			inputPortObject.setDescription(p.description);
 			atomicDEVSObject.getIncludesInputPort().add(inputPortObject);
 		}
 		for(OutputPortRegister p : outputPorts) {
@@ -495,6 +497,7 @@ public class AtomicDevsModelWizard extends Wizard implements INewWizard {
 			outputPortObject.setName(p.name);
 			outputPortObject.setVariable("y"+p.name);
 			outputPortObject.setType(getTypeByName(p.type));
+			outputPortObject.setDescription(p.description);
 			atomicDEVSObject.getIncludesOutputPort().add(outputPortObject);
 		}
 		

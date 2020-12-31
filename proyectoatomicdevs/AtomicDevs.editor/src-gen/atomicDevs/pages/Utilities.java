@@ -14,7 +14,7 @@ public class Utilities {
 		    String newValue=dialog.getValue();
 		    return new Message(Type.SUCCESS,newValue);
 		  }
-		  return new Message(Type.EXIT,"Closed window");
+		  return new Message(Type.EXIT,defaultValue);
 	}
 	
 	public static boolean newYesNoDialog(String title, String description) {
