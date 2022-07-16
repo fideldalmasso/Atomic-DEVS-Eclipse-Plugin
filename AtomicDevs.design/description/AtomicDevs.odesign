@@ -18,21 +18,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="ExternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::ExternalTransitionData">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getExternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="InternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::InternalTransitionData">
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getInternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="InternalTransitionLink" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='InternalTransition']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@nodeMappings[name='InternalTransitionData'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='InternalTransition2']" targetFinderExpression="feature:transitiondata">
+        <edgeMappings name="InternalTransitionLink" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='InternalTransition']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='oculto']/@nodeMappings[name='InternalTransitionData'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='InternalTransition2']" targetFinderExpression="feature:transitiondata">
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -48,7 +34,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="linea3" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='custom']/@nodeMappings[name='StateDefinition']" targetFinderExpression="feature:statestructure">
+        <edgeMappings name="linea3" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='oculto']/@nodeMappings[name='StateDefinition']" targetFinderExpression="feature:statestructure">
           <style lineStyle="dash" sizeComputationExpression="2" endsCentering="Source">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -56,7 +42,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="linea2" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='custom']/@nodeMappings[name='InitialState'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='InitialState2']" targetFinderExpression="feature:initialstate">
+        <edgeMappings name="linea2" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='oculto']/@nodeMappings[name='InitialState'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='InitialState2']" targetFinderExpression="feature:initialstate">
           <style lineStyle="dash" sizeComputationExpression="2" endsCentering="Source">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -64,9 +50,17 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ExternalTransitionLink" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='ExternalTransition']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@nodeMappings[name='ExternalTransitionData'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='ExternalTransition2']" targetFinderExpression="feature:transitiondata">
+        <edgeMappings name="ExternalTransitionLink" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='ExternalTransition']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@additionalLayers[name='oculto']/@nodeMappings[name='ExternalTransitionData'] //@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='ExternalTransition2']" targetFinderExpression="feature:transitiondata">
           <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="linea4" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='ParameterList']" targetFinderExpression="feature:parameterlist">
+          <style lineStyle="dash" sizeComputationExpression="2" endsCentering="Source">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -83,14 +77,6 @@
         <edgeMappings name="ExternalTransition" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@nodeMappings[name='StatePhase']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@nodeMappings[name='StatePhase']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="atomicDevs::ExternalTransition" useDomainElement="true">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <centerLabelStyleDescription labelSize="12">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="linea4" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20not%20allowed']" sourceMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@edgeMappings[name='linea1']" targetMapping="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@containerMappings[name='ParameterList']" targetFinderExpression="feature:parameterlist">
-          <style lineStyle="dash" sizeComputationExpression="2" endsCentering="Source">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
@@ -329,7 +315,7 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <additionalLayers name="custom">
+      <additionalLayers name="oculto">
         <nodeMappings name="InitialState" domainClass="atomicDevs::InitialState">
           <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:'Initial State: ' + self.value.variable->sep('(', ',', ')')" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -342,6 +328,20 @@
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ExternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::ExternalTransitionData">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getExternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="InternalTransitionData" deletionDescription="//@ownedViewpoints[name='AtomicDEVSViewpoint']/@ownedRepresentations[name='AtomicDEVS']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20TransitionData']" domainClass="atomicDevs::InternalTransitionData">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="service:getInternalTransitionData()" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW" width="30" height="9">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
       </additionalLayers>
