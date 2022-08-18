@@ -48,8 +48,8 @@ Next time you run Eclipse Modeling Tools, the plugin shoud be available to use.
 
 # Usage Tutorials
 The following videos contain practical examples of the tool usage
-* [Switch Example](https://drive.google.com/file/d/197Qj3NmSPfE7DRdM2PmyU1ZR5YFNcgQz/view?usp=sharing)
-* [TrafficLight Example](https://drive.google.com/file/d/1W5_c16Nu23KU4c_zfLCkY0mVYgv18ofq/view?usp=sharing)
+* [Switch Example](https://youtu.be/iIRoj_nRH3g)
+* [TrafficLight Example](https://youtu.be/bJl9_V2QM6Y)
 
 # Troubleshooting
 ## ~ Java related problems ~
